@@ -1,0 +1,107 @@
+Here's a structured documentation where the "Hello, World!" program is introduced first, followed by a detailed explanation line by line, with highlighted code blocks and explanations.
+
+---
+
+# Program Structure in C: A Detailed Walkthrough
+
+In this guide, we will cover the basic structure of a C program using the classic "Hello, World!" example. Let’s first see the complete code and then break it down line by line.
+
+## Complete Code: "Hello, World!"
+
+```cpp filename="hello_world.c" copy
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+## Step-by-Step Explanation
+
+### 1. Preprocessor Directive
+
+```cpp filename="hello_world.c" copy {1}
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+- **`#include <stdio.h>`**: This line includes the Standard Input/Output library. The `stdio.h` header file contains declarations for functions like `printf` and `scanf` used for input and output operations.
+- **Purpose**: Without including this header, the compiler won't recognize the `printf` function.
+
+---
+
+### 2. Main Function Declaration
+
+```cpp filename="hello_world.c" copy {3,6}
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+- **`int main()`**: This is the entry point of the C program. Every C program must have a `main` function, as execution starts here.
+- **Return Type (`int`)**: The `int` before `main` indicates that the function returns an integer value. It is standard to return an integer, usually `0` for successful execution.
+
+---
+
+### 3. Output Statement
+
+```cpp filename="hello_world.c" copy {4}
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+- **`printf()`**: This function is used to print formatted output to the console. In this case, it prints the string `"Hello, World!"`.
+- **`"Hello, World!\n"`**: The text inside the quotation marks is a string literal. The `\n` is a newline character, which moves the cursor to the next line after printing.
+- **Purpose**: This line is the main action of the program—displaying the message to the user.
+
+---
+
+### 4. Return Statement
+
+```cpp filename="hello_world.c" copy {5}
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+- **`return 0;`**: This statement indicates that the program has ended successfully. Returning `0` is a standard practice to signal that the program completed without errors.
+- **Closing Brace (`}`)**: This marks the end of the `main` function.
+
+---
+
+## Full Breakdown
+
+Here’s the complete program again with the explanations consolidated.
+
+```cpp filename="hello_world.c" copy
+#include <stdio.h>
+
+int main() { // Starting point of the program
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+## Key Takeaways
+
+1. **Preprocessor Directive**: Includes necessary header files for input/output functions.
+2. **Main Function**: Entry point where the program begins execution.
+3. **Output Function**: Uses `printf` to display text to the user.
+4. **Return Statement**: Indicates the end of the program and returns a status code.
+
+This line-by-line approach helps beginners understand the purpose of each part of a C program. By mastering this simple "Hello, World!" example, you lay a strong foundation for writing more complex programs.
