@@ -1,0 +1,29 @@
+## Creating a C File and Compiling a Hello World Program in VSCode
+
+To create a simple C program that prints "Hello, World!" and compile it using the command prompt in Visual Studio Code (VSCode), follow these steps:
+
+### Step 1: Create a New C File
+
+1. Open Visual Studio Code.
+2. Create a new file by clicking on `File` > `New File` or using the shortcut `Ctrl + N`.
+3. Save the file with a `.c` extension. For example, you can name it `hello_world.c` by clicking on `File` > `Save As` and entering the filename.
+
+### Step 2: Write the Hello World Program
+
+In the `hello_world.c` file, write the following code:
+
+```cpp filename="hello_world.c" copy
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+```
+
+To execute the program, follow these steps:
+
+1. Open the command prompt.
+2. Navigate to the directory where the `hello_world.c` file is saved.
+3. Compile the program using the command `gcc hello_world.c -o hello_world`.
+4. Run the program by typing `hello_world` and pressing Enter.
