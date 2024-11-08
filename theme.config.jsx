@@ -1,9 +1,19 @@
+import { Terminal } from "lucide-react";
+
 export default {
-  logo: <span>My Nextra Documentation</span>,
+  logo: (
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <Terminal style={{ marginRight: "8px" }} />
+      <span style={{ fontWeight: "bold" }}>Docs</span>
+    </div>
+  ),
   project: {
     link: "https://github.com/shuding/nextra",
   },
   footer: false,
   editLink: false,
+  sidebar: {
+    defaultMenuCollapseLevel: 1,
+  },
   // ... other theme options
 };

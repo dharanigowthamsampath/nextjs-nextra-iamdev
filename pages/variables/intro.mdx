@@ -1,0 +1,61 @@
+# Introduction to Variables in C
+
+In C programming, a **variable** is a named storage location in memory used to hold data that can be changed during program execution. Variables allow you to store values and perform operations on them. The data type of a variable determines the kind of data it can hold, such as integers, floating-point numbers, or characters.
+
+## 1. Variable Declaration Syntax
+
+To declare a variable in C, you specify its data type followed by the variable name. The syntax is:
+
+```c
+data_type variable_name;
+```
+
+### Example
+
+```c
+int age;         // Declares an integer variable named 'age'
+float salary;    // Declares a floating-point variable named 'salary'
+char grade;      // Declares a character variable named 'grade'
+```
+
+You can also initialize a variable with a value at the time of declaration:
+
+```c
+int age = 25;
+float salary = 50000.50;
+char grade = 'A';
+```
+
+## 2. Types of Variables
+
+In C, variables can be categorized based on their scope and lifetime:
+
+- **Local Variables**: Declared inside a function or block and can only be accessed within that function or block.
+- **Global Variables**: Declared outside all functions and can be accessed by any function within the program.
+- **Static Variables**: Retain their value between function calls and are initialized only once.
+- **External Variables (extern)**: Declared outside the current file but can be used in other files by declaring them with the `extern` keyword.
+
+## 3. Rules for Naming Variables
+
+When naming variables in C, follow these rules:
+
+1. The name must start with a letter (a-z, A-Z) or an underscore (`_`).
+2. It can contain letters, digits (0-9), and underscores (`_`).
+3. It **cannot** contain spaces or special characters (e.g., `@`, `#`, `$`).
+4. It **cannot** start with a digit.
+5. Variable names are **case-sensitive** (e.g., `Age` and `age` are different).
+6. Avoid using C keywords as variable names (e.g., `int`, `return`, `float`).
+
+### Example
+
+```c
+int numberOfStudents;  // Valid variable name
+float _price;          // Valid variable name
+char firstName;        // Valid variable name
+int 1stRank;           // Invalid: cannot start with a digit
+float total$Amount;    // Invalid: cannot use special characters
+```
+
+## Conclusion
+
+Variables are fundamental in C programming, allowing you to store and manipulate data. Understanding how to declare, initialize, and use variables correctly is crucial for writing efficient and error-free code. By following the naming rules and choosing appropriate data types, you can create clear and maintainable programs.

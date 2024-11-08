@@ -1,0 +1,77 @@
+# Naming Conventions for Variables in C
+
+In C programming, **naming conventions** are important because they help make your code more readable and maintainable. Following a consistent naming convention makes it easier for you and others to understand the purpose of each variable. Let’s explore the best practices for naming variables and provide examples of both correct and incorrect names.
+
+## 1. Rules for Naming Variables
+
+In C, there are specific rules that must be followed when naming variables:
+
+1. **Start with a Letter or Underscore (`_`)**:
+
+   - A variable name must begin with a letter (a-z, A-Z) or an underscore (`_`).
+   - It **cannot** start with a digit (0-9).
+
+2. **Can Contain Letters, Digits, and Underscores**:
+
+   - Variable names can include letters, digits, and underscores, but no special characters (e.g., `@`, `#`, `$`).
+
+3. **No Spaces**:
+
+   - Variable names **cannot** contain spaces.
+
+4. **Case-Sensitive**:
+
+   - C is a case-sensitive language, so `Variable`, `variable`, and `VARIABLE` are considered different variables.
+
+5. **Avoid C Keywords**:
+   - Do not use reserved keywords (e.g., `int`, `float`, `return`) as variable names.
+
+## 2. Best Practices for Naming Variables
+
+In addition to the rules, here are some best practices:
+
+- **Use Meaningful Names**: Choose variable names that clearly describe the data they hold (e.g., `totalMarks` instead of `tm`).
+- **Follow Consistent Naming Conventions**:
+  - **Camel Case**: Common for local variables (e.g., `studentAge`, `totalAmount`).
+  - **Snake Case**: Often used for global variables and constants (e.g., `total_amount`, `max_value`).
+- **Avoid Single-Letter Names**: Unless used in loops (e.g., `i`, `j`), avoid single-letter variable names.
+
+## 3. Examples of Correct and Incorrect Variable Names
+
+| Variable Name      | Validity | Explanation                                                                                   |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------- |
+| `age`              | ✅       | Starts with a letter.                                                                         |
+| `_totalAmount`     | ✅       | Starts with an underscore.                                                                    |
+| `numberOfStudents` | ✅       | Follows camel case naming convention.                                                         |
+| `1stRank`          | ❌       | Starts with a digit.                                                                          |
+| `total$Amount`     | ❌       | Contains a special character `$`.                                                             |
+| `first name`       | ❌       | Contains a space.                                                                             |
+| `int`              | ❌       | Uses a reserved keyword.                                                                      |
+| `TotalMarks`       | ✅       | Starts with a capital letter, but avoid using uppercase for local variables unless necessary. |
+| `MAX_VALUE`        | ✅       | Often used for constants (snake case, all uppercase).                                         |
+
+### Example Code
+
+```cpp filename="naming_convention.c" copy
+#include <stdio.h>
+
+int main() {
+    int studentAge = 20;           // Valid variable name
+    float totalAmount = 1500.75;   // Valid variable name
+    char grade = 'A';              // Valid variable name
+
+    // int 1stRank = 5;            // Invalid: Starts with a digit
+    // float total$Price = 100.5;  // Invalid: Contains special character $
+    // char first name = 'B';      // Invalid: Contains a space
+
+    printf("Student Age: %d\n", studentAge);
+    printf("Total Amount: %.2f\n", totalAmount);
+    printf("Grade: %c\n", grade);
+
+    return 0;
+}
+```
+
+## Conclusion
+
+Following proper naming conventions and rules for variables in C helps ensure that your code is clear, consistent, and easy to understand. Use meaningful and descriptive names, avoid using reserved keywords, and adhere to a consistent style throughout your program. This will help you write better and more maintainable code.
