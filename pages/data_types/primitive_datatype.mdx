@@ -1,0 +1,54 @@
+# Basic Data Types in C
+
+## Overview
+
+Basic data types, also known as primitive data types, are the fundamental types provided by the C programming language. They represent single values and are essential for data manipulation. Below is a table summarizing the basic data types, their sizes, and identifiers.
+
+| Data Type | Size (in bytes) | Range (Typical)                                                                | Declaration Example    |
+| --------- | --------------- | ------------------------------------------------------------------------------ | ---------------------- |
+| `int`     | 2 or 4          | -32,768 to 32,767 (2 bytes) or <br/> -2,147,483,648 to 2,147,483,647 (4 bytes) | `int age = 25;`        |
+| `float`   | 4               | 1.2E-38 to 3.4E+38                                                             | `float height = 5.9;`  |
+| `double`  | 8               | 2.3E-308 to 1.7E+308                                                           | `double pi = 3.14159;` |
+| `char`    | 1               | -128 to 127 or 0 to 255                                                        | `char initial = 'A';`  |
+
+> **Note**: The size of data types can vary based on the system architecture (e.g., 32-bit or 64-bit). The ranges provided are typical for most systems.
+
+## Example Program
+
+Here is an example program that demonstrates the use of each basic data type in C:
+
+```cpp filename="data_types.c" copy
+#include <stdio.h>
+
+int main() {
+    // Declaration and initialization of basic data types
+    int age = 25;                // Integer
+    float height = 5.9;         // Float
+    double pi = 3.14159;        // Double
+    char initial = 'A';         // Character
+
+    // Output the values of the variables
+    printf("Age: %d\n", age);                   // Output: Age: 25
+    printf("Height: %.1f\n", height);           // Output: Height: 5.9
+    printf("Value of Pi: %.5f\n", pi);          // Output: Value of Pi: 3.14159
+    printf("Initial: %c\n", initial);           // Output: Initial: A
+
+    return 0; // Indicate successful execution
+}
+```
+
+## Explanation of the Example Program
+
+- **`#include <stdio.h>`**: This line includes the standard input-output library, which is necessary for using the `printf` function.
+- **`int main()`**: This defines the main function where the program execution begins.
+- **Variable Declarations**:
+  - `int age = 25;`: Declares an integer variable `age` and initializes it with the value `25`.
+  - `float height = 5.9;`: Declares a float variable `height` and initializes it with the value `5.9`.
+  - `double pi = 3.14159;`: Declares a double variable `pi` and initializes it with the value of Pi.
+  - `char initial = 'A';`: Declares a char variable `initial` and initializes it with the character 'A'.
+- **Output Statements**: The `printf` function is used to print the values of the variables to the console, formatted appropriately.
+- **`return 0;`**: This indicates that the program has executed successfully.
+
+## Conclusion
+
+Understanding the basic data types in C, including their sizes and ranges, is crucial for effective programming. The example program illustrates how to declare and use these data types, providing a foundation for more complex data manipulation in C.
