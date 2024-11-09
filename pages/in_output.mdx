@@ -1,0 +1,93 @@
+# Input and Output Streams in C
+
+In C programming, input and output (I/O) operations are essential for interacting with the user and external devices. The standard I/O library in C provides functions to perform input and output operations using streams.
+
+## 1. Standard Input and Output Streams
+
+C provides three standard streams for input and output operations:
+
+- **stdin**: Standard input stream, typically used for reading input from the keyboard.
+- **stdout**: Standard output stream, typically used for writing output to the screen.
+- **stderr**: Standard error stream, typically used for writing error messages to the screen.
+
+## 2. Input Functions
+
+### `scanf`
+
+The `scanf` function is used to read formatted input from the standard input stream (stdin). The syntax is:
+
+```c
+scanf(format_string, &variable1, &variable2, ...);
+```
+
+## 3. Output Functions
+
+### `printf`
+
+The `printf` function is used to write formatted output to the standard output stream (stdout). The syntax is:
+
+```c
+printf(format_string, value1, value2, ...);
+```
+
+## Complete Example
+
+Here is a complete example demonstrating the use of `scanf` for input and `printf` for output in C:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    printf("You entered: %d\n", number);
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
+
+int main() {
+    char name[50];
+    int age;
+
+    printf("Enter your name: ");
+    scanf("%s", name);
+
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    printf("Hello, %s! You are %d years old.\n", name, age);
+
+    return 0;
+}
+
+```
+
+This program prompts the user to enter a number and then displays the number entered by the user.
+
+## 4. Advantages of Input and Output Functions
+
+Input and output functions in C, such as `scanf` and `printf`, offer several advantages:
+
+1. **User Interaction**: These functions enable user interaction by allowing the program to read input from the user and display output. This makes the program more dynamic and interactive.
+
+2. **Formatted Output**: The `printf` function provides a powerful way to format output. You can control the appearance of the output by specifying format specifiers, making it easier to present data in a readable and organized manner.
+
+3. **Versatility**: Input and output functions support various data types, including integers, floating-point numbers, characters, and strings. This versatility allows you to handle different types of data efficiently.
+
+4. **Error Handling**: By checking the return values of input functions like `scanf`, you can implement error handling to ensure that the input is valid. This helps in creating robust and reliable programs.
+
+5. **Portability**: The `scanf` and `printf` functions are part of the C standard library, making them portable across different platforms and compilers. This ensures that your code can run on various systems without modification.
+
+6. **Ease of Use**: These functions are easy to use and understand, making them accessible to both beginners and experienced programmers. The straightforward syntax allows for quick implementation of input and output operations.
+
+7. **Efficiency**: Input and output functions are optimized for performance, allowing for efficient reading and writing of data. This is particularly important in programs that require frequent input and output operations.
+
+By leveraging the advantages of input and output functions, you can create interactive, user-friendly, and efficient C programs that handle data effectively.
+
+## 5. Conclusion
+
+The `scanf` and `printf` functions are fundamental for input and output operations in C. They allow you to read and display data in various formats, making them essential for creating interactive and dynamic programs.
