@@ -8,7 +8,7 @@ export default {
     </div>
   ),
   project: {
-    link: "https://github.com/shuding/nextra",
+    link: "https://github.com/dharanigowthamsampath",
   },
   footer: false,
   editLink: false,

@@ -1,17 +1,17 @@
 export default {
-  index: {
-    display: "hidden",
-  },
-  "-- Introduction": {
-    title: "Introduction",
+  // index: {
+  //   display: "hidden",
+  // },
+  "-- Getting Started": {
+    title: "Getting Started",
     type: "separator",
   },
-  overview: "Overview",
+  index: "Overview",
   why_c: "Why C?",
   history: "History of C",
 
-  "-- Getting Started": {
-    title: "Getting Started",
+  "-- Setup": {
+    title: "Environment Setup",
     type: "separator",
   },
   setup: "Setting up Environment",

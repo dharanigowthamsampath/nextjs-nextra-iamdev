@@ -1,4 +1,9 @@
 export default {
+    "-- getting-started": {
+        title: "Getting Started",
+        type: "separator",
+    },
+    index: "Introduction",
     "-- searching": {
         title: "Searching Algorithm",
         type: "separator",
