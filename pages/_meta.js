@@ -7,4 +7,8 @@ export default {
     title: "Java",
     type: "page",
   },
+  algorithm: {
+    title: "Algorithms",
+    type: "page"
+  }
 };

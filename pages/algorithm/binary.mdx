@@ -1,0 +1,32 @@
+import { Tabs } from 'nextra/components'
+import { useState } from 'react'
+
+export const TabSync = () => {
+  const [selectedTab, setSelectedTab] = useState(1)
+  
+  return (
+    <>
+      <Tabs 
+        items={['C', 'Java', 'Python']} 
+        selectedIndex={selectedTab} 
+        onChange={index => setSelectedTab(index)}
+      >
+        <Tabs.Tab>C: Fast, disk space efficient package manager.</Tabs.Tab>
+        <Tabs.Tab>Java is a package manager for the JavaScript programming language.</Tabs.Tab>
+        <Tabs.Tab>Python is a software packaging system.</Tabs.Tab>
+      </Tabs>
+
+      <Tabs 
+        items={['C', 'Java', 'Python']} 
+        selectedIndex={selectedTab}
+        onChange={index => setSelectedTab(index)}
+      >
+        <Tabs.Tab>C: Fast, disk space efficient package manager.</Tabs.Tab>
+        <Tabs.Tab>Java is a package manager for the JavaScript programming language.</Tabs.Tab>
+        <Tabs.Tab>Python is a software packaging system.</Tabs.Tab>
+      </Tabs>
+    </>
+  )
+}
+
+<TabSync />
