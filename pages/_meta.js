@@ -1,4 +1,4 @@
-export default {
+const meta = {
   C: {
     title: "C",
     type: "page",
@@ -9,6 +9,8 @@ export default {
   },
   algorithm: {
     title: "Algorithms",
-    type: "page"
-  }
+    type: "page",
+  },
 };
+
+export default meta;

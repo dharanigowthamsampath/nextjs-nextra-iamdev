@@ -1,4 +1,4 @@
-export default {
+const meta = {
   // index: {
   //   display: "hidden",
   // },
@@ -109,3 +109,5 @@ export default {
   recommended_books: "Recommended Books",
   useful_links: "Useful Links",
 };
+
+export default meta;

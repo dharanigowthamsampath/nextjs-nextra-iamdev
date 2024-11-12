@@ -1,3 +1,5 @@
-export default {
-    index: "Introduction",
-}
+const meta = {
+  index: "Introduction",
+};
+
+export default meta;

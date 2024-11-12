@@ -1,7 +1,9 @@
-export default {
+const meta = {
   intro: "Introduction",
   naming_convention: "Naming Convention",
   local_variable: "Local Variable",
   global_variable: "Global Variable",
   static_variable: "Static Variable",
 };
+
+export default meta;
