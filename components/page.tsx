@@ -127,7 +127,7 @@ export function BlockPage() {
           <Eye className="w-4 h-4 mr-2" />
           Practice your skills with projects
         </div>
-        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-6">
+        <h1 className="text-5xl font-bold text-transparent bg-clip-text p-3 bg-gradient-to-r from-purple-400 to-pink-400 mb-6">
           Developer Docs
         </h1>
         <p className="text-gray-400 max-w-2xl mx-auto px-4">
