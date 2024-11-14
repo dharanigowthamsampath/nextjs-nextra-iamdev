@@ -128,7 +128,7 @@ export function BlockPage() {
           Practice your skills with projects
         </div>
         <h1 className="text-5xl font-bold text-transparent bg-clip-text p-3 bg-gradient-to-r from-purple-400 to-pink-400 mb-6">
-          Developer Docs
+          Learn&apos;s Docs
         </h1>
         <p className="text-gray-400 max-w-2xl mx-auto px-4">
           roadmap.sh is a community effort to create roadmaps, guides and other
@@ -143,7 +143,7 @@ export function BlockPage() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {[
-            { name: "Python", disabled: true, new: true, label: "New" },
+            { name: "Python", disabled: false, new: true, label: "New" },
             { name: "JavaScript", disabled: true },
             { name: "Java", disabled: true },
             { name: "C++", disabled: true },
@@ -228,19 +228,14 @@ export function BlockPage() {
             { name: "Data Scientist", disabled: true },
             { name: "DevOps Engineer", disabled: true },
             { name: "Full Stack Developer", disabled: true },
-            { name: "ML Engineer", disabled: true, new: true, label: "New" },
+            { name: "ML Engineer", disabled: true },
             { name: "Cloud Architect", disabled: true },
-            {
-              name: "Security Engineer",
-              disabled: true,
-              new: true,
-              label: "New",
-            },
+            { name: "Security Engineer", disabled: true },
             { name: "Mobile Developer", disabled: true },
             { name: "UI/UX Designer", disabled: true },
             { name: "Database Admin", disabled: true },
             { name: "System Architect", disabled: true },
-            { name: "QA Engineer", disabled: true },
+            { name: "QA Engineer", disabled: true, new: false },
           ].map((role) => (
             <Link
               href="#"
@@ -257,7 +252,7 @@ export function BlockPage() {
                 </h3>
                 {role.new && (
                   <span className="absolute top-0 right-0 bg-purple-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
-                    {role.label}
+                    new
                   </span>
                 )}
               </Card>
