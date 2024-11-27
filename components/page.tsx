@@ -143,21 +143,32 @@ export function BlockPage() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {[
-            { name: "Python", disabled: false, new: true, label: "New" },
-            { name: "JavaScript", disabled: true },
-            { name: "Java", disabled: true },
-            { name: "C++", disabled: true },
-            { name: "Ruby", disabled: true },
-            { name: "PHP", disabled: true },
-            { name: "Swift", disabled: true },
-            { name: "Kotlin", disabled: true },
-            { name: "Go", disabled: true },
-            { name: "Rust", disabled: true },
-            { name: "TypeScript", disabled: true },
-            { name: "Scala", disabled: true },
+            {
+              name: "C",
+              url: "/C",
+              disabled: false,
+              new: true,
+              label: "New",
+            },
+            {
+              name: "Python",
+              url: "/python",
+              disabled: true,
+            },
+            { name: "JavaScript", url: "/javascript", disabled: true },
+            { name: "Java", url: "/java", disabled: true },
+            { name: "C++", url: "/cpp", disabled: true },
+            { name: "Ruby", url: "/ruby", disabled: true },
+            { name: "PHP", url: "/php", disabled: true },
+            { name: "Swift", url: "/swift", disabled: true },
+            { name: "Kotlin", url: "/kotlin", disabled: true },
+            { name: "Go", url: "/go", disabled: true },
+            { name: "Rust", url: "/rust", disabled: true },
+            { name: "TypeScript", url: "/typescript", disabled: true },
+            { name: "Scala", url: "/scala", disabled: true },
           ].map((role) => (
             <Link
-              href="#"
+              href={role.url}
               key={role.name}
               className={role.disabled ? "pointer-events-none" : ""}
             >
@@ -186,21 +197,21 @@ export function BlockPage() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {[
-            { name: "React", disabled: true },
-            { name: "Angular", disabled: true },
-            { name: "Vue.js", disabled: true },
-            { name: "Django", disabled: true },
-            { name: "Spring Boot", disabled: true },
-            { name: "Laravel", disabled: true },
-            { name: "Express.js", disabled: true },
-            { name: "Flutter", disabled: true },
-            { name: "TensorFlow", disabled: true },
-            { name: "PyTorch", disabled: true },
-            { name: "Next.js", disabled: true },
-            { name: "Svelte", disabled: true },
+            { name: "React", url: "/react", disabled: true },
+            { name: "Angular", url: "/angular", disabled: true },
+            { name: "Vue.js", url: "/vue", disabled: true },
+            { name: "Django", url: "/django", disabled: true },
+            { name: "Spring Boot", url: "/spring-boot", disabled: true },
+            { name: "Laravel", url: "/laravel", disabled: true },
+            { name: "Express.js", url: "/express", disabled: true },
+            { name: "Flutter", url: "/flutter", disabled: true },
+            { name: "TensorFlow", url: "/tensorflow", disabled: true },
+            { name: "PyTorch", url: "/pytorch", disabled: true },
+            { name: "Next.js", url: "/next", disabled: true },
+            { name: "Svelte", url: "/svelte", disabled: true },
           ].map((skill) => (
             <Link
-              href="#"
+              href={skill.url}
               key={skill.name}
               className={skill.disabled ? "pointer-events-none" : ""}
             >
@@ -224,21 +235,54 @@ export function BlockPage() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {[
-            { name: "Software Engineer", disabled: true },
-            { name: "Data Scientist", disabled: true },
-            { name: "DevOps Engineer", disabled: true },
-            { name: "Full Stack Developer", disabled: true },
-            { name: "ML Engineer", disabled: true },
-            { name: "Cloud Architect", disabled: true },
-            { name: "Security Engineer", disabled: true },
-            { name: "Mobile Developer", disabled: true },
-            { name: "UI/UX Designer", disabled: true },
-            { name: "Database Admin", disabled: true },
-            { name: "System Architect", disabled: true },
-            { name: "QA Engineer", disabled: true, new: false },
+            {
+              name: "Software Engineer",
+              url: "/software-engineer",
+              disabled: true,
+            },
+            { name: "Data Scientist", url: "/data-scientist", disabled: true },
+            {
+              name: "DevOps Engineer",
+              url: "/devops-engineer",
+              disabled: true,
+            },
+            {
+              name: "Full Stack Developer",
+              url: "/full-stack-developer",
+              disabled: true,
+            },
+            { name: "ML Engineer", url: "/ml-engineer", disabled: true },
+            {
+              name: "Cloud Architect",
+              url: "/cloud-architect",
+              disabled: true,
+            },
+            {
+              name: "Security Engineer",
+              url: "/security-engineer",
+              disabled: true,
+            },
+            {
+              name: "Mobile Developer",
+              url: "/mobile-developer",
+              disabled: true,
+            },
+            { name: "UI/UX Designer", url: "/ui-ux-designer", disabled: true },
+            { name: "Database Admin", url: "/database-admin", disabled: true },
+            {
+              name: "System Architect",
+              url: "/system-architect",
+              disabled: true,
+            },
+            {
+              name: "QA Engineer",
+              url: "/qa-engineer",
+              disabled: true,
+              new: false,
+            },
           ].map((role) => (
             <Link
-              href="#"
+              href={role.url}
               key={role.name}
               className={role.disabled ? "pointer-events-none" : ""}
             >

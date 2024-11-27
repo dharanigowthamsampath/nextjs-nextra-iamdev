@@ -93,7 +93,7 @@ const meta = {
   file_operations: "File Operations",
   file_modes: "File Modes",
   error_handling: "Error Handling",
-  advanced_file_handling: "Advanced File Handling",
+  c_advanced_file_handling: "Advanced File Handling",
   "--advanced": {
     title: "Advanced",
     type: "separator",
