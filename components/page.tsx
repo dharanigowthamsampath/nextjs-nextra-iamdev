@@ -20,7 +20,7 @@ export function BlockPage() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="text-white text-xl font-bold">
-                docs
+                Developer Docs
               </Link>
               <div className="hidden md:block ml-10">
                 <div className="flex items-center space-x-4">
@@ -131,9 +131,9 @@ export function BlockPage() {
           Learn&apos;s Docs
         </h1>
         <p className="text-gray-400 max-w-2xl mx-auto px-4">
-          roadmap.sh is a community effort to create roadmaps, guides and other
-          educational content to help guide developers in picking up a path and
-          guide their learnings.
+          Developer&apos;s docs is a community effort to create roadmaps, guides
+          and other educational content to help guide developers in picking up a
+          path and guide their learnings.
         </p>
       </div>
 
@@ -165,7 +165,6 @@ export function BlockPage() {
             { name: "Go", url: "/go", disabled: true },
             { name: "Rust", url: "/rust", disabled: true },
             { name: "TypeScript", url: "/typescript", disabled: true },
-            { name: "Scala", url: "/scala", disabled: true },
           ].map((role) => (
             <Link
               href={role.url}
@@ -205,8 +204,6 @@ export function BlockPage() {
             { name: "Laravel", url: "/laravel", disabled: true },
             { name: "Express.js", url: "/express", disabled: true },
             { name: "Flutter", url: "/flutter", disabled: true },
-            { name: "TensorFlow", url: "/tensorflow", disabled: true },
-            { name: "PyTorch", url: "/pytorch", disabled: true },
             { name: "Next.js", url: "/next", disabled: true },
             { name: "Svelte", url: "/svelte", disabled: true },
           ].map((skill) => (
