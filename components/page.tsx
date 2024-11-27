@@ -28,7 +28,7 @@ export function BlockPage() {
                     variant="ghost"
                     className="text-gray-300 hover:bg-purple-500 hover:text-purple-100"
                   >
-                    Start Here
+                    About Us
                   </Button>
                   <Button
                     variant="ghost"
@@ -42,16 +42,10 @@ export function BlockPage() {
                   >
                     Teams
                   </Button>
-                  <Button
-                    variant="ghost"
-                    className="text-gray-300 hover:bg-purple-500 hover:text-purple-100"
-                  >
-                    Changelog
-                  </Button>
                 </div>
               </div>
             </div>
-            <div className="hidden md:block">
+            {/* <div className="hidden md:block">
               <div className="flex items-center space-x-4">
                 <Button
                   variant="ghost"
@@ -63,7 +57,7 @@ export function BlockPage() {
                   Sign Up
                 </Button>
               </div>
-            </div>
+            </div> */}
             <div className="md:hidden">
               <Button
                 variant="ghost"
@@ -87,7 +81,7 @@ export function BlockPage() {
                   variant="ghost"
                   className="w-full text-left text-gray-300 hover:bg-purple-500 hover:text-purple-100"
                 >
-                  Start Here
+                  About Us
                 </Button>
                 <Button
                   variant="ghost"
@@ -101,13 +95,7 @@ export function BlockPage() {
                 >
                   Teams
                 </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full text-left text-gray-300 hover:bg-purple-500 hover:text-purple-100"
-                >
-                  Changelog
-                </Button>
-                <Button
+                {/* <Button
                   variant="ghost"
                   className="w-full text-left text-gray-300 hover:bg-purple-500 hover:text-purple-100"
                 >
@@ -115,7 +103,7 @@ export function BlockPage() {
                 </Button>
                 <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
                   Sign Up
-                </Button>
+                </Button> */}
               </div>
             </div>
           )}
@@ -260,8 +248,8 @@ export function BlockPage() {
               disabled: true,
             },
             {
-              name: "Mobile Developer",
-              url: "/mobile-developer",
+              name: "Mobile App Developer",
+              url: "/mobile-app-developer",
               disabled: true,
             },
             { name: "UI/UX Designer", url: "/ui-ux-designer", disabled: true },
@@ -301,6 +289,45 @@ export function BlockPage() {
           ))}
         </div>
       </div>
+
+      <footer className="border-t border-gray-800 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="flex items-center space-x-4">
+              <Link
+                href="/privacy-policy"
+                className="text-gray-400 hover:text-purple-400"
+              >
+                Privacy Policy
+              </Link>
+              <span className="text-gray-600">•</span>
+              <Link
+                href="/terms-of-use"
+                className="text-gray-400 hover:text-purple-400"
+              >
+                Terms of Use
+              </Link>
+              <span className="text-gray-600">•</span>
+              <Link
+                href="/cookie-policy"
+                className="text-gray-400 hover:text-purple-400"
+              >
+                Cookie Policy
+              </Link>
+              <span className="text-gray-600">•</span>
+              <Link
+                href="/disclaimer"
+                className="text-gray-400 hover:text-purple-400"
+              >
+                Disclaimer
+              </Link>
+            </div>
+            <p className="text-center text-gray-400">
+              © {new Date().getFullYear()} Developer Docs. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
