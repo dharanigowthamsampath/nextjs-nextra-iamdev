@@ -295,28 +295,28 @@ export function BlockPage() {
           <div className="flex flex-col items-center space-y-4">
             <div className="flex items-center space-x-4">
               <Link
-                href="/privacy-policy"
+                href="/legal/privacy-policy"
                 className="text-gray-400 hover:text-purple-400"
               >
                 Privacy Policy
               </Link>
               <span className="text-gray-600">•</span>
               <Link
-                href="/terms-of-use"
+                href="/legal/terms-of-use"
                 className="text-gray-400 hover:text-purple-400"
               >
                 Terms of Use
               </Link>
               <span className="text-gray-600">•</span>
               <Link
-                href="/cookie-policy"
+                href="/legal/cookie-policy"
                 className="text-gray-400 hover:text-purple-400"
               >
                 Cookie Policy
               </Link>
               <span className="text-gray-600">•</span>
               <Link
-                href="/disclaimer"
+                href="/legal/disclaimer"
                 className="text-gray-400 hover:text-purple-400"
               >
                 Disclaimer

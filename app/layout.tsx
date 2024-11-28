@@ -14,8 +14,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Docs | Iamdev",
-  description: "Build easy documentation like notes for students of all languages, frameworks, and tools",
+  title: "Developer Docs",
+  description:
+    "Build easy documentation like notes for students of all languages, frameworks, and tools",
 };
 
 export default function RootLayout({
