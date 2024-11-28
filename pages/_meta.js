@@ -6,6 +6,7 @@ const meta = {
   algorithm: {
     title: "Algorithms",
     type: "page",
+    display: "hidden",
   },
 };
 

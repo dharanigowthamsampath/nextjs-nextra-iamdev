@@ -1,0 +1,96 @@
+# Getting Started with Code::Blocks
+
+Code::Blocks is a free, open-source IDE that supports multiple compilers. Let's learn how to create and run your first C program using Code::Blocks.
+
+## Creating Your First C Program
+
+### Step 1: Create a New Project
+
+1. Open Code::Blocks
+2. Go to `File → New → Project`
+3. Select "Console application" and click "Go"
+4. Choose "C" as the language
+5. Click "Next"
+6. Enter your project title and choose location
+7. Click "Finish"
+
+### Step 2: Write the Code
+
+Replace the default code with this Hello World program:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+#### Code Explanation:
+
+- `#include <stdio.h>` - Includes the standard input/output library
+- `int main()` - The main function where program execution begins
+- `printf()` - Function to print text to the console
+- `\n` - Newline character
+- `return 0` - Indicates successful program completion
+
+### Step 3: Build and Run
+
+1. **Build the Program**:
+
+   - Click `Build → Build` (F9) or
+   - Click the gear icon in the toolbar
+
+2. **Run the Program**:
+   - Click `Build → Run` (F10) or
+   - Click the green play button in the toolbar
+
+You should see a console window appear with the output:
+
+```bash filename="output"
+Hello, World!
+```
+
+### Step 4: Understanding Build Messages
+
+After building, you'll see messages in the "Build log" tab at the bottom:
+
+- **Success**: "Process terminated with status 0" means no errors
+- **Error**: Red text indicates compilation errors that need fixing
+
+## Common Issues and Solutions
+
+### 1. Compiler Not Found
+
+If you see "Compiler not found", you need to:
+
+1. Go to `Settings → Compiler`
+2. Select "GNU GCC Compiler"
+3. Click "Auto-detect"
+4. Click "OK"
+
+### 2. Program Closes Immediately
+
+Add this code before `return 0` to keep the console window open:
+
+```c++ filename="main.c" copy
+printf("Press Enter to continue...");
+getchar();
+```
+
+## Best Practices
+
+1. **Save Frequently**: Use Ctrl+S to save your work
+2. **Use Auto-indent**: Press Ctrl+A, then Alt+I to format code
+3. **Check Build Log**: Always review build messages for warnings
+
+## Next Steps
+
+Now that you've created your first program, try:
+
+- Modifying the text in `printf()`
+- Adding multiple `printf()` statements
+- Using variables to store and display values
+
+Remember to save your work frequently and experiment with different code modifications to better understand how C programming works in Code::Blocks.
