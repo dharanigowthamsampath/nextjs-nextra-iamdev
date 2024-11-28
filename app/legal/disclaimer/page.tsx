@@ -17,7 +17,8 @@ export default function Disclaimer() {
         <h2 className="text-2xl font-semibold mt-8 mb-4">Code Examples</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            Code examples are provided "as is" without warranty of any kind
+            Code examples are provided &quot;as is&quot; without warranty of any
+            kind
           </li>
           <li>You use code examples at your own risk</li>
           <li>
