@@ -26,19 +26,19 @@ export function BlockPage() {
                 <div className="flex items-center space-x-4">
                   <Button
                     variant="ghost"
-                    className="text-gray-300 hover:bg-purple-500 hover:text-purple-100"
+                    className="text-gray-300 hover:bg-[#0F172A] hover:text-purple-500"
                   >
                     About Us
                   </Button>
                   <Button
                     variant="ghost"
-                    className="text-gray-300 hover:bg-purple-500 hover:text-purple-100"
+                    className="text-gray-300 hover:bg-[#0F172A] hover:text-purple-500"
                   >
                     Roadmaps
                   </Button>
                   <Button
                     variant="ghost"
-                    className="text-gray-300 hover:bg-purple-500 hover:text-purple-100"
+                    className="text-gray-300 hover:bg-[#0F172A] hover:text-purple-500"
                   >
                     Teams
                   </Button>
@@ -79,7 +79,7 @@ export function BlockPage() {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 <Button
                   variant="ghost"
-                  className="w-full text-left text-gray-300 hover:bg-purple-500 hover:text-purple-100"
+                  className="w-full text-left text-gray-300 hover:text-purple-500"
                 >
                   About Us
                 </Button>
@@ -138,6 +138,9 @@ export function BlockPage() {
               new: true,
               label: "New",
             },
+            { name: "C++", url: "/cpp", disabled: true },
+
+            { name: "C#", url: "/csharp", disabled: true },
             {
               name: "Python",
               url: "/python",
@@ -145,7 +148,6 @@ export function BlockPage() {
             },
             { name: "JavaScript", url: "/javascript", disabled: true },
             { name: "Java", url: "/java", disabled: true },
-            { name: "C++", url: "/cpp", disabled: true },
             { name: "Ruby", url: "/ruby", disabled: true },
             { name: "PHP", url: "/php", disabled: true },
             { name: "Swift", url: "/swift", disabled: true },
