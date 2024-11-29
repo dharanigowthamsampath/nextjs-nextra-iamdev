@@ -1,0 +1,184 @@
+# Understanding the Modulus Operator in C: A Beginner's Guide
+
+In C programming, the **modulus operator** (`%`) is used to find the remainder when one number is divided by another. It’s an essential arithmetic operator, especially in situations where you need to work with remainders, such as checking if a number is divisible by another number or performing operations in cycles (like rotating through an array). In this blog, we will break down the **modulus operator**, explain how it works, and explore key concepts such as **operator precedence**, **associativity**, and **how to handle different data types**.
+
+## 1. What is the Modulus Operator?
+
+The **modulus operator** (`%`) calculates the remainder when the first operand (dividend) is divided by the second operand (divisor). It is widely used in various scenarios such as checking divisibility, performing circular operations, or ensuring that values stay within a certain range.
+
+### Syntax:
+
+```c
+remainder = operand1 % operand2;
+```
+
+- **operand1**: The dividend (the number to be divided).
+- **operand2**: The divisor (the number by which the dividend is divided).
+- **remainder**: The variable where the result (remainder) of the division is stored.
+
+### Example:
+
+```c
+int a = 20, b = 3;
+int remainder = a % b;  // remainder will hold the value 2
+```
+
+In this example, when 20 is divided by 3, the quotient is 6 (integer division), and the remainder is 2. The result of the modulus operation is `2`.
+
+---
+
+## 2. How the Modulus Operator Works
+
+The modulus operator works by dividing the first operand by the second operand and returning the **remainder** of the division. The result is always non-negative and smaller than the divisor. The modulus operation works similarly to division but instead of the quotient, it returns the leftover part (remainder).
+
+### Example 1: Modulus with Integer Operands
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 20, b = 3;
+    int remainder = a % b;
+    printf("The remainder when %d is divided by %d is: %d\n", a, b, remainder);
+    return 0;
+}
+```
+
+**Example Output:**
+
+```
+The remainder when 20 is divided by 3 is: 2
+```
+
+**Explanation:**
+
+- In the expression `20 % 3`, the quotient of `20 / 3` is 6, and the remainder (the part left over after division) is `2`.
+
+### Example 2: Modulus with Negative Numbers
+
+The modulus operator works with negative numbers as well, but the result might differ based on how the implementation of C handles negative numbers. Typically, the remainder will have the same sign as the dividend.
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = -20, b = 3;
+    int remainder = a % b;
+    printf("The remainder when %d is divided by %d is: %d\n", a, b, remainder);
+    return 0;
+}
+```
+
+**Example Output:**
+
+```
+The remainder when -20 is divided by 3 is: -2
+```
+
+**Explanation:**
+
+- In the expression `-20 % 3`, the quotient of `-20 / 3` is `-6`, and the remainder is `-2`. This result may vary depending on the system or compiler.
+
+---
+
+## 3. Operator Precedence and Associativity
+
+In C, **operator precedence** determines the order in which operators are evaluated in an expression. The **modulus operator** (`%`) has **higher precedence** than addition, subtraction, and assignment but lower precedence than multiplication and division.
+
+### Operator Precedence:
+
+- The modulus operator (`%`) has **higher precedence** than addition (`+`), subtraction (`-`), and assignment (`=`), so it will be evaluated first in an expression that contains these operators.
+- If modulus is combined with multiplication or division, it has the same precedence as both of these operators, and the expression is evaluated from **left to right** (due to **left-to-right associativity**).
+
+### Example of Precedence:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = 10 + 20 % 6;  // Modulus is performed first
+    printf("The result is: %d\n", result);
+    return 0;
+}
+```
+
+**Example Output:**
+
+```
+The result is: 14
+```
+
+**Explanation:**
+
+- In the expression `10 + 20 % 6`, the modulus `20 % 6` is evaluated first, which gives `2`. Then, `10 + 2` results in `12`.
+
+### Parentheses to Change Precedence:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = (10 + 20) % 6;  // Addition is performed first
+    printf("The result is: %d\n", result);
+    return 0;
+}
+```
+
+**Example Output:**
+
+```
+The result is: 4
+```
+
+**Explanation:**
+
+- By using parentheses, the addition `10 + 20` is performed first, resulting in `30`, and then `30 % 6` gives `4`.
+
+---
+
+## 4. Important Points to Remember
+
+- **Integer Operands**: The modulus operator works with integer operands. It divides the dividend by the divisor and returns the remainder of the division.
+- **Negative Numbers**: When dealing with negative numbers, the sign of the result depends on the system's implementation. In most cases, the result will have the same sign as the dividend (the numerator).
+- **Operator Precedence**: The modulus operator has higher precedence than addition and subtraction but lower precedence than multiplication and division. Be mindful of operator precedence when combining modulus with other operators in expressions.
+- **Left-to-Right Associativity**: The modulus operator has left-to-right associativity, meaning that when multiple modulus operations are used, they are evaluated from left to right.
+
+### Modulus and Even/Odd Check:
+
+One common use of the modulus operator is checking whether a number is **even** or **odd**. This can be done by checking the remainder when the number is divided by `2`.
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int number = 15;
+    if (number % 2 == 0) {
+        printf("%d is an even number.\n", number);
+    } else {
+        printf("%d is an odd number.\n", number);
+    }
+    return 0;
+}
+```
+
+**Example Output:**
+
+```
+15 is an odd number.
+```
+
+**Explanation:**
+
+- When dividing `15` by `2`, the remainder is `1`, so the number is odd. This logic can be generalized to check whether a number is even or odd.
+
+---
+
+## Summary
+
+- The **modulus operator** (`%`) returns the remainder when one number is divided by another.
+- It is commonly used in scenarios where you need to check remainders or perform operations that involve cycles (such as rotating through an array or checking divisibility).
+- **Integer division** gives the quotient, while the modulus operator gives the remainder after division.
+- The modulus operator has **higher precedence** than addition and subtraction, but lower precedence than multiplication and division. It is evaluated from **left to right**.
+- The modulus operation works with both positive and negative numbers, but the behavior may differ slightly depending on how negative values are handled in your system.
+
+Understanding the modulus operator is essential for working with problems that require divisibility tests, managing circular data, or performing certain types of calculations.
