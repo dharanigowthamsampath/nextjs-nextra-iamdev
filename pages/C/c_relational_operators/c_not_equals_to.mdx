@@ -1,0 +1,211 @@
+# Understanding the `!=` Operator in C: A Beginner's Guide
+
+In C programming, the **inequality operator** (`!=`) is one of the essential relational operators. It allows you to check if two values are _not equal_, which is crucial for decision-making and control structures. In this blog, we will explore how the **`!=` operator** works, how to use it in different scenarios, and cover important concepts like **operator precedence** and **associativity**.
+
+---
+
+## 1. What is the `!=` Operator?
+
+The **`!=` operator** checks whether two operands are _not equal_. It evaluates to:
+
+- **1 (true)** if the operands are not equal.
+- **0 (false)** if the operands are equal.
+
+### Syntax
+
+```c
+result = operand1 != operand2;
+```
+
+- **operand1**: The first value or variable to compare.
+- **operand2**: The second value or variable to compare.
+- **result**: The variable where the comparison result is stored.
+
+### Example
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 5, b = 3;
+    if (a != b) {
+        printf("a and b are not equal\n");
+    } else {
+        printf("a and b are equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`a and b are not equal`
+
+---
+
+## 2. How the `!=` Operator Works
+
+The `!=` operator compares the values of its operands. It works with:
+
+- **Integers**
+- **Floating-point numbers**
+- **Characters**
+
+### Example 1: Integer Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 10, y = 20;
+    if (x != y) {
+        printf("x and y are not equal\n");
+    } else {
+        printf("x and y are equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`x and y are not equal`
+
+### Example 2: Floating-Point Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    float a = 10.5, b = 10.5;
+    if (a != b) {
+        printf("a and b are not equal\n");
+    } else {
+        printf("a and b are equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`a and b are equal`
+
+### Example 3: Character Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    char c1 = 'A', c2 = 'B';
+    if (c1 != c2) {
+        printf("Characters are not equal\n");
+    } else {
+        printf("Characters are equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`Characters are not equal`
+
+---
+
+## 3. Difference Between `!=` and `!`
+
+- **`!=` (Inequality Operator):** Compares two values to see if they are _not equal_.
+  ```c
+  if (a != b) {  // Checks if a is not equal to b
+      printf("a and b are different");
+  }
+  ```
+- **`!` (Logical NOT Operator):** Inverts the value of a boolean expression.
+  ```c
+  int condition = 0;
+  if (!condition) {  // Checks if condition is false (0)
+      printf("Condition is false");
+  }
+  ```
+
+---
+
+## 4. Operator Precedence and Associativity
+
+### Operator Precedence
+
+The **`!=` operator** has lower precedence than arithmetic operators (`+`, `-`, `*`, `/`). Therefore, arithmetic operations are performed before inequality comparisons.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = 5 + 3 != 8;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 0`
+
+**Explanation:**
+
+- `5 + 3` is evaluated first (due to higher precedence), resulting in `8`.
+- Then, `8 != 8` evaluates to `0` (false).
+
+### Parentheses for Changing Precedence
+
+Use parentheses to control evaluation order:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = (5 + 3) != 9;  // Parentheses clarify order
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+**Explanation:**  
+`5 + 3` is `8`, which is compared with `9`. The result is `1` (true).
+
+---
+
+### Associativity
+
+The `!=` operator has **left-to-right associativity**. When multiple comparisons are present, they are evaluated from left to right.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = (1 != 2) != 0;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+---
+
+## 5. Important Points to Remember
+
+- The `!=` operator is used to check if two values are _not equal_.
+- It has lower precedence than arithmetic operators, so calculations are done first.
+- Be cautious with **floating-point comparisons** due to precision issues.
+- **Left-to-right associativity** applies when multiple comparisons are involved.
+- Use parentheses to ensure the correct order of operations in complex expressions.
+
+---
+
+## Summary
+
+The **`!=` operator** in C compares two values to determine if they are not equal, returning `1` if they differ and `0` if they are the same. Understanding its behavior, precedence, and associativity is crucial for writing accurate conditions and avoiding logical errors. Mastering this operator will enhance your ability to create robust and logical C programs!

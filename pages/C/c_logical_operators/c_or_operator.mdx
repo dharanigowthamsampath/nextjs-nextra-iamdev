@@ -1,0 +1,252 @@
+# Understanding the `||` (OR) Operator in C: A Beginner's Guide
+
+In C programming, the **logical OR operator** (`||`) is used to combine two or more conditions. It returns **true (1)** if at least one of the conditions is true, and **false (0)** only if all conditions are false. This operator plays an important role in control structures like `if` statements, loops, and logical expressions where we need to check if at least one condition holds true.
+
+In this blog, we’ll explore the **`||` operator** in detail, its syntax, behavior, precedence, and examine various edge cases with code snippets.
+
+---
+
+## 1. What is the `||` Operator?
+
+The **`||` (OR) operator** evaluates two or more expressions and returns:
+
+- **1 (true)** if at least one of the expressions is true.
+- **0 (false)** if all expressions are false.
+
+### Syntax
+
+```c
+result = condition1 || condition2;
+```
+
+- **condition1**: The first condition to evaluate.
+- **condition2**: The second condition to evaluate.
+- **result**: Stores the result of the logical operation.
+
+---
+
+## 2. Basic Usage
+
+### Example 1: Simple `if` Statement
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 5, b = 10;
+    if (a > 0 || b < 5) {
+        printf("At least one condition is true.\n");
+    } else {
+        printf("Both conditions are false.\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`At least one condition is true.`
+
+**Explanation:**  
+Since `a > 0` is true, the overall expression evaluates to true, regardless of `b < 5`.
+
+---
+
+### Example 2: Combining Multiple Conditions
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 8, y = 15, z = 2;
+    if (x < y || y > z || z == 2) {
+        printf("At least one condition is true.\n");
+    } else {
+        printf("All conditions are false.\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`At least one condition is true.`
+
+**Explanation:**  
+The condition `z == 2` is true, so the entire expression evaluates to true.
+
+---
+
+## 3. Operator Precedence and Associativity
+
+### Operator Precedence
+
+The `||` operator has **lower precedence** than relational operators (`<`, `>`, `<=`, `>=`, `==`, `!=`) but **higher precedence** than assignment operators (`=`, `+=`, `-=`).
+
+**Precedence Order (High to Low):**
+
+1. Arithmetic operators (`*`, `/`, `+`, `-`)
+2. Relational operators (`<`, `>`, `<=`, `>=`)
+3. Logical OR (`||`)
+4. Assignment operators (`=`, `+=`, `-=`)
+
+### Example: Precedence Demonstration
+
+```c++ filename="main.c" copy
+
+#include <stdio.h>
+
+int main() {
+    int result = 3 + 2 < 4 || 10 < 5;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+**Explanation:**
+
+- `3 + 2 < 4` evaluates to `0` (false).
+- `10 < 5` evaluates to `0` (false).
+- `0 || 0` evaluates to `0`.
+
+### Using Parentheses to Control Evaluation
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = (3 + 2) < (4 || 10) > 5;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+---
+
+## 4. Short-Circuit Evaluation
+
+The `||` operator uses **short-circuit evaluation**, meaning it stops evaluating as soon as it encounters the first true condition.
+
+### Example: Short-Circuit Behavior
+
+```c++ filename=main.c copy
+#include <stdio.h>
+
+int main() {
+    int a = 5, b = 0;
+    if (a != 0 || (b / a) > 2) { // Second condition is never evaluated
+        printf("This will be printed.\n");
+    } else {
+        printf("This will not be printed.\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`This will be printed.`
+
+**Explanation:**  
+Since `a != 0` is true, the second condition `(b / a) > 2` is **never evaluated**, preventing a division-by-zero error.
+
+---
+
+## 5. Edge Cases and Special Scenarios
+
+### Edge Case 1: Comparing with Zero
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 0, y = 1;
+    if (x || y) {
+        printf("At least one is true.\n");
+    } else {
+        printf("Both are false.\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`At least one is true.`
+
+**Explanation:**  
+Since `y` is non-zero (true), the overall result is true.
+
+### Edge Case 2: Nested `||` Operators
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 3, b = 5, c = 0;
+    if ((a < 5 || b > 10) || c == 0) {
+        printf("At least one condition is true.\n");
+    } else {
+        printf("All conditions are false.\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`At least one condition is true.`
+
+**Explanation:**  
+Even though `b > 10` is false, `c == 0` is true, so the entire expression evaluates to true.
+
+### Edge Case 3: Mixing Data Types
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 0;
+    char b = 'A'; // ASCII value 65, non-zero (true)
+
+    if (a || b) {
+        printf("At least one is non-zero.\n");
+    } else {
+        printf("Both are zero.\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`At least one is non-zero.`
+
+**Explanation:**  
+Since `b` is non-zero (true), the overall result is true.
+
+---
+
+## 6. Important Points to Remember
+
+- **Short-Circuiting:** The second condition is only evaluated if the first condition is false. This is useful for preventing errors in expressions involving division or pointer dereferencing.
+- **Boolean Values:** In C, any non-zero value is considered **true**, and zero is **false**.
+- **Operator Precedence:** Always use parentheses to avoid confusion when mixing `||` with other operators.
+
+---
+
+## 7. Common Mistakes to Avoid
+
+- **Assuming Both Conditions are Always Checked:**  
+  Short-circuiting can skip evaluations, which may impact program flow if side effects (like function calls) are involved.
+- **Incorrect Condition Checking:**  
+  Be cautious when using variables that may be `0` unintentionally. For instance:
+  ```c
+  if (input || (calculate() > 0)) {  // Ensure `input` is valid first
+  ```
+
+---
+
+## Summary
+
+The **`||` operator** is essential for combining multiple conditions in C. By understanding its precedence, short-circuit behavior, and common edge cases, you can write more efficient and error-free code. Mastering the `||` operator will significantly enhance your ability to implement complex logic in C programs.

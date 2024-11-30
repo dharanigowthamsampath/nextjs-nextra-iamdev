@@ -1,0 +1,217 @@
+# Understanding the `==` Operator in C: A Beginner's Guide
+
+In C programming, the **equality operator** (`==`) is one of the most fundamental relational operators. It allows you to compare two values, which is essential for decision-making in any program. In this blog, we will take a closer look at how the **`==` operator** works, how to use it in different scenarios, and discuss important concepts like **operator precedence** and **associativity**.
+
+---
+
+## 1. What is the `==` Operator?
+
+The **`==` operator** checks if two operands are equal. It evaluates to:
+
+- **1 (true)** if the operands are equal.
+- **0 (false)** if the operands are not equal.
+
+### Syntax
+
+```c
+result = operand1 == operand2;
+```
+
+- **operand1**: The first value or variable to compare.
+- **operand2**: The second value or variable to compare.
+- **result**: The variable where the comparison result is stored.
+
+### Example
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 5, b = 5;
+    if (a == b) {
+        printf("a and b are equal\n");
+    } else {
+        printf("a and b are not equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`a and b are equal`
+
+---
+
+## 2. How the `==` Operator Works
+
+The `==` operator compares the values of its operands. It works with:
+
+- **Integers**
+- **Floating-point numbers**
+- **Characters**
+
+### Example 1: Integer Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 10, y = 20;
+    if (x == y) {
+        printf("x and y are equal\n");
+    } else {
+        printf("x and y are not equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`x and y are not equal`
+
+### Example 2: Floating-Point Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    float a = 10.5, b = 10.5;
+    if (a == b) {
+        printf("a and b are equal\n");
+    } else {
+        printf("a and b are not equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`a and b are equal`
+
+### Example 3: Character Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    char c1 = 'A', c2 = 'B';
+    if (c1 == c2) {
+        printf("Characters are equal\n");
+    } else {
+        printf("Characters are not equal\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`Characters are not equal`
+
+---
+
+## 3. Difference Between `==` and `=`
+
+- **`=` (Assignment Operator):** Assigns a value to a variable.
+  ```c
+  int a = 10;  // Assigns 10 to a
+  ```
+- **`== (Equality Operator):** Compares two values.
+  ```c
+  if (a == 10) {  // Checks if a is equal to 10
+      printf("a is 10");
+  }
+  ```
+
+**Common Mistake:**  
+Using `=` instead of `==` in conditions:
+
+```c
+// Incorrect
+if (a = 10) {
+    printf("This always evaluates to true!\n");
+}
+```
+
+---
+
+## 4. Operator Precedence and Associativity
+
+### Operator Precedence
+
+The **`==` operator** has lower precedence than arithmetic operators like `+`, `-`, `*`, and `/`. Therefore, arithmetic operations are performed before comparisons.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = 5 + 2 == 7;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+**Explanation:**
+
+- `5 + 2` is evaluated first (due to higher precedence), resulting in `7`.
+- Then, `7 == 7` evaluates to `1` (true).
+
+### Parentheses for Changing Precedence
+
+Use parentheses to control evaluation order:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = (5 + 2) == 8;  // Parentheses change the order
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 0`
+
+**Explanation:**  
+`5 + 2` is `7`, which is compared with `8`. The result is `0` (false).
+
+---
+
+### Associativity
+
+The `==` operator has **left-to-right associativity**. When multiple comparisons are present, they are evaluated from left to right.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = (1 == 1) == 1;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+---
+
+## 5. Important Points to Remember
+
+- Always use `==` for comparison, not `=`.
+- Be aware of **operator precedence**: Arithmetic operations are performed before comparisons.
+- For complex conditions, use parentheses to clarify the evaluation order.
+- `==` compares values; it does not assign values.
+
+---
+
+## Summary
+
+The **`==` operator** in C is used for comparing two values, returning `1` if they are equal and `0` otherwise. Understanding its behavior, precedence, and associativity is essential for writing accurate conditions and avoiding common mistakes. Mastering this operator will strengthen your foundation in C programming!

@@ -1,0 +1,215 @@
+# Understanding the `>` Operator in C: A Beginner's Guide
+
+In C programming, the **greater than operator** (`>`) is a key relational operator used to compare two values. It checks whether one value is _greater than_ another. This operator is widely used in decision-making structures such as `if` statements and loops. In this blog, we’ll explore how the **`>` operator** works, its usage in different scenarios, and discuss important concepts like **operator precedence** and **associativity**.
+
+---
+
+## 1. What is the `>` Operator?
+
+The **`>` operator** checks if the value on the left-hand side is greater than the value on the right-hand side. It evaluates to:
+
+- **1 (true)** if the left operand is greater than the right operand.
+- **0 (false)** if the left operand is not greater than the right operand.
+
+### Syntax
+
+```c
+result = operand1 > operand2;
+```
+
+- **operand1**: The first value or variable.
+- **operand2**: The second value or variable.
+- **result**: The variable where the comparison result is stored.
+
+### Example
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 5;
+    if (a > b) {
+        printf("a is greater than b\n");
+    } else {
+        printf("a is not greater than b\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`a is greater than b`
+
+---
+
+## 2. How the `>` Operator Works
+
+The `>` operator compares the values of its operands and returns a boolean result. It works with:
+
+- **Integers**
+- **Floating-point numbers**
+- **Characters** (based on their ASCII values)
+
+### Example 1: Integer Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 15, y = 10;
+    if (x > y) {
+        printf("x is greater than y\n");
+    } else {
+        printf("x is not greater than y\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`x is greater than y`
+
+### Example 2: Floating-Point Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    float a = 5.5, b = 7.2;
+    if (a > b) {
+        printf("a is greater than b\n");
+    } else {
+        printf("a is not greater than b\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`a is not greater than b`
+
+### Example 3: Character Comparison
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    char c1 = 'B', c2 = 'A';
+    if (c1 > c2) {
+        printf("Character c1 is greater than c2\n");
+    } else {
+        printf("Character c1 is not greater than c2\n");
+    }
+    return 0;
+}
+```
+
+**Output:**  
+`Character c1 is greater than c2`
+
+**Explanation:**  
+Characters are compared based on their ASCII values. `'B'` (66) is greater than `'A'` (65).
+
+---
+
+## 3. Operator Precedence and Associativity
+
+### Operator Precedence
+
+The **`>` operator** has lower precedence than arithmetic operators (`+`, `-`, `*`, `/`) but higher precedence than logical operators (`&&`, `||`).
+
+**Precedence Order (High to Low):**
+
+1. Arithmetic operators (`*`, `/`, `+`, `-`)
+2. Relational operators (`>`, `<`, `>=`, `<=`)
+3. Logical operators (`&&`, `||`)
+
+### Example of Precedence
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = 5 + 3 > 7;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+**Explanation:**
+
+- `5 + 3` is evaluated first (due to higher precedence), resulting in `8`.
+- Then, `8 > 7` evaluates to `1` (true).
+
+### Parentheses for Changing Precedence
+
+Use parentheses to control evaluation order:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = 5 > (3 + 2);  // Parentheses clarify order
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 0`
+
+**Explanation:**  
+`3 + 2` is `5`, and `5 > 5` evaluates to `0` (false).
+
+---
+
+### Associativity
+
+The `>` operator has **left-to-right associativity**. When multiple relational operations are present, they are evaluated from left to right.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int result = (10 > 5) > 0;
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**  
+`Result: 1`
+
+---
+
+## 4. Important Points to Remember
+
+- The `>` operator checks if the left operand is strictly greater than the right operand.
+- It has lower precedence than arithmetic operators, so calculations are performed first.
+- It works with different data types (integers, floats, and characters).
+- **Left-to-right associativity** applies when multiple relational operations are involved.
+- For accurate comparisons, ensure data types are consistent to avoid unexpected results.
+
+---
+
+## 5. Common Mistakes to Avoid
+
+- **Comparing Floating-Point Numbers:** Due to precision issues, be cautious when comparing floats.
+  ```c
+  float a = 0.1, b = 0.1;
+  if (a + b > 0.2) {  // May not always behave as expected
+      printf("True");
+  }
+  ```
+- **Incorrect Use of Parentheses:** Always use parentheses to clarify complex expressions involving multiple operators.
+
+---
+
+## Summary
+
+The **`>` operator** in C is a fundamental relational operator used to compare two values and check if one is greater than the other. Understanding its behavior, precedence, and associativity is essential for writing correct and efficient conditional statements. By mastering this operator, you can build logical conditions and improve your programming skills in C!

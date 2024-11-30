@@ -33,7 +33,7 @@ const meta = {
   arithmetic_operators: "Arithmetic Operators",
   c_relational_operators: "Relational Operators",
   c_logical_operators: "Logical Operators",
-  assignment_operators: "Assignment Operators",
+  c_assignment_operators: "Assignment Operators",
   increment_decrement: "Increment and Decrement Operators",
   bitwise_operators: "Bitwise Operators",
 
