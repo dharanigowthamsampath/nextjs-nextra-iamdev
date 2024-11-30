@@ -31,6 +31,8 @@ const meta = {
     type: "separator",
   },
   arithmetic_operators: "Arithmetic Operators",
+  c_relational_operators: "Relational Operators",
+  c_logical_operators: "Logical Operators",
   relational_and_logical: "Relational and Logical Operators",
   assignment_operators: "Assignment Operators",
   increment_decrement: "Increment and Decrement Operators",
