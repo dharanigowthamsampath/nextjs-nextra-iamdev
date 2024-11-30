@@ -34,7 +34,7 @@ const meta = {
   c_relational_operators: "Relational Operators",
   c_logical_operators: "Logical Operators",
   c_assignment_operators: "Assignment Operators",
-  increment_decrement: "Increment and Decrement Operators",
+  c_increment_decrement: "Increment and Decrement",
   bitwise_operators: "Bitwise Operators",
 
   "--control-flow": {
