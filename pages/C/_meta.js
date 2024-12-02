@@ -35,7 +35,7 @@ const meta = {
   c_logical_operators: "Logical Operators",
   c_assignment_operators: "Assignment Operators",
   c_increment_decrement: "Increment and Decrement",
-  bitwise_operators: "Bitwise Operators",
+  c_bitwise_operator: "Bitwise Operators",
 
   "--control-flow": {
     title: "Control Structures",

@@ -1,0 +1,263 @@
+# Understanding the Bitwise OR Operator (`|`) in C: A Beginner's Guide
+
+The **bitwise OR operator (`|`)** in C is a crucial tool for manipulating binary data at the bit level. Unlike the logical OR operator (`||`), which works with Boolean values, the bitwise OR operates directly on the **binary representations** of integers. It is commonly used to **set specific bits** or combine binary values.
+
+In this blog, we’ll explore the bitwise OR operator in detail, covering syntax, examples, edge cases, and practical applications.
+
+---
+
+## 1. What is the Bitwise OR Operator (`|`)?
+
+The bitwise OR operator performs a **bit-by-bit comparison** between two numbers. For each corresponding pair of bits:
+
+- If **either bit is 1**, the result is **1**.
+- If **both bits are 0**, the result is **0**.
+
+### **Syntax:**
+
+```c
+result = operand1 | operand2;
+```
+
+### **Bitwise OR Truth Table:**
+
+| Bit 1 | Bit 2 | Result (Bit 1 \| Bit 2) |
+| ----- | ----- | ----------------------- |
+| 0     | 0     | 0                       |
+| 0     | 1     | 1                       |
+| 1     | 0     | 1                       |
+| 1     | 1     | 1                       |
+
+---
+
+## 2. Basic Example
+
+Let's begin with a simple example to understand how the bitwise OR operator works with binary numbers.
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 5;  // Binary: 0101
+    int b = 3;  // Binary: 0011
+
+    int result = a | b;  // Binary: 0101 | 0011 = 0111 (Decimal 7)
+
+    printf("Result of %d | %d = %d\n", a, b, result);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Result of 5 | 3 = 7
+```
+
+**Explanation:**
+
+- Binary of `5`: **0101**
+- Binary of `3`: **0011**
+- Bitwise OR: **0111** (Decimal 7)
+
+---
+
+## 3. Practical Applications of Bitwise OR
+
+### **1. Setting Specific Bits**
+
+The bitwise OR operator is often used to set specific bits in a number without affecting the other bits.
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int number = 8;       // Binary: 1000
+    int mask = 5;         // Binary: 0101
+
+    int result = number | mask;  // Sets bits specified in the mask
+
+    printf("Result after setting bits: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Result after setting bits: 13
+```
+
+**Explanation:**
+
+- `8`: **1000**
+- `5`: **0101**
+- Result: **1101** (Decimal 13)
+
+---
+
+### **2. Combining Flags**
+
+In many programming scenarios, especially in low-level programming or embedded systems, **flags** are combined using bitwise OR.
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+#define FLAG_READ  0x01  // Binary: 0001
+#define FLAG_WRITE 0x02  // Binary: 0010
+#define FLAG_EXEC  0x04  // Binary: 0100
+
+int main() {
+    int permissions = FLAG_READ | FLAG_WRITE;  // Combine read and write permissions
+
+    printf("Combined permissions: %d\n", permissions);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Combined permissions: 3
+```
+
+**Explanation:**
+
+- `FLAG_READ`: **0001**
+- `FLAG_WRITE`: **0010**
+- Result: **0011** (Decimal 3)
+
+---
+
+### **3. Setting a Specific Bit**
+
+To set a specific bit in a number, use the bitwise OR operator with a bit mask that has a `1` in the desired bit position.
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int number = 4;  // Binary: 0100
+    int bit_position = 1;  // Set the 1st bit (zero-indexed)
+
+    number = number | (1 << bit_position);
+
+    printf("Number after setting bit %d: %d\n", bit_position, number);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Number after setting bit 1: 6
+```
+
+**Explanation:**
+
+- `4` in binary: **0100**
+- Mask created by `1 << 1`: **0010**
+- `0100 | 0010`: **0110** (Decimal 6)
+
+---
+
+## 4. Edge Cases and Considerations
+
+### **1. Bitwise OR with Zero**
+
+Any number ORed with `0` remains unchanged:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 5;
+    printf("%d | 0 = %d\n", a, a | 0);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+5 | 0 = 5
+```
+
+### **2. Bitwise OR with -1**
+
+Any number ORed with `-1` (all bits set to `1`) results in `-1`:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 7;
+    printf("%d | -1 = %d\n", a, a | -1);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+7 | -1 = -1
+```
+
+### **3. Bitwise OR with Two Identical Numbers**
+
+ORing a number with itself results in the number:
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 12;
+    printf("%d | %d = %d\n", a, a, a | a);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+12 | 12 = 12
+```
+
+---
+
+## 5. Operator Precedence and Associativity
+
+The **bitwise OR (`|`)** operator has lower precedence than arithmetic and relational operators but higher precedence than the logical OR (`||`).
+
+### **Precedence Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 5, b = 3, c = 8;
+
+    int result = a | b + c;  // Evaluated as a | (b + c)
+
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Result: 13
+```
+
+**Explanation:** The addition (`b + c`) is evaluated first, then bitwise OR with `a`.
+
+---
+
+## Summary
+
+- The **bitwise OR operator (`|`)** performs a binary OR operation on each pair of corresponding bits in two operands.
+- It is widely used for **setting specific bits**, combining **flags**, and manipulating **binary data**.
+- Understanding the behavior, precedence, and common use cases of the bitwise OR operator can help you write more efficient and powerful C programs, especially when working with low-level data or hardware interfaces.
+
+Mastering bitwise operations unlocks the true potential of low-level programming and allows you to control binary data effectively!

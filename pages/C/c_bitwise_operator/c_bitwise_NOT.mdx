@@ -1,0 +1,234 @@
+# Understanding the Bitwise NOT Operator (`~`) in C: A Beginner's Guide
+
+The **bitwise NOT operator (`~`)** in C is a unary operator used to invert all the bits of its operand. It is essential for performing bit-level manipulations and understanding how numbers are represented in binary. Let's dive into its workings, examples, and practical applications.
+
+---
+
+## 1. What is the Bitwise NOT Operator (`~`)?
+
+The bitwise NOT operator inverts each bit of its operand:
+
+- If the bit is **1**, it becomes **0**.
+- If the bit is **0**, it becomes **1**.
+
+### **Syntax:**
+
+```c
+result = ~operand;
+```
+
+### **Key Concept:**
+
+The bitwise NOT operation is also known as **one's complement**. When applied to an integer, it flips every bit, including the sign bit in signed integers.
+
+---
+
+## 2. Basic Example
+
+Let's see a simple example demonstrating the bitwise NOT operator.
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a = 5;       // Binary: 0000 0101 (32-bit representation)
+    int result = ~a; // Inverts all bits
+
+    printf("Bitwise NOT of %d is %d\n", a, result);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Bitwise NOT of 5 is -6
+```
+
+**Explanation:**
+
+- Binary representation of `5`: `00000000 00000000 00000000 00000101`
+- After applying `~`: `11111111 11111111 11111111 11111010`
+  - This is the two's complement representation of `-6`.
+
+---
+
+## 3. How Bitwise NOT Works with Signed and Unsigned Integers
+
+### **Signed Integer:**
+
+In C, integers are usually represented using **two's complement**. Applying the bitwise NOT operator flips all bits, including the sign bit. Therefore:
+
+- `~x = -(x + 1)`
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 10; // Binary: 00000000 00000000 00000000 00001010
+    printf("~%d = %d\n", x, ~x);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+~10 = -11
+```
+
+**Explanation:**
+
+- `10`: `00000000 00000000 00000000 00001010`
+- `~10`: `11111111 11111111 11111111 11110101` (Equivalent to `-11` in two's complement)
+
+### **Unsigned Integer:**
+
+For unsigned integers, `~x` simply inverts the bits without considering the sign.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    unsigned int x = 10;
+    printf("~%u = %u\n", x, ~x);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+~10 = 4294967285
+```
+
+**Explanation:**
+
+- `10`: `00000000 00000000 00000000 00001010`
+- `~10`: `11111111 11111111 11111111 11110101` (Interpreted as an unsigned value: `4294967285`)
+
+---
+
+## 4. Practical Applications of Bitwise NOT
+
+### **1. Finding the One’s Complement of a Number**
+
+The bitwise NOT operator is commonly used to calculate the **one’s complement** of a number, which inverts each bit.
+
+### **2. Creating Masks for Bitwise Operations**
+
+The `~` operator helps create masks by inverting existing bit patterns.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 15;          // Binary: 00001111
+    int mask = ~0xF;     // Inverts the 4-bit mask (0xF = 1111)
+
+    int result = x & mask;
+    printf("Result after applying mask: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Result after applying mask: 0
+```
+
+### **3. Bit Manipulation in Low-Level Programming**
+
+The `~` operator is used in conjunction with other bitwise operators to clear specific bits in low-level hardware programming and embedded systems.
+
+---
+
+## 5. Edge Cases and Considerations
+
+### **1. NOT of Zero**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 0;
+    printf("~%d = %d\n", x, ~x);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+~0 = -1
+```
+
+### **2. NOT of -1**
+
+The result of `~(-1)` is `0`, because `-1` in two’s complement is all `1`s.
+
+**Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = -1;
+    printf("~%d = %d\n", x, ~x);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+~-1 = 0
+```
+
+---
+
+## 6. Operator Precedence and Associativity
+
+The bitwise NOT operator (`~`) has a **higher precedence** than arithmetic and logical operators. It is a **unary operator** and has **right-to-left associativity**.
+
+### **Example:**
+
+```c++ filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int x = 5;
+    int result = ~x + 2;  // Evaluates as (~x) + 2
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Result: -4
+```
+
+**Explanation:**
+
+- `~5` gives `-6`.
+- `-6 + 2` equals `-4`.
+
+---
+
+## Summary
+
+- The **bitwise NOT operator (`~`)** inverts each bit of its operand.
+- In **signed integers**, `~x` is equivalent to `-(x + 1)`.
+- It is widely used for **one's complement**, **bit masking**, and **bit-level operations**.
+- Understanding the bitwise NOT operator is crucial for tasks like **low-level programming**, **binary manipulation**, and working with **signed/unsigned numbers**.
+
+Mastering the `~` operator deepens your understanding of binary representations and bitwise logic in C!
