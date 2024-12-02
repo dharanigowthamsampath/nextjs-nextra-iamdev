@@ -17,7 +17,8 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Developer Docs",
   description:
-    "Build easy documentation like notes for students of all languages, frameworks, and tools",
+    "A free and open resource for developers, providing comprehensive documentation for all programming languages, built by developers for developers.",
+  keywords: "developer, documentation, programming languages, resources",
 };
 
 export default function RootLayout({
@@ -28,6 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta property="og:image" content="./banner.png" />
+        <meta property="og:title" content="Developer Docs" />
+        <meta
+          property="og:description"
+          content="A free and open resource for developers."
+        />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-51LPZXWYLT"
