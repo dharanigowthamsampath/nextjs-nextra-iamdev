@@ -1,0 +1,167 @@
+# Understanding the `if-else` Statement in C: A Beginner's Guide
+
+The **`if-else` statement** in C is an extension of the basic `if` statement. It allows your program to take one of two possible paths based on a condition—one when the condition is **true**, and another when it is **false**. This helps make decisions more flexible and dynamic.
+
+In this blog, we’ll explore the `if-else` statement in depth, including syntax, examples, and real-world applications.
+
+---
+
+## 1. What is an `if-else` Statement?
+
+An `if-else` statement is used when you need to choose between **two mutually exclusive actions**.
+
+- If the condition evaluates to **true**, the code inside the `if` block is executed.
+- If the condition evaluates to **false**, the code inside the `else` block is executed.
+
+### **Syntax:**
+
+```c
+if (condition) {
+    // Code to execute if the condition is true
+} else {
+    // Code to execute if the condition is false
+}
+```
+
+- **Condition**: Any expression that evaluates to true (non-zero) or false (zero).
+- **if block**: Code executed when the condition is true.
+- **else block**: Code executed when the condition is false.
+
+---
+
+## 2. Basic Example
+
+Let’s look at a simple example:
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int number = -5;
+
+    if (number >= 0) {  // Check if the number is non-negative
+        printf("The number is non-negative.\n");
+    } else {
+        printf("The number is negative.\n");
+    }
+
+    return 0;
+}
+```
+
+**Output:**
+
+```
+The number is negative.
+```
+
+**Explanation:**
+
+- The condition `number >= 0` is **false** because `-5` is less than `0`.
+- The program skips the `if` block and executes the `else` block.
+
+---
+
+## 3. Practical Applications of `if-else`
+
+### **1. Checking Even or Odd Numbers**
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num % 2 == 0) {  // Check if the number is divisible by 2
+        printf("%d is even.\n", num);
+    } else {
+        printf("%d is odd.\n", num);
+    }
+
+    return 0;
+}
+```
+
+**Output (Example):**
+
+```
+Enter a number: 7
+7 is odd.
+```
+
+### **2. Grading System**
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int marks;
+
+    printf("Enter your marks: ");
+    scanf("%d", &marks);
+
+    if (marks >= 50) {  // Check if marks are 50 or above
+        printf("You passed the exam.\n");
+    } else {
+        printf("You failed the exam.\n");
+    }
+
+    return 0;
+}
+```
+
+**Output (Example):**
+
+```
+Enter your marks: 45
+You failed the exam.
+```
+
+---
+
+## 4. Edge Cases and Tips
+
+### **1. Multiple Statements in Blocks**
+
+Both `if` and `else` blocks can have multiple statements. Always use braces `{}` to group them.
+
+```c
+if (condition) {
+    // Multiple statements for true
+    statement1;
+    statement2;
+} else {
+    // Multiple statements for false
+    statement3;
+    statement4;
+}
+```
+
+### **2. Nested `if-else` Statements**
+
+You can nest `if-else` statements to handle more complex conditions.
+
+```c
+if (condition1) {
+    if (condition2) {
+        // Nested if block
+    } else {
+        // Nested else block
+    }
+} else {
+    // Outer else block
+}
+```
+
+---
+
+## Summary
+
+- The `if-else` statement provides a choice between **two paths** in a program.
+- The `if` block executes when the condition is **true**, and the `else` block executes when it is **false**.
+- It’s a useful tool for making **binary decisions** like checking positive/negative numbers, even/odd numbers, or pass/fail conditions.
+
+In the next post, we’ll explore the `else if` ladder for handling multiple conditions. Stay tuned!

@@ -1,0 +1,240 @@
+# Understanding Nested `if` Statements in C: A Beginner's Guide
+
+The **nested `if` statement** in C allows you to check multiple conditions in a hierarchical manner. It is essentially an `if` statement inside another `if` or `else` block. This enables your program to make decisions that depend on multiple criteria.
+
+In this blog, we’ll explore nested `if` statements in depth, including syntax, examples, and practical applications with detailed explanations.
+
+---
+
+## 1. What is a Nested `if` Statement?
+
+A **nested `if` statement** is an `if` statement that appears inside another `if` or `else` block. This structure is useful when a decision depends on multiple levels of conditions.
+
+### **Syntax:**
+
+```c
+if (condition1) {
+    if (condition2) {
+        // Code to execute if both condition1 and condition2 are true
+    } else {
+        // Code to execute if condition1 is true but condition2 is false
+    }
+} else {
+    // Code to execute if condition1 is false
+}
+```
+
+- The outer `if` evaluates **condition1**.
+- If **condition1** is true, the inner `if` evaluates **condition2**.
+- If **condition1** is false, the program executes the `else` block.
+
+---
+
+## 2. Basic Example
+
+Let’s start with a simple nested `if` example to check if a number is positive, negative, or zero.
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    if (number > 0) {
+        if (number % 2 == 0) {
+            printf("The number is positive and even.\n");
+        } else {
+            printf("The number is positive and odd.\n");
+        }
+    } else if (number < 0) {
+        printf("The number is negative.\n");
+    } else {
+        printf("The number is zero.\n");
+    }
+
+    return 0;
+}
+```
+
+**Output (Examples):**
+
+1. Input: `4`
+   ```
+   The number is positive and even.
+   ```
+2. Input: `-3`
+   ```
+   The number is negative.
+   ```
+3. Input: `0`
+   ```
+   The number is zero.
+   ```
+
+---
+
+## 3. Practical Applications of Nested `if`
+
+### **1. Determining a Student’s Grade**
+
+This program assigns grades based on marks:
+
+```
+- **Marks >= 90**: Grade A
+- **Marks >= 75 but < 90**: Grade B
+- **Marks >= 50 but < 75**: Grade C
+- **Marks < 50**: Fail
+```
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int marks;
+
+    printf("Enter your marks: ");
+    scanf("%d", &marks);
+
+    if (marks >= 50) {
+        if (marks >= 90) {
+            printf("You scored Grade A.\n");
+        } else if (marks >= 75) {
+            printf("You scored Grade B.\n");
+        } else {
+            printf("You scored Grade C.\n");
+        }
+    } else {
+        printf("You failed the exam.\n");
+    }
+
+    return 0;
+}
+```
+
+**Output (Examples):**
+
+1. Input: `95`
+   ```
+   You scored Grade A.
+   ```
+2. Input: `80`
+   ```
+   You scored Grade B.
+   ```
+3. Input: `45`
+   ```
+   You failed the exam.
+   ```
+
+---
+
+### **2. Finding the Largest of Three Numbers**
+
+This program uses nested `if` statements to identify the largest number among three.
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    if (a >= b) {
+        if (a >= c) {
+            printf("%d is the largest number.\n", a);
+        } else {
+            printf("%d is the largest number.\n", c);
+        }
+    } else {
+        if (b >= c) {
+            printf("%d is the largest number.\n", b);
+        } else {
+            printf("%d is the largest number.\n", c);
+        }
+    }
+
+    return 0;
+}
+```
+
+**Output (Examples):**
+
+1. Input: `5 10 8`
+   ```
+   10 is the largest number.
+   ```
+2. Input: `12 4 12`
+   ```
+   12 is the largest number.
+   ```
+
+---
+
+## 4. Advanced Example: Calculating Income Tax
+
+This program calculates income tax based on income brackets:
+
+```
+- **Income <= 250,000**: No tax
+- **Income > 250,000 but <= 500,000**: 5% tax
+- **Income > 500,000 but <= 1,000,000**: 20% tax
+- **Income > 1,000,000**: 30% tax
+```
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    double income, tax;
+
+    printf("Enter your annual income: ");
+    scanf("%lf", &income);
+
+    if (income > 250000) {
+        if (income <= 500000) {
+            tax = (income - 250000) * 0.05;
+        } else if (income <= 1000000) {
+            tax = (250000 * 0.05) + ((income - 500000) * 0.20);
+        } else {
+            tax = (250000 * 0.05) + (500000 * 0.20) + ((income - 1000000) * 0.30);
+        }
+        printf("Your tax amount is: %.2lf\n", tax);
+    } else {
+        printf("No tax applicable.\n");
+    }
+
+    return 0;
+}
+```
+
+**Output (Examples):**
+
+1. Input: `400000`
+   ```
+   Your tax amount is: 7500.00
+   ```
+2. Input: `1200000`
+   ```
+   Your tax amount is: 190000.00
+   ```
+
+---
+
+## 5. Key Points to Remember
+
+- **Braces `{}` are essential**: Always use braces for clarity, even if a block contains only one statement.
+- Nested `if` statements can become complex. Use proper indentation to improve readability.
+- **Avoid deep nesting**: For highly complex logic, consider using other constructs like `switch` or functions.
+
+---
+
+## Summary
+
+The **nested `if` statement** provides a way to check multiple conditions in a hierarchical structure. It is particularly useful for problems that require multiple levels of decision-making, like grading systems, tax calculations, or comparing numbers.
+
+By mastering nested `if` statements, you’ll gain a powerful tool for solving complex programming problems efficiently. In the next post, we’ll dive into **switch statements**, another tool for decision-making in C. Stay tuned!

@@ -1,0 +1,303 @@
+# Understanding the `do-while` Loop in C: A Beginner’s Guide
+
+The **`do-while` loop** is a control structure in C that guarantees the loop body executes at least once, regardless of the condition's initial value. This makes it distinct from the `while` loop, which checks the condition before execution.
+
+In this blog, we will dive into the `do-while` loop with examples ranging from simple to complex, with detailed explanations for absolute beginners.
+
+---
+
+## 1. What is a `do-while` Loop?
+
+A **`do-while` loop** executes the block of code first, then evaluates the condition. If the condition is true, the loop continues; otherwise, it terminates.
+
+### **Syntax:**
+
+```c
+do {
+    // Code to execute
+} while (condition);
+```
+
+- The loop body is guaranteed to execute at least once, even if the condition is false initially.
+- The **semicolon (;)** after the `while` condition is mandatory.
+
+---
+
+## 2. Simple Example
+
+Let’s start with a basic example: printing numbers from 1 to 5.
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int i = 1;  // Initialization
+
+    do {
+        printf("%d ", i);
+        i++;  // Update
+    } while (i <= 5);  // Condition
+
+    return 0;
+}
+```
+
+**Output:**
+
+```
+1 2 3 4 5
+```
+
+### Explanation:
+
+1. **Initialization**: Variable `i` is set to 1.
+2. **Execution**: The loop body runs, printing the value of `i` and incrementing it.
+3. **Condition**: After each iteration, the condition `i <= 5` is checked. If true, the loop repeats.
+
+---
+
+## 3. Practical Applications of `do-while` Loops
+
+### **1. User Input Validation**
+
+This program ensures the user enters a number within a specified range.
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int number;
+
+    do {
+        printf("Enter a number between 1 and 10: ");
+        scanf("%d", &number);
+
+        if (number < 1 || number > 10) {
+            printf("Invalid input! Please try again.\n");
+        }
+    } while (number < 1 || number > 10);  // Condition to repeat on invalid input
+
+    printf("You entered: %d\n", number);
+    return 0;
+}
+```
+
+**Output (Examples):**
+
+1. Input: `15, 0, 7`
+   ```
+   Enter a number between 1 and 10: 15
+   Invalid input! Please try again.
+   Enter a number between 1 and 10: 0
+   Invalid input! Please try again.
+   Enter a number between 1 and 10: 7
+   You entered: 7
+   ```
+
+---
+
+### **2. Sum of Positive Numbers Until a Negative Number is Entered**
+
+This program calculates the sum of positive numbers entered by the user until they enter a negative number.
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int num, sum = 0;
+
+    do {
+        printf("Enter a positive number (negative to stop): ");
+        scanf("%d", &num);
+
+        if (num >= 0) {
+            sum += num;  // Add positive numbers to the sum
+        }
+    } while (num >= 0);  // Stop when a negative number is entered
+
+    printf("The sum of positive numbers is %d.\n", sum);
+    return 0;
+}
+```
+
+**Output (Example):**
+
+1. Input: `10, 20, -1`
+   ```
+   Enter a positive number (negative to stop): 10
+   Enter a positive number (negative to stop): 20
+   Enter a positive number (negative to stop): -1
+   The sum of positive numbers is 30.
+   ```
+
+---
+
+### **3. Repeatedly Display a Menu Until the User Exits**
+
+This program displays a menu and processes the user's choice until they decide to exit.
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int choice;
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Print Hello\n");
+        printf("2. Print Goodbye\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Hello!\n");
+                break;
+            case 2:
+                printf("Goodbye!\n");
+                break;
+            case 3:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 3);  // Repeat until the user selects Exit (3)
+
+    return 0;
+}
+```
+
+**Output (Example):**
+
+```
+Menu:
+1. Print Hello
+2. Print Goodbye
+3. Exit
+Enter your choice: 1
+Hello!
+
+Menu:
+1. Print Hello
+2. Print Goodbye
+3. Exit
+Enter your choice: 3
+Exiting...
+```
+
+---
+
+### **4. Reverse a Number**
+
+This program reverses the digits of a given number using a `do-while` loop.
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int num, reversed = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    do {
+        int digit = num % 10;  // Extract the last digit
+        reversed = reversed * 10 + digit;  // Build the reversed number
+        num /= 10;  // Remove the last digit
+    } while (num != 0);  // Repeat until all digits are processed
+
+    printf("Reversed number: %d\n", reversed);
+    return 0;
+}
+```
+
+**Output (Examples):**
+
+1. Input: `1234`
+   ```
+   Reversed number: 4321
+   ```
+
+---
+
+### **5. Infinite Loop Example**
+
+Sometimes, `do-while` loops can be used to create intentional infinite loops.
+
+#### Example: Continuously Print Numbers
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int i = 1;
+
+    do {
+        printf("%d ", i);
+        i++;
+    } while (1);  // This condition is always true, creating an infinite loop
+
+    return 0;
+}
+```
+
+**Note:** This program will continue indefinitely and must be terminated manually.
+
+---
+
+## 4. Nested `do-while` Loops
+
+Nested `do-while` loops are useful for multi-level tasks, such as printing patterns.
+
+#### Example: Printing a Square Pattern
+
+```c filename="main.c" copy
+#include <stdio.h>
+
+int main() {
+    int rows, cols, i = 1;
+
+    printf("Enter the number of rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+
+    do {
+        int j = 1;
+        do {
+            printf("* ");
+            j++;
+        } while (j <= cols);  // Inner loop for columns
+        printf("\n");
+        i++;
+    } while (i <= rows);  // Outer loop for rows
+
+    return 0;
+}
+```
+
+**Output (Example):**
+
+1. Input: `3 4`
+   ```
+   * * * *
+   * * * *
+   * * * *
+   ```
+
+---
+
+## 5. Key Points to Remember
+
+1. The **`do-while` loop** ensures the loop body executes at least once.
+2. Use the **semicolon (;)** after the `while` condition.
+3. Avoid infinite loops by ensuring the condition will eventually become false.
+4. Use nested `do-while` loops for multi-dimensional tasks.
+
+---
+
+## Summary
+
+The **`do-while` loop** is a powerful construct when you need to guarantee execution at least once, such as for user input validation or menu-driven programs. Understanding its behavior and syntax is crucial for mastering control flow in C programming.
+
+In the next blog, we’ll explore **jump statements (break, continue, and goto)** to control the flow within loops. Stay tuned!
