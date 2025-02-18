@@ -1,0 +1,246 @@
+
+
+# Passing Arrays to Functions in C
+
+In C programming, arrays are often passed to functions when you need to perform operations on the array elements or modify its contents. Understanding how to pass arrays to functions is a crucial concept, as it allows you to write modular and reusable code. 
+
+When you pass an array to a function, you are essentially passing a **pointer** to the first element of the array. The function can then access the array's elements by using this pointer.
+
+## 1. Passing Arrays by Reference
+
+In C, arrays are always passed **by reference** to functions, meaning that the function can modify the original array elements. When you pass an array to a function, you pass a pointer to the first element of the array. The function can access and modify the array directly.
+
+### Example: Passing an Array to a Function to Modify Its Elements
+
+```c
+#include <stdio.h>
+
+// Function to modify array elements
+void modifyArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        arr[i] *= 2;  // Double each element
+    }
+}
+
+int main() {
+    int numbers[5] = {1, 2, 3, 4, 5};
+    
+    printf("Original array: ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", numbers[i]);
+    }
+    printf("\n");
+
+    modifyArray(numbers, 5);  // Passing the array to the function
+    
+    printf("Modified array: ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", numbers[i]);
+    }
+    
+    return 0;
+}
+```
+
+**Explanation:**
+- The function `modifyArray()` takes an array `arr[]` and its size as parameters.
+- Inside the function, we double each element of the array.
+- The array is passed by reference, so the changes made inside the function are reflected in the original array in `main()`.
+
+**Example Output:**
+
+```
+Original array: 1 2 3 4 5 
+Modified array: 2 4 6 8 10
+```
+
+---
+
+## 2. Passing Arrays with Known Size
+
+When passing arrays to functions, you can specify the array size in the function prototype, but it's important to note that the size of the array must still be known when the function is called.
+
+### Example: Passing Arrays with Known Size to Functions
+
+```c
+#include <stdio.h>
+
+// Function to print array elements
+void printArray(int arr[5]) {  // The size of the array is known
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+}
+
+int main() {
+    int numbers[5] = {10, 20, 30, 40, 50};
+    
+    printf("Array elements: ");
+    printArray(numbers);  // Passing the array to the function
+    
+    return 0;
+}
+```
+
+**Explanation:**
+- The function `printArray()` is declared to take an array of size 5.
+- The `numbers` array is passed to the function, and it prints all the elements.
+
+**Example Output:**
+
+```
+Array elements: 10 20 30 40 50
+```
+
+---
+
+## 3. Passing Arrays with Dynamic Size
+
+In C, arrays passed to functions can have a dynamic size (i.e., the size is not hardcoded). In this case, you need to pass the array’s size as a separate parameter since the function cannot automatically determine the size of the array.
+
+### Example: Passing Arrays with Dynamic Size
+
+```c
+#include <stdio.h>
+
+// Function to calculate the sum of array elements
+int sumArray(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    int numbers[] = {1, 2, 3, 4, 5};  // Array with dynamic size
+    int size = sizeof(numbers) / sizeof(numbers[0]);  // Calculate size of the array
+
+    int total = sumArray(numbers, size);  // Pass array and size to the function
+    printf("Sum of array elements: %d\n", total);
+
+    return 0;
+}
+```
+
+**Explanation:**
+- The array `numbers[]` has a dynamic size, determined by the number of elements in the initialization.
+- The `sumArray()` function takes the array and its size as parameters to calculate the sum.
+- We use `sizeof(numbers) / sizeof(numbers[0])` to calculate the array size dynamically.
+
+**Example Output:**
+
+```
+Sum of array elements: 15
+```
+
+---
+
+## 4. Passing Multi-Dimensional Arrays
+
+You can also pass multi-dimensional arrays (e.g., 2D arrays) to functions. For a multi-dimensional array, you need to specify the sizes of all but the first dimension.
+
+### Example: Passing a 2D Array to a Function
+
+```c
+#include <stdio.h>
+
+// Function to print a 2D array
+void print2DArray(int arr[3][3]) {  // The size of the second dimension must be specified
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    printf("2D Array elements:\n");
+    print2DArray(matrix);  // Passing the 2D array to the function
+
+    return 0;
+}
+```
+
+**Explanation:**
+- We declare a 2D array `matrix[3][3]` in `main()` and pass it to the `print2DArray()` function.
+- The function uses a nested loop to traverse and print the elements of the 2D array.
+
+**Example Output:**
+
+```
+2D Array elements:
+1 2 3 
+4 5 6 
+7 8 9
+```
+
+---
+
+## 5. Passing Arrays of User-defined Types to Functions
+
+Arrays of user-defined types (such as `structs`) can also be passed to functions. The process is similar to passing arrays of predefined types, but you must also ensure the correct handling of user-defined data structures.
+
+### Example: Passing an Array of `struct` to a Function
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    char name[50];
+    int age;
+};
+
+// Function to print details of students
+void printStudents(struct Student students[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("Student %d: %s, Age: %d\n", i + 1, students[i].name, students[i].age);
+    }
+}
+
+int main() {
+    struct Student students[3] = {
+        {"Alice", 20},
+        {"Bob", 22},
+        {"Charlie", 21}
+    };
+
+    printStudents(students, 3);  // Passing an array of structs to the function
+
+    return 0;
+}
+```
+
+**Explanation:**
+- The `Student` struct is defined with two fields: `name` and `age`.
+- We create an array of `Student` structs and pass it to the `printStudents()` function.
+- The function prints details of each student in the array.
+
+**Example Output:**
+
+```
+Student 1: Alice, Age: 20
+Student 2: Bob, Age: 22
+Student 3: Charlie, Age: 21
+```
+
+---
+
+## 6. Conclusion
+
+Passing arrays to functions in C is a fundamental concept that allows you to work with large amounts of data efficiently. Here’s a summary of what we covered:
+1. **Passing Arrays by Reference**: Arrays are passed by reference, meaning the function can modify the original array.
+2. **Passing Arrays with Known Size**: Arrays with fixed sizes can be passed, and the size is often included in the function prototype.
+3. **Passing Arrays with Dynamic Size**: You can pass arrays of dynamic size by calculating the size using `sizeof()`.
+4. **Passing Multi-Dimensional Arrays**: Multi-dimensional arrays can be passed, but the sizes of all dimensions (except the first) must be specified.
+5. **Passing Arrays of User-defined Types**: Arrays of `structs` can also be passed to functions, and the same principles apply as with arrays of predefined types.
+
+By mastering how to pass arrays to functions, you’ll be able to write modular and efficient code that handles data effectively.
