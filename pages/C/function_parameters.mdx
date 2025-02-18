@@ -1,0 +1,196 @@
+# Function Parameters in C: A Beginner's Guide
+
+In C programming, **function parameters** are variables that allow you to pass values into a function so it can work with those values. Parameters make functions more flexible and reusable by enabling them to operate on different inputs each time they are called.
+
+In this blog, we will explore the different types of function parameters in C, how to use them effectively, and the concept of **user-defined parameters**.
+
+## 1. What Are Function Parameters?
+
+Function parameters are placeholders defined in a function's declaration. When you call a function, you pass actual values to these parameters, and the function performs its task based on those values.
+
+There are two main types of function parameters in C:
+
+- **Actual Parameters** (arguments): The values you pass when calling a function.
+- **Formal Parameters**: The variables defined in the function declaration that receive the values of the actual parameters.
+
+### Key Points:
+
+- Parameters allow functions to be dynamic and handle various inputs.
+- C supports **different types of parameters** such as simple variables, arrays, and user-defined structures.
+- **User-defined parameters** are types that you define yourself, like **structs**.
+
+---
+
+## 2. Types of Function Parameters
+
+There are different types of parameters that can be passed into functions:
+
+1. **Simple Parameters**: These are basic data types like `int`, `float`, `char`, etc.
+2. **Array Parameters**: You can pass arrays to functions for handling collections of data.
+3. **Pointer Parameters**: You can pass pointers to a function to manipulate the original data in memory.
+4. **User-Defined Parameters**: These are parameters of user-defined types like structures (`struct`) or unions.
+
+---
+
+## 3. Simple Function Parameters
+
+The simplest form of function parameters is using basic data types like `int`, `float`, `char`, etc. These parameters are passed by value, meaning the function receives a copy of the data, and any changes made to the parameter do not affect the original data.
+
+### Example 1: Simple Parameters
+
+```c
+#include <stdio.h>
+
+// Function definition with simple parameters
+void print_sum(int a, int b) {
+    int sum = a + b;
+    printf("The sum of %d and %d is: %d\n", a, b, sum);
+}
+
+int main() {
+    int x = 5, y = 10;
+    print_sum(x, y);  // Passing simple parameters
+    return 0;
+}
+```
+
+**Explanation:**
+
+- The function `print_sum` takes two parameters `a` and `b` (both integers) and prints their sum.
+- The values `x` and `y` are passed to the function when it is called.
+
+**Example Output:**
+
+```
+The sum of 5 and 10 is: 15
+```
+
+---
+
+## 4. Array Parameters
+
+In C, arrays can be passed to functions to allow operations on a series of values. When you pass an array to a function, you are passing a pointer to the first element of the array.
+
+### Example 2: Array Parameters
+
+```c
+#include <stdio.h>
+
+// Function definition to find the sum of elements in an array
+int sum_array(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    int numbers[] = {1, 2, 3, 4, 5};
+    int total = sum_array(numbers, 5);  // Passing array and size
+    printf("The sum of the array is: %d\n", total);
+    return 0;
+}
+```
+
+**Explanation:**
+
+- The function `sum_array` takes an array `arr[]` and its `size` as parameters, then calculates and returns the sum of the elements.
+- The array `numbers` is passed to the function, and the sum is calculated.
+
+**Example Output:**
+
+```
+The sum of the array is: 15
+```
+
+---
+
+## 5. Pointer Parameters
+
+Passing pointers as parameters allows you to modify the actual values in memory, as the function works directly with the memory address of the variable, rather than a copy of it.
+
+### Example 3: Pointer Parameters
+
+```c
+#include <stdio.h>
+
+// Function definition to swap two numbers using pointer parameters
+void swap(int *x, int *y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+int main() {
+    int a = 10, b = 20;
+    printf("Before swap: a = %d, b = %d\n", a, b);
+    swap(&a, &b);  // Passing addresses of a and b
+    printf("After swap: a = %d, b = %d\n", a, b);
+    return 0;
+}
+```
+
+**Explanation:**
+
+- The function `swap` takes two pointer parameters, `*x` and `*y`, which allow it to directly modify the values of `a` and `b` in the `main()` function.
+- The addresses of `a` and `b` are passed to the function using the `&` operator.
+
+**Example Output:**
+
+```
+Before swap: a = 10, b = 20
+After swap: a = 20, b = 10
+```
+
+---
+
+## 6. User-Defined Parameters (Structures)
+
+In addition to basic types, you can also pass **user-defined types** such as **structures** to functions. Structures allow you to group different data types together under a single name. Passing structures as parameters allows the function to manipulate data that consists of different types.
+
+### Example 4: User-Defined Parameters (Structures)
+
+```c
+#include <stdio.h>
+
+// Define a structure for a 2D point
+struct Point {
+    int x;
+    int y;
+};
+
+// Function definition to display the coordinates of a point
+void print_point(struct Point p) {
+    printf("Point coordinates: (%d, %d)\n", p.x, p.y);
+}
+
+int main() {
+    struct Point p1 = {10, 20};
+    print_point(p1);  // Passing structure as parameter
+    return 0;
+}
+```
+
+**Explanation:**
+
+- The function `print_point` takes a parameter `p` of type `struct Point`, which contains two integer values (`x` and `y`).
+- The structure `p1` is defined and passed to the function.
+
+**Example Output:**
+
+```
+Point coordinates: (10, 20)
+```
+
+---
+
+## 7. Summary
+
+- **Function parameters** are variables that are passed into a function to allow it to work with dynamic data.
+- C supports different types of parameters, including **simple types** (like `int`, `float`), **arrays**, **pointers**, and **user-defined types** (like structures).
+- **Array parameters** allow functions to work with collections of data.
+- **Pointer parameters** enable functions to modify the actual data in memory.
+- **User-defined parameters**, such as structures, allow functions to operate on complex data types containing multiple elements.
+
+By understanding and utilizing different types of function parameters, you can make your C programs more flexible, modular, and capable of handling complex tasks with ease.

@@ -8,6 +8,11 @@ const meta = {
     type: "page",
     display: "hidden",
   },
+  datastructures: {
+    title: "Data Structures",
+    type: "page",
+    display: "hidden"
+  }
 };
 
 export default meta;
