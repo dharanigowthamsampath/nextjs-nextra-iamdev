@@ -1,0 +1,181 @@
+# Understanding the `>>=` Right Shift and Assign Operator in C++
+
+The `>>=` operator in C++ is a **bitwise compound assignment operator**. It shifts the **bits of a variable to the right** by a specified number of positions and **assigns the result back to the variable**.
+
+It is equivalent to:
+
+```cpp
+x >>= n;  // same as: x = x >> n;
+```
+
+---
+
+## What Does Bitwise Right Shift Mean?
+
+When you right shift a binary number, each bit moves `n` places to the right. Depending on the type (signed vs unsigned), the vacated bits on the left are filled with either **0s** or **sign bit copies** (called sign extension).
+
+---
+
+## Syntax
+
+```cpp
+variable >>= number_of_positions;
+```
+
+---
+
+## Example with Integers
+
+```cpp filename="rightshift_integer.cpp" copy {6}
+#include <iostream>
+int main() {
+    int a = 16;      // binary: 0001 0000
+    a >>= 2;         // right shift by 2 bits → binary: 0000 0100
+    std::cout << "a = " << a << std::endl;  // Output: 4
+    return 0;
+}
+```
+
+### Explanation:
+
+- `16` in binary: `00010000`
+- Right shifting by 2: `00000100` → equals `4`
+- `a >>= 2` is shorthand for `a = a >> 2;`
+
+---
+
+## Example with Unsigned Integers
+
+```cpp filename="rightshift_unsigned.cpp" copy {6}
+#include <iostream>
+int main() {
+    unsigned int x = 128;  // binary: 1000 0000
+    x >>= 3;               // binary: 0001 0000
+    std::cout << "x = " << x << std::endl;  // Output: 16
+    return 0;
+}
+```
+
+### Explanation:
+
+- Shifting 128 right by 3 bits gives: `128 / 2^3 = 16`
+- Unsigned integers are ideal for bit-shifting, with predictable zero-filling.
+
+---
+
+## Example with Binary Display
+
+```cpp filename="rightshift_binary.cpp" copy {7}
+#include <iostream>
+#include <bitset>
+int main() {
+    int value = 20;
+    std::cout << "Before: " << std::bitset<8>(value) << std::endl;
+    value >>= 2;
+    std::cout << "After : " << std::bitset<8>(value) << std::endl;
+    return 0;
+}
+```
+
+### Output:
+
+```
+Before: 00010100
+After : 00000101
+```
+
+### Explanation:
+
+- `20` becomes `5` after a right shift of 2 (`20 / 4`)
+- `>>=` effectively performs integer division by powers of 2
+
+---
+
+## Example in a Loop
+
+```cpp filename="rightshift_loop.cpp" copy {7}
+#include <iostream>
+int main() {
+    int x = 64;
+    for (int i = 0; i < 4; i++) {
+        x >>= 1;
+        std::cout << "Shift " << i + 1 << ": " << x << std::endl;
+    }
+    return 0;
+}
+```
+
+### Output:
+
+```
+Shift 1: 32
+Shift 2: 16
+Shift 3: 8
+Shift 4: 4
+```
+
+### Explanation:
+
+- Each shift divides `x` by 2.
+- The result gets smaller with every loop iteration.
+
+---
+
+## Example with Negative Numbers
+
+```cpp filename="rightshift_negative.cpp" copy {6}
+#include <iostream>
+int main() {
+    int x = -8;
+    x >>= 2;
+    std::cout << "x = " << x << std::endl;
+    return 0;
+}
+```
+
+### Explanation:
+
+- Shifting negative numbers is **implementation-defined**.
+- Some systems use **arithmetic shift** (preserves sign), others use **logical shift** (fills with zeros).
+- Avoid using `>>=` on negative numbers in portable code.
+
+---
+
+## Invalid Usage
+
+```cpp filename="rightshift_invalid.cpp" copy {6}
+// float f = 16.0;
+// f >>= 1;  // ❌ Error: >>= not allowed on float/double
+```
+
+### Explanation:
+
+- `>>=` is a **bitwise operator**, so it only works with **integral types** (`int`, `long`, `unsigned`, etc.).
+- It does not support floating-point numbers.
+
+---
+
+## Summary Table
+
+| Type           | Works? | Example   | Notes                                   |
+| -------------- | ------ | --------- | --------------------------------------- |
+| `int`          | Yes    | `x >>= 2` | May be arithmetic shift                 |
+| `unsigned int` | Yes    | `x >>= 2` | Always logical shift (fills with zeros) |
+| `float/double` | No     | ❌        | Not supported                           |
+| `negative int` | Risky  | `x >>= n` | Behavior is implementation-defined      |
+
+---
+
+## Use Cases
+
+- Fast division by powers of 2
+- Bit-level data extraction
+- Compressing integer ranges
+- Low-level device programming
+- Efficient control structures
+
+---
+
+## Conclusion
+
+The `>>=` operator is an efficient way to **divide an integer by powers of 2** using bitwise logic. It plays an important role in performance-critical systems, especially in **embedded programming**, **graphics**, and **cryptography**. However, be cautious with signed values, especially **negative numbers**, as behavior may vary across platforms.
