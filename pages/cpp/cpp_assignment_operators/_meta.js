@@ -9,6 +9,7 @@ const meta = {
   cpp_bitwise_or: "Bitwise OR and Assign",
   cpp_bitwise_xor: "Bitwise XOR and assign",
   cpp_left_shift: "Left shift and assign",
+  cpp_right_shift: "Right shift and assign",
 };
 
 export default meta;
