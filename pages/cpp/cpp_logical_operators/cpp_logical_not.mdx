@@ -1,0 +1,149 @@
+# Logical NOT (`!`) Operator in C++
+
+The **Logical NOT** operator in C++ is a **unary operator** (operates on one operand) that **reverses the boolean value** of an expression.
+
+- If the condition is `true`, `!` makes it `false`.
+- If the condition is `false`, `!` makes it `true`.
+
+This operator is commonly used to **negate conditions** and write more concise control structures.
+
+---
+
+## Syntax
+
+```cpp
+!condition
+```
+
+---
+
+## Truth Table
+
+| Condition | `!Condition` |
+| --------- | ------------ |
+| false     | true         |
+| true      | false        |
+
+---
+
+## Example 1: Basic Usage
+
+```cpp filename="not_basic.cpp" copy {3}
+bool isAvailable = true;
+std::cout << !isAvailable;  // Output: 0
+```
+
+**Explanation:**
+
+- `isAvailable` is `true`
+- `!isAvailable` becomes `false` → `0` is printed
+
+---
+
+## Example 2: Negating a Comparison
+
+```cpp filename="not_comparison.cpp" copy {3}
+int age = 15;
+std::cout << !(age >= 18);  // Output: 1
+```
+
+**Explanation:**
+
+- `age >= 18` → false
+- `!false` → true → Output: `1`
+
+---
+
+## Example 3: In an If Statement
+
+```cpp filename="not_if.cpp" copy {3, 4}
+bool isLoggedIn = false;
+
+if (!isLoggedIn) {
+    std::cout << "Please log in first.";
+}
+```
+
+**Explanation:**
+
+- Since `isLoggedIn` is false, `!isLoggedIn` becomes true → message is shown
+
+---
+
+## Example 4: With Integers
+
+In C++, integer values can be used in logical expressions:
+
+- `0` is treated as `false`
+- Any non-zero value is `true`
+
+```cpp filename="not_integer.cpp" copy {3}
+int x = 0;
+std::cout << !x;  // Output: 1
+```
+
+**Explanation:**
+
+- `x` is 0 (false), so `!x` becomes true → Output: `1`
+
+---
+
+## Example 5: With Characters
+
+```cpp filename="not_char.cpp" copy {3}
+char c = 'A';
+std::cout << !c;  // Output: 0
+```
+
+**Explanation:**
+
+- `'A'` has an ASCII value of 65 (non-zero, true)
+- `!c` → false → Output: `0`
+
+---
+
+## Example 6: Complex Condition
+
+```cpp filename="not_complex.cpp" copy {3}
+int score = 90;
+std::cout << !(score < 40 || score > 100);  // Output: 1
+```
+
+**Explanation:**
+
+- `score < 40 || score > 100` → false
+- `!false` → true → Output: `1`
+
+---
+
+## Example 7: Not in Loops
+
+```cpp filename="not_loop.cpp" copy {4, 5}
+bool isDone = false;
+
+while (!isDone) {
+    std::cout << "Processing...\n";
+    isDone = true;
+}
+```
+
+**Explanation:**
+
+- The loop runs once because `!isDone` is initially `true`
+
+---
+
+## Summary
+
+- The `!` operator is used to **reverse** a Boolean value.
+- It’s most useful in `if`, `while`, and conditional expressions.
+- Can be used on `bool`, integers, characters, and expressions that evaluate to Boolean logic.
+- Keep your expressions **readable** when using `!` with complex conditions.
+
+---
+
+## Practice Exercises
+
+1. Write a program to print **“Access Denied”** if a user is **not authenticated** (`isAuthenticated = false`).
+2. Create a program that prints “Outside range” if a number is **not** between 10 and 20.
+3. Use the `!` operator in a `while` loop to keep prompting the user until a condition becomes true.

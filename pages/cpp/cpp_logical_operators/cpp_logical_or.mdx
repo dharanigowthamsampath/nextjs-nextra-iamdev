@@ -1,0 +1,193 @@
+# Logical OR (`||`) Operator in C++
+
+The **Logical OR** operator (`||`) in C++ is used to evaluate **two or more conditions**, and it returns `true` if **at least one** of the conditions is true.
+
+It is frequently used in decision-making constructs like `if`, `while`, and `for` when **only one condition needs to be satisfied** to proceed.
+
+---
+
+## How the Logical OR Works
+
+### Syntax:
+
+```cpp
+condition1 || condition2
+```
+
+This expression returns:
+
+- `true` if **either** `condition1` **or** `condition2` is true.
+- `false` only if **both** are false.
+
+### Truth Table
+
+| `condition1` | `condition2` | `condition1 \|\| condition2` |
+| ------------ | ------------ | ---------------------------- |
+| true         | true         | true                         |
+| true         | false        | true                         |
+| false        | true         | true                         |
+| false        | false        | false                        |
+
+---
+
+## Short-Circuit Behavior
+
+In the expression `A || B`:
+
+- If `A` is true, **`B` is not evaluated**.
+  This is called **short-circuit evaluation** and is used for efficiency and safety.
+
+---
+
+## Example 1: Basic Integer Conditions
+
+```cpp filename="or_basic_integers.cpp" copy {3}
+int a = 10, b = 5;
+std::cout << (a > 8 || b > 10);
+```
+
+### Explanation
+
+- `a > 8` → true
+- `b > 10` → false
+- `true || false` → **true**
+
+Output: `1`
+
+---
+
+## Example 2: Both Conditions False
+
+```cpp filename="or_both_false.cpp" copy {3}
+int x = 3, y = 1;
+std::cout << (x > 10 || y > 5);
+```
+
+### Explanation
+
+- Both conditions are false
+- `false || false` → **false**
+
+Output: `0`
+
+---
+
+## Example 3: In an `if` Statement
+
+```cpp filename="or_if_statement.cpp" copy {4, 5}
+int age = 17;
+bool hasPermission = true;
+
+if (age >= 18 || hasPermission) {
+    std::cout << "Access granted.";
+}
+```
+
+### Explanation
+
+- First condition: false
+- Second condition: true
+- At least one is true → Access granted.
+
+---
+
+## Example 4: Short-Circuiting Safety
+
+```cpp filename="or_short_circuit.cpp" copy {4, 5}
+int a = 10;
+
+if (a > 0 || (10 / a) > 1) {
+    std::cout << "Safe expression.";
+}
+```
+
+### Explanation
+
+- `a > 0` → true
+- Because the first condition is true, second (`10 / a`) is not evaluated.
+- This **prevents unnecessary or unsafe operations**.
+
+---
+
+## Example 5: With Boolean Variables
+
+```cpp filename="or_booleans.cpp" copy {3}
+bool x = false, y = true;
+
+std::cout << (x || y);  // Output: 1
+```
+
+### Explanation
+
+- `false || true` → true → Output: `1`
+
+---
+
+## Example 6: With Character Comparison
+
+```cpp filename="or_characters.cpp" copy {3}
+char grade = 'D';
+
+std::cout << (grade == 'A' || grade == 'B');  // Output: 0
+```
+
+### Explanation
+
+- Both comparisons are false → `false || false` → false → Output: `0`
+
+---
+
+## Example 7: With Strings
+
+```cpp filename="or_strings.cpp" copy {4}
+std::string input = "guest";
+
+if (input == "admin" || input == "guest") {
+    std::cout << "Welcome!";
+}
+```
+
+### Explanation
+
+- Second condition is true → Access granted.
+
+---
+
+## Example 8: Acceptable Range OR Check
+
+```cpp filename="or_range_check.cpp" copy {3}
+int temp = -5;
+
+std::cout << (temp < 0 || temp > 100);  // Output: 1
+```
+
+### Explanation
+
+- One of the conditions is true → Result is true
+
+---
+
+## Example 9: Use in Loop (Not common but possible)
+
+```cpp filename="or_loop_example.cpp" copy {3, 4}
+int attempts = 1;
+bool adminOverride = true;
+
+while (attempts <= 3 || adminOverride) {
+    std::cout << "Trying...\n";
+    break;
+}
+```
+
+### Explanation
+
+- Even if attempts exceed limit, adminOverride allows access
+
+---
+
+## Key Takeaways
+
+- Use `||` when **only one condition** needs to be true.
+- Short-circuit evaluation ensures that the second condition is **only evaluated if necessary**.
+- It is ideal for writing flexible, fault-tolerant decision logic.
+- Works seamlessly with integers, characters, booleans, and even strings.

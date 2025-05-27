@@ -1,0 +1,200 @@
+# Logical AND (`&&`) Operator in C++
+
+In C++, the **Logical AND** operator (`&&`) is used to combine two or more conditions. It is commonly used in decision-making statements such as `if`, `while`, and `for` to determine whether **multiple conditions are true**.
+
+---
+
+## How the Logical AND Works
+
+The syntax is:
+
+```cpp
+condition1 && condition2
+```
+
+This expression evaluates to:
+
+- `true` **only if both** `condition1` and `condition2` are true.
+- `false` **if at least one** of the conditions is false.
+
+### Truth Table
+
+| `condition1` | `condition2` | Result (`condition1 && condition2`) |
+| ------------ | ------------ | ----------------------------------- |
+| true         | true         | true                                |
+| true         | false        | false                               |
+| false        | true         | false                               |
+| false        | false        | false                               |
+
+---
+
+## Short-Circuit Behavior
+
+C++ evaluates logical expressions **from left to right**.
+
+In `A && B`:
+
+- If `A` is false, **`B` is not evaluated**. This is known as **short-circuiting**, and it's an important performance feature and safety mechanism (e.g., preventing division by zero or null dereferencing).
+
+---
+
+## Example 1: Basic Integer Conditions
+
+```cpp filename="and_basic_integers.cpp" copy {3}
+int a = 10, b = 20;
+std::cout << (a > 5 && b > 15);
+```
+
+### Explanation
+
+- `a > 5` → true (10 is greater than 5)
+- `b > 15` → true (20 is greater than 15)
+- `true && true` → **true**
+
+Output: `1` (since `true` is internally represented as `1`)
+
+---
+
+## Example 2: One Condition Fails
+
+```cpp filename="and_one_false.cpp" copy {3}
+int x = 10, y = 5;
+std::cout << (x > 15 && y < 10);
+```
+
+### Explanation
+
+- `x > 15` → false (10 is not greater than 15)
+- `y < 10` → true
+- `false && true` → **false**
+
+Output: `0`
+
+---
+
+## Example 3: Using in an `if` Statement
+
+```cpp filename="and_if_statement.cpp" copy {4, 5}
+int age = 22;
+int marks = 80;
+
+if (age >= 18 && marks >= 60) {
+    std::cout << "Eligible for scholarship";
+}
+```
+
+### Explanation
+
+- `age >= 18` → true
+- `marks >= 60` → true
+- Since both conditions are true, the message is printed.
+
+---
+
+## Example 4: Short-Circuit Prevention
+
+```cpp filename="and_short_circuit.cpp" copy {4, 5}
+int a = 0, b = 100;
+
+if (a != 0 && (b / a) > 1) {
+    std::cout << "Safe to divide";
+}
+```
+
+### Explanation
+
+- `a != 0` → false
+- Because the first condition is false, the second `(b / a)` is **not evaluated**, preventing a division-by-zero error.
+
+---
+
+## Example 5: With Booleans
+
+```cpp filename="and_booleans.cpp" copy {3}
+bool a = true;
+bool b = false;
+
+std::cout << (a && b);  // Output: 0
+```
+
+### Explanation
+
+- `true && false` → false
+- Output: `0`
+
+---
+
+## Example 6: With Characters
+
+```cpp filename="and_characters.cpp" copy {3}
+char grade = 'A';
+
+std::cout << (grade == 'A' && grade != 'F');  // Output: 1
+```
+
+### Explanation
+
+- `grade == 'A'` → true
+- `grade != 'F'` → true
+- `true && true` → true → Output: `1`
+
+---
+
+## Example 7: With Strings
+
+```cpp filename="and_strings.cpp" copy {4}
+std::string username = "admin";
+std::string password = "1234";
+
+if (username == "admin" && password == "1234") {
+    std::cout << "Access Granted";
+}
+```
+
+### Explanation
+
+- Both string comparisons return `true`
+- Since both are true, the message is printed
+
+---
+
+## Example 8: Practical Range Check
+
+```cpp filename="and_range_check.cpp" copy {3}
+int marks = 75;
+std::cout << (marks >= 0 && marks <= 100);
+```
+
+### Explanation
+
+- `marks >= 0` → true
+- `marks <= 100` → true
+- Combined: `true && true` → `1`
+
+---
+
+## Example 9: Logical AND in Loops
+
+```cpp filename="and_loop_example.cpp" copy {3, 4}
+int i = 0;
+while (i < 10 && i >= 0) {
+    std::cout << i << " ";
+    i++;
+}
+```
+
+### Explanation
+
+- The loop runs while `i` is less than 10 **and** greater than or equal to 0.
+- Both conditions must hold true for each iteration.
+
+Output: `0 1 2 3 4 5 6 7 8 9`
+
+---
+
+## Key Takeaways
+
+- The `&&` operator is used when **all conditions** must be true.
+- Evaluation stops early if the first condition is false (**short-circuiting**).
+- It helps **write safe and readable conditional logic** in `if`, `while`, and other control structures.
+- Works with all types that evaluate to Boolean values, including integers, characters, and strings.
