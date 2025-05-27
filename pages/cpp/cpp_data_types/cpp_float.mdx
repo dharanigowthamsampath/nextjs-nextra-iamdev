@@ -1,0 +1,187 @@
+# The `float` Data Type in C++
+
+The `float` data type in C++ is used to represent **floating-point numbers**, or real numbers that contain decimal points. It is ideal for storing approximations of decimal values where perfect precision is not critical.
+
+---
+
+## What is `float`?
+
+The keyword `float` refers to a **single-precision floating-point type**. It is typically 4 bytes in size and provides up to 6–7 decimal digits of precision.
+
+Floating-point numbers are used in scenarios such as:
+
+- Physics simulations
+- Sensor data processing
+- Basic mathematical calculations
+
+---
+
+## Declaring a `float` Variable
+
+To declare a float, use the `float` keyword followed by the variable name. Optionally, you can assign a value at the time of declaration.
+
+```cpp filename="float_declaration.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    float temperature = 36.6f;
+    std::cout << "Temperature: " << temperature << std::endl;
+    return 0;
+}
+```
+
+> Note: Adding `f` after the number ensures the literal is treated as a `float`. Without it, C++ treats `36.6` as a `double` by default.
+
+---
+
+## Size and Precision
+
+| Property       | Value                             |
+| -------------- | --------------------------------- |
+| Size           | 4 bytes (32 bits)                 |
+| Precision      | Approximately 6–7 decimal digits  |
+| Range          | ±3.4 × 10<sup>38</sup>            |
+| Literal Suffix | Use `f` or `F` for float literals |
+
+---
+
+## Arithmetic with `float`
+
+`float` supports all standard arithmetic operations and can be mixed with `int` in expressions. The `int` will be implicitly promoted to a `float`.
+
+```cpp filename="float_arithmetic.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    float a = 7.5f;
+    float b = 2.0f;
+
+    std::cout << "Sum: " << (a + b) << std::endl;
+    std::cout << "Division: " << (a / b) << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Precision Considerations
+
+Since `float` is a single-precision type, it can introduce small errors in calculations due to rounding and internal representation.
+
+```cpp filename="float_precision.cpp" copy {4, 5, 6}
+#include <iostream>
+
+int main() {
+    float x = 1.0f / 3.0f;
+    float y = 0.333333f;
+
+    std::cout << "x: " << x << std::endl;
+    std::cout << "y: " << y << std::endl;
+    std::cout << "Are x and y equal? " << (x == y) << std::endl;
+
+    return 0;
+}
+```
+
+Output:
+
+```
+x: 0.333333
+y: 0.333333
+Are x and y equal? 0
+```
+
+Even though both values look the same, they are not exactly equal internally due to how floating-point numbers are stored.
+
+---
+
+## Type Casting
+
+When necessary, you can explicitly convert other types to `float` using casting:
+
+```cpp filename="float_casting.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    int total = 7, count = 2;
+    float average = static_cast<float>(total) / count;
+
+    std::cout << "Average: " << average << std::endl;
+    return 0;
+}
+```
+
+Without casting, integer division would result in `3` instead of `3.5`.
+
+---
+
+## Practice Problem 1: BMI Calculator
+
+Write a program to calculate the Body Mass Index (BMI) using the formula:
+**BMI = weight (kg) / (height in meters × height in meters)**
+
+```cpp filename="bmi_calculator.cpp" copy {6, 7}
+#include <iostream>
+
+int main() {
+    float weight = 70.5f; // in kg
+    float height = 1.75f; // in meters
+
+    float bmi = weight / (height * height);
+    std::cout << "BMI: " << bmi << std::endl;
+
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 2: Speed Conversion
+
+Convert speed from kilometers per hour (km/h) to meters per second (m/s).
+**Formula: m/s = (km/h × 1000) / 3600**
+
+```cpp filename="speed_conversion.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    float kmph = 90.0f;
+    float mps = (kmph * 1000) / 3600;
+
+    std::cout << "Speed in m/s: " << mps << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 3: Currency Converter
+
+Convert an amount in USD to INR (assuming 1 USD = 83.2 INR).
+
+```cpp filename="currency_converter.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    float usd = 10.0f;
+    float inr = usd * 83.2f;
+
+    std::cout << "INR: " << inr << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Feature         | Description                                    |
+| --------------- | ---------------------------------------------- |
+| Type            | `float`                                        |
+| Used for        | Decimal values with moderate precision         |
+| Size            | 4 bytes                                        |
+| Precision       | \~6–7 decimal digits                           |
+| Default literal | `float` literals must be suffixed with `f`     |
+| Limitations     | Less accurate than `double` for precision math |
+
+The `float` data type is suitable for cases where memory is limited or when approximate values are acceptable. However, for critical calculations requiring high accuracy, it is recommended to use `double`.

@@ -138,7 +138,13 @@ export function BlockPage() {
               new: true,
               label: "New",
             },
-            { name: "C++", url: "/cpp", disabled: true },
+            {
+              name: "C++",
+              url: "/cpp",
+              disabled: false,
+              label: "New",
+              new: true,
+            },
 
             { name: "C#", url: "/csharp", disabled: true },
             {

@@ -1,0 +1,255 @@
+# Input in C++
+
+In C++, you can receive input from the user using the **standard input stream** `std::cin`. This allows your program to become interactive by accepting values at runtime — such as a user's name, age, or choices.
+
+---
+
+## What is `cin`?
+
+`cin` stands for **console input**. It is part of the **standard input/output library** (`iostream`) and is used to take input from the keyboard.
+
+### Syntax
+
+```cpp
+std::cin >> variable_name;
+```
+
+The `>>` operator is called the **extraction operator**, and it extracts data from the input stream (`cin`) and stores it in the provided variable.
+
+---
+
+## Input for Different Data Types
+
+Let’s explore how to take input for different data types using `cin`.
+
+---
+
+### 1. Integer Input
+
+```cpp filename="input_int.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    int age;
+    std::cout << "Enter your age: ";
+    std::cin >> age;
+    std::cout << "You entered: " << age << std::endl;
+    return 0;
+}
+```
+
+---
+
+### 2. Float Input
+
+```cpp filename="input_float.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    float temperature;
+    std::cout << "Enter the temperature: ";
+    std::cin >> temperature;
+    std::cout << "Temperature: " << temperature << std::endl;
+    return 0;
+}
+```
+
+---
+
+### 3. Double Input
+
+```cpp filename="input_double.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    double price;
+    std::cout << "Enter the price: ";
+    std::cin >> price;
+    std::cout << "Price: " << price << std::endl;
+    return 0;
+}
+```
+
+---
+
+### 4. Character Input
+
+```cpp filename="input_char.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    char grade;
+    std::cout << "Enter your grade: ";
+    std::cin >> grade;
+    std::cout << "Grade entered: " << grade << std::endl;
+    return 0;
+}
+```
+
+> Note: `cin` reads only a **single character** when reading into a `char`.
+
+---
+
+### 5. Boolean Input
+
+```cpp filename="input_bool.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    bool isAvailable;
+    std::cout << "Is the item available? (1 for Yes, 0 for No): ";
+    std::cin >> isAvailable;
+    std::cout << "Availability: " << isAvailable << std::endl;
+    return 0;
+}
+```
+
+> In C++, `true` is represented as `1` and `false` as `0`.
+
+---
+
+### 6. String Input (Single Word)
+
+```cpp filename="input_string_word.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    std::string name;
+    std::cout << "Enter your name: ";
+    std::cin >> name;
+    std::cout << "Hello, " << name << "!" << std::endl;
+    return 0;
+}
+```
+
+> When using `cin` with `std::string`, it reads **only one word**, stopping at the first whitespace.
+
+---
+
+### 7. String Input (Full Line)
+
+Use `std::getline()` to read an entire line of input, including spaces.
+
+```cpp filename="input_string_line.cpp" copy {5, 6}
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string fullName;
+    std::cout << "Enter your full name: ";
+    std::getline(std::cin, fullName);
+    std::cout << "Welcome, " << fullName << "!" << std::endl;
+    return 0;
+}
+```
+
+---
+
+### Special Case: Using `getline()` After `cin`
+
+If you use `cin` before `getline()`, a leftover newline character (`\n`) may remain in the input buffer. Use `std::cin.ignore()` to handle this.
+
+```cpp filename="cin_getline_combo.cpp" copy {6, 7, 8}
+#include <iostream>
+#include <string>
+
+int main() {
+    int age;
+    std::string name;
+
+    std::cout << "Enter your age: ";
+    std::cin >> age;
+
+    std::cin.ignore(); // Clears the newline from buffer
+
+    std::cout << "Enter your full name: ";
+    std::getline(std::cin, name);
+
+    std::cout << "Hello " << name << ", age " << age << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Multiple Inputs at Once
+
+You can input multiple values in one line by chaining variables with the `>>` operator.
+
+```cpp filename="multi_input.cpp" copy {5}
+int a, b;
+std::cin >> a >> b;
+```
+
+> Input: `5 10`
+> Output: `a = 5`, `b = 10`
+
+---
+
+## Input Practice Problems
+
+### Practice 1: Sum of Two Integers
+
+```cpp filename="sum_two_ints.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    int x, y;
+    std::cout << "Enter two numbers: ";
+    std::cin >> x >> y;
+    std::cout << "Sum: " << x + y << std::endl;
+    return 0;
+}
+```
+
+---
+
+### Practice 2: Calculate Area of Rectangle
+
+```cpp filename="area_rectangle.cpp" copy {6, 7, 8}
+#include <iostream>
+
+int main() {
+    float length, width;
+    std::cout << "Enter length and width: ";
+    std::cin >> length >> width;
+    std::cout << "Area: " << length * width << std::endl;
+    return 0;
+}
+```
+
+---
+
+### Practice 3: Read and Display Name and Age
+
+```cpp filename="name_age_input.cpp" copy {6, 7, 9}
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name;
+    int age;
+
+    std::cout << "Enter your name: ";
+    std::getline(std::cin, name);
+
+    std::cout << "Enter your age: ";
+    std::cin >> age;
+
+    std::cout << "Hello " << name << ", Age: " << age << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Input Method      | Usage Example                   | Notes                                        |
+| ----------------- | ------------------------------- | -------------------------------------------- |
+| `std::cin >> var` | `std::cin >> age;`              | For numbers, characters, single-word strings |
+| `std::getline()`  | `std::getline(std::cin, name);` | For full-line string input                   |
+| `cin >> a >> b`   | `std::cin >> a >> b;`           | Multiple inputs in one line                  |
+| `cin.ignore()`    | `std::cin.ignore();`            | Used before `getline()` after `cin`          |
+
+Taking user input is essential for making interactive programs. It’s a key building block for anything from a simple calculator to full-fledged applications.

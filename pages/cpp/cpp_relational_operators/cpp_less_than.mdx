@@ -1,0 +1,197 @@
+# Less Than Operator (`<`) in C++
+
+The **less than operator (`<`)** is a relational operator in C++ used to compare two values. It checks whether the value on the left-hand side is strictly **less than** the value on the right-hand side.
+
+It evaluates to `true` if the left operand is less, and `false` otherwise.
+
+---
+
+## Syntax
+
+```cpp
+operand1 < operand2
+```
+
+- Returns `true` if `operand1` is **less than** `operand2`.
+- Returns `false` otherwise.
+
+---
+
+## 1. Less Than with Integers
+
+```cpp filename="less_than_int.cpp" copy {3}
+int a = 5, b = 10;
+std::cout << (a < b);  // Output: 1 (true)
+```
+
+```cpp filename="less_than_int_false.cpp" copy {3}
+int a = 15, b = 10;
+std::cout << (a < b);  // Output: 0 (false)
+```
+
+---
+
+## 2. Less Than with Float and Double
+
+```cpp filename="less_than_float.cpp" copy {3}
+float x = 3.14f;
+float y = 6.28f;
+std::cout << (x < y);  // Output: 1 (true)
+```
+
+```cpp filename="less_than_double.cpp" copy {3}
+double a = 0.2;
+double b = 0.3;
+std::cout << (a < b);  // Output: 1 (true)
+```
+
+---
+
+## 3. Less Than with Characters
+
+Characters are internally represented using ASCII values, allowing direct numeric comparison.
+
+```cpp filename="less_than_char.cpp" copy {3}
+char a = 'a';  // ASCII 97
+char b = 'z';  // ASCII 122
+std::cout << (a < b);  // Output: 1 (true)
+```
+
+---
+
+## 4. Less Than with Boolean Values
+
+In C++, `false` is 0 and `true` is 1. So `false < true` will return true.
+
+```cpp filename="less_than_bool.cpp" copy {3}
+bool a = false;
+bool b = true;
+std::cout << (a < b);  // Output: 1 (true)
+```
+
+---
+
+## 5. Less Than with Strings (`std::string`)
+
+The `std::string` class supports lexicographical comparison using the `<` operator.
+
+```cpp filename="less_than_string.cpp" copy {3}
+#include <string>
+std::string a = "apple";
+std::string b = "banana";
+std::cout << (a < b);  // Output: 1 (true)
+```
+
+```cpp filename="less_than_string_false.cpp" copy {3}
+std::string a = "zebra";
+std::string b = "apple";
+std::cout << (a < b);  // Output: 0 (false)
+```
+
+---
+
+## 6. Less Than with C-style Strings
+
+Use `strcmp()` for comparing C-style strings.
+
+```cpp filename="less_than_cstring.cpp" copy {4}
+#include <cstring>
+char a[] = "apple";
+char b[] = "banana";
+std::cout << (strcmp(a, b) < 0);  // Output: 1 (true)
+```
+
+---
+
+## 7. Less Than in Conditions
+
+```cpp filename="less_than_if.cpp" copy {3, 4}
+int marks = 35;
+if (marks < 40) {
+    std::cout << "Needs improvement.";
+}
+```
+
+---
+
+## 8. Less Than in Loops
+
+```cpp filename="less_than_while.cpp" copy {3, 4}
+int i = 0;
+while (i < 5) {
+    std::cout << i << " ";
+    i++;
+}
+```
+
+Output: `0 1 2 3 4`
+
+---
+
+## 9. Mixed Data Type Comparison
+
+```cpp filename="less_than_mixed.cpp" copy {3}
+int a = 10;
+float b = 10.5f;
+std::cout << (a < b);  // Output: 1 (true)
+```
+
+---
+
+## 10. Practice Problems
+
+### Problem 1: Simple Voting Age Check
+
+```cpp filename="practice_less_than_age.cpp" copy {4, 5}
+int age = 15;
+if (age < 18) {
+    std::cout << "Too young to vote.";
+}
+```
+
+---
+
+### Problem 2: Compare Two Characters
+
+```cpp filename="practice_less_than_char.cpp" copy {4, 5}
+char a = 'b';
+char b = 'f';
+if (a < b) {
+    std::cout << "a comes before b";
+}
+```
+
+---
+
+### Problem 3: String Sorting Comparison
+
+```cpp filename="practice_less_than_string.cpp" copy {4, 5}
+std::string name1 = "Anna";
+std::string name2 = "Bella";
+if (name1 < name2) {
+    std::cout << name1 << " comes before " << name2;
+}
+```
+
+---
+
+## Summary Table
+
+| Data Type     | Example              | Result |
+| ------------- | -------------------- | ------ |
+| `int`         | `5 < 10`             | `true` |
+| `float`       | `3.0f < 3.14f`       | `true` |
+| `double`      | `0.2 < 0.3`          | `true` |
+| `char`        | `'a' < 'z'`          | `true` |
+| `bool`        | `false < true`       | `true` |
+| `std::string` | `"apple" < "banana"` | `true` |
+| `char[]`      | `strcmp(a,b) < 0`    | `true` |
+
+---
+
+## Best Practices
+
+- Use `<` when you want to check if a value is smaller than another.
+- Avoid direct comparison of raw C-style strings using `<`; use `strcmp()` instead.
+- Be mindful of floating-point precision in comparisons.
+- Character and string comparisons follow ASCII/lexicographical order.

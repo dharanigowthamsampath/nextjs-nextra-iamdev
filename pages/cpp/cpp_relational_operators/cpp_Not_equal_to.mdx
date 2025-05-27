@@ -1,0 +1,204 @@
+# Not Equal Operator (`!=`) in C++
+
+The **not equal operator (`!=`)** in C++ is used to **compare two values or expressions** to check whether they are _not equal_. It is the logical opposite of the equality operator (`==`).
+
+If the values are **not equal**, it returns `true` (1). If they are equal, it returns `false` (0).
+
+---
+
+## Syntax
+
+```cpp
+operand1 != operand2
+```
+
+- Returns `true` if `operand1` and `operand2` are **different**.
+- Returns `false` if they are **equal**.
+
+---
+
+## 1. Not Equal with Integers
+
+```cpp filename="not_equal_int.cpp" copy {3}
+int a = 10, b = 20;
+std::cout << (a != b);  // Output: 1 (true)
+```
+
+---
+
+## 2. Not Equal with Float and Double
+
+Be careful when comparing floating-point numbers due to potential precision issues.
+
+```cpp filename="not_equal_float.cpp" copy {3}
+float x = 3.14f;
+float y = 2.71f;
+std::cout << (x != y);  // Output: 1 (true)
+```
+
+```cpp filename="not_equal_double.cpp" copy {3}
+double a = 0.1 + 0.2;
+double b = 0.3;
+std::cout << (a != b);  // Output: 1 (true, due to precision error)
+```
+
+For precision-safe comparison, use an epsilon:
+
+```cpp filename="not_equal_epsilon.cpp" copy {4, 5}
+#include <cmath>
+bool notEqual = std::abs(a - b) > 1e-9;
+std::cout << notEqual;  // Output: 0 (false)
+```
+
+---
+
+## 3. Not Equal with Characters
+
+```cpp filename="not_equal_char.cpp" copy {3}
+char a = 'x', b = 'y';
+std::cout << (a != b);  // Output: 1 (true)
+```
+
+---
+
+## 4. Not Equal with Boolean Values
+
+```cpp filename="not_equal_bool.cpp" copy {3}
+bool isActive = true;
+std::cout << (isActive != false);  // Output: 1 (true)
+```
+
+---
+
+## 5. Not Equal with Strings (`std::string`)
+
+```cpp filename="not_equal_string.cpp" copy {3}
+#include <string>
+std::string a = "hello";
+std::string b = "world";
+std::cout << (a != b);  // Output: 1 (true)
+```
+
+---
+
+## 6. Not Equal with C-style Strings
+
+Use `strcmp` for accurate comparison with character arrays.
+
+```cpp filename="not_equal_cstring.cpp" copy {4}
+#include <cstring>
+char a[] = "apple";
+char b[] = "orange";
+std::cout << (strcmp(a, b) != 0);  // Output: 1 (true)
+```
+
+---
+
+## 7. Not Equal in Conditions
+
+```cpp filename="not_equal_if.cpp" copy {3, 4}
+int age = 25;
+if (age != 18) {
+    std::cout << "You are not 18 years old.";
+}
+```
+
+---
+
+## 8. Not Equal in Loops
+
+```cpp filename="not_equal_while.cpp" copy {3, 4}
+int i = 0;
+while (i != 5) {
+    std::cout << i << " ";
+    i++;
+}
+```
+
+Output: `0 1 2 3 4`
+
+---
+
+## 9. Mixed Data Type Comparison
+
+```cpp filename="not_equal_mixed.cpp" copy {3}
+int x = 5;
+float y = 5.0f;
+std::cout << (x != y);  // Output: 0 (false)
+```
+
+---
+
+## 10. Common Use Case: Input Validation
+
+```cpp filename="not_equal_validation.cpp" copy {4, 5}
+char option;
+std::cin >> option;
+
+if (option != 'y' && option != 'Y') {
+    std::cout << "You did not choose yes.";
+}
+```
+
+---
+
+## Practice Problems
+
+### Problem 1: Password Check
+
+```cpp filename="practice_password.cpp" copy {5, 6}
+std::string input = "user123";
+std::string correct = "admin";
+
+if (input != correct) {
+    std::cout << "Incorrect password!";
+}
+```
+
+---
+
+### Problem 2: Skip Even Numbers
+
+```cpp filename="practice_skip_even.cpp" copy {5, 6}
+for (int i = 1; i <= 10; i++) {
+    if (i % 2 != 0) {
+        std::cout << i << " ";
+    }
+}
+```
+
+---
+
+### Problem 3: Character Match
+
+```cpp filename="practice_char_match.cpp" copy {4, 5}
+char userInput = 'b';
+
+if (userInput != 'a') {
+    std::cout << "Not the letter A.";
+}
+```
+
+---
+
+## Summary Table
+
+| Data Type | Example              | Result  |
+| --------- | -------------------- | ------- |
+| `int`     | `5 != 10`            | `true`  |
+| `float`   | `3.1f != 3.1f`       | `false` |
+| `double`  | `0.1 + 0.2 != 0.3`   | `true`  |
+| `char`    | `'x' != 'y'`         | `true`  |
+| `bool`    | `true != false`      | `true`  |
+| `string`  | `"apple" != "mango"` | `true`  |
+| `char[]`  | `strcmp(a, b) != 0`  | `true`  |
+
+---
+
+## Best Practices
+
+- Use `!=` for **inequality checks**, especially in conditional logic and loops.
+- When comparing floating-point values, use a tolerance (`epsilon`) instead of direct `!=`.
+- For C-style strings, always use `strcmp()`; never compare with `!=` directly.
+- Use meaningful conditions. For example:
+  `if (status != true)` is equivalent to `if (!status)` and is more readable that way.

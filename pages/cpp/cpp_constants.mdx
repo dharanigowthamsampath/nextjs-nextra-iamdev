@@ -1,0 +1,168 @@
+# Constants in C++
+
+In C++, **constants** are variables whose values **cannot be changed** after they are defined. They are useful when you want to ensure that specific values remain fixed throughout the execution of a program — such as mathematical constants, configuration values, or settings that should not be altered accidentally.
+
+Using constants makes your code **more readable**, **more maintainable**, and **less error-prone**.
+
+---
+
+## What is a Constant?
+
+A constant is a value that, once assigned, **cannot be modified**. It is declared using the `const` keyword.
+
+### Syntax:
+
+```cpp
+const <data_type> <constant_name> = <value>;
+```
+
+---
+
+## Example: Declaring a Constant
+
+```cpp filename="constant_example.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    const float PI = 3.14159;
+    std::cout << "Value of PI: " << PI << std::endl;
+    return 0;
+}
+```
+
+In this example:
+
+- `const` makes the variable `PI` constant
+- The value `3.14159` cannot be changed once assigned
+
+---
+
+## Attempting to Modify a Constant
+
+Trying to change the value of a constant will result in a **compilation error**.
+
+```cpp filename="modify_constant.cpp" copy {6}
+#include <iostream>
+
+int main() {
+    const int MAX = 100;
+    MAX = 200; // Error: cannot assign to a variable declared 'const'
+    return 0;
+}
+```
+
+---
+
+## Why Use Constants?
+
+| Reason                     | Description                                                                |
+| -------------------------- | -------------------------------------------------------------------------- |
+| Prevent accidental changes | Ensures critical values stay unchanged                                     |
+| Improve readability        | Makes your code easier to understand and maintain                          |
+| Self-documenting           | Names like `MAX_USERS` or `PI` are clearer than using raw numbers directly |
+| Help with debugging        | Reduces the risk of silent logical errors                                  |
+
+---
+
+## Types of Constants in C++
+
+### 1. **Literal Constants**
+
+Direct values used in code (e.g., `10`, `'A'`, `3.14`) — these are implicit constants.
+
+### 2. **`const` Variables**
+
+Declared using the `const` keyword.
+
+```cpp filename="const_variable.cpp" copy {4}
+const int MIN_AGE = 18;
+```
+
+### 3. **`#define` Macros (Preprocessor Constants)**
+
+Another way to define constants, mostly used in C and old-style C++.
+
+```cpp filename="define_macro.cpp" copy {2}
+#define PI 3.14159
+```
+
+> Use `const` instead of `#define` in modern C++ for type safety and better scoping.
+
+---
+
+## Constant Expressions (`constexpr`)
+
+Introduced in C++11, `constexpr` defines values evaluated at **compile-time** instead of run-time.
+
+```cpp filename="constexpr_example.cpp" copy {4}
+constexpr int square(int x) {
+    return x * x;
+}
+```
+
+Use `constexpr` when you need the value during compilation, such as defining array sizes.
+
+---
+
+## Constants with Different Data Types
+
+```cpp filename="const_types.cpp" copy {4, 5, 6}
+const int MAX_SCORE = 100;
+const char GRADE = 'A';
+const float TEMPERATURE = 36.5;
+const bool IS_ACTIVE = true;
+```
+
+---
+
+## Practice: Area of a Circle with `const`
+
+```cpp filename="circle_area_const.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    const float PI = 3.14;
+    float radius = 7.0;
+    float area = PI * radius * radius;
+    std::cout << "Area: " << area << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice: Yes or No?
+
+> **Q1.** Can a constant value be modified later in the program?
+> **No**
+
+> **Q2.** Is `#define` type-safe like `const`?
+> **No**
+
+> **Q3.** Can constants be used in expressions?
+> **Yes**
+
+> **Q4.** Does `const` require initialization during declaration?
+> **Yes**
+
+> **Q5.** Is `constexpr` evaluated at compile time?
+> **Yes**
+
+---
+
+## Summary
+
+| Feature         | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| `const`         | Declares a variable as constant                          |
+| `#define`       | Preprocessor constant (avoid in modern C++)              |
+| `constexpr`     | Compile-time constant (C++11 and newer)                  |
+| Must initialize | `const` variables must be assigned at declaration        |
+| Cannot modify   | Attempting to change a constant results in compile error |
+| Improves safety | Prevents unintentional value changes                     |
+
+---
+
+### Tip for Beginners
+
+Use `const` whenever you want to make your intent **explicit** and **protect values** from being modified. It’s a simple but powerful tool for writing reliable code.

@@ -1,0 +1,133 @@
+# Subtraction Operator in C++
+
+The **subtraction operator (`-`)** in C++ is used to subtract one value from another. It can be applied to a variety of data types, including integers, floating-point numbers, and characters. Understanding how subtraction works with different types of data is essential for performing calculations in any C++ program.
+
+---
+
+## Syntax
+
+```cpp
+result = operand1 - operand2;
+```
+
+- `operand1` and `operand2` can be constants, variables, or expressions.
+- The result holds the difference between the two values.
+
+---
+
+## 1. Integer Subtraction
+
+When subtracting two integers, the result is an integer.
+
+```cpp filename="subtraction_integer.cpp" copy {6}
+int a = 15, b = 7;
+int result = a - b;
+std::cout << "Difference: " << result;  // Output: 8
+```
+
+---
+
+## 2. Floating-Point Subtraction
+
+When dealing with `float` or `double`, subtraction provides results with decimal precision.
+
+```cpp filename="subtraction_float.cpp" copy {6}
+float x = 10.5, y = 3.2;
+float result = x - y;
+std::cout << "Difference: " << result;  // Output: 7.3
+```
+
+```cpp filename="subtraction_double.cpp" copy {6}
+double m = 100.55, n = 50.25;
+double result = m - n;
+std::cout << "Result: " << result;  // Output: 50.3
+```
+
+---
+
+## 3. Integer and Floating-Point Mixed Subtraction
+
+C++ automatically promotes the lower type (int) to the higher type (float/double) during mixed-type operations.
+
+```cpp filename="subtraction_mixed.cpp" copy {6}
+int a = 20;
+double b = 4.75;
+double result = a - b;
+std::cout << "Result: " << result;  // Output: 15.25
+```
+
+---
+
+## 4. Character Subtraction
+
+Characters are internally stored as ASCII values. Subtracting characters gives the difference between their ASCII codes.
+
+```cpp filename="subtraction_char.cpp" copy {6}
+char a = 'D'; // ASCII 68
+char b = 'A'; // ASCII 65
+int result = a - b;
+std::cout << "Result: " << result;  // Output: 3
+```
+
+---
+
+## 5. Subtraction in Expressions
+
+Subtraction is often used in mathematical expressions and formulas.
+
+```cpp filename="subtraction_expression.cpp" copy {6}
+int result = (10 + 5) - (3 * 2);  // 15 - 6 = 9
+std::cout << "Result: " << result;
+```
+
+---
+
+## Practice Examples
+
+### Example 1: Finding Age Difference
+
+```cpp filename="subtraction_practice1.cpp" copy {6}
+int age1 = 30, age2 = 24;
+int diff = age1 - age2;
+std::cout << "Age Difference: " << diff;
+```
+
+---
+
+### Example 2: Subtracting Float Measurements
+
+```cpp filename="subtraction_practice2.cpp" copy {6}
+float originalWeight = 65.75, lostWeight = 2.5;
+float currentWeight = originalWeight - lostWeight;
+std::cout << "Current Weight: " << currentWeight;
+```
+
+---
+
+### Example 3: Character Distance
+
+```cpp filename="subtraction_practice3.cpp" copy {6}
+char first = 'z', second = 'v';
+int gap = first - second;
+std::cout << "Gap between characters: " << gap;
+```
+
+---
+
+## Summary Table
+
+| Data Type         | Expression   | Result Example            |
+| ----------------- | ------------ | ------------------------- |
+| Integer - Integer | `15 - 7`     | `8`                       |
+| Float - Float     | `10.5 - 3.2` | `7.3`                     |
+| Double - Int      | `50.25 - 10` | `40.25`                   |
+| Char - Char       | `'D' - 'A'`  | `3` (ASCII difference)    |
+| Mixed Types       | `10 - 3.5`   | `6.5` (promoted to float) |
+
+---
+
+## Notes
+
+- Subtraction is **left-associative** and follows standard arithmetic rules.
+- When subtracting different types, the result type is automatically determined by promotion rules.
+- Subtracting characters is a valid technique in ASCII-based calculations, such as alphabetical distance.

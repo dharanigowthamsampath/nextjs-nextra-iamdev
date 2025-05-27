@@ -1,0 +1,181 @@
+# Division Operator in C++
+
+The **division operator (`/`)** in C++ is used to divide one number by another. While the operator is simple in appearance, its behavior varies significantly depending on the data types involved. For beginners, understanding these variations is critical to avoiding logic errors in programs.
+
+---
+
+## Syntax
+
+```cpp
+result = numerator / denominator;
+```
+
+- `numerator` and `denominator` can be variables, constants, or expressions.
+- The result depends on the **data type** of the operands.
+
+---
+
+## Important Notes Before We Begin
+
+- If both operands are integers, **integer division** is performed. This discards any decimal (fractional) part.
+- If at least one operand is a `float` or `double`, **floating-point division** is performed, preserving decimal precision.
+- Dividing by zero causes a **runtime error** in integer division, and may produce **infinity** or **NaN** in floating-point division depending on the compiler and standard library implementation.
+
+---
+
+## 1. Integer Division
+
+When dividing two integers, C++ performs **integer division**, truncating the result.
+
+```cpp filename="division_integer.cpp" copy {6}
+int a = 7, b = 2;
+int result = a / b;
+std::cout << "Result: " << result;  // Output: 3
+```
+
+> **Note:** The decimal part `.5` is truncated.
+
+---
+
+## 2. Floating-Point Division
+
+To retain the decimal part, at least one operand must be a `float` or `double`.
+
+```cpp filename="division_float.cpp" copy {6}
+float x = 7.0f, y = 2.0f;
+float result = x / y;
+std::cout << "Result: " << result;  // Output: 3.5
+```
+
+```cpp filename="division_double.cpp" copy {6}
+double a = 10.0, b = 4.0;
+double result = a / b;
+std::cout << "Result: " << result;  // Output: 2.5
+```
+
+---
+
+## 3. Mixed-Type Division
+
+C++ promotes the lower type to the higher type (e.g., int → float) in mixed expressions.
+
+```cpp filename="division_mixed.cpp" copy {6}
+int a = 10;
+float b = 4.0f;
+float result = a / b;
+std::cout << "Result: " << result;  // Output: 2.5
+```
+
+---
+
+## 4. Division with Type Casting
+
+You can manually cast to float/double to get an accurate result when using integer literals.
+
+```cpp filename="division_cast.cpp" copy {6}
+int a = 7, b = 2;
+float result = (float)a / b;
+std::cout << "Result: " << result;  // Output: 3.5
+```
+
+---
+
+## 5. Division with Characters (ASCII Values)
+
+Characters can be implicitly converted to integers (ASCII values), so division operates on those values.
+
+```cpp filename="division_char.cpp" copy {6}
+char a = 'd'; // ASCII 100
+char b = 2;
+int result = a / b;
+std::cout << "Result: " << result;  // Output: 50
+```
+
+---
+
+## 6. Division by Zero
+
+### Integer Division by Zero
+
+```cpp filename="division_zero_integer.cpp" copy {6}
+int a = 10, b = 0;
+int result = a / b;  // Undefined Behavior or Runtime Crash
+```
+
+### Floating-Point Division by Zero
+
+```cpp filename="division_zero_float.cpp" copy {6}
+float a = 10.0f, b = 0.0f;
+float result = a / b;
+std::cout << "Result: " << result;  // Output: inf (infinity)
+```
+
+> **Caution:** Always check the denominator before performing division to avoid crashes or undefined behavior.
+
+---
+
+## Practice Examples
+
+### Example 1: Calculating Average of Two Numbers
+
+```cpp filename="division_practice1.cpp" copy {6}
+int a = 8, b = 9;
+float average = (a + b) / 2.0f;
+std::cout << "Average: " << average;  // Output: 8.5
+```
+
+---
+
+### Example 2: Percentage Calculation
+
+```cpp filename="division_practice2.cpp" copy {6}
+float marksObtained = 455.0;
+float totalMarks = 500.0;
+float percentage = (marksObtained / totalMarks) * 100;
+std::cout << "Percentage: " << percentage << "%";
+```
+
+---
+
+### Example 3: Currency Conversion
+
+```cpp filename="division_practice3.cpp" copy {6}
+float rupees = 1000.0;
+float usdRate = 83.25;
+float dollars = rupees / usdRate;
+std::cout << "USD: " << dollars;
+```
+
+---
+
+### Example 4: Type Behavior Comparison
+
+```cpp filename="division_type_compare.cpp" copy {6}
+int a = 5, b = 2;
+std::cout << "int/int: " << a / b << std::endl;           // 2
+std::cout << "float/int: " << 5.0f / b << std::endl;      // 2.5
+std::cout << "int/float: " << a / 2.0f << std::endl;      // 2.5
+std::cout << "float/float: " << 5.0f / 2.0f << std::endl; // 2.5
+```
+
+---
+
+## Summary Table
+
+| Data Types      | Expression   | Output | Type of Division     |
+| --------------- | ------------ | ------ | -------------------- |
+| `int / int`     | `7 / 2`      | `3`    | Integer Division     |
+| `float / float` | `7.0 / 2.0`  | `3.5`  | Floating-point       |
+| `int / float`   | `10 / 4.0f`  | `2.5`  | Floating-point       |
+| `char / int`    | `'A' / 2`    | `32`   | ASCII-based division |
+| `float / 0.0f`  | `10.0 / 0.0` | `inf`  | Infinity             |
+| `int / 0`       | `10 / 0`     | Error  | Undefined/Crash      |
+
+---
+
+## Best Practices
+
+- **Always validate the denominator** before division.
+- Use type casting when working with integers and expecting floating-point results.
+- Avoid mixing types unless necessary; be deliberate about result type.
+- For financial or scientific applications, prefer `double` over `float` for better precision.

@@ -1,0 +1,203 @@
+# Greater Than Operator (`>`) in C++
+
+The **greater than operator (`>`)** in C++ is a **relational operator** used to compare two values or expressions to check if the value on the left-hand side is strictly greater than the value on the right-hand side.
+
+It returns `true` if the left operand is greater, and `false` otherwise.
+
+---
+
+## Syntax
+
+```cpp
+operand1 > operand2
+```
+
+- Returns `true` if `operand1` is **greater than** `operand2`.
+- Returns `false` if `operand1` is **less than or equal to** `operand2`.
+
+---
+
+## 1. Greater Than with Integers
+
+```cpp filename="greater_than_int.cpp" copy {3}
+int a = 15, b = 10;
+std::cout << (a > b);  // Output: 1 (true)
+```
+
+```cpp filename="greater_than_int_false.cpp" copy {3}
+int a = 5, b = 10;
+std::cout << (a > b);  // Output: 0 (false)
+```
+
+---
+
+## 2. Greater Than with Float and Double
+
+Floating-point numbers can be compared directly with `>` as with integers.
+
+```cpp filename="greater_than_float.cpp" copy {3}
+float x = 3.14f;
+float y = 2.71f;
+std::cout << (x > y);  // Output: 1 (true)
+```
+
+```cpp filename="greater_than_double.cpp" copy {3}
+double a = 0.1 + 0.2;
+double b = 0.3;
+std::cout << (a > b);  // Output: 0 (false)
+```
+
+---
+
+## 3. Greater Than with Characters
+
+Characters in C++ are internally represented by their ASCII values, so comparison is numeric.
+
+```cpp filename="greater_than_char.cpp" copy {3}
+char a = 'b';  // ASCII 98
+char b = 'a';  // ASCII 97
+std::cout << (a > b);  // Output: 1 (true)
+```
+
+---
+
+## 4. Greater Than with Boolean Values
+
+Booleans are treated as integers with `false` = 0 and `true` = 1.
+
+```cpp filename="greater_than_bool.cpp" copy {3}
+bool a = true;
+bool b = false;
+std::cout << (a > b);  // Output: 1 (true)
+```
+
+---
+
+## 5. Greater Than with Strings (`std::string`)
+
+The `std::string` class supports lexicographical comparison using the `>` operator, which compares strings character-by-character based on ASCII values.
+
+```cpp filename="greater_than_string.cpp" copy {3}
+#include <string>
+std::string a = "banana";
+std::string b = "apple";
+std::cout << (a > b);  // Output: 1 (true)
+```
+
+```cpp filename="greater_than_string_false.cpp" copy {3}
+std::string a = "apple";
+std::string b = "banana";
+std::cout << (a > b);  // Output: 0 (false)
+```
+
+---
+
+## 6. Greater Than with C-style Strings
+
+C-style strings (`char[]`) do not support direct comparison with `>`. You must use `strcmp()` for lexicographical comparison.
+
+```cpp filename="greater_than_cstring.cpp" copy {4}
+#include <cstring>
+char a[] = "orange";
+char b[] = "apple";
+std::cout << (strcmp(a, b) > 0);  // Output: 1 (true)
+```
+
+---
+
+## 7. Greater Than in Conditions
+
+```cpp filename="greater_than_if.cpp" copy {3, 4}
+int score = 85;
+if (score > 75) {
+    std::cout << "You passed the test.";
+}
+```
+
+---
+
+## 8. Greater Than in Loops
+
+```cpp filename="greater_than_while.cpp" copy {3, 4}
+int i = 10;
+while (i > 0) {
+    std::cout << i << " ";
+    i--;
+}
+```
+
+Output: `10 9 8 7 6 5 4 3 2 1`
+
+---
+
+## 9. Mixed Data Type Comparison
+
+Implicit type conversion allows comparison of different numeric types.
+
+```cpp filename="greater_than_mixed.cpp" copy {3}
+int a = 10;
+float b = 9.99f;
+std::cout << (a > b);  // Output: 1 (true)
+```
+
+---
+
+## 10. Practice Problems
+
+### Problem 1: Age Eligibility Check
+
+```cpp filename="practice_age_eligibility.cpp" copy {4, 5}
+int age = 20;
+if (age > 18) {
+    std::cout << "Eligible to vote.";
+}
+```
+
+---
+
+### Problem 2: Compare Two Strings
+
+```cpp filename="practice_compare_strings.cpp" copy {4, 5}
+#include <string>
+std::string str1 = "cat";
+std::string str2 = "dog";
+if (str1 > str2) {
+    std::cout << "str1 is greater.";
+} else {
+    std::cout << "str2 is greater.";
+}
+```
+
+---
+
+### Problem 3: Count Down Loop
+
+```cpp filename="practice_countdown.cpp" copy {4, 5}
+for (int i = 5; i > 0; i--) {
+    std::cout << i << " ";
+}
+```
+
+---
+
+## Summary Table
+
+| Data Type     | Example              | Result  |
+| ------------- | -------------------- | ------- |
+| `int`         | `10 > 5`             | `true`  |
+| `float`       | `2.5f > 3.0f`        | `false` |
+| `double`      | `0.3 > 0.1 + 0.2`    | `true`  |
+| `char`        | `'b' > 'a'`          | `true`  |
+| `bool`        | `true > false`       | `true`  |
+| `std::string` | `"banana" > "apple"` | `true`  |
+| `char[]`      | `strcmp(a,b) > 0`    | `true`  |
+
+---
+
+## Best Practices
+
+- Use `>` to compare **numeric values**, **characters**, and **strings** lexicographically.
+- Do not compare C-style strings directly with `>`; use `strcmp()` instead.
+- Remember that comparing floating-point numbers with `>` is generally safe, but be aware of floating-point precision limits.
+- For boolean values, `true` is greater than `false` (`1 > 0`).
+- In complex expressions, use parentheses to clarify precedence.

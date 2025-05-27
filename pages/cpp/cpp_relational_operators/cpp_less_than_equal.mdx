@@ -1,0 +1,227 @@
+# Less Than or Equal To Operator (`<=`) in C++
+
+The **less than or equal to** operator in C++ is used to compare two values and checks if the **left operand is less than or equal to the right operand**. It returns a Boolean value:
+
+- `true` if the condition holds.
+- `false` otherwise.
+
+---
+
+## Syntax
+
+```cpp
+operand1 <= operand2
+```
+
+---
+
+## 1. Integer Comparison
+
+```cpp filename="lte_int_true.cpp" copy {3}
+int a = 5, b = 10;
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_int_equal.cpp" copy {3}
+int a = 10, b = 10;
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_int_false.cpp" copy {3}
+int a = 20, b = 10;
+std::cout << (a <= b);  // Output: 0 (false)
+```
+
+---
+
+## 2. Float and Double Comparison
+
+```cpp filename="lte_float_true.cpp" copy {3}
+float x = 3.5f, y = 4.2f;
+std::cout << (x <= y);  // Output: 1 (true)
+```
+
+```cpp filename="lte_double_equal.cpp" copy {3}
+double x = 7.77, y = 7.77;
+std::cout << (x <= y);  // Output: 1 (true)
+```
+
+```cpp filename="lte_float_false.cpp" copy {3}
+float a = 9.5f, b = 4.5f;
+std::cout << (a <= b);  // Output: 0 (false)
+```
+
+---
+
+## 3. Character Comparison
+
+Characters are compared based on their ASCII values.
+
+```cpp filename="lte_char_true.cpp" copy {3}
+char a = 'a', b = 'z';
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_char_equal.cpp" copy {3}
+char x = 'm', y = 'm';
+std::cout << (x <= y);  // Output: 1 (true)
+```
+
+```cpp filename="lte_char_false.cpp" copy {3}
+char a = 'z', b = 'x';
+std::cout << (a <= b);  // Output: 0 (false)
+```
+
+---
+
+## 4. Boolean Comparison
+
+```cpp filename="lte_bool.cpp" copy {3}
+bool a = false, b = true;
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_bool_equal.cpp" copy {3}
+bool a = true, b = true;
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_bool_false.cpp" copy {3}
+bool a = true, b = false;
+std::cout << (a <= b);  // Output: 0 (false)
+```
+
+---
+
+## 5. String Comparison (`std::string`)
+
+```cpp filename="lte_string_true.cpp" copy {4}
+std::string a = "apple";
+std::string b = "banana";
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_string_equal.cpp" copy {4}
+std::string a = "hello";
+std::string b = "hello";
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_string_false.cpp" copy {4}
+std::string a = "zebra";
+std::string b = "apple";
+std::cout << (a <= b);  // Output: 0 (false)
+```
+
+---
+
+## 6. C-Style String Comparison
+
+Use `strcmp()` for comparing character arrays:
+
+```cpp filename="lte_cstring.cpp" copy {5}
+#include <cstring>
+char a[] = "apple";
+char b[] = "banana";
+std::cout << (strcmp(a, b) <= 0);  // Output: 1 (true)
+```
+
+---
+
+## 7. Usage in Conditional Statements
+
+```cpp filename="lte_if.cpp" copy {3, 4}
+int score = 55;
+if (score <= 60) {
+    std::cout << "Needs improvement";
+}
+```
+
+---
+
+## 8. Usage in Loops
+
+```cpp filename="lte_loop.cpp" copy {3, 4}
+for (int i = 1; i <= 5; i++) {
+    std::cout << i << " ";
+}
+```
+
+Output: `1 2 3 4 5`
+
+---
+
+## 9. Mixed Data Type Comparison
+
+```cpp filename="lte_mixed.cpp" copy {3}
+int a = 10;
+float b = 10.0f;
+std::cout << (a <= b);  // Output: 1 (true)
+```
+
+```cpp filename="lte_mixed_false.cpp" copy {3}
+double a = 7.5;
+int b = 5;
+std::cout << (a <= b);  // Output: 0 (false)
+```
+
+---
+
+## 10. Practice Programs
+
+### Practice 1: Age Eligibility
+
+```cpp filename="practice_lte_age.cpp" copy {4, 5}
+int age = 17;
+if (age <= 18) {
+    std::cout << "Eligible for student discount.";
+}
+```
+
+---
+
+### Practice 2: Compare Float Grades
+
+```cpp filename="practice_lte_float.cpp" copy {4, 5}
+float grade1 = 85.5f;
+float grade2 = 90.0f;
+if (grade1 <= grade2) {
+    std::cout << "Grade1 is lower or equal.";
+}
+```
+
+---
+
+### Practice 3: Lexicographic Comparison
+
+```cpp filename="practice_lte_string.cpp" copy {4, 5}
+std::string word1 = "apple";
+std::string word2 = "mango";
+if (word1 <= word2) {
+    std::cout << word1 << " comes before or is same as " << word2;
+}
+```
+
+---
+
+## Summary Table
+
+| Data Type     | Expression                     | Result  |
+| ------------- | ------------------------------ | ------- |
+| `int`         | `5 <= 5`                       | `true`  |
+| `float`       | `3.2f <= 4.0f`                 | `true`  |
+| `double`      | `9.1 <= 8.5`                   | `false` |
+| `char`        | `'a' <= 'b'`                   | `true`  |
+| `bool`        | `false <= true`                | `true`  |
+| `std::string` | `"abc" <= "xyz"`               | `true`  |
+| `char[]`      | `strcmp("alpha", "beta") <= 0` | `true`  |
+
+---
+
+## Key Takeaways
+
+- `<=` helps check whether a value is **less than or equal to** another.
+- It works with all basic data types and user-defined types like `std::string`.
+- For C-style strings, use `strcmp()` instead of `<=` directly.
+- Mixed-type comparisons (like `int` with `float`) are valid but involve implicit type conversion.
+- Often used in loops and conditionals for value bounds checking.

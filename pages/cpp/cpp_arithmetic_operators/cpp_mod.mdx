@@ -1,0 +1,199 @@
+# Modulus Operator in C++
+
+The **modulus operator (`%`)** in C++ returns the **remainder** of a division operation between two integers. It is commonly used in programming for tasks such as checking for even/odd numbers, cyclic operations, hashing, and modular arithmetic.
+
+---
+
+## Syntax
+
+```cpp
+result = dividend % divisor;
+```
+
+- Both operands must be **integers** (e.g., `int`, `long`, `short`, etc.).
+- The result is the **remainder** when `dividend` is divided by `divisor`.
+
+---
+
+## 1. Basic Usage of Modulus
+
+```cpp filename="modulus_basic.cpp" copy {3}
+int a = 10, b = 3;
+int result = a % b;
+std::cout << "Result: " << result;  // Output: 1
+```
+
+In the example above:
+
+- `10 / 3` gives `3` with a remainder of `1`
+- So, `10 % 3 = 1`
+
+---
+
+## 2. Division vs Modulus
+
+```cpp filename="modulus_vs_division.cpp" copy {3, 4}
+int a = 17, b = 5;
+std::cout << "Division: " << a / b << std::endl; // 3
+std::cout << "Modulus: " << a % b << std::endl;  // 2
+```
+
+- **`a / b`** gives the quotient
+- **`a % b`** gives the remainder
+
+---
+
+## 3. Modulus with Negative Numbers
+
+Behavior of `%` with negative numbers is defined by the C++ standard:
+
+```cpp filename="modulus_negative.cpp" copy {3, 4, 5}
+int a = -17, b = 5;
+std::cout << "-17 % 5 = " << a % b << std::endl;  // Output: -2
+
+a = 17, b = -5;
+std::cout << "17 % -5 = " << a % b << std::endl;  // Output: 2
+
+a = -17, b = -5;
+std::cout << "-17 % -5 = " << a % b << std::endl; // Output: -2
+```
+
+> The sign of the result follows the **sign of the dividend (left-hand operand)**.
+
+---
+
+## 4. Modulus with `char` and ASCII
+
+Characters are treated as integers via their ASCII values.
+
+```cpp filename="modulus_char.cpp" copy {3}
+char a = 'A'; // ASCII 65
+int result = a % 10;
+std::cout << "Result: " << result;  // Output: 5
+```
+
+---
+
+## 5. Floating-Point and Modulus
+
+The `%` operator **does not work** with `float` or `double`. Attempting this causes a compile-time error.
+
+```cpp filename="modulus_float_error.cpp" copy {3}
+// float a = 5.5f, b = 2.0f;
+// float result = a % b;  // ❌ Compile-time error
+```
+
+For floating-point modulus, use the standard library function `fmod()`:
+
+```cpp filename="modulus_fmod.cpp" copy {4}
+#include <cmath>
+
+double result = std::fmod(5.5, 2.0);
+std::cout << "Result: " << result;  // Output: 1.5
+```
+
+---
+
+## 6. Common Use Cases
+
+### Check Even or Odd
+
+```cpp filename="modulus_even_odd.cpp" copy {3}
+int n = 7;
+if (n % 2 == 0)
+    std::cout << "Even";
+else
+    std::cout << "Odd";
+```
+
+---
+
+### Find Last Digit of a Number
+
+```cpp filename="modulus_last_digit.cpp" copy {3}
+int num = 983;
+int lastDigit = num % 10;
+std::cout << "Last Digit: " << lastDigit;  // Output: 3
+```
+
+---
+
+### Circular Array or Loop Indexing
+
+```cpp filename="modulus_circular.cpp" copy {3}
+int index = (8 + 1) % 5;
+std::cout << "Next Index: " << index;  // Output: 4
+```
+
+---
+
+## 7. Modulus Operator in Expressions
+
+```cpp filename="modulus_expression.cpp" copy {3}
+int result = (5 + 3 * 2) % 4;
+std::cout << "Result: " << result;  // Output: 3
+```
+
+Here’s how it’s evaluated:
+
+- `3 * 2 = 6`
+- `5 + 6 = 11`
+- `11 % 4 = 3`
+
+---
+
+## 8. Practice Problems
+
+### Problem 1: Remainder Without Using `%`
+
+```cpp filename="modulus_practice1.cpp" copy {4}
+int a = 25, b = 4;
+int remainder = a - (a / b) * b;
+std::cout << "Remainder: " << remainder;  // Output: 1
+```
+
+---
+
+### Problem 2: Sum of Digits
+
+```cpp filename="modulus_practice2.cpp" copy {5, 6}
+int n = 1234, sum = 0;
+while (n > 0) {
+    sum += n % 10;
+    n = n / 10;
+}
+std::cout << "Sum of digits: " << sum;  // Output: 10
+```
+
+---
+
+### Problem 3: Last Digit Equality
+
+```cpp filename="modulus_practice3.cpp" copy {3}
+int a = 123, b = 993;
+if (a % 10 == b % 10)
+    std::cout << "Last digits match!";
+else
+    std::cout << "Different last digits.";
+```
+
+---
+
+## Summary Table
+
+| Expression     | Result | Description                         |
+| -------------- | ------ | ----------------------------------- |
+| `10 % 3`       | `1`    | Basic modulus                       |
+| `17 % 5`       | `2`    | Remainder of division               |
+| `-17 % 5`      | `-2`   | Sign follows dividend               |
+| `'A' % 10`     | `5`    | Character modulus using ASCII       |
+| `fmod(5.5, 2)` | `1.5`  | Floating-point modulus using `fmod` |
+
+---
+
+## Best Practices
+
+- Only use `%` with **integers** unless using `fmod()` for floating-point types.
+- Be careful with **negative numbers**; remember the remainder follows the dividend's sign.
+- Always check for zero in **denominator** to avoid runtime errors.
+- Use modulus to simplify **cyclical patterns**, such as rotating through an array or checking digit patterns.

@@ -1,0 +1,217 @@
+# The `bool` Data Type in C++
+
+In C++, the `bool` (Boolean) data type is used to represent **logical values**: `true` or `false`. It is essential in decision-making and conditional expressions, forming the backbone of control structures like `if`, `while`, and `for`.
+
+---
+
+## What is `bool`?
+
+The `bool` type can only hold one of two values:
+
+- `true` (internally represented as `1`)
+- `false` (internally represented as `0`)
+
+```cpp filename="bool_basic.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    bool isRaining = true;
+    std::cout << "Is it raining? " << isRaining << std::endl;
+    return 0;
+}
+```
+
+Output:
+
+```
+Is it raining? 1
+```
+
+> `std::cout` prints `1` for `true` and `0` for `false` by default.
+
+---
+
+## Declaring and Initializing `bool`
+
+You can declare a `bool` variable just like any other variable, using the keyword `bool`.
+
+```cpp filename="bool_declaration.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    bool isLoggedIn = false;
+    std::cout << "User logged in: " << isLoggedIn << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Boolean Expressions
+
+Boolean values often result from **relational** or **logical** expressions.
+
+```cpp filename="bool_expression.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    int age = 20;
+    bool isAdult = age >= 18;
+
+    std::cout << "Is adult? " << isAdult << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Logical Operators with `bool`
+
+| Operator | Description | Example         |            |        |     |         |
+| -------- | ----------- | --------------- | ---------- | ------ | --- | ------- |
+| `&&`     | Logical AND | `true && false` |            |        |     |         |
+| \`       |             | \`              | Logical OR | \`true |     | false\` |
+| `!`      | Logical NOT | `!true`         |            |        |     |         |
+
+```cpp filename="bool_operators.cpp" copy {6, 7, 8}
+#include <iostream>
+
+int main() {
+    bool a = true;
+    bool b = false;
+
+    std::cout << "a && b: " << (a && b) << std::endl;
+    std::cout << "a || b: " << (a || b) << std::endl;
+    std::cout << "!a: " << (!a) << std::endl;
+
+    return 0;
+}
+```
+
+---
+
+## Conditional Usage
+
+`bool` values are commonly used in `if` statements to control the flow of programs.
+
+```cpp filename="bool_if.cpp" copy {4, 5, 6}
+#include <iostream>
+
+int main() {
+    bool isOnline = true;
+
+    if (isOnline) {
+        std::cout << "The user is online." << std::endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## Type Conversion to/from `bool`
+
+- Non-zero numbers are treated as `true`
+- Zero is treated as `false`
+
+```cpp filename="bool_conversion.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    bool x = 0;     // false
+    bool y = 42;    // true
+
+    std::cout << "x: " << x << ", y: " << y << std::endl;
+    return 0;
+}
+```
+
+You can also convert a `bool` to an `int` explicitly:
+
+```cpp filename="bool_to_int.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    bool condition = true;
+    int value = static_cast<int>(condition);
+
+    std::cout << "Integer value: " << value << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 1: Voter Eligibility
+
+Check if a person is eligible to vote based on age.
+
+```cpp filename="voter_eligibility.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    int age;
+    std::cout << "Enter your age: ";
+    std::cin >> age;
+
+    bool eligible = age >= 18;
+    std::cout << "Eligible to vote? " << eligible << std::endl;
+
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 2: Even or Odd Checker
+
+Use a boolean expression to check if a number is even.
+
+```cpp filename="even_checker.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    int num = 12;
+    bool isEven = (num % 2 == 0);
+
+    std::cout << "Is even? " << isEven << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 3: Login System Simulation
+
+Simulate a simple login check using a boolean.
+
+```cpp filename="login_simulation.cpp" copy {7, 8, 9}
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string username = "admin";
+    std::string password = "1234";
+
+    bool isAuthenticated = (username == "admin" && password == "1234");
+
+    std::cout << "Access granted? " << isAuthenticated << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Feature          | Description                        |
+| ---------------- | ---------------------------------- |
+| Type             | `bool`                             |
+| Size             | 1 byte                             |
+| Values           | `true` (1) and `false` (0)         |
+| Common uses      | Conditions, flags, logical testing |
+| Default output   | 1 for true, 0 for false            |
+| Can be converted | Implicitly to/from integers        |
+
+The `bool` data type is vital in building logic-driven programs. It controls flow, manages flags, and simplifies conditional operations.

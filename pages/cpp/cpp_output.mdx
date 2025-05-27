@@ -1,0 +1,220 @@
+# Output in C++
+
+In C++, displaying information on the screen is done using the **standard output stream** called `std::cout`. Output is an essential part of any program—it allows you to communicate results, messages, and debugging information to the user.
+
+---
+
+## What is `cout`?
+
+`cout` stands for **console output**, and it is part of the `iostream` library. It is used to send data from the program to the standard output device, usually the screen.
+
+### Syntax
+
+```cpp
+std::cout << value;
+```
+
+The `<<` operator is called the **insertion operator**. It inserts the value into the output stream.
+
+---
+
+## Basic Output
+
+### Example 1: Output a Simple Message
+
+```cpp filename="basic_output.cpp" copy {4}
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, world!";
+    return 0;
+}
+```
+
+---
+
+### Example 2: Output Variables
+
+```cpp filename="output_variable.cpp" copy {6, 7}
+#include <iostream>
+
+int main() {
+    int age = 20;
+    std::cout << "Your age is: " << age;
+    return 0;
+}
+```
+
+You can chain multiple outputs using `<<`:
+
+```cpp filename="chained_output.cpp" copy {6}
+std::cout << "Age: " << age << ", Height: " << 175 << " cm";
+```
+
+---
+
+## Output with Different Data Types
+
+### Integer Output
+
+```cpp filename="output_int.cpp" copy {6}
+int score = 95;
+std::cout << "Score: " << score;
+```
+
+---
+
+### Float Output
+
+```cpp filename="output_float.cpp" copy {6}
+float temperature = 36.6;
+std::cout << "Temperature: " << temperature;
+```
+
+---
+
+### Double Output
+
+```cpp filename="output_double.cpp" copy {6}
+double pi = 3.14159265359;
+std::cout << "Value of pi: " << pi;
+```
+
+---
+
+### Character Output
+
+```cpp filename="output_char.cpp" copy {6}
+char grade = 'A';
+std::cout << "Your grade is: " << grade;
+```
+
+---
+
+### Boolean Output
+
+```cpp filename="output_bool.cpp" copy {6, 7}
+bool passed = true;
+std::cout << "Passed? " << passed;
+```
+
+> By default, `true` is displayed as `1` and `false` as `0`.
+> To print `true`/`false` in words, use:
+
+```cpp filename="output_boolalpha.cpp" copy {7}
+std::cout << std::boolalpha << passed;
+```
+
+---
+
+### String Output
+
+```cpp filename="output_string.cpp" copy {6}
+std::string name = "Alice";
+std::cout << "Welcome, " << name;
+```
+
+---
+
+## New Line in Output
+
+Use `\n` or `std::endl` to add a line break.
+
+### Using `\n`:
+
+```cpp filename="newline_n.cpp" copy {6}
+std::cout << "Line 1\nLine 2";
+```
+
+### Using `std::endl`:
+
+```cpp filename="newline_endl.cpp" copy {6}
+std::cout << "Line 1" << std::endl << "Line 2";
+```
+
+---
+
+## Output Formatting
+
+C++ offers some formatting utilities via the `<iomanip>` library:
+
+### Set Decimal Precision
+
+```cpp filename="set_precision.cpp" copy {7}
+#include <iostream>
+#include <iomanip>
+
+int main() {
+    double num = 3.141592;
+    std::cout << std::fixed << std::setprecision(2) << num;
+    return 0;
+}
+```
+
+Output: `3.14`
+
+---
+
+## Practice Problems
+
+### Practice 1: Display Age and Name
+
+```cpp filename="output_practice1.cpp" copy {6, 7}
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name = "Rahul";
+    int age = 21;
+
+    std::cout << "Name: " << name << "\nAge: " << age;
+    return 0;
+}
+```
+
+---
+
+### Practice 2: Display Marks with Formatting
+
+```cpp filename="output_practice2.cpp" copy {8, 9}
+#include <iostream>
+#include <iomanip>
+
+int main() {
+    double mark1 = 88.456, mark2 = 91.123;
+    std::cout << "Marks:\n";
+    std::cout << std::fixed << std::setprecision(1);
+    std::cout << "Subject 1: " << mark1 << "\nSubject 2: " << mark2;
+    return 0;
+}
+```
+
+---
+
+### Practice 3: Output a Multi-Line Quote
+
+```cpp filename="output_practice3.cpp" copy {6}
+std::cout << "Learning never exhausts the mind.\n- Leonardo da Vinci";
+```
+
+---
+
+## Summary
+
+| Feature              | Example                 | Notes                                  |
+| -------------------- | ----------------------- | -------------------------------------- |
+| Basic Output         | `std::cout << "Hello";` | Sends text to the screen               |
+| Variable Output      | `std::cout << age;`     | Displays variable values               |
+| New Lines            | `\n` or `std::endl`     | Moves to the next line                 |
+| Output Chaining      | `cout << a << b;`       | Outputs multiple values                |
+| Precision Formatting | `std::setprecision(n)`  | For floating-point numbers             |
+| Boolean Word Output  | `std::boolalpha`        | Displays `true`/`false` instead of 1/0 |
+
+---
+
+### Things to Remember
+
+- You must `#include <iostream>` to use `cout`.
+- `cout` does not automatically insert a newline—you must add `\n` or `std::endl`.
+- You can chain as many `<<` as needed.
+- `std::endl` also flushes the buffer, making it slightly slower than `\n`.

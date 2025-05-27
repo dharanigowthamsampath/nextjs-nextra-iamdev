@@ -1,0 +1,115 @@
+# C++ Program Structure
+
+Every C++ program, no matter how complex, starts with a basic structure. Understanding this structure is crucial for beginners, as it lays the foundation for everything else you'll learn in C++. In this section, we’ll walk through the essential components of a C++ program and explain the purpose of each line using simple examples.
+
+---
+
+## 🔹 Example 1: The Simplest C++ Program
+
+```cpp filename="hello.cpp" copy
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, world!" << std::endl;
+    return 0;
+}
+```
+
+### Explanation:
+
+- `#include <iostream>`
+  This is a **preprocessor directive** that tells the compiler to include the **input-output stream** library. It's needed for `std::cout`, which is used to print output.
+
+- `int main()`
+  This is the **main function** — the entry point of every C++ program. The execution of your program starts here.
+
+- `{ ... }`
+  These curly braces define the **body** of the `main` function. All the code inside will be executed when the program runs.
+
+- `std::cout << "Hello, world!" << std::endl;`
+  This line prints the text `Hello, world!` to the console.
+
+  - `std::cout` is the standard output stream.
+  - `<<` is the stream insertion operator (used to send data to the output).
+  - `std::endl` adds a **newline** and flushes the output buffer.
+
+- `return 0;`
+  This tells the operating system that the program has ended successfully.
+
+---
+
+## 🔹 Example 2: Adding Comments and Variables
+
+```cpp filename="hello.cpp" copy
+#include <iostream>
+
+int main() {
+    // Declare a variable
+    int age = 20;
+
+    // Display the value
+    std::cout << "Age: " << age << std::endl;
+
+    return 0;
+}
+```
+
+### Explanation:
+
+- `// Declare a variable`
+  This is a **single-line comment**. Comments are ignored by the compiler and are used to explain code.
+
+- `int age = 20;`
+  This declares an **integer variable** named `age` and initializes it with the value `20`.
+
+- `"Age: " << age << std::endl`
+  This combines a string with the value of the variable `age` and prints them together. Output: `Age: 20`.
+
+---
+
+## 🔹 Example 3: Using Multiple Statements and Whitespace
+
+```cpp filename="hello.cpp" copy
+#include <iostream>
+
+int main() {
+    int a = 5;
+    int b = 10;
+    int sum = a + b;
+
+    std::cout << "Sum: " << sum << std::endl;
+
+    return 0;
+}
+```
+
+### Explanation:
+
+- `int a = 5; int b = 10;`
+  Declares two integer variables `a` and `b`.
+
+- `int sum = a + b;`
+  Calculates the **sum** of `a` and `b`, and stores it in another variable `sum`.
+
+- `std::cout << "Sum: " << sum << std::endl;`
+  Outputs the result of the addition. Output: `Sum: 15`.
+
+- The use of indentation and spacing improves **readability** but has no effect on program execution.
+
+---
+
+## Summary
+
+A basic C++ program includes:
+
+| Component             | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| `#include <iostream>` | Adds standard input/output capabilities        |
+| `main()`              | The starting point of program execution        |
+| `{}`                  | Defines blocks of code                         |
+| `std::cout`           | Used to display output to the screen           |
+| `return 0;`           | Indicates successful completion of the program |
+| `//` or `/* ... */`   | Used to write comments in the code             |
+| Variables             | Store and manage data during program execution |
+
+Mastering the structure of a C++ program is the first step toward becoming a confident programmer. In the next sections, we’ll explore each part of the language in more depth.

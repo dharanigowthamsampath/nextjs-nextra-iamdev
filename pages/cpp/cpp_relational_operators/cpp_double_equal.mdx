@@ -1,0 +1,216 @@
+# Equality Operator (`==`) in C++
+
+The **equality operator (`==`)** in C++ is used to **compare two values or expressions** to check whether they are equal. If the values are the same, the result is `true`; otherwise, it's `false`.
+
+This operator is widely used in conditions, control structures, validations, loops, and logical expressions.
+
+---
+
+## Syntax
+
+```cpp
+operand1 == operand2
+```
+
+- Returns `true` (1) if both operands are **equal**.
+- Returns `false` (0) if they are **not equal**.
+
+---
+
+## 1. Equality with Integers
+
+```cpp filename="equality_int.cpp" copy {3}
+int a = 10, b = 10;
+std::cout << (a == b);  // Output: 1 (true)
+```
+
+---
+
+## 2. Equality with Float and Double
+
+Due to floating-point precision issues, direct comparison can sometimes be inaccurate.
+
+```cpp filename="equality_float.cpp" copy {3, 4}
+float x = 3.14f;
+float y = 3.14f;
+std::cout << (x == y);  // Output: 1 (true)
+```
+
+```cpp filename="equality_double_precision.cpp" copy {3, 4}
+double a = 0.1 + 0.2;
+double b = 0.3;
+std::cout << (a == b);  // Output: 0 (false)
+```
+
+> For reliable floating-point comparison, use a tolerance value (epsilon):
+
+```cpp filename="equality_epsilon.cpp" copy {4, 5}
+#include <cmath>
+bool isEqual = std::abs(a - b) < 1e-9;
+std::cout << isEqual;  // Output: 1 (true)
+```
+
+---
+
+## 3. Equality with Characters
+
+```cpp filename="equality_char.cpp" copy {3}
+char a = 'A', b = 'A';
+std::cout << (a == b);  // Output: 1 (true)
+```
+
+You can also compare characters with their ASCII values:
+
+```cpp filename="equality_char_ascii.cpp" copy {3}
+char ch = 'B';
+std::cout << (ch == 66);  // Output: 1 (true)
+```
+
+---
+
+## 4. Equality with Boolean
+
+```cpp filename="equality_bool.cpp" copy {3}
+bool status = true;
+std::cout << (status == true);  // Output: 1 (true)
+```
+
+---
+
+## 5. Equality with Strings (C++ `string` class)
+
+```cpp filename="equality_string.cpp" copy {3}
+#include <string>
+std::string name1 = "Alice";
+std::string name2 = "Alice";
+std::cout << (name1 == name2);  // Output: 1 (true)
+```
+
+---
+
+## 6. Equality with C-style strings (Character arrays)
+
+C-style strings require `strcmp()` from `<cstring>` for accurate comparison.
+
+```cpp filename="equality_cstring.cpp" copy {4}
+#include <cstring>
+char a[] = "hello";
+char b[] = "hello";
+std::cout << (strcmp(a, b) == 0);  // Output: 1 (true)
+```
+
+---
+
+## 7. Equality in Conditions
+
+```cpp filename="equality_if.cpp" copy {3, 4}
+int age = 18;
+if (age == 18) {
+    std::cout << "You are 18.";
+}
+```
+
+---
+
+## 8. Equality with Different Data Types
+
+When comparing different data types, C++ performs implicit type conversions:
+
+```cpp filename="equality_mixed_types.cpp" copy {3}
+int a = 5;
+float b = 5.0;
+std::cout << (a == b);  // Output: 1 (true)
+```
+
+---
+
+## 9. Equality in Loops
+
+```cpp filename="equality_while.cpp" copy {3, 4}
+int i = 0;
+while (i == 0) {
+    std::cout << "Still zero\n";
+    i++;
+}
+```
+
+---
+
+## 10. Common Mistake: Using `=` Instead of `==`
+
+Always remember:
+
+- `=` is **assignment**
+- `==` is **comparison**
+
+```cpp filename="equality_mistake.cpp" copy {3}
+// if (a = b)  // ❌ This assigns b to a, not compares
+```
+
+Correct usage:
+
+```cpp filename="equality_correct.cpp" copy {3}
+if (a == b)  // ✅ Correct comparison
+```
+
+---
+
+## 11. Practice Problems
+
+### Problem 1: Are Two Numbers Equal?
+
+```cpp filename="practice_equal_numbers.cpp" copy {4, 5}
+int x = 10, y = 15;
+if (x == y)
+    std::cout << "Equal";
+else
+    std::cout << "Not Equal";
+```
+
+---
+
+### Problem 2: Is Input Character a Vowel?
+
+```cpp filename="practice_vowel.cpp" copy {4, 5}
+char ch = 'e';
+if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+    std::cout << "Vowel";
+else
+    std::cout << "Not a vowel";
+```
+
+---
+
+### Problem 3: Login Validation
+
+```cpp filename="practice_login.cpp" copy {5, 6}
+std::string inputUsername = "admin";
+std::string storedUsername = "admin";
+if (inputUsername == storedUsername)
+    std::cout << "Login Successful";
+else
+    std::cout << "Invalid Credentials";
+```
+
+---
+
+## Summary Table
+
+| Data Type | Example             | Result  |
+| --------- | ------------------- | ------- |
+| `int`     | `5 == 5`            | `true`  |
+| `float`   | `3.14f == 3.14f`    | `true`  |
+| `double`  | `0.1 + 0.2 == 0.3`  | `false` |
+| `char`    | `'A' == 65`         | `true`  |
+| `bool`    | `true == 1`         | `true`  |
+| `string`  | `"hi" == "hi"`      | `true`  |
+| `char[]`  | `strcmp(a, b) == 0` | `true`  |
+
+---
+
+## Best Practices
+
+- Use `==` only for comparison, not assignment.
+- Be cautious comparing **floating-point** values directly.
+- For **C-style strings**, prefer `strcmp()` or convert them to `std::string`.
+- Use parentheses to group comparisons clearly in complex expressions.

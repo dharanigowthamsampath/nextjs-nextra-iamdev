@@ -1,0 +1,186 @@
+# Variables in C++
+
+In C++, **variables** are used to **store data** that your program can manipulate. They act as **named containers** that hold values which may change (or not) during program execution. Understanding variables is fundamental to learning any programming language.
+
+---
+
+## What is a Variable?
+
+A **variable** is a **named memory location** used to store a value of a specific data type. You can think of it as a labeled box where you can put and retrieve values.
+
+### Syntax:
+
+```cpp filename="variable_syntax.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    int age = 25;
+    std::cout << "Age: " << age << std::endl;
+    return 0;
+}
+```
+
+In this example:
+
+- `int` is the **data type**
+- `age` is the **variable name**
+- `25` is the **value assigned**
+
+---
+
+## Declaring Variables
+
+You declare a variable using the following format:
+
+```cpp
+<data_type> <variable_name> = <initial_value>;
+```
+
+Examples:
+
+```cpp filename="variable_examples.cpp" copy {3, 4, 5}
+#include <iostream>
+
+int marks = 90;
+float temperature = 36.6;
+char grade = 'A';
+```
+
+---
+
+## Rules for Naming Variables
+
+Understanding naming rules ensures your code is both **valid** and **readable**.
+
+✅ **Allowed:**
+
+- Letters (a–z, A–Z)
+- Digits (0–9), but not as the first character
+- Underscore (`_`)
+
+❌ **Not Allowed:**
+
+- Spaces
+- Special characters (`@`, `#`, `$`, etc.)
+- Starting with a digit
+
+---
+
+### Best Practices
+
+| Rule                                        | Example                   |
+| ------------------------------------------- | ------------------------- |
+| Start with a letter                         | `score`, `height`         |
+| Use descriptive names                       | `totalMarks`, `age`       |
+| Avoid reserved keywords                     | `int`, `return` ❌        |
+| Use camelCase or snake_case for readability | `userName` or `user_name` |
+
+---
+
+## Variable Declaration Without Initialization
+
+You can also declare a variable without assigning a value initially:
+
+```cpp filename="variable_declare_only.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    int count; // declared, not initialized
+    count = 10; // value assigned later
+    std::cout << count << std::endl;
+    return 0;
+}
+```
+
+> Note: Using an uninitialized variable without assigning a value leads to **undefined behavior**.
+
+---
+
+## Multiple Declarations in One Line
+
+You can declare multiple variables of the same type in a single line:
+
+```cpp filename="multi_variable.cpp" copy {4}
+int x = 5, y = 10, z = 15;
+```
+
+---
+
+## Constants vs Variables
+
+A **variable** can change during execution. A **constant** cannot.
+
+```cpp filename="constant_variable.cpp" copy {4, 5}
+const int maxScore = 100;  // value cannot be changed
+int score = 90;            // value can change
+```
+
+---
+
+## Practice: Yes or No?
+
+Let's reinforce the rules with a few **yes/no** questions.
+
+> **Q1.** Can a variable name start with a number?
+> ❌ **No**
+
+> **Q2.** Is `float` a valid variable name?
+> ❌ **No** – it's a reserved keyword
+
+> **Q3.** Can you declare a variable without initializing it?
+> ✅ **Yes**
+
+> **Q4.** Can a variable name contain an underscore (`_`)?
+> ✅ **Yes**
+
+> **Q5.** Is `int 5age = 30;` valid?
+> ❌ **No** – variable name cannot start with a digit
+
+---
+
+## Practice Code: Area of a Circle
+
+```cpp filename="circle_area.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    float radius = 4.5;
+    float area = 3.14 * radius * radius;
+    std::cout << "Area: " << area << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Code: Swapping Two Numbers
+
+```cpp filename="swap_numbers.cpp" copy {6, 7, 8}
+#include <iostream>
+
+int main() {
+    int a = 5, b = 10;
+    int temp = a;
+    a = b;
+    b = temp;
+    std::cout << "a: " << a << ", b: " << b << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Concept                   | Description                                      |
+| ------------------------- | ------------------------------------------------ |
+| Variable                  | Named container to hold a value                  |
+| Declaration               | `type name;` or `type name = value;`             |
+| Initialization (optional) | Assign a value at the time of declaration        |
+| Naming rules              | Start with a letter or `_`, no symbols or spaces |
+| Multiple declaration      | Allowed if of the same type                      |
+| Constants (`const`)       | Used when values must not change                 |
+
+---
+
+Variables are the **foundation** of all logical operations in C++. Mastering them will enable you to manage memory, perform calculations, and build interactive programs effectively.

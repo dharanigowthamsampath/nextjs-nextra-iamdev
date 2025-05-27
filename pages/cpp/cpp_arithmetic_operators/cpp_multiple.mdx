@@ -1,0 +1,137 @@
+# Multiplication Operator in C++
+
+The **multiplication operator (`*`)** in C++ is used to calculate the product of two operands. It works with numeric data types such as integers, floating-point numbers, and even with characters (interpreted via their ASCII values). Mastering how multiplication behaves with different data types is essential for writing accurate arithmetic expressions and algorithms.
+
+---
+
+## Syntax
+
+```cpp
+result = operand1 * operand2;
+```
+
+- `operand1` and `operand2` can be constants, variables, or expressions.
+- The result stores the computed product.
+
+---
+
+## 1. Integer Multiplication
+
+Multiplying two integers yields an integer result.
+
+```cpp filename="multiplication_integer.cpp" copy {6}
+int a = 7, b = 4;
+int product = a * b;
+std::cout << "Product: " << product;  // Output: 28
+```
+
+---
+
+## 2. Floating-Point Multiplication
+
+Multiplication also works with `float` and `double` types and preserves decimal accuracy.
+
+```cpp filename="multiplication_float.cpp" copy {6}
+float x = 2.5, y = 4.0;
+float result = x * y;
+std::cout << "Product: " << result;  // Output: 10.0
+```
+
+```cpp filename="multiplication_double.cpp" copy {6}
+double m = 3.1416, n = 2.0;
+double area = m * n;
+std::cout << "Area: " << area;  // Output: 6.2832
+```
+
+---
+
+## 3. Mixed Type Multiplication (Int and Float/Double)
+
+C++ automatically promotes the lower type when operands are of different types.
+
+```cpp filename="multiplication_mixed.cpp" copy {6}
+int a = 3;
+double b = 2.5;
+double result = a * b;
+std::cout << "Result: " << result;  // Output: 7.5
+```
+
+---
+
+## 4. Character Multiplication
+
+Characters are stored as integers using ASCII codes. Multiplying characters results in an integer representing the product of their ASCII values.
+
+```cpp filename="multiplication_char.cpp" copy {6}
+char a = 'A'; // ASCII 65
+char b = 2;
+int result = a * b;
+std::cout << "Result: " << result;  // Output: 130
+```
+
+---
+
+## 5. Using Multiplication in Expressions
+
+Multiplication is often used in arithmetic expressions and follows **higher precedence** than addition or subtraction.
+
+```cpp filename="multiplication_expression.cpp" copy {6}
+int result = 2 + 3 * 4;  // 2 + (3*4) = 14
+std::cout << "Result: " << result;
+```
+
+---
+
+## Practice Examples
+
+### Example 1: Calculating Area of a Rectangle
+
+```cpp filename="multiplication_practice1.cpp" copy {6}
+int length = 10, width = 5;
+int area = length * width;
+std::cout << "Area: " << area;  // Output: 50
+```
+
+---
+
+### Example 2: Multiplying Prices and Quantity
+
+```cpp filename="multiplication_practice2.cpp" copy {6}
+float price = 49.99;
+int quantity = 3;
+float total = price * quantity;
+std::cout << "Total Price: " << total;  // Output: 149.97
+```
+
+---
+
+### Example 3: Simple Interest Formula
+
+```cpp filename="multiplication_practice3.cpp" copy {6}
+float principal = 1000.0;
+float rate = 5.0;
+float time = 2;
+float interest = (principal * rate * time) / 100;
+std::cout << "Interest: " << interest;  // Output: 100.0
+```
+
+---
+
+## Summary Table
+
+| Data Type Combination | Expression  | Result Example            |
+| --------------------- | ----------- | ------------------------- |
+| Integer \* Integer    | `7 * 4`     | `28`                      |
+| Float \* Float        | `2.5 * 4.0` | `10.0`                    |
+| Int \* Float          | `3 * 2.5`   | `7.5` (promoted to float) |
+| Double \* Int         | `3.14 * 2`  | `6.28`                    |
+| Char \* Int           | `'A' * 2`   | `130` (ASCII 65 \* 2)     |
+
+---
+
+## Notes
+
+- The multiplication operator has **higher precedence** than addition (`+`) and subtraction (`-`), but lower than parentheses.
+- When mixing data types, the result is promoted to the higher precision type.
+- Multiplying with zero results in zero.
+- Characters multiply based on their ASCII values and typically result in integer output.

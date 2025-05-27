@@ -1,0 +1,197 @@
+# The `double` Data Type in C++
+
+In C++, the `double` data type is used to store floating-point numbers with double precision. It is particularly suited for situations where greater accuracy is needed in numerical calculations compared to the `float` type.
+
+---
+
+## What is `double`?
+
+The keyword `double` stands for **"double-precision floating-point number"**. It allows storage of numbers with fractional parts and a higher level of precision. This is important in mathematical, scientific, and financial computations where accurate decimal values are critical.
+
+Compared to `float`, a `double`:
+
+- Consumes more memory (typically 8 bytes)
+- Offers higher precision (about 15 to 17 digits)
+- Handles a much larger range of values
+
+---
+
+## Declaring and Using `double`
+
+The syntax for declaring a `double` is straightforward. You simply use the `double` keyword followed by the variable name and an optional initial value.
+
+```cpp filename="double_declaration.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    double pi = 3.1415926535;
+    std::cout << "Value of pi: " << pi << std::endl;
+    return 0;
+}
+```
+
+In the example above:
+
+- The variable `pi` is declared as a `double` and initialized with a precise value of π.
+- `std::cout` displays the value, preserving more decimal places than a `float`.
+
+---
+
+## Precision and Use Case Comparison
+
+To understand the difference between `float` and `double`, consider the following:
+
+```cpp filename="float_vs_double.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    float f = 3.1415926535;
+    double d = 3.1415926535;
+
+    std::cout << "Float: " << f << std::endl;
+    std::cout << "Double: " << d << std::endl;
+    return 0;
+}
+```
+
+The `float` output will likely be truncated, while `double` will retain more digits. This demonstrates that `double` is preferable when precision matters, such as in:
+
+- Physics simulations
+- Financial transactions
+- Statistical computations
+
+---
+
+## Arithmetic with `double`
+
+`double` supports all basic arithmetic operations, including addition, subtraction, multiplication, and division.
+
+```cpp filename="double_arithmetic.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    double x = 10.75;
+    double y = 3.25;
+
+    std::cout << "Sum: " << (x + y) << std::endl;
+    std::cout << "Product: " << (x * y) << std::endl;
+
+    return 0;
+}
+```
+
+This produces accurate results with fractional values that would otherwise be rounded or imprecise with `float`.
+
+---
+
+## Mixing `int` and `double`
+
+When you mix `int` and `double` in an expression, C++ automatically promotes the `int` to a `double` to avoid losing precision.
+
+```cpp filename="mixed_types.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    int a = 7;
+    double b = 2.0;
+
+    double result = a / b;
+    std::cout << "Result: " << result << std::endl;
+
+    return 0;
+}
+```
+
+In this case, `7 / 2.0` evaluates to `3.5`, not `3`, because `b` is a `double`.
+
+---
+
+## Memory and Range
+
+The typical memory size and range of a `double` are:
+
+| Property        | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| Size            | 8 bytes (64 bits)                                      |
+| Precision       | Approximately 15–17 decimal digits                     |
+| Range           | ±1.7 × 10^308                                          |
+| Default literal | A literal like `2.5` is treated as `double` by default |
+
+For even higher precision, C++ provides `long double`, but `double` is sufficient for most high-accuracy tasks.
+
+---
+
+## Practice Problem 1: Area of a Circle
+
+Write a program that calculates the area of a circle using a `double` for both the radius and π.
+
+```cpp filename="area_circle.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    double radius = 4.2;
+    double area = 3.1415926535 * radius * radius;
+    std::cout << "Area: " << area << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 2: Compound Interest Calculator
+
+Create a program that calculates compound interest using the formula:
+**A = P × (1 + r)^t**,
+where:
+
+- `P` = principal amount
+- `r` = annual interest rate
+- `t` = time in years
+
+```cpp filename="compound_interest.cpp" copy {6, 7, 8}
+#include <iostream>
+#include <cmath>
+
+int main() {
+    double principal = 5000;
+    double rate = 0.06;
+    double time = 4;
+
+    double amount = principal * pow((1 + rate), time);
+    std::cout << "Final amount: " << amount << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 3: Temperature Conversion
+
+Convert a temperature from Celsius to Fahrenheit using the formula:
+**F = (C × 9 / 5) + 32**
+
+```cpp filename="temp_conversion.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    double celsius = 36.6;
+    double fahrenheit = (celsius * 9 / 5) + 32;
+    std::cout << "Fahrenheit: " << fahrenheit << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Feature         | Details                                      |
+| --------------- | -------------------------------------------- |
+| Type            | `double`                                     |
+| Used for        | Decimal values with high precision           |
+| Memory Size     | 8 bytes (64 bits)                            |
+| Precision       | \~15 to 17 decimal digits                    |
+| Default         | Floating-point literals default to `double`  |
+| Best suited for | Scientific, mathematical, and financial apps |
+
+The `double` data type is a powerful tool in C++ for ensuring accuracy in calculations that require more than basic floating-point arithmetic. By using `double`, developers can reduce rounding errors and ensure correctness in computation-heavy applications.

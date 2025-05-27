@@ -1,0 +1,211 @@
+# The `char` Data Type in C++
+
+In C++, the `char` data type is used to store **single characters**. It stands for _character_ and occupies **1 byte (8 bits)** of memory. The `char` type is fundamental for handling textual data, working with ASCII values, and processing user input one character at a time.
+
+---
+
+## What is `char`?
+
+A `char` stores a single character enclosed in **single quotes**. For example:
+
+```cpp filename="char_basic.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    char grade = 'A';
+    std::cout << "Grade: " << grade << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Character Literals
+
+Character literals must be enclosed in single quotes:
+
+- `'A'`, `'z'`, `'5'`, `'$'` are all valid
+- `"A"` (double quotes) is a string literal, not a character
+
+---
+
+## ASCII Values
+
+Each `char` in C++ is internally represented as an **ASCII value** (an integer). You can use a `char` like a number or convert between `char` and `int`.
+
+```cpp filename="char_ascii.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    char letter = 'B';
+    std::cout << "Character: " << letter << ", ASCII: " << int(letter) << std::endl;
+    return 0;
+}
+```
+
+Output:
+
+```
+Character: B, ASCII: 66
+```
+
+---
+
+## Declaring and Initializing `char`
+
+You can declare a `char` variable and optionally initialize it during declaration:
+
+```cpp filename="char_declaration.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    char symbol = '#';
+    std::cout << "Symbol: " << symbol << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Working with Characters
+
+Characters can be incremented, compared, and manipulated using arithmetic and relational operators. This is possible because characters are internally just integer values.
+
+```cpp filename="char_increment.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    char ch = 'a';
+    std::cout << "Original: " << ch << std::endl;
+    ch++;
+    std::cout << "After Increment: " << ch << std::endl;
+    return 0;
+}
+```
+
+Output:
+
+```
+Original: a
+After Increment: b
+```
+
+---
+
+## Character Input and Output
+
+You can use `std::cin` and `std::cout` to accept and display characters.
+
+```cpp filename="char_input.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    char initial;
+    std::cout << "Enter your initial: ";
+    std::cin >> initial;
+
+    std::cout << "You entered: " << initial << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Character Classification (Optional)
+
+You can use functions from `<cctype>` to test or transform characters:
+
+- `isalpha(ch)` – checks if alphabet
+- `isdigit(ch)` – checks if digit
+- `toupper(ch)` – converts to uppercase
+- `tolower(ch)` – converts to lowercase
+
+```cpp filename="char_classification.cpp" copy {6, 7, 8}
+#include <iostream>
+#include <cctype>
+
+int main() {
+    char input = 'g';
+
+    std::cout << "Uppercase: " << char(toupper(input)) << std::endl;
+    std::cout << "Is Digit? " << isdigit(input) << std::endl;
+
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 1: Character to ASCII
+
+Write a program that accepts a character and prints its ASCII code.
+
+```cpp filename="char_to_ascii.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    char c;
+    std::cout << "Enter a character: ";
+    std::cin >> c;
+
+    std::cout << "ASCII value: " << int(c) << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 2: Is Uppercase or Lowercase?
+
+Determine whether a given character is uppercase, lowercase, or neither.
+
+```cpp filename="char_case_check.cpp" copy {7, 8, 9}
+#include <iostream>
+
+int main() {
+    char ch;
+    std::cout << "Enter a character: ";
+    std::cin >> ch;
+
+    if (ch >= 'A' && ch <= 'Z')
+        std::cout << "Uppercase" << std::endl;
+    else if (ch >= 'a' && ch <= 'z')
+        std::cout << "Lowercase" << std::endl;
+    else
+        std::cout << "Not an alphabet" << std::endl;
+
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 3: Print A–Z Using Loop
+
+Print all uppercase letters from A to Z using a `for` loop.
+
+```cpp filename="print_alphabet.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    for (char c = 'A'; c <= 'Z'; c++) {
+        std::cout << c << " ";
+    }
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Feature          | Description                                 |
+| ---------------- | ------------------------------------------- |
+| Type             | `char`                                      |
+| Size             | 1 byte                                      |
+| Range            | -128 to 127 (signed) or 0 to 255 (unsigned) |
+| Used for         | Single character storage                    |
+| Operations       | Supports arithmetic & comparisons           |
+| Common use cases | Text input/output, ASCII processing         |
+
+The `char` data type plays a vital role in character-based operations and is the building block for more complex text structures like strings.

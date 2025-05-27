@@ -1,0 +1,209 @@
+# Greater Than or Equal To Operator (`>=`) in C++
+
+The **greater than or equal to** operator in C++ is used to **compare two values** and check if the value on the **left-hand side is greater than or equal to** the one on the right-hand side.
+
+It returns a Boolean result:
+
+- `true` if the left operand is greater than or equal to the right operand.
+- `false` otherwise.
+
+---
+
+## Syntax
+
+```cpp
+operand1 >= operand2
+```
+
+---
+
+## 1. Integer Comparison
+
+```cpp filename="gte_int.cpp" copy {3}
+int a = 10, b = 10;
+std::cout << (a >= b);  // Output: 1 (true)
+```
+
+```cpp filename="gte_int_false.cpp" copy {3}
+int a = 5, b = 10;
+std::cout << (a >= b);  // Output: 0 (false)
+```
+
+---
+
+## 2. Float and Double Comparison
+
+```cpp filename="gte_float.cpp" copy {3}
+float x = 7.5f, y = 6.0f;
+std::cout << (x >= y);  // Output: 1 (true)
+```
+
+```cpp filename="gte_double_equal.cpp" copy {3}
+double a = 3.14159, b = 3.14159;
+std::cout << (a >= b);  // Output: 1 (true)
+```
+
+---
+
+## 3. Character Comparison
+
+Characters are compared using their ASCII values.
+
+```cpp filename="gte_char.cpp" copy {3}
+char a = 'z', b = 'm';
+std::cout << (a >= b);  // Output: 1 (true)
+```
+
+```cpp filename="gte_char_equal.cpp" copy {3}
+char a = 'c', b = 'c';
+std::cout << (a >= b);  // Output: 1 (true)
+```
+
+---
+
+## 4. Boolean Comparison
+
+Boolean values are treated as integers: `false = 0`, `true = 1`.
+
+```cpp filename="gte_bool.cpp" copy {3}
+bool a = true;
+bool b = false;
+std::cout << (a >= b);  // Output: 1 (true)
+```
+
+```cpp filename="gte_bool_equal.cpp" copy {3}
+bool a = false, b = false;
+std::cout << (a >= b);  // Output: 1 (true)
+```
+
+---
+
+## 5. String Comparison (`std::string`)
+
+Lexicographical comparison is supported with `std::string`.
+
+```cpp filename="gte_string_true.cpp" copy {4}
+std::string name1 = "zebra";
+std::string name2 = "apple";
+std::cout << (name1 >= name2);  // Output: 1 (true)
+```
+
+```cpp filename="gte_string_equal.cpp" copy {4}
+std::string name1 = "code";
+std::string name2 = "code";
+std::cout << (name1 >= name2);  // Output: 1 (true)
+```
+
+---
+
+## 6. C-style Strings (`char[]`)
+
+Use `strcmp()` to compare C-style strings.
+
+```cpp filename="gte_cstring.cpp" copy {5}
+#include <cstring>
+char a[] = "delta";
+char b[] = "alpha";
+std::cout << (strcmp(a, b) >= 0);  // Output: 1 (true)
+```
+
+---
+
+## 7. Greater Than or Equal in `if` Statement
+
+```cpp filename="gte_if.cpp" copy {3, 4}
+int marks = 90;
+if (marks >= 50) {
+    std::cout << "Pass";
+}
+```
+
+---
+
+## 8. Greater Than or Equal in Loops
+
+```cpp filename="gte_loop.cpp" copy {3, 4}
+int i = 10;
+while (i >= 1) {
+    std::cout << i << " ";
+    i--;
+}
+```
+
+Output: `10 9 8 7 6 5 4 3 2 1`
+
+---
+
+## 9. Mixed Type Comparisons
+
+```cpp filename="gte_mixed.cpp" copy {3}
+int a = 5;
+float b = 5.0f;
+std::cout << (a >= b);  // Output: 1 (true)
+```
+
+```cpp filename="gte_mixed_false.cpp" copy {3}
+double a = 3.2;
+int b = 5;
+std::cout << (a >= b);  // Output: 0 (false)
+```
+
+---
+
+## 10. Practice Programs
+
+### Practice 1: Compare Student Marks
+
+```cpp filename="practice_gte_marks.cpp" copy {4, 5}
+int marks = 75;
+if (marks >= 60) {
+    std::cout << "First Class";
+}
+```
+
+---
+
+### Practice 2: Compare Characters
+
+```cpp filename="practice_gte_char.cpp" copy {4, 5}
+char grade1 = 'B';
+char grade2 = 'C';
+if (grade1 >= grade2) {
+    std::cout << "Grade1 is higher or equal.";
+}
+```
+
+---
+
+### Practice 3: String Rank Check
+
+```cpp filename="practice_gte_string.cpp" copy {4, 5}
+std::string word1 = "quiz";
+std::string word2 = "math";
+if (word1 >= word2) {
+    std::cout << word1 << " comes after or is same as " << word2;
+}
+```
+
+---
+
+## Summary Table
+
+| Data Type     | Example                        | Result  |
+| ------------- | ------------------------------ | ------- |
+| `int`         | `5 >= 3`                       | `true`  |
+| `float`       | `5.0f >= 5.0f`                 | `true`  |
+| `double`      | `2.5 >= 3.0`                   | `false` |
+| `char`        | `'z' >= 'a'`                   | `true`  |
+| `bool`        | `true >= false`                | `true`  |
+| `std::string` | `"zebra" >= "apple"`           | `true`  |
+| `char[]`      | `strcmp("beta", "alpha") >= 0` | `true`  |
+
+---
+
+## Notes and Best Practices
+
+- Always ensure that the types being compared are compatible.
+- For `std::string`, use the `>=` operator.
+- For C-style strings, always use `strcmp()` for accurate comparison.
+- In mixed-type expressions (e.g., `int` with `float`), C++ applies implicit type promotion.

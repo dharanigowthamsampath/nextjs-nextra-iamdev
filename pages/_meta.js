@@ -11,8 +11,13 @@ const meta = {
   datastructures: {
     title: "Data Structures",
     type: "page",
-    display: "hidden"
-  }
+    display: "hidden",
+  },
+  cpp: {
+    title: "C++",
+    type: "page",
+    display: "page",
+  },
 };
 
 export default meta;

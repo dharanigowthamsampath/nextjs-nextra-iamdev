@@ -1,0 +1,151 @@
+# Addition Operator in C++
+
+The **addition operator (`+`)** in C++ is one of the most commonly used arithmetic operators. It is used to calculate the sum of two or more values. The operands can be of various data types including integers, floating-point numbers, characters, and even strings (in specific cases).
+
+Understanding how addition behaves across different types of data is fundamental for building logic in C++ programs.
+
+---
+
+## Syntax
+
+```cpp
+result = operand1 + operand2;
+```
+
+- `operand1` and `operand2` can be constants, variables, or expressions.
+- `result` holds the value of the sum.
+
+---
+
+## 1. Integer Addition
+
+When both operands are integers, the result is also an integer.
+
+```cpp filename="addition_integer.cpp" copy {6}
+int a = 10, b = 5;
+int sum = a + b;
+std::cout << "Sum: " << sum;  // Output: 15
+```
+
+---
+
+## 2. Floating-Point Addition
+
+The `+` operator works seamlessly with `float` and `double` types and includes decimal precision in the result.
+
+```cpp filename="addition_float.cpp" copy {6}
+float x = 3.5, y = 2.5;
+float result = x + y;
+std::cout << "Sum: " << result;  // Output: 6.0
+```
+
+```cpp filename="addition_double.cpp" copy {6}
+double m = 10.1234, n = 20.5678;
+std::cout << "Sum: " << (m + n);  // Output: 30.6912
+```
+
+---
+
+## 3. Integer + Float / Double
+
+When an integer and a float or double are added, **type promotion** occurs. The integer is promoted to the higher type (float or double), and the result matches the higher precision.
+
+```cpp filename="addition_mixed.cpp" copy {6}
+int a = 5;
+float b = 2.5;
+std::cout << "Sum: " << (a + b);  // Output: 7.5
+```
+
+---
+
+## 4. Character Addition
+
+Characters are internally represented using their ASCII values. When you use the `+` operator on characters, their ASCII values are added.
+
+```cpp filename="addition_char.cpp" copy {6}
+char a = 'A'; // ASCII 65
+char b = 'B'; // ASCII 66
+int result = a + b;
+std::cout << "Result: " << result;  // Output: 131
+```
+
+> If you want to concatenate characters as a string instead of adding ASCII values, you should use strings.
+
+---
+
+## 5. String Addition (Concatenation)
+
+The `+` operator can be used to concatenate strings in C++ if you're working with `std::string`.
+
+```cpp filename="addition_string.cpp" copy {6}
+#include <string>
+std::string first = "Hello, ";
+std::string second = "world!";
+std::string result = first + second;
+std::cout << result;  // Output: Hello, world!
+```
+
+Note: `char` cannot be concatenated with `std::string` directly unless cast or converted appropriately.
+
+---
+
+## 6. Expression Addition
+
+The `+` operator can be used in complex expressions, and follows **left-to-right associativity** for evaluation.
+
+```cpp filename="addition_expression.cpp" copy {6}
+int result = 5 + 3 + 2 * 4;  // Evaluates as 5 + 3 + 8 => 16
+std::cout << "Result: " << result;
+```
+
+---
+
+## Practice Examples
+
+### Example 1: Sum of Three Integers
+
+```cpp filename="addition_practice1.cpp" copy {6}
+int a = 4, b = 7, c = 9;
+int sum = a + b + c;
+std::cout << "Total: " << sum;  // Output: 20
+```
+
+---
+
+### Example 2: Floating-Point Marks Total
+
+```cpp filename="addition_practice2.cpp" copy {6}
+float m1 = 85.5, m2 = 92.0, m3 = 78.5;
+float total = m1 + m2 + m3;
+std::cout << "Total Marks: " << total;  // Output: 256.0
+```
+
+---
+
+### Example 3: Concatenating Full Name
+
+```cpp filename="addition_practice3.cpp" copy {7}
+std::string first = "John", last = "Doe";
+std::cout << "Full Name: " << first + " " + last;  // Output: John Doe
+```
+
+---
+
+## Summary Table
+
+| Data Type         | Expression        | Result Example    |
+| ----------------- | ----------------- | ----------------- |
+| Integer + Integer | `10 + 5`          | `15`              |
+| Float + Float     | `2.5 + 3.5`       | `6.0`             |
+| Int + Float       | `5 + 2.5`         | `7.5`             |
+| Char + Char       | `'A' + 'B'`       | `131` (ASCII sum) |
+| String + String   | `"Hi" + " there"` | `"Hi there"`      |
+
+---
+
+## Important Notes
+
+- Mixed-type addition promotes to the higher type.
+- Adding characters results in an integer, not a string.
+- String addition is only valid with `std::string`, not C-style strings.
+- You can chain multiple additions: `a + b + c`.

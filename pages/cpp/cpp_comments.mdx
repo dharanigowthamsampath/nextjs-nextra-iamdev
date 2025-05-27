@@ -1,0 +1,77 @@
+# Comments in C++
+
+Comments are notes written in your code to explain what it does. They are **ignored by the compiler** and serve purely for human readers — including your future self.
+
+Writing clear comments helps make your code easier to understand, debug, and maintain. C++ supports two types of comments:
+
+- **Single-line comments**
+- **Multi-line comments**
+
+---
+
+## 🔹 Single-line Comments
+
+Single-line comments begin with `//`. Everything after `//` on that line is ignored by the compiler.
+
+```cpp filename="single_line.cpp" copy {3}
+#include <iostream>
+
+int main() {
+    // This is a single-line comment
+    std::cout << "Single-line comment example" << std::endl;
+    return 0;
+}
+```
+
+### ✅ When to Use:
+
+- To explain a single line of code
+- To temporarily disable a line of code during debugging
+
+---
+
+## 🔹 Multi-line Comments
+
+Multi-line comments start with `/*` and end with `*/`. They can span multiple lines and are useful for longer explanations.
+
+```cpp filename="multi_line.cpp" copy {4, 5, 6}
+#include <iostream>
+
+int main() {
+    /* This is a multi-line comment.
+       It spans across multiple lines.
+       Useful for detailed explanations. */
+    std::cout << "Multi-line comment example" << std::endl;
+    return 0;
+}
+```
+
+### ✅ When to Use:
+
+- To describe a section of code
+- For documentation-style comments at the top of files or functions
+
+---
+
+## ⚠️ Best Practices
+
+- **Avoid over-commenting** obvious code. For example:
+
+  ```cpp
+  int x = 5; // declare an integer and assign 5 ← ❌ too obvious
+  ```
+
+- **Write meaningful comments** that explain why something is done, not just what is being done.
+
+- **Keep comments up-to-date** as code changes.
+
+---
+
+## ✅ Summary
+
+| Type        | Syntax          | Use Case                                   |
+| ----------- | --------------- | ------------------------------------------ |
+| Single-line | `// comment`    | Quick, one-line explanations               |
+| Multi-line  | `/* comment */` | Longer notes or temporarily disabling code |
+
+Writing clean and helpful comments is a sign of professional programming. As your projects grow, good comments will save you and your teammates a lot of time and confusion.

@@ -1,0 +1,170 @@
+# Wide Characters in C++ (`wchar_t`)
+
+In C++, the `wchar_t` type is used to represent **wide characters**, which are characters that require **more than one byte** to store. This is especially useful when dealing with **internationalization** and **non-ASCII character sets** such as Chinese, Japanese, Arabic, or special symbols.
+
+---
+
+## What is `wchar_t`?
+
+- `wchar_t` stands for **wide character type**.
+- It is used to store **extended characters** that cannot be represented using standard 8-bit `char`.
+- The size of `wchar_t` is **implementation-defined**, but commonly:
+
+  - **2 bytes** on Windows (UTF-16)
+  - **4 bytes** on Linux/macOS (UTF-32)
+
+This allows it to hold characters from **Unicode**.
+
+---
+
+## Declaring a Wide Character
+
+You declare a `wchar_t` variable just like `char`, but prefix the character with **`L`**.
+
+```cpp filename="wchar_declare.cpp" copy {4, 5}
+#include <iostream>
+
+int main() {
+    wchar_t symbol = L'Ω'; // Greek Omega character
+    std::wcout << L"Symbol: " << symbol << std::endl;
+    return 0;
+}
+```
+
+> `std::wcout` is the wide character version of `std::cout`. It supports `wchar_t` output.
+
+---
+
+## Wide Character Literals and Strings
+
+- Single wide characters: use `L'c'`
+- Wide strings: use `L"string"`
+
+```cpp filename="wchar_string.cpp" copy {4, 5, 6}
+#include <iostream>
+
+int main() {
+    wchar_t letter = L'中'; // Chinese character
+    const wchar_t* word = L"你好"; // "Hello" in Chinese
+
+    std::wcout << L"Letter: " << letter << std::endl;
+    std::wcout << L"Word: " << word << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Printing Wide Characters
+
+To print wide characters, use:
+
+- `std::wcout` instead of `std::cout`
+- Include the header: `#include <locale>`
+
+And set the locale:
+
+```cpp filename="wchar_locale.cpp" copy {4, 6, 8}
+#include <iostream>
+#include <locale>
+
+int main() {
+    std::wcout.imbue(std::locale("")); // Use the system locale
+
+    std::wcout << L"Arabic: " << L"السّلام عليكم" << std::endl;
+    std::wcout << L"Japanese: " << L"こんにちは" << std::endl;
+
+    return 0;
+}
+```
+
+> Without setting the locale, some systems may not correctly display Unicode characters.
+
+---
+
+## Why Use `wchar_t`?
+
+| When to Use               | Why                                                              |
+| ------------------------- | ---------------------------------------------------------------- |
+| Multilingual applications | Supports characters beyond ASCII (e.g., Arabic, Hindi, Japanese) |
+| File system interactions  | Some OS-specific file APIs require `wchar_t`                     |
+| Legacy codebases          | Older Windows code often uses `wchar_t` and `std::wstring`       |
+
+---
+
+## Wide Character Strings (`std::wstring`)
+
+C++ provides `std::wstring` for wide-character strings, similar to `std::string`.
+
+```cpp filename="wstring_example.cpp" copy {4, 5, 6}
+#include <iostream>
+#include <string>
+
+int main() {
+    std::wstring greeting = L"नमस्ते"; // "Hello" in Hindi
+
+    std::wcout.imbue(std::locale(""));
+    std::wcout << L"Greeting: " << greeting << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 1: Print Your Name in Unicode
+
+Write a program to display your name in a language other than English using wide characters.
+
+```cpp filename="unicode_name.cpp" copy {5, 7}
+#include <iostream>
+#include <locale>
+
+int main() {
+    std::wstring name = L"राहुल"; // "Rahul" in Hindi
+    std::wcout.imbue(std::locale(""));
+    std::wcout << L"My name is: " << name << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 2: Print a Unicode Sentence
+
+Create a program to print a sentence in multiple languages using `std::wcout`.
+
+```cpp filename="multi_language.cpp" copy {6, 7, 8}
+#include <iostream>
+#include <locale>
+
+int main() {
+    std::wcout.imbue(std::locale(""));
+    std::wcout << L"Chinese: 你好" << std::endl;
+    std::wcout << L"Korean: 안녕하세요" << std::endl;
+    std::wcout << L"Russian: Привет" << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Feature            | Description                                        |
+| ------------------ | -------------------------------------------------- |
+| Type               | `wchar_t`                                          |
+| Size               | 2 or 4 bytes depending on platform                 |
+| Usage              | For storing international (Unicode) characters     |
+| Output stream      | `std::wcout`                                       |
+| String type        | `std::wstring`                                     |
+| Character literal  | Prefix with `L`, e.g., `L'A'`                      |
+| String literal     | Prefix with `L`, e.g., `L"Hello"`                  |
+| Locale requirement | Use `std::wcout.imbue(std::locale(""))` for output |
+
+---
+
+## Tips for Beginners
+
+- Always use `std::wcout` for wide characters; regular `std::cout` won’t work reliably.
+- Remember to **set the locale** to properly view Unicode characters in most terminals.
+- Don’t mix `char` and `wchar_t` unless you explicitly convert them.

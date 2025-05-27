@@ -1,0 +1,170 @@
+# The `void` Keyword in C++
+
+In C++, `void` is a **special data type** used primarily to indicate that a **function does not return a value**. It plays a critical role in defining function signatures and pointers. Though it is not a type used to declare regular variables, it is an important concept for structuring meaningful functions in your programs.
+
+---
+
+## Where is `void` used?
+
+The keyword `void` is used in **three primary ways**:
+
+1. To indicate a **function returns nothing**
+2. To declare a function that **takes no parameters**
+3. To declare **void pointers** (advanced topic)
+
+We’ll focus on the first two in beginner-level contexts.
+
+---
+
+## 1. Void as a Return Type
+
+When a function does **not return any value**, it must be declared with `void` as the return type.
+
+```cpp filename="void_function.cpp" copy {3, 4, 5}
+#include <iostream>
+
+void greet() {
+    std::cout << "Hello, welcome to C++!" << std::endl;
+}
+
+int main() {
+    greet(); // Calling the function
+    return 0;
+}
+```
+
+- `void greet()` means this function doesn't return anything.
+- It simply performs an action (printing) and exits.
+
+---
+
+## 2. Void in Parameter List
+
+When a function does **not take any arguments**, you can explicitly mention `void` in the parameter list:
+
+```cpp filename="void_no_param.cpp" copy {3, 4}
+#include <iostream>
+
+void showCredits(void) {
+    std::cout << "Created by: Your Name" << std::endl;
+}
+
+int main() {
+    showCredits();
+    return 0;
+}
+```
+
+> Note: Writing `void` inside the parentheses is optional in C++, but helps clarify the intent.
+
+---
+
+## 3. When Not to Use `void`
+
+You **cannot** use `void` to declare a regular variable:
+
+```cpp filename="void_invalid.cpp" copy {4}
+// ❌ This will cause an error
+void x;  // Error: ‘x’ declared as void
+```
+
+Only **functions** and **pointers** (more advanced) can use `void` meaningfully.
+
+---
+
+## Practical Example 1: Display Menu
+
+A `void` function is great for displaying menus or information that doesn’t require returning any data.
+
+```cpp filename="void_menu.cpp" copy {5, 6, 7}
+#include <iostream>
+
+void showMenu() {
+    std::cout << "1. Start Game\n";
+    std::cout << "2. Load Game\n";
+    std::cout << "3. Exit\n";
+}
+
+int main() {
+    showMenu();
+    return 0;
+}
+```
+
+---
+
+## Practical Example 2: Welcome Message
+
+Use a `void` function to reduce repetition in your code by reusing a print block.
+
+```cpp filename="void_welcome.cpp" copy {4, 5, 6}
+#include <iostream>
+
+void welcome() {
+    std::cout << "=====================" << std::endl;
+    std::cout << "   Welcome to C++    " << std::endl;
+    std::cout << "=====================" << std::endl;
+}
+
+int main() {
+    welcome();
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 1: Print Stars
+
+Write a `void` function to print a line of 10 asterisks (`*`).
+
+```cpp filename="print_stars.cpp" copy {4, 5}
+#include <iostream>
+
+void printStars() {
+    for (int i = 0; i < 10; i++) {
+        std::cout << "*";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    printStars();
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 2: Personalized Message
+
+Write a function `void greetUser(string name)` that prints `"Hello, <name>!"`.
+
+```cpp filename="greet_user.cpp" copy {4, 5, 6}
+#include <iostream>
+
+void greetUser(std::string name) {
+    std::cout << "Hello, " << name << "!" << std::endl;
+}
+
+int main() {
+    greetUser("Alice");
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Feature             | Description                                              |
+| ------------------- | -------------------------------------------------------- |
+| Keyword             | `void`                                                   |
+| Purpose             | To specify that a function **does not return** any value |
+| Usage in parameters | Optional `void` can be used to show no input             |
+| Cannot do           | You **cannot declare** variables of type `void`          |
+| Common use cases    | Displaying messages, performing tasks with no output     |
+
+---
+
+The `void` keyword may seem simple, but it is fundamental to writing structured and clean C++ code. It separates actions from calculations and improves code readability and reusability.

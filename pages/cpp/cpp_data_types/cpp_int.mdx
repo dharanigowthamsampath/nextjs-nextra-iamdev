@@ -1,0 +1,175 @@
+# The `int` Data Type in C++
+
+In C++, the `int` data type is used to store **whole numbers** (i.e., integers) without any fractional or decimal part. It is one of the most commonly used data types in programming for representing counts, indices, and simple arithmetic.
+
+---
+
+## What is `int`?
+
+The `int` keyword stands for **integer**. It is a signed data type by default, which means it can store both positive and negative whole numbers.
+
+---
+
+## Declaration and Initialization
+
+Declaring an `int` variable is straightforward. You use the `int` keyword followed by the variable name and optionally assign an initial value.
+
+```cpp filename="int_declaration.cpp" copy {3, 4}
+#include <iostream>
+
+int main() {
+    int age = 25;
+    std::cout << "Age: " << age << std::endl;
+    return 0;
+}
+```
+
+Here:
+
+- `int age = 25;` creates a variable named `age` and stores the integer value `25`.
+- `std::cout` outputs the value to the console.
+
+---
+
+## Valid Integer Values
+
+The `int` type stores whole numbers in the following range:
+
+| Property     | Value Range (Typically)         |
+| ------------ | ------------------------------- |
+| Size         | 4 bytes (32 bits)               |
+| Range        | -2,147,483,648 to 2,147,483,647 |
+| Default sign | Signed (can hold negatives)     |
+
+Note: The exact range may depend on the system and compiler.
+
+---
+
+## Arithmetic Operations
+
+Integers support all basic arithmetic operations: addition, subtraction, multiplication, division, and modulus (remainder).
+
+```cpp filename="int_arithmetic.cpp" copy {5, 6, 7}
+#include <iostream>
+
+int main() {
+    int a = 20;
+    int b = 7;
+
+    std::cout << "Sum: " << a + b << std::endl;
+    std::cout << "Quotient: " << a / b << std::endl;
+    std::cout << "Remainder: " << a % b << std::endl;
+
+    return 0;
+}
+```
+
+Output:
+
+```
+Sum: 27
+Quotient: 2
+Remainder: 6
+```
+
+Division between integers discards any fractional part.
+
+---
+
+## Integer Overflow
+
+Be cautious of exceeding the maximum or minimum limits of `int`, as this results in **integer overflow**, which causes unpredictable behavior.
+
+```cpp filename="int_overflow.cpp" copy {4, 5}
+#include <iostream>
+#include <climits>
+
+int main() {
+    int max = INT_MAX;
+    std::cout << "Max int: " << max << ", Overflow: " << (max + 1) << std::endl;
+    return 0;
+}
+```
+
+This may print a negative number due to overflow.
+
+---
+
+## Type Modifiers
+
+C++ allows the use of type modifiers with `int` to adjust its size and sign:
+
+| Modifier       | Description                      |
+| -------------- | -------------------------------- |
+| `short int`    | Usually 2 bytes                  |
+| `long int`     | Usually 8 bytes                  |
+| `unsigned int` | Only positive values             |
+| `signed int`   | Allows negative values (default) |
+
+---
+
+## Practice Problem 1: Sum of Two Numbers
+
+Write a program that takes two integers and prints their sum.
+
+```cpp filename="sum_two_ints.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    int x = 15, y = 35;
+    int sum = x + y;
+    std::cout << "Sum: " << sum << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 2: Even or Odd
+
+Determine whether a given number is even or odd using the modulus operator.
+
+```cpp filename="even_or_odd.cpp" copy {5, 6}
+#include <iostream>
+
+int main() {
+    int num = 42;
+    if (num % 2 == 0)
+        std::cout << "Even" << std::endl;
+    else
+        std::cout << "Odd" << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Practice Problem 3: Find the Largest of Three Numbers
+
+```cpp filename="largest_of_three.cpp" copy {7, 8}
+#include <iostream>
+
+int main() {
+    int a = 14, b = 27, c = 19;
+
+    int largest = (a > b) ? (a > c ? a : c) : (b > c ? b : c);
+    std::cout << "Largest number: " << largest << std::endl;
+
+    return 0;
+}
+```
+
+---
+
+## Summary
+
+| Feature        | Description                          |
+| -------------- | ------------------------------------ |
+| Type           | `int`                                |
+| Value type     | Whole numbers (positive or negative) |
+| Memory size    | 4 bytes (commonly)                   |
+| Precision      | Exact (no rounding or approximation) |
+| Operations     | +, -, \*, /, %                       |
+| Usage examples | Counting, indexing, flags, logic     |
+
+The `int` data type is fundamental in C++ and is often the default choice when working with numeric values that don't require fractions. Understanding how it works, its range, and operations is crucial for writing reliable and efficient code.
