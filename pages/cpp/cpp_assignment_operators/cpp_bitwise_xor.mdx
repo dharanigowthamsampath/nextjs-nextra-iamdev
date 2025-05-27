@@ -1,0 +1,236 @@
+# Understanding the `^=` (Bitwise XOR and Assign) Operator in C++
+
+In C++, the `^=` operator is a **compound bitwise assignment operator**. It performs a **bitwise XOR (exclusive OR)** operation between the left-hand and right-hand operands and assigns the result to the left-hand operand.
+
+It's a shorthand for writing: `a = a ^ b;`
+
+The XOR operation is often used in **bit manipulation**, **toggling bits**, **encryption algorithms**, and **swapping values**.
+
+---
+
+## Syntax
+
+```cpp
+a ^= b;  // Equivalent to: a = a ^ b;
+```
+
+---
+
+## How Bitwise XOR Works
+
+XOR compares each bit of the two numbers:
+
+- If the bits are the **same**, the result is `0`.
+- If the bits are **different**, the result is `1`.
+
+```
+Example:
+a = 6   →  0110
+b = 3   →  0011
+Result  →  0101 → 5
+```
+
+---
+
+## Example with Integers
+
+```cpp filename="bitwise_xor_integers.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = 6;
+    int b = 3;
+    a ^= b;
+    std::cout << "a = " << a << std::endl;  // Output: 5
+    return 0;
+}
+```
+
+### Explanation:
+
+- `0110 ^ 0011 = 0101` → `5`
+
+---
+
+## Example with Binary Display
+
+```cpp filename="bitwise_xor_binary.cpp" copy {8-9}
+#include <iostream>
+#include <bitset>
+int main() {
+    int a = 12;  // 1100
+    int b = 10;  // 1010
+    a ^= b;
+    std::cout << "Result = " << a << std::endl;
+    std::cout << "Binary = " << std::bitset<4>(a) << std::endl;  // Output: 0110
+    return 0;
+}
+```
+
+### Explanation:
+
+- `1100 ^ 1010 = 0110` → `6`
+
+---
+
+## Example with `char` Type
+
+```cpp filename="bitwise_xor_char.cpp" copy {5}
+#include <iostream>
+int main() {
+    char ch = 0xF;  // 00001111
+    ch ^= 0xA;      // 00001010
+    std::cout << "ch = " << (int)ch << std::endl;  // Output: 5
+    return 0;
+}
+```
+
+---
+
+## Example with Unsigned Integers
+
+```cpp filename="bitwise_xor_unsigned.cpp" copy {5}
+#include <iostream>
+int main() {
+    unsigned int x = 255;   // 11111111
+    unsigned int y = 15;    // 00001111
+    x ^= y;
+    std::cout << "x = " << x << std::endl;  // Output: 240
+    return 0;
+}
+```
+
+---
+
+## Example: Toggling Specific Bits
+
+```cpp filename="bitwise_xor_toggle.cpp" copy {8}
+#include <iostream>
+int main() {
+    int flags = 0b1010;     // 10 in decimal
+    int mask = 0b0110;      // Toggle bits 2 and 1
+    flags ^= mask;
+    std::cout << "flags = " << flags << std::endl;  // Output: 12 (1100)
+    return 0;
+}
+```
+
+### Explanation:
+
+- `1010 ^ 0110 = 1100` → 12
+
+---
+
+## Example: Swapping Two Numbers Using XOR
+
+```cpp filename="bitwise_xor_swap.cpp" copy {6-8}
+#include <iostream>
+int main() {
+    int a = 5, b = 9;
+    a ^= b;
+    b ^= a;
+    a ^= b;
+    std::cout << "a = " << a << ", b = " << b << std::endl;  // Output: a = 9, b = 5
+    return 0;
+}
+```
+
+### Explanation:
+
+- XOR-based swap without temporary variable.
+- Common interview trick.
+
+---
+
+## Example with Arrays (Element-wise)
+
+```cpp filename="bitwise_xor_arrays.cpp" copy {8-10}
+#include <iostream>
+int main() {
+    int a[3] = {7, 12, 5};
+    int b[3] = {3, 10, 6};
+    for (int i = 0; i < 3; i++) {
+        a[i] ^= b[i];
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    return 0;
+}
+```
+
+---
+
+## Example with Pointers
+
+```cpp filename="bitwise_xor_pointer.cpp" copy {7}
+#include <iostream>
+int main() {
+    int x = 14;  // 1110
+    int* ptr = &x;
+    *ptr ^= 5;   // 0101
+    std::cout << "x = " << x << std::endl;  // Output: 11
+    return 0;
+}
+```
+
+---
+
+## Example with Custom Class (Operator Overloading)
+
+```cpp filename="custom_operator_xor.cpp" copy {7-11}
+#include <iostream>
+class Toggle {
+    int state;
+public:
+    Toggle(int s) : state(s) {}
+    Toggle& operator^=(int mask) {
+        state ^= mask;
+        return *this;
+    }
+    void show() {
+        std::cout << "State = " << state << std::endl;
+    }
+};
+
+int main() {
+    Toggle t(9);  // 1001
+    t ^= 5;       // 0101
+    t.show();     // Output: 12
+    return 0;
+}
+```
+
+---
+
+## Not Applicable For
+
+- `float`, `double` – Not allowed
+- `std::string` – Not allowed
+
+```cpp filename="bitwise_xor_invalid.cpp" copy {4}
+// float x = 1.5f;
+// x ^= 1;  // ❌ Error: invalid operands
+```
+
+---
+
+## Summary Table
+
+| Data Type         | Supported | Example            | Notes                                          |
+| ----------------- | --------- | ------------------ | ---------------------------------------------- |
+| `int`             | Yes       | `a ^= b`           | Works for all integer types                    |
+| `char`            | Yes       | `ch ^= mask`       | Useful for bit masking or toggling             |
+| `unsigned int`    | Yes       | `x ^= y`           | Common for flags and masks                     |
+| `float`, `double` | No        | `f ^= g`           | ❌ Not allowed                                 |
+| `std::string`     | No        | `s1 ^= s2`         | ❌ Not allowed                                 |
+| Arrays            | Indirect  | Loop over elements | Use loop for element-wise XOR                  |
+| Pointers          | Indirect  | `*ptr ^= mask`     | Works on dereferenced pointer values           |
+| Custom Class      | Yes       | Overload `^=`      | Define your own logic via operator overloading |
+
+---
+
+## Conclusion
+
+The `^=` operator is a powerful tool in bitwise programming. It's often used for **toggling bits**, **swapping values**, and **lightweight state manipulation**. As with other bitwise operators, it is only applicable to **integer types**.
+
+Learning how and when to use the `^=` operator can make your C++ code more efficient, especially in performance-critical applications.

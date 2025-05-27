@@ -1,0 +1,149 @@
+# Basic Assignment Operator (`=`) in C++
+
+The **assignment operator (`=`)** in C++ is one of the most fundamental operators. It is used to assign the **value of the right-hand side expression to the left-hand side variable**.
+
+---
+
+## Purpose
+
+- **Stores a value** in a variable.
+- Can be used with **literals, variables, or expressions**.
+- Enables **initialization** and **value updates** throughout the program.
+
+---
+
+## Syntax
+
+```cpp
+variable = value;
+```
+
+- `variable`: A declared identifier (must be declared before assignment).
+- `value`: A literal, expression, or another variable.
+
+---
+
+## Example 1: Basic Integer Assignment
+
+```cpp filename="assignment_int.cpp" copy {2}
+int a;
+a = 5;
+std::cout << a;  // Output: 5
+```
+
+**Explanation:**
+
+- Variable `a` is assigned the value `5` using `=`.
+- That value is stored and printed.
+
+---
+
+## Example 2: Initialization at Declaration
+
+```cpp filename="assignment_declaration.cpp" copy {1}
+int age = 21;
+```
+
+**Explanation:**
+
+- This is known as **inline initialization**—declaring and assigning in a single step.
+
+---
+
+## Example 3: Using Expressions
+
+```cpp filename="assignment_expression.cpp" copy {3}
+int x = 10;
+int y = 5;
+int result = x + y;  // result = 15
+```
+
+**Explanation:**
+
+- The result of `x + y` is evaluated to `15` and assigned to `result`.
+
+---
+
+## Example 4: Assignment with Different Data Types
+
+### Float Assignment
+
+```cpp filename="assignment_float.cpp" copy {2}
+float pi = 3.14f;
+```
+
+### Character Assignment
+
+```cpp filename="assignment_char.cpp" copy {2}
+char letter = 'C';
+```
+
+### Boolean Assignment
+
+```cpp filename="assignment_bool.cpp" copy {2}
+bool isOnline = true;
+```
+
+---
+
+## Example 5: Updating a Variable
+
+```cpp filename="assignment_update.cpp" copy {2, 3}
+int count = 1;
+count = count + 1;
+std::cout << count;  // Output: 2
+```
+
+**Explanation:**
+
+- `count + 1` is evaluated first → 2 is assigned to `count`.
+
+---
+
+## Example 6: Chain Assignment
+
+```cpp filename="assignment_chain.cpp" copy {2}
+int x, y, z;
+x = y = z = 100;
+```
+
+**Explanation:**
+
+- Values are assigned **right-to-left**.
+- First, `z = 100`, then `y = z`, and finally `x = y`.
+
+---
+
+## Important Notes
+
+- The assignment operator `=` is **not a comparison**.
+
+  - `x = 5` assigns.
+  - `x == 5` checks equality.
+
+---
+
+## Practice Exercises
+
+1. Declare a variable `radius` and assign it `7.5`.
+2. Assign a character `'A'` to a variable and print it.
+3. Assign the sum of two integers into a third variable.
+4. Use chain assignment to assign `50` to `a`, `b`, and `c`.
+
+---
+
+## Common Mistakes
+
+| Mistake         | Explanation                                  |
+| --------------- | -------------------------------------------- |
+| `int x; x + 5;` | The result is unused; assignment is missing. |
+| `x == 10;`      | This checks equality instead of assigning.   |
+
+---
+
+## Summary
+
+- The `=` operator assigns the right-hand value to the left-hand variable.
+- Supports all primitive types (`int`, `float`, `char`, `bool`, etc.).
+- Enables chaining and inline initialization.
+- Critical for program logic, variable updates, and calculations.

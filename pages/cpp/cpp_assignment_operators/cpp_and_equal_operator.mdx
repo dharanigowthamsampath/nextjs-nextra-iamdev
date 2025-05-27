@@ -1,0 +1,233 @@
+# `&=` (Bitwise AND and Assign) Operator in C++
+
+In C++, the `&=` operator is a **compound bitwise assignment operator**. It performs a **bitwise AND** operation between two operands and assigns the result to the left-hand operand.
+
+It is a shorthand for writing: `a = a & b;`
+
+This operator is primarily used with **integer types** and **bit flags**. It is useful when working with binary data, permissions, masks, or low-level operations.
+
+---
+
+## Syntax
+
+```cpp
+a &= b;  // Equivalent to: a = a & b;
+```
+
+This applies a bitwise AND operation and stores the result in `a`.
+
+---
+
+## How Bitwise AND Works
+
+Bitwise AND compares each bit of the two numbers. The result bit is `1` if **both** bits are `1`, otherwise it is `0`.
+
+```
+Example:
+a = 6   →  0110 (in binary)
+b = 3   →  0011 (in binary)
+Result  →  0010 (which is 2 in decimal)
+```
+
+---
+
+## Example with Integers
+
+```cpp filename="bitwise_and_integers.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = 6;
+    int b = 3;
+    a &= b;
+    std::cout << "a = " << a << std::endl;  // Output: 2
+    return 0;
+}
+```
+
+### Explanation:
+
+- `6` in binary: `0110`
+- `3` in binary: `0011`
+- Bitwise AND: `0010` → `2`
+
+---
+
+## Example with Binary Display
+
+```cpp filename="bitwise_and_binary.cpp" copy {8-9}
+#include <iostream>
+#include <bitset>
+int main() {
+    int a = 12;  // 1100
+    int b = 10;  // 1010
+    a &= b;
+    std::cout << "Result = " << a << std::endl;
+    std::cout << "Binary = " << std::bitset<4>(a) << std::endl;  // Output: 1000
+    return 0;
+}
+```
+
+### Explanation:
+
+- `1100 & 1010 = 1000` (8 in decimal)
+- We use `std::bitset` to print the binary representation.
+
+---
+
+## Example with `char` Type
+
+```cpp filename="bitwise_and_char.cpp" copy {5}
+#include <iostream>
+int main() {
+    char ch = 0xF;  // 00001111
+    ch &= 0xA;      // 00001010
+    std::cout << "ch = " << (int)ch << std::endl;  // Output: 10
+    return 0;
+}
+```
+
+### Explanation:
+
+- `00001111 & 00001010 = 00001010` → `10`
+
+---
+
+## Example with Unsigned Integers
+
+```cpp filename="bitwise_and_unsigned.cpp" copy {5}
+#include <iostream>
+int main() {
+    unsigned int x = 255;   // 11111111
+    unsigned int y = 15;    // 00001111
+    x &= y;
+    std::cout << "x = " << x << std::endl;  // Output: 15
+    return 0;
+}
+```
+
+### Explanation:
+
+- Keeps only the lowest 4 bits.
+
+---
+
+## Example with Bit Masking (Flags)
+
+```cpp filename="bitwise_and_flags.cpp" copy {9}
+#include <iostream>
+#define READ  0x01  // 0001
+#define WRITE 0x02  // 0010
+#define EXEC  0x04  // 0100
+
+int main() {
+    int permissions = READ | WRITE;  // 0011
+    permissions &= WRITE;
+    std::cout << "WRITE allowed? " << (permissions ? "Yes" : "No") << std::endl;  // Output: Yes
+    return 0;
+}
+```
+
+### Explanation:
+
+- Checks if `WRITE` permission is set using bitwise AND.
+
+---
+
+## Example with Arrays (Element-wise)
+
+```cpp filename="bitwise_and_arrays.cpp" copy {8-10}
+#include <iostream>
+int main() {
+    int a[3] = {7, 12, 5};
+    int b[3] = {3, 10, 6};
+    for (int i = 0; i < 3; i++) {
+        a[i] &= b[i];
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    return 0;
+}
+```
+
+### Explanation:
+
+- Each element in `a` is updated with the bitwise AND of the corresponding element in `b`.
+
+---
+
+## Example with Pointers
+
+```cpp filename="bitwise_and_pointer.cpp" copy {7}
+#include <iostream>
+int main() {
+    int x = 14;  // 1110
+    int* ptr = &x;
+    *ptr &= 9;   // 1001
+    std::cout << "x = " << x << std::endl;  // Output: 8
+    return 0;
+}
+```
+
+---
+
+## Example with Custom Types (Operator Overloading)
+
+```cpp filename="custom_operator_and.cpp" copy {7-11}
+#include <iostream>
+class Flag {
+    int bits;
+public:
+    Flag(int b) : bits(b) {}
+    Flag& operator&=(int mask) {
+        bits &= mask;
+        return *this;
+    }
+    void show() {
+        std::cout << "Bits = " << bits << std::endl;
+    }
+};
+
+int main() {
+    Flag f(7);  // 0111
+    f &= 5;     // 0101
+    f.show();   // Output: Bits = 5
+    return 0;
+}
+```
+
+---
+
+## Not Applicable for These Types
+
+- `std::string` – Not supported
+- `float`, `double` – Not supported
+- `bool` – Valid but not meaningful beyond 0 or 1
+
+```cpp filename="bitwise_and_string_error.cpp" copy {5}
+// std::string s1 = "A", s2 = "B";
+// s1 &= s2;  // ❌ Error: invalid operands
+```
+
+---
+
+## Summary Table
+
+| Data Type         | Supported | Example            | Notes                                        |
+| ----------------- | --------- | ------------------ | -------------------------------------------- |
+| `int`             | Yes       | `a &= b`           | Common and widely supported                  |
+| `char`            | Yes       | `ch &= mask`       | Useful for low-level bit operations          |
+| `unsigned int`    | Yes       | `x &= y`           | Used for masking                             |
+| `float`, `double` | No        | `f &= g`           | ❌ Not supported                             |
+| `std::string`     | No        | `s1 &= s2`         | ❌ Not supported                             |
+| Arrays            | Indirect  | Loop over elements | Use loop for element-wise operation          |
+| Pointers          | Indirect  | `*ptr &= mask`     | Apply to pointed value                       |
+| Custom Class      | Yes       | Overload `&=`      | Can define behavior via operator overloading |
+
+---
+
+## Conclusion
+
+The `&=` operator is a powerful tool when working with bits and binary data in C++. It is essential in scenarios like permissions, flags, hardware interfacing, and performance-critical applications.
+
+For beginners, understanding how the operator works with binary numbers will deepen your grasp of low-level data manipulation in C++. Avoid using it with non-integer types and always validate logic when using masks or flags.

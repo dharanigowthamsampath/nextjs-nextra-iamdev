@@ -1,0 +1,243 @@
+# `%=` Assignment Operator in C++
+
+In C++, the `%=` operator is a **compound assignment operator** that **calculates the remainder of the division of the left-hand operand by the right-hand operand and assigns the result back to the left-hand operand**.
+
+It simplifies expressions like `a = a % b;` into `a %= b;`, improving code readability. The `%` operator (modulus) only works with **integers and compatible types**, so it's not valid for floating-point or string types.
+
+---
+
+## Syntax
+
+```cpp
+a %= b;  // Equivalent to: a = a % b;
+```
+
+This performs the modulus operation and stores the result in `a`.
+
+---
+
+## Example with Integers
+
+```cpp filename="modulus_integers.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = 10;
+    int b = 3;
+    a %= b;
+    std::cout << "a = " << a << std::endl;  // Output: 1
+    return 0;
+}
+```
+
+### Explanation:
+
+- `10 % 3 = 1` (remainder of division)
+- The value `1` is stored in `a`.
+
+---
+
+## Example with Negative Numbers
+
+```cpp filename="modulus_negative.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = -13;
+    int b = 5;
+    a %= b;
+    std::cout << "a = " << a << std::endl;  // Output: -3
+    return 0;
+}
+```
+
+### Explanation:
+
+- The result of `%` with negative operands depends on the implementation.
+- In most compilers, `-13 % 5 = -3`.
+
+---
+
+## Example with `char` Type
+
+```cpp filename="modulus_char.cpp" copy {5}
+#include <iostream>
+int main() {
+    char ch = 66;  // ASCII 'B'
+    ch %= 10;
+    std::cout << "ch = " << (int)ch << std::endl;  // Output: 6
+    return 0;
+}
+```
+
+### Explanation:
+
+- `char` is treated as an integer.
+- `66 % 10 = 6`
+
+---
+
+## Example with Unsigned Integers
+
+```cpp filename="modulus_unsigned.cpp" copy {5}
+#include <iostream>
+int main() {
+    unsigned int x = 17;
+    unsigned int y = 6;
+    x %= y;
+    std::cout << "x = " << x << std::endl;  // Output: 5
+    return 0;
+}
+```
+
+### Explanation:
+
+- Modulus with `unsigned int` behaves like with `int`.
+- `17 % 6 = 5`
+
+---
+
+## Example with Floating-Point Numbers
+
+```cpp filename="modulus_floats_error.cpp" copy {6}
+// float a = 10.5f;
+// float b = 2.5f;
+// a %= b;  // ❌ Error: invalid operands to binary expression
+```
+
+### Explanation:
+
+- The `%` and `%=` operators **do not work with `float` or `double`**.
+- Use `fmod()` from `<cmath>` if you need floating-point remainders:
+
+```cpp filename="modulus_floats_workaround.cpp" copy {6}
+#include <iostream>
+#include <cmath>
+int main() {
+    double a = 10.5;
+    double b = 2.5;
+    a = std::fmod(a, b);
+    std::cout << "a = " << a << std::endl;  // Output: 0.5
+    return 0;
+}
+```
+
+---
+
+## Example with Arrays
+
+Arrays do **not support** `%=` directly.
+
+```cpp filename="modulus_arrays_invalid.cpp" copy {4}
+int a[3] = {9, 12, 15};
+int b[3] = {2, 5, 4};
+// a %= b;  // ❌ Error: invalid operands
+```
+
+### Correct Way: Element-wise modulus
+
+```cpp filename="modulus_arrays_loop.cpp" copy {7-9}
+#include <iostream>
+int main() {
+    int a[3] = {9, 12, 15};
+    int b[3] = {2, 5, 4};
+    for (int i = 0; i < 3; i++) {
+        a[i] %= b[i];
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    return 0;
+}
+```
+
+---
+
+## Example with Pointers
+
+`%=` cannot be used on pointers, but it can be used on values pointed to.
+
+```cpp filename="modulus_pointer_value.cpp" copy {7}
+#include <iostream>
+int main() {
+    int x = 29;
+    int* ptr = &x;
+    *ptr %= 4;
+    std::cout << "x = " << x << std::endl;  // Output: 1
+    return 0;
+}
+```
+
+---
+
+## Example with Custom Types
+
+You can overload the `%=` operator in your own class:
+
+```cpp filename="custom_operator_modulus.cpp" copy {7-11}
+#include <iostream>
+class Counter {
+    int count;
+public:
+    Counter(int c) : count(c) {}
+    Counter& operator%=(int val) {
+        count %= val;
+        return *this;
+    }
+    void show() {
+        std::cout << "Count = " << count << std::endl;
+    }
+};
+
+int main() {
+    Counter c(27);
+    c %= 6;
+    c.show();  // Output: Count = 3
+    return 0;
+}
+```
+
+---
+
+## Division by Zero (Modulus)
+
+Just like division, modulus by zero is **undefined behavior**.
+
+```cpp filename="modulus_by_zero.cpp" copy {6}
+// int a = 5;
+// int b = 0;
+// a %= b;  // ❌ Runtime error: division by zero
+```
+
+### Solution:
+
+Check the denominator before using `%=`:
+
+```cpp filename="safe_modulus.cpp" copy {6-8}
+if (b != 0) {
+    a %= b;
+} else {
+    std::cout << "Cannot perform modulus by zero!" << std::endl;
+}
+```
+
+---
+
+## Summary Table
+
+| Data Type        | Supported | Example               | Notes                               |
+| ---------------- | --------- | --------------------- | ----------------------------------- |
+| `int`            | Yes       | `a %= b`              | Truncates to remainder              |
+| `char`           | Yes       | `ch %= 10`            | Treated as small integer            |
+| `unsigned int`   | Yes       | `x %= y`              | Valid; behaves as expected          |
+| `float`/`double` | No        | `f %= x`              | Not supported; use `fmod()` instead |
+| `std::string`    | No        | `s %= x`              | Not supported                       |
+| Arrays           | No        | `arr1 %= arr2`        | Use loop for element-wise operation |
+| Pointers         | Indirect  | `*ptr %= val`         | Works on dereferenced pointer       |
+| Custom Class     | Yes       | Overload `operator%=` | Define your own behavior            |
+
+---
+
+## Conclusion
+
+The `%=` operator is useful when you need to calculate remainders efficiently. While it's commonly used with integer values, it’s important to remember it doesn’t work with floating-point or string types. Also, always guard against modulus by zero, which results in undefined behavior.
+
+Understanding and using `%=` correctly will help you write more expressive and efficient C++ programs.

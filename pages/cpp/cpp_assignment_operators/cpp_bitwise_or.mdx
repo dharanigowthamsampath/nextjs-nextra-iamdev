@@ -1,0 +1,213 @@
+# Understanding the `|=` (Bitwise OR and Assign) Operator in C++
+
+In C++, the `|=` operator is a **compound bitwise assignment operator**. It performs a **bitwise OR** operation between the two operands and assigns the result to the left-hand operand.
+
+This is shorthand for writing:
+
+```cpp
+a = a | b;
+```
+
+The `|=` operator is commonly used in **bit flags**, **permissions**, and **low-level hardware manipulations** where individual bits represent different settings.
+
+---
+
+## Syntax
+
+```cpp
+a |= b;  // Equivalent to: a = a | b;
+```
+
+---
+
+## How Bitwise OR Works
+
+Bitwise OR compares each bit of the two numbers:
+
+- If **either** of the bits is `1`, the result is `1`.
+- If **both** are `0`, the result is `0`.
+
+```
+Example:
+a = 6   →  0110
+b = 3   →  0011
+Result  →  0111 → 7
+```
+
+---
+
+## Example with Integers
+
+```cpp filename="bitwise_or_integers.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = 6;
+    int b = 3;
+    a |= b;
+    std::cout << "a = " << a << std::endl;  // Output: 7
+    return 0;
+}
+```
+
+### Explanation:
+
+- `6` in binary: `0110`
+- `3` in binary: `0011`
+- `0110 | 0011 = 0111` → `7`
+
+---
+
+## Example with Binary Display
+
+```cpp filename="bitwise_or_binary.cpp" copy {8-9}
+#include <iostream>
+#include <bitset>
+int main() {
+    int a = 12;  // 1100
+    int b = 10;  // 1010
+    a |= b;
+    std::cout << "Result = " << a << std::endl;
+    std::cout << "Binary = " << std::bitset<4>(a) << std::endl;  // Output: 1110
+    return 0;
+}
+```
+
+---
+
+## Example with `char` Type
+
+```cpp filename="bitwise_or_char.cpp" copy {5}
+#include <iostream>
+int main() {
+    char ch = 0x0F;  // 00001111
+    ch |= 0xA0;      // 10100000
+    std::cout << "ch = " << (int)ch << std::endl;  // Output: 175
+    return 0;
+}
+```
+
+---
+
+## Example with Unsigned Integers
+
+```cpp filename="bitwise_or_unsigned.cpp" copy {5}
+#include <iostream>
+int main() {
+    unsigned int x = 240;   // 11110000
+    unsigned int y = 15;    // 00001111
+    x |= y;
+    std::cout << "x = " << x << std::endl;  // Output: 255
+    return 0;
+}
+```
+
+---
+
+## Example: Setting Specific Bits
+
+```cpp filename="bitwise_or_set_bits.cpp" copy {8}
+#include <iostream>
+int main() {
+    int flags = 0b1000;     // Only bit 3 set
+    int mask = 0b0101;      // Set bit 2 and 0
+    flags |= mask;
+    std::cout << "flags = " << flags << std::endl;  // Output: 13 (1101)
+    return 0;
+}
+```
+
+---
+
+## Example with Arrays (Element-wise)
+
+```cpp filename="bitwise_or_arrays.cpp" copy {8-10}
+#include <iostream>
+int main() {
+    int a[3] = {2, 4, 6};
+    int b[3] = {1, 8, 3};
+    for (int i = 0; i < 3; i++) {
+        a[i] |= b[i];
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    return 0;
+}
+```
+
+---
+
+## Example with Pointers
+
+```cpp filename="bitwise_or_pointer.cpp" copy {7}
+#include <iostream>
+int main() {
+    int x = 10;  // 1010
+    int* ptr = &x;
+    *ptr |= 4;   // 0100
+    std::cout << "x = " << x << std::endl;  // Output: 14
+    return 0;
+}
+```
+
+---
+
+## Example with Custom Class (Operator Overloading)
+
+```cpp filename="custom_operator_or.cpp" copy {7-11}
+#include <iostream>
+class Flags {
+    int value;
+public:
+    Flags(int v) : value(v) {}
+    Flags& operator|=(int mask) {
+        value |= mask;
+        return *this;
+    }
+    void show() {
+        std::cout << "Value = " << value << std::endl;
+    }
+};
+
+int main() {
+    Flags f(4);  // 0100
+    f |= 3;      // 0011
+    f.show();    // Output: 7
+    return 0;
+}
+```
+
+---
+
+## Not Applicable For
+
+- `float`, `double` – Not supported
+- `std::string` – Not supported
+
+```cpp filename="bitwise_or_invalid.cpp" copy {4}
+// std::string s1 = "A", s2 = "B";
+// s1 |= s2;  // ❌ Error: invalid operands to binary expression
+```
+
+---
+
+## Summary Table
+
+| Data Type         | Supported | Example            | Notes                             |                                           |
+| ----------------- | --------- | ------------------ | --------------------------------- | ----------------------------------------- |
+| `int`             | Yes       | \`a                | = b\`                             | Widely used with flags                    |
+| `char`            | Yes       | \`ch               | = mask\`                          | Useful in low-level char-based settings   |
+| `unsigned int`    | Yes       | \`x                | = y\`                             | Common in hardware and masking            |
+| `float`, `double` | No        | \`f                | = g\`                             | ❌ Not allowed                            |
+| `std::string`     | No        | \`s1               | = s2\`                            | ❌ Not allowed                            |
+| Arrays            | Indirect  | Loop over elements | Requires element-wise application |                                           |
+| Pointers          | Indirect  | \`\*ptr            | = value\`                         | Works on dereferenced value               |
+| Custom Class      | Yes       | Overload \`        | =\`                               | Can define your own logic via overloading |
+
+---
+
+## Conclusion
+
+The `|=` operator is essential when dealing with **bitmasking**, **flag settings**, and **low-level systems programming**. It allows you to **set specific bits** without changing the others, making it highly valuable in scenarios involving hardware control, permissions, and settings toggles.
+
+Understanding and practicing `|=` with various types will strengthen your ability to write efficient and low-level C++ code.

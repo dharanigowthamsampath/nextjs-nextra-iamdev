@@ -1,0 +1,217 @@
+# `*=` Assignment Operator in C++
+
+In C++, the `*=` operator is a **compound assignment operator** that **multiplies the left-hand operand by the right-hand operand and assigns the result back to the left-hand operand**.
+
+It simplifies code by combining multiplication and assignment in a single expression. This operator works with many built-in types and can also be overloaded for custom types. In this documentation, we will explain the `*=` operator in detail, demonstrate its usage with different data types, and clarify what is and isn’t supported.
+
+---
+
+## Syntax
+
+```cpp
+a *= b;  // Equivalent to: a = a * b;
+```
+
+This performs multiplication and stores the result back in `a`.
+
+---
+
+## Example with Integers
+
+```cpp filename="multiply_integers.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = 4;
+    int b = 3;
+    a *= b;  // a = a * b
+    std::cout << "a = " << a << std::endl;  // Output: 12
+    return 0;
+}
+```
+
+### Explanation:
+
+- `a = 4`, `b = 3`
+- `a *= b` → `a = 4 * 3` → `a = 12`
+
+---
+
+## Example with Floating-Point Numbers
+
+```cpp filename="multiply_floats.cpp" copy {5}
+#include <iostream>
+int main() {
+    float x = 2.5f;
+    float y = 4.0f;
+    x *= y;
+    std::cout << "x = " << x << std::endl;  // Output: 10
+    return 0;
+}
+```
+
+### Explanation:
+
+- Multiplies `2.5 * 4.0` and stores the result `10.0` in `x`.
+
+---
+
+## Example with Double Precision Numbers
+
+```cpp filename="multiply_doubles.cpp" copy {5}
+#include <iostream>
+int main() {
+    double base = 3.3;
+    double multiplier = 2.0;
+    base *= multiplier;
+    std::cout << "Result = " << base << std::endl;  // Output: 6.6
+    return 0;
+}
+```
+
+### Explanation:
+
+- Performs `3.3 * 2.0` and assigns the result `6.6` to `base`.
+
+---
+
+## Example with Characters
+
+```cpp filename="multiply_characters.cpp" copy {5}
+#include <iostream>
+int main() {
+    char ch = 2;
+    ch *= 5;
+    std::cout << "ch = " << (int)ch << std::endl;  // Output: 10
+    return 0;
+}
+```
+
+### Explanation:
+
+- This works because `char` is internally treated as an integer (ASCII value).
+- `2 * 5 = 10`, and `ch` becomes ASCII 10.
+
+Note: Use explicit casting (`(int)ch`) to print numeric values, since control characters may not display properly.
+
+---
+
+## Example with Strings
+
+C++ **does not** support `*=` for strings using `std::string`.
+
+```cpp filename="multiply_strings_error.cpp" copy {6}
+// std::string s = "Hello";
+// s *= 3;  // ❌ Error: invalid operands
+```
+
+### Explanation:
+
+- Multiplying strings like in Python (`"abc" * 3`) is not valid in C++.
+- Use loops or custom functions to repeat strings.
+
+---
+
+## Example with Arrays
+
+You **cannot** use `*=` directly on arrays.
+
+```cpp filename="multiply_arrays_invalid.cpp" copy {4}
+int a[3] = {1, 2, 3};
+int b[3] = {4, 5, 6};
+// a *= b;  // ❌ Error: invalid operands
+```
+
+### Correct Way: Element-wise multiplication using loops
+
+```cpp filename="multiply_arrays_loop.cpp" copy {7-9}
+#include <iostream>
+int main() {
+    int a[3] = {1, 2, 3};
+    int b[3] = {4, 5, 6};
+    for (int i = 0; i < 3; i++) {
+        a[i] *= b[i];
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    return 0;
+}
+```
+
+---
+
+## Example with Pointers
+
+`*=` is **not** valid directly on pointers. However, you can use it on the **value pointed to**.
+
+```cpp filename="multiply_pointer_value.cpp" copy {7}
+#include <iostream>
+int main() {
+    int x = 5;
+    int* ptr = &x;
+    *ptr *= 2;
+    std::cout << "x = " << x << std::endl;  // Output: 10
+    return 0;
+}
+```
+
+### Explanation:
+
+- `*ptr *= 2` multiplies the value `x` by `2` through the pointer.
+- Result is stored back in `x`.
+
+---
+
+## Example with Custom Types
+
+You can overload the `*=` operator for user-defined classes.
+
+```cpp filename="custom_operator_multiply.cpp" copy {7-11}
+#include <iostream>
+class Box {
+    int volume;
+public:
+    Box(int v) : volume(v) {}
+    Box& operator*=(int factor) {
+        volume *= factor;
+        return *this;
+    }
+    void show() {
+        std::cout << "Volume = " << volume << std::endl;
+    }
+};
+
+int main() {
+    Box b(10);
+    b *= 3;
+    b.show();  // Output: Volume = 30
+    return 0;
+}
+```
+
+### Explanation:
+
+- We overload `*=` so that multiplying a `Box` by an integer scales its volume.
+
+---
+
+## Summary Table
+
+| Data Type     | Supported | Example               | Notes                              |
+| ------------- | --------- | --------------------- | ---------------------------------- |
+| `int`         | Yes       | `a *= b`              | Works directly                     |
+| `float`       | Yes       | `f *= 1.5f`           | Maintains decimal precision        |
+| `double`      | Yes       | `d *= 2.0`            | Similar to float                   |
+| `char`        | Yes       | `c *= 4`              | Treated as integer (ASCII)         |
+| `std::string` | No        | `str *= 2`            | Not supported                      |
+| Arrays        | No        | `arr1 *= arr2`        | Use loops for element-wise ops     |
+| Pointers      | Indirect  | `*ptr *= 2`           | Acts on pointed value, not pointer |
+| Custom Class  | Yes       | Overload `operator*=` | Define your own logic              |
+
+---
+
+## Conclusion
+
+The `*=` operator in C++ offers a concise and efficient way to perform multiplication and assignment in one step. It is widely supported across primitive types and can be extended to user-defined types. However, care must be taken with complex types like strings and arrays, where alternative approaches are necessary.
+
+Mastering `*=` will help you write cleaner, more readable, and more effective C++ code.

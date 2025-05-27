@@ -1,0 +1,241 @@
+# `/=` Assignment Operator in C++
+
+In C++, the `/=` operator is a **compound assignment operator** that **divides the left-hand operand by the right-hand operand and assigns the result back to the left-hand operand**.
+
+It is shorthand for writing `a = a / b;`, which improves code clarity and conciseness. This operator is widely used with numeric data types and can also be overloaded for custom types. In this guide, we’ll cover everything beginners need to know about the `/=` operator with detailed examples and explanations.
+
+---
+
+## Syntax
+
+```cpp
+a /= b;  // Equivalent to: a = a / b;
+```
+
+This divides `a` by `b` and assigns the result to `a`.
+
+---
+
+## Example with Integers
+
+```cpp filename="divide_integers.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = 9;
+    int b = 2;
+    a /= b;
+    std::cout << "a = " << a << std::endl;  // Output: 4
+    return 0;
+}
+```
+
+### Explanation:
+
+- Integer division truncates the decimal part.
+- `9 / 2 = 4.5`, but since both operands are integers, the result is truncated to `4`.
+
+---
+
+## Example with Floating-Point Numbers
+
+```cpp filename="divide_floats.cpp" copy {5}
+#include <iostream>
+int main() {
+    float x = 7.5f;
+    float y = 2.5f;
+    x /= y;
+    std::cout << "x = " << x << std::endl;  // Output: 3
+    return 0;
+}
+```
+
+### Explanation:
+
+- `7.5 / 2.5 = 3.0`
+- No truncation occurs because these are floating-point values.
+
+---
+
+## Example with Double Precision Numbers
+
+```cpp filename="divide_doubles.cpp" copy {5}
+#include <iostream>
+int main() {
+    double dividend = 22.0;
+    double divisor = 7.0;
+    dividend /= divisor;
+    std::cout << "Result = " << dividend << std::endl;  // Output: 3.14286
+    return 0;
+}
+```
+
+### Explanation:
+
+- Performs floating-point division with more precision.
+- Result will be approximately `3.14286`.
+
+---
+
+## Example with Characters
+
+```cpp filename="divide_characters.cpp" copy {5}
+#include <iostream>
+int main() {
+    char ch = 20;
+    ch /= 4;
+    std::cout << "ch = " << (int)ch << std::endl;  // Output: 5
+    return 0;
+}
+```
+
+### Explanation:
+
+- Characters are treated as integers internally.
+- `20 / 4 = 5`; `ch` is assigned ASCII value 5.
+- We cast to `int` to display the numeric result.
+
+---
+
+## Example with Strings
+
+`/=` is **not** defined for strings in C++.
+
+```cpp filename="divide_strings_error.cpp" copy {6}
+// std::string s = "Hello";
+// s /= 2;  // ❌ Error: invalid operands
+```
+
+### Explanation:
+
+- You cannot divide a string in C++ using `/=`.
+- To truncate or manipulate strings, use `substr()` or other string functions.
+
+---
+
+## Example with Arrays
+
+Arrays do **not support** `/=` directly.
+
+```cpp filename="divide_arrays_invalid.cpp" copy {4}
+int a[3] = {10, 20, 30};
+int b[3] = {2, 4, 5};
+// a /= b;  // ❌ Error: invalid operands
+```
+
+### Correct Way: Use element-wise division via loop
+
+```cpp filename="divide_arrays_loop.cpp" copy {7-9}
+#include <iostream>
+int main() {
+    int a[3] = {10, 20, 30};
+    int b[3] = {2, 4, 5};
+    for (int i = 0; i < 3; i++) {
+        a[i] /= b[i];
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    return 0;
+}
+```
+
+---
+
+## Example with Pointers
+
+`/=` cannot be used directly on pointers, but you can apply it to the value pointed to.
+
+```cpp filename="divide_pointer_value.cpp" copy {7}
+#include <iostream>
+int main() {
+    int x = 20;
+    int* ptr = &x;
+    *ptr /= 4;
+    std::cout << "x = " << x << std::endl;  // Output: 5
+    return 0;
+}
+```
+
+### Explanation:
+
+- The value pointed to by `ptr` is divided by `4`, resulting in `5`.
+
+---
+
+## Example with Custom Types
+
+You can overload `/=` for your own classes.
+
+```cpp filename="custom_operator_divide.cpp" copy {7-11}
+#include <iostream>
+class Distance {
+    double meters;
+public:
+    Distance(double m) : meters(m) {}
+    Distance& operator/=(double factor) {
+        meters /= factor;
+        return *this;
+    }
+    void show() {
+        std::cout << "Distance = " << meters << " meters" << std::endl;
+    }
+};
+
+int main() {
+    Distance d(100);
+    d /= 4;
+    d.show();  // Output: Distance = 25 meters
+    return 0;
+}
+```
+
+### Explanation:
+
+- We define `operator/=` to divide the internal `meters` value.
+
+---
+
+## Division by Zero
+
+Be careful when using `/=`. If the right-hand operand is zero, it leads to **undefined behavior**.
+
+```cpp filename="divide_by_zero.cpp" copy {6}
+// int a = 10;
+// int b = 0;
+// a /= b;  // ❌ Undefined behavior, runtime error
+```
+
+### Solution:
+
+Always check the denominator before dividing:
+
+```cpp filename="safe_divide.cpp" copy {6-8}
+if (b != 0) {
+    a /= b;
+} else {
+    std::cout << "Cannot divide by zero!" << std::endl;
+}
+```
+
+---
+
+## Summary Table
+
+| Data Type     | Supported | Example               | Notes                                   |
+| ------------- | --------- | --------------------- | --------------------------------------- |
+| `int`         | Yes       | `a /= b`              | Result is truncated integer             |
+| `float`       | Yes       | `f /= 1.5f`           | Preserves decimal portion               |
+| `double`      | Yes       | `d /= 2.0`            | Higher precision than float             |
+| `char`        | Yes       | `ch /= 3`             | Treated as integer (ASCII)              |
+| `std::string` | No        | `str /= 2`            | Not supported                           |
+| Arrays        | No        | `arr1 /= arr2`        | Use loop for element-wise operation     |
+| Pointers      | Indirect  | `*ptr /= 2`           | Applies to value pointed by the pointer |
+| Custom Class  | Yes       | Overload `operator/=` | Must be defined in the class            |
+
+---
+
+## Conclusion
+
+The `/=` operator in C++ is a compact and efficient way to divide and reassign values. It is fully supported with numeric types and can be extended to custom classes. However, be cautious of type truncation with integers and always guard against division by zero.
+
+By understanding how `/=` behaves with different data types, you can write safer and more efficient code.

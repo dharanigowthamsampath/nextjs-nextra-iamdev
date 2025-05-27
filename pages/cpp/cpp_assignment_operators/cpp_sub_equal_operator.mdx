@@ -1,0 +1,216 @@
+# `-=` Assignment Operator in C++
+
+In C++, the `-=` operator is a **compound assignment operator** that **subtracts the right-hand operand from the left-hand operand and assigns the result back to the left-hand operand**.
+
+This operator simplifies your code by reducing the need to repeat variable names, making it easier to read and maintain. In this guide, we will explain `-=` in detail, including how it works with various data types such as integers, floating-point numbers, characters, strings, and pointers. We will also discuss what does **not** work with `-=` and why.
+
+---
+
+## Syntax
+
+```cpp
+a -= b;  // Equivalent to: a = a - b;
+```
+
+This is a shorthand form that subtracts `b` from `a` and stores the result in `a`.
+
+---
+
+## Example with Integers
+
+```cpp filename="subtract_integers.cpp" copy {5}
+#include <iostream>
+int main() {
+    int a = 10;
+    int b = 3;
+    a -= b;  // a = a - b
+    std::cout << "a = " << a << std::endl;  // Output: 7
+    return 0;
+}
+```
+
+### Explanation:
+
+- Initially, `a` is 10, and `b` is 3.
+- `a -= b` is equivalent to `a = 10 - 3`, so `a` becomes 7.
+
+---
+
+## Example with Floating-Point Numbers
+
+```cpp filename="subtract_floats.cpp" copy {5}
+#include <iostream>
+int main() {
+    float x = 5.5f;
+    float y = 2.2f;
+    x -= y;
+    std::cout << "x = " << x << std::endl;  // Output: 3.3
+    return 0;
+}
+```
+
+### Explanation:
+
+- `x` starts at `5.5`, and `y` is `2.2`.
+- After `x -= y`, `x` becomes `3.3`.
+
+---
+
+## Example with Double Precision Numbers
+
+```cpp filename="subtract_doubles.cpp" copy {5}
+#include <iostream>
+int main() {
+    double price = 100.0;
+    double discount = 15.5;
+    price -= discount;
+    std::cout << "Final price = " << price << std::endl;  // Output: 84.5
+    return 0;
+}
+```
+
+### Explanation:
+
+- Subtracts `15.5` from `100.0`, updating `price` to `84.5`.
+
+---
+
+## Example with Characters
+
+```cpp filename="subtract_characters.cpp" copy {5}
+#include <iostream>
+int main() {
+    char ch = 'D';  // ASCII value 68
+    ch -= 3;        // ASCII 68 - 3 = 65
+    std::cout << "ch = " << ch << std::endl;  // Output: A
+    return 0;
+}
+```
+
+### Explanation:
+
+- `'D'` has ASCII value 68.
+- Subtracting 3 gives 65, which is `'A'`.
+
+---
+
+## Example with Strings (Using std::string)
+
+The `-=` operator **does not work** directly with `std::string`.
+
+```cpp filename="subtract_strings_error.cpp" copy {6}
+// std::string a = "Hello";
+// std::string b = "World";
+// a -= b;  // ❌ Error: invalid operands
+```
+
+### Explanation:
+
+- C++ does **not define** `-` or `-=` for strings.
+- You must use manual methods (like `erase`, `replace`, or custom logic) to manipulate string content.
+
+---
+
+## Example with Arrays
+
+The `-=` operator is **not applicable to arrays** directly.
+
+```cpp filename="subtract_arrays_invalid.cpp" copy {4}
+int a[3] = {10, 20, 30};
+int b[3] = {1, 2, 3};
+// a -= b;  // ❌ Error: invalid operands to binary expression
+```
+
+### Correct Way: Use a loop to perform element-wise subtraction
+
+```cpp filename="subtract_arrays_loop.cpp" copy {7-9}
+#include <iostream>
+int main() {
+    int a[3] = {10, 20, 30};
+    int b[3] = {1, 2, 3};
+    for (int i = 0; i < 3; i++) {
+        a[i] -= b[i];
+    }
+    for (int i = 0; i < 3; i++) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    return 0;
+}
+```
+
+---
+
+## Example with Pointers
+
+```cpp filename="pointer_arithmetic.cpp" copy {7}
+#include <iostream>
+int main() {
+    int arr[] = {5, 10, 15, 20};
+    int* ptr = &arr[2];  // Points to value 15
+    ptr -= 1;
+    std::cout << "*ptr = " << *ptr << std::endl;  // Output: 10
+    return 0;
+}
+```
+
+### Explanation:
+
+- `ptr` initially points to `arr[2]` (value 15).
+- `ptr -= 1` moves it back to `arr[1]`, which is 10.
+
+---
+
+## Example with Custom Types
+
+You can overload the `-=` operator for your own classes.
+
+```cpp filename="custom_operator_overload.cpp" copy {7-11}
+#include <iostream>
+class Counter {
+    int value;
+public:
+    Counter(int v = 0) : value(v) {}
+    Counter& operator-=(int x) {
+        value -= x;
+        return *this;
+    }
+    void show() {
+        std::cout << "value = " << value << std::endl;
+    }
+};
+
+int main() {
+    Counter c(20);
+    c -= 7;
+    c.show();  // Output: value = 13
+    return 0;
+}
+```
+
+### Explanation:
+
+- We overload `-=` to subtract an integer from the internal `value`.
+- The result is stored back in the object.
+
+---
+
+## Summary Table
+
+| Data Type     | Supported | Example               | Notes                          |
+| ------------- | --------- | --------------------- | ------------------------------ |
+| `int`         | Yes       | `a -= b`              | Works directly                 |
+| `float`       | Yes       | `f -= 1.2f`           | Maintains decimal precision    |
+| `double`      | Yes       | `d -= 3.45`           | Similar to float               |
+| `char`        | Yes       | `'C' -= 2`            | ASCII-based arithmetic         |
+| `std::string` | No        | `str1 -= str2`        | Not supported                  |
+| Arrays        | No        | `arr1 -= arr2`        | Use loops instead              |
+| Pointers      | Yes       | `ptr -= 1`            | Moves pointer to previous elem |
+| Custom Class  | Yes       | Overload `operator-=` | Requires implementation        |
+
+---
+
+## Conclusion
+
+The `-=` operator in C++ is a concise and powerful tool that allows in-place subtraction and reassignment. It is compatible with most primitive types and can be extended to user-defined classes. However, care must be taken when working with types like strings and arrays, where this operator is not directly supported.
+
+Understanding and using `-=` correctly can improve both the readability and efficiency of your C++ code.
