@@ -1,0 +1,174 @@
+# Operator Precedence in Python
+
+In Python, **operator precedence** defines the order in which operations are performed when an expression has multiple operators.
+
+If you do not explicitly use parentheses `()` to group expressions, Python will evaluate the operators according to their **precedence** — from **highest to lowest**.
+
+---
+
+## Why Operator Precedence Matters
+
+Consider the expression:
+
+```python filename="precedence_example.py" {2, 3}
+result = 3 + 2 * 5
+print(result)
+```
+
+```python filename="output.txt"
+13
+```
+
+Without knowing precedence, one might expect:
+
+```txt
+(3 + 2) * 5 = 25
+```
+
+But Python evaluates `*` (multiplication) **before** `+` (addition):
+
+```txt
+3 + (2 * 5) = 3 + 10 = 13
+```
+
+---
+
+## Python Operator Precedence Table (Highest to Lowest)
+
+| Precedence Level | Operator Type                                    | Operators                                                        |     |
+| ---------------- | ------------------------------------------------ | ---------------------------------------------------------------- | --- |
+| 1 (highest)      | Parentheses                                      | `()`                                                             |     |
+| 2                | Exponentiation                                   | `**`                                                             |     |
+| 3                | Unary plus, minus, bitwise NOT                   | `+x`, `-x`, `~x`                                                 |     |
+| 4                | Multiplication, Division, Floor division, Modulo | `*`, `/`, `//`, `%`                                              |     |
+| 5                | Addition, Subtraction                            | `+`, `-`                                                         |     |
+| 6                | Bitwise shifts                                   | `<<`, `>>`                                                       |     |
+| 7                | Bitwise AND                                      | `&`                                                              |     |
+| 8                | Bitwise XOR                                      | `^`                                                              |     |
+| 9                | Bitwise OR                                       | \`                                                               | \`  |
+| 10               | Comparisons                                      | `==`, `!=`, `>`, `<`, `>=`, `<=`, `is`, `is not`, `in`, `not in` |     |
+| 11               | Logical NOT                                      | `not`                                                            |     |
+| 12               | Logical AND                                      | `and`                                                            |     |
+| 13               | Logical OR                                       | `or`                                                             |     |
+| 14 (lowest)      | Assignment                                       | `=`, `+=`, `-=`, `*=`, etc.                                      |     |
+
+---
+
+## Example 1: Without Parentheses
+
+```python filename="precedence_without_parentheses.py" {2, 3}
+value = 5 + 2 * 3 ** 2
+print(value)
+```
+
+```python filename="output.txt"
+23
+```
+
+### How this is evaluated:
+
+1. `3 ** 2` → 9
+2. `2 * 9` → 18
+3. `5 + 18` → 23
+
+---
+
+## Example 2: With Parentheses
+
+```python filename="precedence_with_parentheses.py" {2, 3}
+value = (5 + 2) * (3 ** 2)
+print(value)
+```
+
+```python filename="output.txt"
+63
+```
+
+### Explanation:
+
+- Parentheses change the natural precedence:
+
+  - `(5 + 2)` → 7
+  - `(3 ** 2)` → 9
+  - `7 * 9` → 63
+
+---
+
+## Example 3: Mixing Logical and Comparison Operators
+
+```python filename="logical_comparison.py" {2, 3}
+result = True or False and False
+print(result)
+```
+
+```python filename="output.txt"
+True
+```
+
+### How this works:
+
+- `and` has higher precedence than `or`
+- Expression is treated as:
+
+```txt
+True or (False and False)
+→ True or False
+→ True
+```
+
+---
+
+## Example 4: Assignment with Arithmetic
+
+```python filename="assignment_arithmetic.py" {2, 3, 4}
+x = 5
+x += 2 * 3
+print(x)
+```
+
+```python filename="output.txt"
+11
+```
+
+### Explanation:
+
+- `2 * 3` → 6
+- `x += 6` → `x = 5 + 6` → 11
+
+---
+
+## Example 5: Complex Expression
+
+```python filename="complex_precedence.py" {2, 3}
+result = 4 + 3 * 2 ** 2 > 20 or False
+print(result)
+```
+
+```python filename="output.txt"
+False
+```
+
+### Step-by-step:
+
+1. `2 ** 2` → 4
+2. `3 * 4` → 12
+3. `4 + 12` → 16
+4. `16 > 20` → False
+5. `False or False` → False
+
+---
+
+## Important Notes:
+
+- **Parentheses** are your best friend when writing complex expressions — they improve both readability and correctness.
+- If you're unsure of how Python will interpret an expression, use parentheses to **make it explicit**.
+- Relying solely on precedence can make code harder to read and maintain.
+
+---
+
+## Summary
+
+- Operator precedence defines the order of evaluation when multiple operators appear in an expression.
+- Operators like `**`, `*`, `/`, and logical operators like `and`, `or` follow a well-defined precedence.
+- Use parentheses `()` when clarity matters — both for others reading your code and to avoid bugs.
+- Mastering operator precedence is essential for writing **correct and predictable** Python code.

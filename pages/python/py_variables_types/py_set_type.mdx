@@ -1,0 +1,210 @@
+# Sets in Python
+
+A **set** is an **unordered collection of unique elements** in Python. Sets are useful for storing non-duplicate items, testing for membership, and performing mathematical set operations such as union, intersection, and difference.
+
+Unlike lists or tuples, sets do not allow duplicate values and do not maintain any specific order. They are especially beneficial when dealing with large datasets where uniqueness and performance are important.
+
+---
+
+## Key Characteristics of Sets
+
+- **Unordered**: Elements are not stored in any particular order.
+- **Mutable**: Sets can be modified after creation.
+- **Unique Elements**: Duplicates are automatically removed.
+- **No Indexing**: You cannot access items using an index or a key.
+- **Iterable**: You can loop over a set.
+
+---
+
+## Creating Sets
+
+```python filename="set_create.py" {1, 2, 3}
+empty_set = set()                # Correct way to create an empty set
+fruits = {"apple", "banana", "cherry"}
+mixed_set = {1, "hello", 3.14}
+```
+
+### Explanation:
+
+- Using `{}` creates a set with elements.
+- `set()` is required to create an empty set (because `{}` creates a dictionary by default).
+- Sets can contain elements of different data types, as long as they are immutable and hashable.
+
+---
+
+## Example 1: Removing Duplicates Automatically
+
+```python filename="set_duplicates.py" {2}
+numbers = {1, 2, 2, 3, 4, 4, 5}
+print(numbers)
+```
+
+```python filename="output.txt"
+{1, 2, 3, 4, 5}
+```
+
+### Explanation:
+
+- Sets automatically discard duplicate entries.
+- Even if you define duplicates in a set, they will only be stored once.
+
+---
+
+## Example 2: Adding and Removing Elements
+
+```python filename="set_add_remove.py" {2, 3, 4, 5}
+languages = {"Python", "Java"}
+languages.add("C++")             # Adds a single element
+languages.update(["Go", "Rust"]) # Adds multiple elements
+languages.remove("Java")         # Removes an element (raises error if not found)
+languages.discard("Scala")       # Removes safely (no error if not found)
+print(languages)
+```
+
+```python filename="output.txt"
+{'Rust', 'Python', 'Go', 'C++'}
+```
+
+### Explanation:
+
+- `add()` adds one element.
+- `update()` merges another iterable into the set.
+- `remove()` throws an error if the element doesn’t exist.
+- `discard()` is a safer alternative—it won’t raise an error.
+
+---
+
+## Example 3: Set Membership Testing
+
+```python filename="set_membership.py" {2, 3}
+tools = {"hammer", "screwdriver", "wrench"}
+print("hammer" in tools)
+print("drill" not in tools)
+```
+
+```python filename="output.txt"
+True
+True
+```
+
+### Explanation:
+
+- Sets allow fast membership testing using `in` and `not in`.
+- Behind the scenes, sets use hash tables for performance.
+
+---
+
+## Example 4: Set Operations
+
+Python supports powerful operations similar to those in mathematics.
+
+```python filename="set_operations.py" {2, 3, 4, 5, 6}
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print("Union:", a | b)           # All unique elements
+print("Intersection:", a & b)    # Common elements
+print("Difference:", a - b)      # Elements in a not in b
+print("Symmetric Diff:", a ^ b)  # Elements in either a or b but not both
+```
+
+```python filename="output.txt"
+Union: {1, 2, 3, 4, 5}
+Intersection: {3}
+Difference: {1, 2}
+Symmetric Diff: {1, 2, 4, 5}
+```
+
+### Explanation:
+
+- `|` performs union (combines all elements).
+- `&` performs intersection (common to both sets).
+- `-` performs difference (elements in one set but not the other).
+- `^` performs symmetric difference (elements in either but not both).
+
+---
+
+## Example 5: Iterating Over a Set
+
+```python filename="set_loop.py" {2, 3}
+items = {"pen", "pencil", "eraser"}
+for item in items:
+    print(item)
+```
+
+```python filename="output.txt"
+pen
+pencil
+eraser
+```
+
+### Explanation:
+
+- Sets can be iterated using `for` loops.
+- The order is not guaranteed—results may vary across runs.
+
+---
+
+## Example 6: Set Comprehensions
+
+```python filename="set_comprehension.py" {2}
+squares = {x**2 for x in range(6)}
+print(squares)
+```
+
+```python filename="output.txt"
+{0, 1, 4, 9, 16, 25}
+```
+
+### Explanation:
+
+- Set comprehensions provide a concise way to generate sets from iterables.
+
+---
+
+## Immutable Sets: `frozenset`
+
+If you need an immutable set, use `frozenset`.
+
+```python filename="frozenset_example.py" {2}
+constants = frozenset(["pi", "e", "phi"])
+print("pi" in constants)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- A `frozenset` is like a normal set but immutable.
+- You cannot `add`, `remove`, or `update` it.
+
+---
+
+## Common Set Methods
+
+| Method           | Description                                 |
+| ---------------- | ------------------------------------------- |
+| `add()`          | Adds an element to the set                  |
+| `update()`       | Adds multiple elements                      |
+| `remove()`       | Removes an element (raises error if absent) |
+| `discard()`      | Removes an element (safe, no error)         |
+| `pop()`          | Removes and returns a random element        |
+| `clear()`        | Removes all elements from the set           |
+| `union()`        | Returns the union of sets                   |
+| `intersection()` | Returns common elements                     |
+| `difference()`   | Returns the difference                      |
+| `issubset()`     | Checks if one set is a subset of another    |
+| `issuperset()`   | Checks if a set contains another            |
+
+---
+
+## Summary
+
+- Sets are ideal when working with **unique data**.
+- They are **unordered, mutable, and unindexed**.
+- Python sets offer efficient operations for membership checking and mathematical set logic.
+- `frozenset` is the immutable counterpart of a normal set.
+
+In the next topic, we'll explore **Dictionaries**, one of Python’s most powerful and flexible data structures for key-value pairing.

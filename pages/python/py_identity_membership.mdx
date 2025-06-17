@@ -1,0 +1,146 @@
+# Membership and Identity Operators in Python
+
+Python provides two special types of operators:
+
+1. **Membership Operators**: Test whether a value is part of a sequence (such as string, list, tuple, or set).
+2. **Identity Operators**: Compare the memory locations of two objects.
+
+These operators help write **clean, readable, and efficient code** when checking for existence or object identity.
+
+---
+
+## 1. Membership Operators
+
+| Operator | Description                                            |
+| -------- | ------------------------------------------------------ |
+| `in`     | Returns `True` if a value is present in a sequence     |
+| `not in` | Returns `True` if a value is NOT present in a sequence |
+
+### Example 1: Using `in` with a List
+
+```python filename="membership_in_list.py" {2, 3}
+fruits = ["apple", "banana", "cherry"]
+print("banana" in fruits)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Using `not in` with a String
+
+```python filename="membership_not_in_string.py" {2, 3}
+sentence = "Python is fun"
+print("Java" not in sentence)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- `in` checks if the value is in the sequence (string, list, tuple, set, or dictionary keys).
+- `not in` checks if the value is absent.
+
+---
+
+## 2. Identity Operators
+
+| Operator | Description                                                        |
+| -------- | ------------------------------------------------------------------ |
+| `is`     | Returns `True` if two variables point to the same object in memory |
+| `is not` | Returns `True` if two variables do NOT point to the same object    |
+
+### Example 1: Using `is` with Variables
+
+```python filename="identity_is.py" {2, 3, 4, 5}
+x = [1, 2, 3]
+y = x
+print(x is y)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- `y` points to the same object as `x`.
+- `is` compares **identity**, not just value.
+
+---
+
+### Example 2: `is not` with Separate Objects
+
+```python filename="identity_is_not.py" {2, 3, 4, 5}
+x = [1, 2, 3]
+y = [1, 2, 3]
+print(x is not y)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- Even though `x` and `y` have the same **value**, they are **different objects**.
+- Their identity (memory location) is different.
+
+---
+
+### Example 3: Using `is` with Immutable Objects (Integers)
+
+```python filename="identity_integers.py" {2, 3, 4, 5}
+a = 100
+b = 100
+print(a is b)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- For **small integers** (typically between `-5` and `256`), Python caches objects.
+- So `a` and `b` may point to the same object.
+
+---
+
+### Example 4: `is` with Strings
+
+```python filename="identity_strings.py" {2, 3, 4, 5}
+s1 = "hello"
+s2 = "hello"
+print(s1 is s2)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- Short string literals are often cached by Python.
+- `is` may return `True` for such strings.
+
+---
+
+## Summary
+
+- **Membership Operators**:
+
+  - `in`: Checks if a value exists in a sequence.
+  - `not in`: Checks if a value does not exist.
+
+- **Identity Operators**:
+
+  - `is`: Checks if two references point to the same object.
+  - `is not`: Checks if they do not.
+
+- **Use cases**:
+
+  - Membership: Useful for searching within collections.
+  - Identity: Useful for checking object identity (especially when working with **mutable objects**, **None**, or **singleton patterns**).

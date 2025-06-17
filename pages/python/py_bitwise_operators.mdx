@@ -1,0 +1,194 @@
+# Bitwise Operators in Python
+
+**Bitwise operators** perform operations on integers at the level of individual bits. They treat the values as binary numbers (sequences of 0s and 1s) and operate on their bits.
+
+Bitwise operations are useful in **low-level programming**, **cryptography**, **networking**, **game development**, and situations where you need fast manipulation of flags and bitfields.
+
+---
+
+## List of Bitwise Operators
+
+| Operator    | Symbol | Description                                |
+| ----------- | ------ | ------------------------------------------ |
+| AND         | `&`    | Sets each bit to 1 if both bits are 1      |
+| OR          | `\|`   | Sets each bit to 1 if one of two bits is 1 |
+| XOR         | `^`    | Sets each bit to 1 if only one bit is 1    |
+| NOT         | `~`    | Inverts all bits (bitwise complement)      |
+| Left Shift  | `<<`   | Shifts bits to the left (multiply by 2ⁿ)   |
+| Right Shift | `>>`   | Shifts bits to the right (divide by 2ⁿ)    |
+
+---
+
+## 1. Bitwise AND (`&`)
+
+```python filename="bitwise_and.py" {2, 3}
+a = 5      # 0101 in binary
+b = 3      # 0011 in binary
+result = a & b
+print(result)
+```
+
+```python filename="output.txt"
+1
+```
+
+### Explanation:
+
+- Binary of 5: `0101`
+- Binary of 3: `0011`
+- Result: `0001` (decimal 1)
+
+---
+
+## 2. Bitwise OR (`|`)
+
+```python filename="bitwise_or.py" {2, 3}
+a = 5      # 0101
+b = 3      # 0011
+result = a | b
+print(result)
+```
+
+```python filename="output.txt"
+7
+```
+
+### Explanation:
+
+- Result: `0111` → decimal `7`
+
+---
+
+## 3. Bitwise XOR (`^`)
+
+```python filename="bitwise_xor.py" {2, 3}
+a = 5      # 0101
+b = 3      # 0011
+result = a ^ b
+print(result)
+```
+
+```python filename="output.txt"
+6
+```
+
+### Explanation:
+
+- XOR sets bits to 1 where bits are different:
+- Result: `0110` → decimal `6`
+
+---
+
+## 4. Bitwise NOT (`~`)
+
+```python filename="bitwise_not.py" {2, 3}
+a = 5
+result = ~a
+print(result)
+```
+
+```python filename="output.txt"
+-6
+```
+
+### Explanation:
+
+- Bitwise NOT inverts all bits and returns the **two’s complement** of the result.
+- For 5 → `~5` = `-(5 + 1)` = `-6`.
+
+---
+
+## 5. Left Shift (`<<`)
+
+```python filename="bitwise_left_shift.py" {2, 3}
+a = 5    # 0101
+result = a << 1
+print(result)
+```
+
+```python filename="output.txt"
+10
+```
+
+### Example 2:
+
+```python filename="bitwise_left_shift_2.py" {2, 3}
+a = 3    # 0011
+result = a << 2
+print(result)
+```
+
+```python filename="output.txt"
+12
+```
+
+### Explanation:
+
+- Left shift moves bits to the left and fills with zeros — multiplying by 2ⁿ.
+
+---
+
+## 6. Right Shift (`>>`)
+
+```python filename="bitwise_right_shift.py" {2, 3}
+a = 8    # 1000
+result = a >> 1
+print(result)
+```
+
+```python filename="output.txt"
+4
+```
+
+### Example 2:
+
+```python filename="bitwise_right_shift_2.py" {2, 3}
+a = 10   # 1010
+result = a >> 2
+print(result)
+```
+
+```python filename="output.txt"
+2
+```
+
+### Explanation:
+
+- Right shift moves bits to the right — dividing by 2ⁿ (integer division).
+
+---
+
+## Practical Example: Using Bitwise Flags
+
+```python filename="bitwise_flags.py" {2, 3, 4, 5, 6}
+READ = 0b0001   # 1
+WRITE = 0b0010  # 2
+EXECUTE = 0b0100 # 4
+
+permissions = READ | WRITE
+print("Can read:", permissions & READ != 0)
+print("Can execute:", permissions & EXECUTE != 0)
+```
+
+```python filename="output.txt"
+Can read: True
+Can execute: False
+```
+
+### Explanation:
+
+- Using bitwise flags helps in representing combinations of states efficiently.
+- We can test for a specific permission using `&`.
+
+---
+
+## Summary
+
+- **Bitwise operators** operate directly on bits.
+- Useful for **low-level control**, **performance optimizations**, and **flags**.
+- Knowing these helps you in:
+
+  - Memory-efficient coding
+  - Hardware programming
+  - Game engines
+  - Cryptography and encoding

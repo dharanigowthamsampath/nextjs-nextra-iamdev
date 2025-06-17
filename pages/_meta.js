@@ -18,6 +18,11 @@ const meta = {
     type: "page",
     display: "page",
   },
+  python: {
+    title: "Python",
+    type: "page",
+    display: "page",
+  },
 };
 
 export default meta;

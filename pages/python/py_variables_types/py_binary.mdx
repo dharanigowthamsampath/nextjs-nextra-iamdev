@@ -1,0 +1,154 @@
+# Binary Data Type in Python
+
+Python provides special data types to handle **binary data** such as bytes, byte arrays, and memory views. These are useful when working with **files, network streams, images**, and other non-text data.
+
+The main **binary data types** in Python are:
+
+- `bytes`
+- `bytearray`
+- `memoryview`
+
+---
+
+## Key Characteristics
+
+| Data Type    | Mutability | Usage                                  |
+| ------------ | ---------- | -------------------------------------- |
+| `bytes`      | Immutable  | Read-only binary sequences             |
+| `bytearray`  | Mutable    | Modifiable binary sequences            |
+| `memoryview` | View       | Efficient memory access to binary data |
+
+---
+
+## Creating `bytes`
+
+```python filename="binary_bytes.py" {2, 3, 4}
+# Create bytes from string
+b1 = b"Hello"
+
+# Using bytes() constructor
+b2 = bytes([65, 66, 67])   # ASCII codes for 'A', 'B', 'C'
+
+print(b1)
+print(b2)
+```
+
+```python filename="output.txt"
+b'Hello'
+b'ABC'
+```
+
+### Explanation:
+
+- Prefix `b` creates a **byte literal**.
+- The `bytes()` constructor can take an iterable of integers (0-255) and returns a bytes object.
+
+---
+
+## Example 1: Indexing and Slicing Bytes
+
+```python filename="binary_bytes_slice.py" {2, 3, 4}
+b = b"Python"
+
+print(b[0])         # First byte (as integer)
+print(b[1:4])       # Slice
+```
+
+```python filename="output.txt"
+80
+b'yth'
+```
+
+### Explanation:
+
+- Bytes are indexed like strings, but individual elements are integers (byte values).
+- Slicing returns another `bytes` object.
+
+---
+
+## Creating `bytearray`
+
+```python filename="binary_bytearray.py" {2, 3, 4, 5}
+# Mutable binary data
+ba = bytearray(b"Data")
+
+# Modify in-place
+ba[0] = 100   # 'd'
+
+print(ba)
+print(ba.decode())   # Convert to string
+```
+
+```python filename="output.txt"
+bytearray(b'data')
+data
+```
+
+### Explanation:
+
+- `bytearray` is a mutable version of `bytes`.
+- It supports in-place modification and has most methods of lists and strings.
+
+---
+
+## Example 2: Using `memoryview`
+
+```python filename="binary_memoryview.py" {2, 3, 4}
+data = bytearray(b"example")
+mv = memoryview(data)
+
+print(mv[0])          # First byte
+print(bytes(mv[1:4])) # Slice as bytes
+```
+
+```python filename="output.txt"
+101
+b'xam'
+```
+
+### Explanation:
+
+- `memoryview` allows **zero-copy access** to binary data.
+- Useful when dealing with **large datasets** or performance-critical applications.
+
+---
+
+## Example 3: Reading Binary Files
+
+```python filename="binary_file_read.py" {2, 3, 4}
+# Open file in binary mode
+with open("image.png", "rb") as f:
+    content = f.read(10)
+
+print(content)
+```
+
+```python filename="output.txt"
+b'\x89PNG\r\n\x1a\n\x00\x00'
+```
+
+### Explanation:
+
+- Mode `'rb'` means **read binary**.
+- The file is read as raw bytes — useful for images, audio, etc.
+
+---
+
+## Common Use Cases
+
+- **File I/O** for binary files (images, audio, compressed formats)
+- **Network programming** (sending/receiving binary packets)
+- **Data serialization** (pickle, JSON with binary attachments)
+- **Low-level protocols** (custom protocols, device communication)
+
+---
+
+## Summary
+
+- Python provides `bytes`, `bytearray`, and `memoryview` to work with binary data.
+- `bytes` is immutable, `bytearray` is mutable, `memoryview` allows efficient views.
+- Binary data types are essential for working with files, streams, and low-level programming.
+
+---
+
+Next, we will cover **Special Data Types** in Python — which includes types like `NoneType` and others that provide unique functionality in your programs.

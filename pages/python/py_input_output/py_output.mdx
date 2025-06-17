@@ -1,0 +1,195 @@
+# Output in Python
+
+In Python, the most common way to display output is by using the built-in **`print()`** function. It writes data to the standard output (typically the console or terminal).
+
+Python also supports advanced output formatting with:
+
+- **String concatenation**
+- **Formatted string literals (f-strings)**
+- **`str.format()` method**
+
+---
+
+## Basic Usage of `print()`
+
+```python filename="print_basic.py" {2}
+print("Hello, World!")
+```
+
+```python filename="output.txt"
+Hello, World!
+```
+
+### Explanation:
+
+- `print()` takes one or more arguments and displays them, separated by a space, followed by a newline.
+
+---
+
+## Example 1: Printing Multiple Items
+
+```python filename="print_multiple.py" {2}
+print("Python", "is", "fun!")
+```
+
+```python filename="output.txt"
+Python is fun!
+```
+
+### Explanation:
+
+- `print()` separates multiple arguments with spaces by default.
+
+---
+
+## Example 2: Printing Variables
+
+```python filename="print_variables.py" {2, 3}
+name = "Alice"
+age = 30
+print(name, "is", age, "years old.")
+```
+
+```python filename="output.txt"
+Alice is 30 years old.
+```
+
+---
+
+## Controlling Separators and End
+
+### Using `sep` argument
+
+```python filename="print_sep.py" {2}
+print("Python", "Java", "C++", sep=", ")
+```
+
+```python filename="output.txt"
+Python, Java, C++
+```
+
+### Using `end` argument
+
+```python filename="print_end.py" {2, 3}
+print("Hello,", end=" ")
+print("World!")
+```
+
+```python filename="output.txt"
+Hello, World!
+```
+
+### Explanation:
+
+- `sep` changes the separator between arguments.
+- `end` changes what is printed after the final argument (default is newline `\n`).
+
+---
+
+## Example 3: String Concatenation with `+`
+
+```python filename="print_concat.py" {2, 3}
+first = "Hello"
+second = "World"
+print(first + ", " + second + "!")
+```
+
+```python filename="output.txt"
+Hello, World!
+```
+
+### Explanation:
+
+- You can concatenate strings using `+`.
+- You must manually handle spaces and punctuation.
+
+---
+
+## Example 4: Using f-strings (Formatted String Literals)
+
+```python filename="print_fstring.py" {2, 3}
+name = "Bob"
+score = 95.5
+print(f"Student {name} scored {score} marks.")
+```
+
+```python filename="output.txt"
+Student Bob scored 95.5 marks.
+```
+
+### Explanation:
+
+- Introduced in Python 3.6.
+- An `f` before the string allows embedding expressions inside `{}`.
+
+---
+
+## Example 5: Using `str.format()`
+
+```python filename="print_format.py" {2, 3}
+product = "Laptop"
+price = 899.99
+print("The {} costs ${:.2f}".format(product, price))
+```
+
+```python filename="output.txt"
+The Laptop costs $899.99
+```
+
+### Explanation:
+
+- `str.format()` inserts values into placeholders `{}`.
+- `:.2f` formats the float to 2 decimal places.
+
+---
+
+## Example 6: Formatting Numbers
+
+```python filename="print_numbers.py" {2, 3, 4}
+num = 1234567.891
+print(f"Formatted number: {num:,.2f}")
+print(f"Binary: {42:b}")
+print(f"Hexadecimal: {255:x}")
+```
+
+```python filename="output.txt"
+Formatted number: 1,234,567.89
+Binary: 101010
+Hexadecimal: ff
+```
+
+### Explanation:
+
+- `:,` adds comma as thousands separator.
+- `b` prints binary, `x` prints hexadecimal.
+
+---
+
+## Example 7: Printing Collections
+
+```python filename="print_collections.py" {2, 3, 4}
+fruits = ["apple", "banana", "cherry"]
+print(f"Fruits: {fruits}")
+
+person = {"name": "Alice", "age": 28}
+print(f"Person: {person}")
+```
+
+```python filename="output.txt"
+Fruits: ['apple', 'banana', 'cherry']
+Person: {'name': 'Alice', 'age': 28}
+```
+
+---
+
+## Summary
+
+- The `print()` function is versatile and easy to use.
+- You can customize output using:
+
+  - `sep` and `end`
+  - String concatenation with `+`
+  - **f-strings** (recommended)
+  - `str.format()`
+
+- Python makes it simple to display formatted data of any type.

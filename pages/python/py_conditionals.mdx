@@ -1,0 +1,152 @@
+# Conditional Statements in Python
+
+In any programming language, **decision-making** is key. Python provides conditional statements to let you run code based on conditions.
+
+These are essential when you want your program to **respond differently depending on user input, state, or data**.
+
+---
+
+## Types of Conditional Statements in Python
+
+1. `if` statement
+2. `if-else` statement
+3. `if-elif-else` ladder
+4. Nested `if` statements
+
+---
+
+## Basic Syntax of `if` Statement
+
+```python filename="if_syntax.py" {2, 3, 4}
+if condition:
+    # block of code
+```
+
+### Explanation:
+
+- The `condition` is an expression that evaluates to **True** or **False**.
+- If **True**, the indented block of code runs.
+- If **False**, Python skips the block.
+
+---
+
+## Example 1: Simple `if` Statement
+
+```python filename="if_example.py" {2, 3, 4}
+age = 18
+if age >= 18:
+    print("You are eligible to vote.")
+```
+
+```python filename="output.txt"
+You are eligible to vote.
+```
+
+---
+
+## Example 2: `if-else` Statement
+
+```python filename="if_else_example.py" {2, 3, 4, 5, 6}
+age = 16
+if age >= 18:
+    print("You are eligible to vote.")
+else:
+    print("You are not eligible to vote.")
+```
+
+```python filename="output.txt"
+You are not eligible to vote.
+```
+
+### Explanation:
+
+- The `else` block runs if the `if` condition is False.
+- This provides a clear **alternative action**.
+
+---
+
+## Example 3: `if-elif-else` Ladder
+
+```python filename="if_elif_else_example.py" {2, 3, 4, 5, 6, 7, 8}
+marks = 85
+
+if marks >= 90:
+    print("Grade: A")
+elif marks >= 80:
+    print("Grade: B")
+elif marks >= 70:
+    print("Grade: C")
+else:
+    print("Grade: F")
+```
+
+```python filename="output.txt"
+Grade: B
+```
+
+### Explanation:
+
+- The `elif` (short for **else if**) allows multiple conditions to be checked.
+- The first **True** condition will run.
+- If no condition is True, `else` block executes.
+
+---
+
+## Example 4: Nested `if` Statements
+
+```python filename="nested_if_example.py" {2, 3, 4, 5, 6, 7, 8}
+num = 10
+
+if num > 0:
+    if num % 2 == 0:
+        print("Positive Even number")
+    else:
+        print("Positive Odd number")
+else:
+    print("Negative number")
+```
+
+```python filename="output.txt"
+Positive Even number
+```
+
+### Explanation:
+
+- You can **nest** one `if` block inside another for complex logic.
+- Be careful with indentation to maintain readability.
+
+---
+
+## Example 5: Using Logical Operators in Conditions
+
+```python filename="logical_condition_example.py" {2, 3, 4, 5}
+age = 25
+citizen = True
+
+if age >= 18 and citizen:
+    print("Eligible to vote")
+else:
+    print("Not eligible")
+```
+
+```python filename="output.txt"
+Eligible to vote
+```
+
+### Explanation:
+
+- You can combine multiple conditions using `and`, `or`, `not`.
+- This enables **compound conditions**.
+
+---
+
+## Summary
+
+- Conditional statements are used to perform **different actions based on conditions**.
+- `if`, `if-else`, `if-elif-else`, and **nested if** help control the flow of your program.
+- Logical operators (`and`, `or`, `not`) can be used to build complex conditions.
+- **Indentation** is crucial in Python — it defines code blocks.
+
+---
+
+In the next section, we will explore **Loops in Python** — which allow you to repeat code efficiently.

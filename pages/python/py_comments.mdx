@@ -1,0 +1,144 @@
+# Comments in Python
+
+Comments are an essential part of writing **clean, maintainable, and professional code**. While your code tells the computer what to do, comments explain your intentions to other developers — including your future self.
+
+In Python, comments are easy to write and highly encouraged. They are **ignored by the Python interpreter** and serve purely as human-readable documentation.
+
+This section explores the different types of comments in Python, when and how to use them, and what makes a comment truly useful.
+
+---
+
+### 1. What is a Comment?
+
+A **comment** is a line or part of a line in a program that is not executed. It helps:
+
+- Explain the logic or intent behind code
+- Clarify complex operations
+- Provide metadata (e.g., author, date, purpose)
+- Temporarily disable code during debugging
+
+---
+
+### 2. Single-Line Comments
+
+In Python, single-line comments begin with a **hash symbol (`#`)**. Everything after the `#` on that line is treated as a comment.
+
+```python filename="single_line.py" {1, 2} copy
+# This is a single-line comment
+name = "Alice"  # This comment is after a line of code
+print("Hello,", name)
+```
+
+> 💡 **Tip:** Avoid stating the obvious. A good comment explains **why**, not just **what**.
+
+**Bad comment:**
+
+```python
+i = i + 1  # Increment i by 1
+```
+
+**Better comment:**
+
+```python
+i = i + 1  # Move to the next item in the list
+```
+
+---
+
+### 3. Multi-Line Comments
+
+Python does **not** have a distinct multi-line comment syntax like `/* */` in some other languages. Instead, you use `#` at the beginning of each line:
+
+```python filename="multi_line.py" {1, 2, 3}
+# This function calculates the area of a circle.
+# It takes the radius as input and returns the result.
+# The formula used is: area = π * r^2
+def area(radius):
+    return 3.14 * radius * radius
+```
+
+For longer explanations or module-level comments, it’s better to use **docstrings** (discussed below).
+
+---
+
+### 4. Docstrings (Documentation Strings)
+
+A **docstring** is a special kind of multi-line string used to document a module, class, method, or function. Unlike regular comments, **docstrings are accessible at runtime** via the `.__doc__` attribute.
+
+They are written using **triple quotes** (`""" """` or `''' '''`) and placed **immediately after** the definition of a function, class, or module.
+
+```python filename="docstring_example.py" {1, 2, 3, 4}
+def greet(name):
+    """
+    Greets the person by name.
+    :param name: str - The name of the person
+    :return: None
+    """
+    print("Hello,", name)
+```
+
+You can access this docstring in Python:
+
+```python filename="access_docstring.py" {3}
+print(greet.__doc__)
+```
+
+---
+
+### 5. Where to Use Comments
+
+| Use Case               | Example                                                        |
+| ---------------------- | -------------------------------------------------------------- |
+| Explaining logic       | Why you chose a particular algorithm or technique              |
+| Marking TODOs          | `# TODO: Optimize this loop later`                             |
+| Clarifying workarounds | When a bug or platform limitation requires an unusual solution |
+| Separating sections    | `# ----- Input Handling -----`                                 |
+
+---
+
+### 6. Best Practices
+
+#### ✅ Do:
+
+- Keep comments **concise but informative**
+- Update comments when code changes
+- Use them to explain **why**, not just **what**
+
+#### ❌ Avoid:
+
+- Redundant or obvious comments
+- Leaving outdated or misleading comments
+- Writing overly long paragraphs — split into logical blocks
+
+---
+
+### 7. Special Comment Tags
+
+You’ll often find commonly accepted tags in team projects:
+
+```python filename="todo_fixme.py" {1, 2}
+# TODO: Add error handling for edge cases
+# FIXME: This crashes if the file is not found
+```
+
+These are **not official Python syntax**, but many IDEs recognize them and offer navigation shortcuts.
+
+---
+
+### 8. Commenting Out Code
+
+During development or debugging, you might temporarily disable a line or block of code using comments:
+
+```python filename="commenting_out.py" {2}
+# print("Debug:", user_input)
+```
+
+However, large-scale disabling should be done using version control (e.g., Git) or conditional flags — not by leaving commented-out code in production.
+
+---
+
+### Conclusion
+
+Comments are powerful tools when used wisely. They should complement your code, not clutter it. Always aim to write code that is **self-explanatory**, and use comments to **fill in the why**, not the what. Clean code with meaningful comments is one of the hallmarks of a professional Python developer.
+
+In the next section, we’ll explore **Variables and Data Types** — the building blocks of any Python program.

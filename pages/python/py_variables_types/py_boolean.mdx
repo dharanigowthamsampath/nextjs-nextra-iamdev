@@ -1,0 +1,192 @@
+# Boolean Data Type in Python
+
+In Python, the **Boolean** data type represents one of two possible values:
+
+- `True`
+- `False`
+
+Booleans are widely used in **control flow**, **comparisons**, and **logical operations**. They are the foundation of decision-making in any Python program.
+
+---
+
+## Key Characteristics of Booleans
+
+- **Type**: `bool`
+- **Possible Values**: `True`, `False` (case-sensitive)
+- **Used in**: Conditional statements, logical operations, loops, and functions.
+
+---
+
+## Boolean Values in Python
+
+```python filename="boolean_values.py" {2, 3}
+is_active = True
+is_closed = False
+print(type(is_active))
+```
+
+```python filename="output.txt"
+<class 'bool'>
+```
+
+### Explanation:
+
+- `True` and `False` are **Python keywords** representing Boolean values.
+- The type of a Boolean variable is `bool`.
+
+---
+
+## Boolean Expressions
+
+Boolean values often arise from expressions using **comparison operators**:
+
+```python filename="boolean_expressions.py" {2, 3, 4}
+a = 10
+b = 20
+
+print(a > b)
+print(a < b)
+print(a == 10)
+```
+
+```python filename="output.txt"
+False
+True
+True
+```
+
+### Explanation:
+
+- Comparisons (`>`, `<`, `==`, `!=`, `>=`, `<=`) produce Boolean results.
+- These expressions are used in conditional logic and control flow.
+
+---
+
+## Logical Operators: `and`, `or`, `not`
+
+```python filename="boolean_logical.py" {3 4 5 6} copy
+x = True
+y = False
+
+print(x and y)   # True only if both are True
+print(x or y)    # True if at least one is True
+print(not x)     # Inverts the Boolean value
+```
+
+```python filename="output.txt"
+False
+True
+False
+```
+
+### Explanation:
+
+| Operator | Description                                |
+| -------- | ------------------------------------------ |
+| `and`    | Returns `True` if both operands are `True` |
+| `or`     | Returns `True` if at least one is `True`   |
+| `not`    | Reverses the Boolean value                 |
+
+---
+
+## Example 1: Booleans in Conditional Statements
+
+```python filename="boolean_if.py" {2, 3, 4}
+is_logged_in = True
+
+if is_logged_in:
+    print("Welcome back!")
+else:
+    print("Please log in.")
+```
+
+```python filename="output.txt"
+Welcome back!
+```
+
+### Explanation:
+
+- Booleans control which branch of an `if` statement is executed.
+
+---
+
+## Example 2: Boolean Conversion (`bool()`)
+
+Any Python object can be **converted** to a Boolean using `bool()`:
+
+```python filename="boolean_conversion.py" {3 4 5 6}
+print(bool(0))          # False
+print(bool(1))          # True
+print(bool(""))         # False (empty string)
+print(bool("Python"))   # True (non-empty string)
+```
+
+```python filename="output.txt"
+False
+True
+False
+True
+```
+
+### Rules:
+
+| Value                                | Boolean Result |
+| ------------------------------------ | -------------- |
+| Zero (`0`, `0.0`)                    | `False`        |
+| Empty collections (`""`, `[]`, `{}`) | `False`        |
+| `None`                               | `False`        |
+| All other values                     | `True`         |
+
+---
+
+## Example 3: Using Booleans in Loops
+
+```python filename="boolean_while_loop.py" {2, 3, 4, 5}
+counter = 0
+
+while counter < 3:
+    print("Counter is:", counter)
+    counter += 1
+```
+
+```python filename="output.txt"
+Counter is: 0
+Counter is: 1
+Counter is: 2
+```
+
+### Explanation:
+
+- The condition `counter < 3` returns a Boolean.
+- The loop runs while this condition is `True`.
+
+---
+
+## Example 4: Combining Comparisons with Logical Operators
+
+```python filename="boolean_combined.py" {2, 3}
+score = 85
+passed = score >= 50 and score <= 100
+print("Passed:", passed)
+```
+
+```python filename="output.txt"
+Passed: True
+```
+
+### Explanation:
+
+- Multiple comparisons can be combined using `and`, `or` to form complex conditions.
+
+---
+
+## Summary
+
+- The **Boolean data type** represents logical values: `True` and `False`.
+- Booleans are used in **comparisons**, **conditional logic**, and **loops**.
+- Logical operators (`and`, `or`, `not`) help combine or modify conditions.
+- Non-Boolean types can be converted using `bool()` based on Python's truthy/falsy rules.
+
+---
+
+Next, we will explore the **Binary Data Types** in Python — used for working with binary data like files and byte streams.

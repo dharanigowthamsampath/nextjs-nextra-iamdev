@@ -1,0 +1,221 @@
+# Type Casting in Python
+
+**Type casting** (also called **type conversion**) is the process of **converting one data type into another**.
+
+In Python, type casting can be:
+
+- **Implicit (automatic)** — handled by Python itself when no data loss will occur.
+- **Explicit (manual)** — done by the programmer using type conversion functions.
+
+---
+
+## Common Type Conversion Functions
+
+| Function   | Description         |
+| ---------- | ------------------- |
+| `int(x)`   | Converts to integer |
+| `float(x)` | Converts to float   |
+| `str(x)`   | Converts to string  |
+| `bool(x)`  | Converts to boolean |
+| `list(x)`  | Converts to list    |
+| `tuple(x)` | Converts to tuple   |
+| `set(x)`   | Converts to set     |
+
+---
+
+## Example 1: Integer Conversion (`int()`)
+
+```python filename="typecasting_int.py" {2, 3, 4}
+x = 5.8
+print(int(x))     # Float to int
+
+y = "42"
+print(int(y))     # String to int
+
+z = True
+print(int(z))     # Bool to int
+```
+
+```python filename="output.txt"
+5
+42
+1
+```
+
+### Explanation:
+
+- Converts float to integer (drops decimal).
+- Converts numeric string to integer.
+- Converts boolean: `True` → `1`, `False` → `0`.
+
+---
+
+## Example 2: Float Conversion (`float()`)
+
+```python filename="typecasting_float.py" {2, 3, 4}
+x = 7
+print(float(x))   # Int to float
+
+y = "3.14"
+print(float(y))   # String to float
+
+z = False
+print(float(z))   # Bool to float
+```
+
+```python filename="output.txt"
+7.0
+3.14
+0.0
+```
+
+### Explanation:
+
+- Converts integer to float.
+- Converts numeric string to float.
+- Converts boolean to float.
+
+---
+
+## Example 3: String Conversion (`str()`)
+
+```python filename="typecasting_str.py" {2, 3, 4}
+x = 25
+print(str(x))     # Int to string
+
+y = 8.5
+print(str(y))     # Float to string
+
+z = None
+print(str(z))     # None to string
+```
+
+```python filename="output.txt"
+25
+8.5
+None
+```
+
+### Explanation:
+
+- Converts any object to a string.
+- Useful for concatenation or display.
+
+---
+
+## Example 4: Boolean Conversion (`bool()`)
+
+```python filename="typecasting_bool.py" {2, 3, 4}
+print(bool(0))         # Zero → False
+print(bool(42))        # Non-zero → True
+print(bool(""))        # Empty string → False
+print(bool("Hello"))   # Non-empty string → True
+```
+
+```python filename="output.txt"
+False
+True
+False
+True
+```
+
+### Explanation:
+
+- `0`, empty string, `None`, empty containers → `False`.
+- All other values → `True`.
+
+---
+
+## Example 5: List Conversion (`list()`)
+
+```python filename="typecasting_list.py" {2, 3}
+x = "abc"
+print(list(x))         # String to list of characters
+
+y = (1, 2, 3)
+print(list(y))         # Tuple to list
+```
+
+```python filename="output.txt"
+['a', 'b', 'c']
+[1, 2, 3]
+```
+
+### Explanation:
+
+- Converts iterable (string, tuple) into list.
+- Each element becomes a list item.
+
+---
+
+## Example 6: Tuple Conversion (`tuple()`)
+
+```python filename="typecasting_tuple.py" {2, 3}
+x = [10, 20, 30]
+print(tuple(x))        # List to tuple
+
+y = "xyz"
+print(tuple(y))        # String to tuple
+```
+
+```python filename="output.txt"
+(10, 20, 30)
+('x', 'y', 'z')
+```
+
+### Explanation:
+
+- Converts iterable into tuple.
+
+---
+
+## Example 7: Set Conversion (`set()`)
+
+```python filename="typecasting_set.py" {2, 3}
+x = [1, 2, 2, 3]
+print(set(x))          # List to set (removes duplicates)
+
+y = "aab"
+print(set(y))          # String to set of unique characters
+```
+
+```python filename="output.txt"
+{1, 2, 3}
+{'a', 'b'}
+```
+
+### Explanation:
+
+- Converts iterable into set.
+- Removes duplicate values.
+
+---
+
+## Implicit Type Casting
+
+Python also **automatically converts** types where possible.
+
+```python filename="implicit_typecasting.py" {2, 3}
+x = 5
+y = 2.5
+result = x + y
+print(result)
+print(type(result))
+```
+
+```python filename="output.txt"
+7.5
+<class 'float'>
+```
+
+### Explanation:
+
+- Python promotes `int` to `float` automatically to avoid data loss.
+
+---
+
+## Summary
+
+- **Explicit Type Casting** is done using functions like `int()`, `float()`, `str()`, etc.
+- **Implicit Type Casting** is performed automatically when safe.
+- Type casting is very useful for **user input**, **arithmetic**, **string formatting**, and **data processing**.

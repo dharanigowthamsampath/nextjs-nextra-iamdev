@@ -1,0 +1,304 @@
+# Arithmetic Operators in Python
+
+**Arithmetic operators** in Python are used to perform mathematical operations between numerical values. These operators work with both integers and floating-point numbers.
+
+---
+
+## List of Arithmetic Operators
+
+| Operator       | Symbol | Description                                         |
+| -------------- | ------ | --------------------------------------------------- |
+| Addition       | `+`    | Adds two operands                                   |
+| Subtraction    | `-`    | Subtracts the right operand from the left           |
+| Multiplication | `*`    | Multiplies two operands                             |
+| Division       | `/`    | Divides left operand by right (float result)        |
+| Floor Division | `//`   | Divides and returns the integer quotient            |
+| Modulus        | `%`    | Returns remainder after division                    |
+| Exponentiation | `**`   | Raises the first operand to the power of the second |
+
+---
+
+## 1. Addition (`+`)
+
+Adds two numbers.
+
+```python filename="addition.py" {2, 3, 4}
+a = 10
+b = 5
+print("Sum:", a + b)
+```
+
+```python filename="output.txt"
+Sum: 15
+```
+
+### Example 2: Adding Floats
+
+```python filename="addition_float.py" {2, 3}
+x = 3.5
+y = 4.5
+print("Result:", x + y)
+```
+
+```python filename="output.txt"
+Result: 8.0
+```
+
+### Example 3: Adding Mixed Types
+
+```python filename="addition_mixed.py" {2, 3}
+num = 7
+decimal = 2.3
+print("Total:", num + decimal)
+```
+
+```python filename="output.txt"
+Total: 9.3
+```
+
+---
+
+## 2. Subtraction (`-`)
+
+Subtracts the right operand from the left.
+
+```python filename="subtraction.py" {2, 3}
+a = 15
+b = 8
+print("Difference:", a - b)
+```
+
+```python filename="output.txt"
+Difference: 7
+```
+
+### Example 2: Subtracting Floats
+
+```python filename="subtraction_float.py" {2, 3}
+x = 10.0
+y = 3.75
+print("Result:", x - y)
+```
+
+```python filename="output.txt"
+Result: 6.25
+```
+
+### Example 3: Subtracting with Negative Numbers
+
+```python filename="subtraction_negative.py" {2, 3}
+m = -5
+n = 12
+print("Result:", m - n)
+```
+
+```python filename="output.txt"
+Result: -17
+```
+
+---
+
+## 3. Multiplication (`*`)
+
+Multiplies two operands.
+
+```python filename="multiplication.py" {2, 3}
+a = 6
+b = 4
+print("Product:", a * b)
+```
+
+```python filename="output.txt"
+Product: 24
+```
+
+### Example 2: Multiplying Floats
+
+```python filename="multiplication_float.py" {2, 3}
+x = 2.5
+y = 4.0
+print("Result:", x * y)
+```
+
+```python filename="output.txt"
+Result: 10.0
+```
+
+### Example 3: Multiplying with Zero
+
+```python filename="multiplication_zero.py" {2, 3}
+num = 7
+print("Product:", num * 0)
+```
+
+```python filename="output.txt"
+Product: 0
+```
+
+---
+
+## 4. Division (`/`)
+
+Divides left operand by right. Result is always a float.
+
+```python filename="division.py" {2, 3}
+a = 20
+b = 4
+print("Quotient:", a / b)
+```
+
+```python filename="output.txt"
+Quotient: 5.0
+```
+
+### Example 2: Dividing Floats
+
+```python filename="division_float.py" {2, 3}
+x = 7.5
+y = 2.5
+print("Result:", x / y)
+```
+
+```python filename="output.txt"
+Result: 3.0
+```
+
+### Example 3: Division with Result < 1
+
+```python filename="division_small.py" {2, 3}
+num = 3
+den = 10
+print("Result:", num / den)
+```
+
+```python filename="output.txt"
+Result: 0.3
+```
+
+---
+
+## 5. Floor Division (`//`)
+
+Divides and returns the integer part (quotient).
+
+```python filename="floor_division.py" {2, 3}
+a = 15
+b = 4
+print("Floor Division:", a // b)
+```
+
+```python filename="output.txt"
+Floor Division: 3
+```
+
+### Example 2: With Negative Numbers
+
+```python filename="floor_division_negative.py" {2, 3}
+x = -10
+y = 3
+print("Result:", x // y)
+```
+
+```python filename="output.txt"
+Result: -4
+```
+
+### Example 3: With Floats
+
+```python filename="floor_division_float.py" {2, 3}
+num = 7.5
+den = 2
+print("Result:", num // den)
+```
+
+```python filename="output.txt"
+Result: 3.0
+```
+
+---
+
+## 6. Modulus (`%`)
+
+Returns remainder after division.
+
+```python filename="modulus.py" {2, 3}
+a = 17
+b = 5
+print("Remainder:", a % b)
+```
+
+```python filename="output.txt"
+Remainder: 2
+```
+
+### Example 2: Even or Odd Check
+
+```python filename="modulus_evenodd.py" {2, 3}
+num = 8
+print("Is Even?", num % 2 == 0)
+```
+
+```python filename="output.txt"
+Is Even? True
+```
+
+### Example 3: Negative Modulus
+
+```python filename="modulus_negative.py" {2, 3}
+x = -13
+y = 4
+print("Result:", x % y)
+```
+
+```python filename="output.txt"
+Result: 3
+```
+
+---
+
+## 7. Exponentiation (`**`)
+
+Raises first operand to the power of the second.
+
+```python filename="exponentiation.py" {2, 3}
+a = 2
+b = 3
+print("Power:", a ** b)
+```
+
+```python filename="output.txt"
+Power: 8
+```
+
+### Example 2: Square Root
+
+```python filename="exponentiation_sqrt.py" {2, 3}
+num = 16
+print("Square Root:", num ** 0.5)
+```
+
+```python filename="output.txt"
+Square Root: 4.0
+```
+
+### Example 3: Negative Exponents
+
+```python filename="exponentiation_negative.py" {2, 3}
+base = 2
+exp = -2
+print("Result:", base ** exp)
+```
+
+```python filename="output.txt"
+Result: 0.25
+```
+
+---
+
+## Summary
+
+- Python supports a full set of arithmetic operators.
+- Operators work on integers, floats, and mixed types.
+- Division `/` always returns a float, while floor division `//` returns an integer part.
+- Exponentiation `**` is useful for power operations and square roots.
+- Use these operators for mathematical and data-processing tasks.

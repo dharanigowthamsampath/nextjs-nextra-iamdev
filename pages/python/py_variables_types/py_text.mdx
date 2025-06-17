@@ -1,0 +1,164 @@
+# Strings in Python
+
+In Python, **strings** are one of the most commonly used data types. They are used to store and manipulate textual data, such as names, messages, or any sequence of characters. Python strings are powerful, immutable, and come with a rich set of built-in methods.
+
+---
+
+## What is a String?
+
+A string in Python is a **sequence of Unicode characters** enclosed in single quotes (`'...'`), double quotes (`"..."`), or triple quotes (`'''...'''` or `"""..."""`).
+
+### Syntax:
+
+```python filename="string_syntax.py" {1, 2, 3}
+single = 'Hello'
+double = "World"
+multiline = """This is
+a multi-line string."""
+```
+
+---
+
+## String Characteristics
+
+- **Immutable**: Once created, strings cannot be modified.
+- **Indexed**: Each character has a position (starting from 0).
+- **Iterable**: Strings can be looped over.
+- **Supports Slicing**: You can extract substrings.
+
+---
+
+## Example 1: Basic String Operations
+
+```python filename="string_basic_ops.py" {2, 3, 4}
+greeting = "Hello"
+name = "Alice"
+message = greeting + ", " + name + "!"
+print(message)
+```
+
+This demonstrates **concatenation** of multiple strings to form a complete message. The `+` operator joins strings.
+
+---
+
+## Example 2: Indexing and Slicing
+
+```python filename="string_index_slice.py" {2, 3, 4}
+word = "Python"
+print(word[0])      # First character
+print(word[-1])     # Last character
+print(word[1:4])    # Characters from index 1 to 3
+```
+
+- `word[0]` accesses the first character.
+- `word[-1]` accesses the last character using negative indexing.
+- `word[1:4]` slices from index 1 up to (but not including) index 4.
+
+---
+
+## Example 3: String Methods
+
+```python filename="string_methods.py" {2, 3, 4, 5}
+text = "  Learn Python Programming  "
+print(text.strip())       # Removes leading/trailing whitespace
+print(text.lower())       # Converts to lowercase
+print(text.upper())       # Converts to uppercase
+print(text.replace("Python", "Java"))  # Replaces substring
+```
+
+Python provides many **string methods** for transforming and cleaning text.
+
+---
+
+## Example 4: Multiline Strings and Escaping
+
+```python filename="string_multiline.py" {1, 3, 5}
+message = """Hello,
+This is a multiline
+string with line breaks."""
+print(message)
+
+escaped = "He said, \"Python is awesome!\""
+print(escaped)
+```
+
+- Triple quotes allow multiline string literals.
+- Backslashes (`\`) are used to **escape special characters** like `\"`, `\n`, `\t`.
+
+---
+
+## Example 5: String Formatting
+
+Python supports multiple string formatting methods:
+
+### Using `f-strings` (Recommended in Python 3.6+)
+
+```python filename="string_fstring.py" {2}
+name = "Alice"
+print(f"Welcome, {name}!")
+```
+
+### Using `.format()` method
+
+```python filename="string_format.py" {2}
+print("Welcome, {}!".format("Alice"))
+```
+
+### Using `%` formatting (older style)
+
+```python filename="string_percent.py" {2}
+print("Welcome, %s!" % "Alice")
+```
+
+---
+
+## Example 6: Iterating Over a String
+
+```python filename="string_iteration.py" {2, 3}
+language = "Python"
+for char in language:
+    print(char)
+```
+
+Each character in a string can be accessed using a `for` loop because strings are iterable.
+
+---
+
+## Commonly Used String Methods
+
+| Method             | Description                               |
+| ------------------ | ----------------------------------------- |
+| `str.lower()`      | Converts string to lowercase              |
+| `str.upper()`      | Converts string to uppercase              |
+| `str.strip()`      | Removes whitespace from both ends         |
+| `str.replace()`    | Replaces a substring with another         |
+| `str.split()`      | Splits string into a list by separator    |
+| `str.join()`       | Joins elements of an iterable with string |
+| `str.startswith()` | Checks if string starts with a prefix     |
+| `str.endswith()`   | Checks if string ends with a suffix       |
+
+---
+
+## String Immutability
+
+Strings are **immutable**, meaning operations return **new strings** and do not alter the original.
+
+```python filename="string_immutable.py" {2, 3}
+name = "Alice"
+new_name = name.replace("A", "E")
+print(name)       # Alice
+print(new_name)   # Elice
+```
+
+`name` remains unchanged. A new string is returned.
+
+---
+
+## Summary
+
+- Strings in Python are immutable sequences of characters.
+- They support indexing, slicing, iteration, and a rich set of methods.
+- Triple quotes allow for multiline strings.
+- Formatting can be done using `f-strings`, `.format()`, or `%`.
+
+In the next article, we’ll explore **Lists** in Python — dynamic arrays that support mutable operations and heterogeneous data.

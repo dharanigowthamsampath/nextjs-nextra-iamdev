@@ -1,0 +1,156 @@
+# Numeric Types in Python
+
+Numeric types are among the most fundamental data types in Python. They allow developers to represent and perform operations on numeric values such as integers, decimal numbers, and even complex numbers. Python provides three distinct numeric types:
+
+- `int` – Integer values
+- `float` – Floating-point decimal values
+- `complex` – Complex numbers with real and imaginary parts
+
+This article explores each of these types in detail, including syntax, behavior, and practical examples.
+
+---
+
+## 1. `int` – Integer Type
+
+The `int` type represents **whole numbers** (both positive and negative) without any decimal part. Python integers are of **arbitrary precision**, meaning they can be very large, limited only by memory.
+
+### Characteristics:
+
+- No fractional part
+- Supports binary, octal, and hexadecimal literals
+- Commonly used in counting, indexing, and integer arithmetic
+
+### Example 1: Basic Integer Assignment and Arithmetic
+
+```python filename="int_example1.py" {1, 2, 3}
+a = 10
+b = 4
+print(a + b)      # Output: 14
+```
+
+This demonstrates basic addition using integer values.
+
+### Example 2: Integer Division and Floor Division
+
+```python filename="int_example2.py" {2, 3}
+a = 10
+print(a / 3)      # Output: 3.333...
+print(a // 3)     # Output: 3 (floor division)
+```
+
+Note that `/` returns a `float`, while `//` returns an `int` by removing the fractional part.
+
+### Example 3: Working with Binary, Octal, and Hexadecimal
+
+```python filename="int_example3.py" {1, 2, 3}
+bin_num = 0b1010       # binary (10)
+oct_num = 0o12         # octal (10)
+hex_num = 0xA          # hexadecimal (10)
+
+print(bin_num + oct_num + hex_num)  # Output: 30
+```
+
+Python allows integer literals in various bases using prefixes like `0b`, `0o`, and `0x`.
+
+---
+
+## 2. `float` – Floating-Point Numbers
+
+The `float` type is used to represent **decimal or real numbers** with a fractional component. Python floats are based on the IEEE 754 double-precision format.
+
+### Characteristics:
+
+- Represent numbers with decimals (e.g., 3.14, -0.5)
+- Subject to rounding errors due to binary representation
+- Useful in scientific, financial, and statistical computations
+
+### Example 1: Basic Float Assignment and Operations
+
+```python filename="float_example1.py" {1, 2, 3}
+pi = 3.14159
+radius = 5
+area = pi * radius ** 2
+print("Area:", area)
+```
+
+Calculates the area of a circle using floating-point arithmetic.
+
+### Example 2: Rounding and Formatting
+
+```python filename="float_example2.py" {3, 4}
+value = 10 / 3
+print(round(value, 2))     # Output: 3.33
+print(f"{value:.4f}")      # Output: 3.3333
+```
+
+Shows how to round and format float values for presentation.
+
+### Example 3: Scientific Notation
+
+```python filename="float_example3.py" {1, 2, 3}
+mass = 5.97e24       # Earth's mass in kilograms
+speed = 3.0e8        # Speed of light in m/s
+energy = mass * speed ** 2
+print("E =", energy)
+```
+
+Demonstrates how to use exponential notation for large or small values.
+
+---
+
+## 3. `complex` – Complex Numbers
+
+The `complex` type is used to represent numbers with a **real** and an **imaginary** part. This is useful in fields like electrical engineering, control systems, and quantum physics.
+
+### Characteristics:
+
+- Written in the form `a + bj`, where `a` is the real part and `b` is the imaginary part
+- The imaginary unit in Python is `j` (not `i`)
+- Python includes built-in support for arithmetic and mathematical operations with complex numbers
+
+### Example 1: Declaring and Printing a Complex Number
+
+```python filename="complex_example1.py" {1, 2}
+z = 3 + 4j
+print("Real part:", z.real)
+print("Imaginary part:", z.imag)
+```
+
+Accesses and displays the real and imaginary components of the complex number.
+
+### Example 2: Complex Number Arithmetic
+
+```python filename="complex_example2.py" {2, 3}
+z1 = 2 + 3j
+z2 = 1 - 1j
+result = z1 * z2
+print("Multiplication:", result)
+```
+
+Performs multiplication between two complex numbers.
+
+### Example 3: Using `cmath` Module
+
+```python filename="complex_example3.py" {3}
+import cmath
+
+z = 1 + 1j
+polar = cmath.polar(z)
+print("Polar coordinates:", polar)
+```
+
+Uses the `cmath` module for advanced complex math operations, such as converting to polar coordinates.
+
+---
+
+## Summary
+
+| Type      | Use Case                                       | Example               |
+| --------- | ---------------------------------------------- | --------------------- |
+| `int`     | Whole numbers, indexing, counting              | `5`, `-3`, `0b1010`   |
+| `float`   | Decimal numbers, measurements, scientific data | `3.14`, `-0.5`, `2e3` |
+| `complex` | Numbers with real and imaginary parts          | `3 + 4j`, `1 - 2j`    |
+
+Python makes working with numeric types straightforward, but precision, formatting, and type interaction must be handled carefully.
+
+In the next section, we’ll explore Python’s **text type — `str`** — and how to work with strings effectively.

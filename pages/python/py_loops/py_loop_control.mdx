@@ -1,0 +1,181 @@
+# Loop Control Statements in Python
+
+Python provides special statements to **control the flow** of loops — making them more flexible and powerful:
+
+1. `break` – exit the loop entirely
+2. `continue` – skip the current iteration
+3. `else` – run a block **after the loop ends**, unless the loop was exited with `break`
+
+These can be used in both **`for` loops** and **`while` loops**.
+
+---
+
+## Example 1: The `break` Statement
+
+`break` is used to **immediately stop** the loop, regardless of the loop condition or sequence.
+
+```python filename="break_example.py" {2, 3, 4, 5, 6}
+for num in range(1, 10):
+    if num == 5:
+        break
+    print(num)
+```
+
+```python filename="output.txt"
+1
+2
+3
+4
+```
+
+### Explanation:
+
+- The loop starts at `1`.
+- When `num == 5`, the `break` statement **exits the loop**.
+- The loop prints only `1` to `4`.
+
+---
+
+## Example 2: The `continue` Statement
+
+`continue` is used to **skip the rest of the current iteration** and go to the next loop cycle.
+
+```python filename="continue_example.py" {2, 3, 4, 5, 6}
+for num in range(1, 6):
+    if num == 3:
+        continue
+    print(num)
+```
+
+```python filename="output.txt"
+1
+2
+4
+5
+```
+
+### Explanation:
+
+- The loop skips printing `3` and continues with `4` and `5`.
+
+---
+
+## Example 3: The `else` Clause With Loops
+
+An `else` block can be attached to a loop:
+
+- It runs **after the loop finishes normally** (without `break`).
+- If the loop **exits with `break`**, the `else` block is skipped.
+
+```python filename="else_for.py" {2, 3, 4, 5, 6, 7}
+for i in range(1, 4):
+    print(i)
+else:
+    print("Loop completed without break")
+```
+
+```python filename="output.txt"
+1
+2
+3
+Loop completed without break
+```
+
+### Explanation:
+
+- The loop runs all iterations — so the `else` runs.
+
+---
+
+## Example 4: Using `break` and `else` Together
+
+```python filename="break_else.py" {2, 3, 4, 5, 6, 7, 8}
+for i in range(1, 6):
+    if i == 4:
+        print("Breaking at", i)
+        break
+    print(i)
+else:
+    print("Loop finished without break")
+```
+
+```python filename="output.txt"
+1
+2
+3
+Breaking at 4
+```
+
+### Explanation:
+
+- The loop exits with `break`, so the `else` block is **not run**.
+
+---
+
+## Example 5: `while` Loop With `break`
+
+```python filename="while_break.py" {2, 3, 4, 5, 6}
+count = 0
+while True:
+    count += 1
+    print("Count:", count)
+    if count == 3:
+        break
+```
+
+```python filename="output.txt"
+Count: 1
+Count: 2
+Count: 3
+```
+
+### Explanation:
+
+- The loop is **infinite (`while True`)**.
+- The loop is stopped by `break` when count reaches `3`.
+
+---
+
+## Example 6: Skipping Odd Numbers With `continue`
+
+```python filename="while_continue.py" {2, 3, 4, 5, 6, 7}
+i = 0
+while i < 6:
+    i += 1
+    if i % 2 != 0:
+        continue
+    print(i)
+```
+
+```python filename="output.txt"
+2
+4
+6
+```
+
+### Explanation:
+
+- Odd numbers are skipped using `continue`.
+- Even numbers are printed.
+
+---
+
+## When to Use Loop Control Statements
+
+| Statement  | Purpose                                                                 |
+| ---------- | ----------------------------------------------------------------------- |
+| `break`    | Stop loop early when a condition is met (exit loop)                     |
+| `continue` | Skip current iteration, continue with next                              |
+| `else`     | Run only when loop completes without break (useful for search patterns) |
+
+---
+
+## Summary
+
+- `break`, `continue`, and `else` give you **full control** of loop behavior.
+- They can be used in both `for` and `while` loops.
+- Use `break` to exit early, `continue` to skip an iteration, and `else` to handle post-loop actions.
+
+---
+
+In the next section, we will explore **functions** — how to define them, use arguments and return values, and build reusable components in Python programs.

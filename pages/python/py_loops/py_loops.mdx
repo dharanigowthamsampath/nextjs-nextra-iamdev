@@ -1,0 +1,229 @@
+# Loops in Python – `for` Loop
+
+The **`for` loop** in Python is used to iterate over a **sequence of elements** such as lists, strings, tuples, ranges, dictionaries, and sets.
+
+It is ideal when you know **how many elements** you want to process — and it's one of the most commonly used loop structures in Python.
+
+---
+
+## Basic Syntax of `for` Loop
+
+```python filename="for_syntax.py" {2, 3, 4}
+for item in sequence:
+    # block of code
+```
+
+### Explanation:
+
+- The loop **extracts one item at a time** from the sequence.
+- The item is assigned to the variable `item`.
+- The loop runs until **all elements** have been processed.
+
+---
+
+## Example 1: Iterating Over a List
+
+```python filename="for_list.py" {2, 3, 4}
+fruits = ["apple", "banana", "cherry"]
+
+for fruit in fruits:
+    print("I like", fruit)
+```
+
+```python filename="output.txt"
+I like apple
+I like banana
+I like cherry
+```
+
+### Explanation:
+
+- The loop **automatically picks one element** from the list on each iteration.
+- Very readable and simple to use with sequences like lists.
+
+---
+
+## Example 2: Iterating Over a String
+
+```python filename="for_string.py" {2, 3, 4}
+word = "Python"
+
+for char in word:
+    print(char)
+```
+
+```python filename="output.txt"
+P
+y
+t
+h
+o
+n
+```
+
+### Explanation:
+
+- Strings are sequences of characters — the `for` loop processes them one character at a time.
+
+---
+
+## Example 3: Using `range()` for Numeric Sequences
+
+```python filename="for_range.py" {2, 3, 4}
+for i in range(1, 6):
+    print("Number:", i)
+```
+
+```python filename="output.txt"
+Number: 1
+Number: 2
+Number: 3
+Number: 4
+Number: 5
+```
+
+### Explanation:
+
+- `range(start, stop)` generates a sequence of numbers from `start` to `stop - 1`.
+- Perfect for loops that **count** or repeat a set number of times.
+
+---
+
+## Example 4: Loop With Step Value
+
+```python filename="for_range_step.py" {2, 3, 4}
+for i in range(0, 11, 2):
+    print("Even:", i)
+```
+
+```python filename="output.txt"
+Even: 0
+Even: 2
+Even: 4
+Even: 6
+Even: 8
+Even: 10
+```
+
+### Explanation:
+
+- The third argument in `range(start, stop, step)` controls how much the counter increases on each iteration.
+- Used to iterate with custom step sizes.
+
+---
+
+## Example 5: Looping Over a Tuple
+
+```python filename="for_tuple.py" {2, 3, 4}
+person = ("Alice", 30, "Engineer")
+
+for detail in person:
+    print(detail)
+```
+
+```python filename="output.txt"
+Alice
+30
+Engineer
+```
+
+### Explanation:
+
+- Works on **any iterable** — lists, tuples, sets, strings, dictionaries, etc.
+
+---
+
+## Example 6: Nested `for` Loops – Multiplication Table
+
+```python filename="for_nested.py" {2, 3, 4, 5, 6, 7, 8}
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(f"{i} x {j} = {i * j}", end="\t")
+    print()
+```
+
+```python filename="output.txt"
+1 x 1 = 1	1 x 2 = 2	1 x 3 = 3
+2 x 1 = 2	2 x 2 = 4	2 x 3 = 6
+3 x 1 = 3	3 x 2 = 6	3 x 3 = 9
+```
+
+### Explanation:
+
+- **Nested loops** allow you to create multi-dimensional patterns.
+- Outer loop controls rows; inner loop controls columns.
+
+---
+
+## Example 7: Looping Over a Dictionary
+
+```python filename="for_dict.py" {2, 3, 4, 5}
+info = {"name": "John", "age": 28, "city": "New York"}
+
+for key, value in info.items():
+    print(f"{key}: {value}")
+```
+
+```python filename="output.txt"
+name: John
+age: 28
+city: New York
+```
+
+### Explanation:
+
+- The `.items()` method returns key-value pairs from the dictionary.
+- **Dictionary iteration** is a common pattern in Python programs.
+
+---
+
+## Example 8: Loop With `break` and `continue`
+
+```python filename="for_break_continue.py" {2, 3, 4, 5, 6, 7, 8, 9}
+numbers = [1, 2, 3, 4, 5, 6]
+
+for num in numbers:
+    if num == 4:
+        continue  # Skip this iteration
+    if num == 6:
+        break  # Exit the loop
+    print(num)
+```
+
+```python filename="output.txt"
+1
+2
+3
+5
+```
+
+### Explanation:
+
+- `continue` skips the current iteration.
+- `break` exits the loop entirely.
+- Helps manage loop flow.
+
+---
+
+## When to Use `for` vs `while`
+
+| Use Case                              | `for` Loop      | `while` Loop            |
+| ------------------------------------- | --------------- | ----------------------- |
+| Known number of iterations            | Yes             | Possible but less clear |
+| Iterating over a sequence (list, str) | Yes (preferred) | Possible but awkward    |
+| Input validation, waiting for event   | Less common     | Preferred               |
+| Infinite loops with manual exit       | Possible        | Common                  |
+
+---
+
+## Summary
+
+- The `for` loop is **designed for iteration** — over any sequence or iterable.
+- It works well with **lists, tuples, dictionaries, strings, ranges**, and more.
+- It is **clear, simple, and readable** — ideal for processing each element of a collection.
+- Use **`break`** and **`continue`** to control loop flow.
+- Combine with **nested loops** for advanced structures.
+
+---
+
+In the next topic, we will explore **loop control statements** in greater depth: `break`, `continue`, and `else` with loops — and how they allow you to build more flexible logic inside loops.

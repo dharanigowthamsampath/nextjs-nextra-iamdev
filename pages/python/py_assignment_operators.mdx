@@ -1,0 +1,337 @@
+# Assignment Operators in Python
+
+**Assignment operators** are used to **assign values to variables**. In addition to simple assignment (`=`), Python provides **compound assignment operators** that combine arithmetic or bitwise operations with assignment — helping to write more concise and readable code.
+
+---
+
+## List of Assignment Operators
+
+| Operator                | Symbol | Description                                                      |
+| ----------------------- | ------ | ---------------------------------------------------------------- |
+| Simple Assignment       | `=`    | Assigns the right-hand value to the left-hand variable           |
+| Add and Assign          | `+=`   | Adds right operand to left operand and assigns the result        |
+| Subtract and Assign     | `-=`   | Subtracts right operand from left operand and assigns the result |
+| Multiply and Assign     | `*=`   | Multiplies left operand by right operand and assigns the result  |
+| Divide and Assign       | `/=`   | Divides left operand by right operand and assigns the result     |
+| Modulus and Assign      | `%=`   | Performs modulus operation and assigns the result                |
+| Floor Divide and Assign | `//=`  | Floor division and assign                                        |
+| Exponent and Assign     | `**=`  | Raises left operand to power of right operand and assigns result |
+
+---
+
+## 1. Simple Assignment (`=`)
+
+Assigns the value of the right-hand side to the left-hand variable.
+
+```python filename="assignment_equal.py" {2, 3}
+x = 10
+y = 5
+print("x =", x)
+print("y =", y)
+```
+
+```python filename="output.txt"
+x = 10
+y = 5
+```
+
+### Explanation:
+
+- The `=` operator assigns the value on the right to the variable on the left.
+- It does not compare; it stores the value.
+
+---
+
+## 2. Add and Assign (`+=`)
+
+Adds a value to the variable and updates the variable.
+
+```python filename="assignment_add.py" {2, 3}
+count = 5
+count += 3
+print("count =", count)
+```
+
+```python filename="output.txt"
+count = 8
+```
+
+### Example 2: String Concatenation with `+=`
+
+```python filename="assignment_add_string.py" {2, 3}
+greeting = "Hello"
+greeting += " World"
+print(greeting)
+```
+
+```python filename="output.txt"
+Hello World
+```
+
+### Example 3: Using in Loops
+
+```python filename="assignment_add_loop.py" {2, 3, 4}
+total = 0
+for i in range(1, 6):
+    total += i
+print(total)
+```
+
+```python filename="output.txt"
+15
+```
+
+---
+
+## 3. Subtract and Assign (`-=`)
+
+Subtracts a value and updates the variable.
+
+```python filename="assignment_subtract.py" {2, 3}
+balance = 100
+balance -= 20
+print("balance =", balance)
+```
+
+```python filename="output.txt"
+balance = 80
+```
+
+### Example 2: Countdown
+
+```python filename="assignment_subtract_loop.py" {2, 3, 4}
+countdown = 10
+while countdown > 0:
+    countdown -= 1
+print("Finished!")
+```
+
+```python filename="output.txt"
+Finished!
+```
+
+### Example 3: Negative Result
+
+```python filename="assignment_subtract_negative.py" {2, 3}
+num = 5
+num -= 10
+print(num)
+```
+
+```python filename="output.txt"
+-5
+```
+
+---
+
+## 4. Multiply and Assign (`*=`)
+
+Multiplies the variable by a value and updates it.
+
+```python filename="assignment_multiply.py" {2, 3}
+points = 10
+points *= 2
+print("points =", points)
+```
+
+```python filename="output.txt"
+points = 20
+```
+
+### Example 2: Geometric Growth
+
+```python filename="assignment_multiply_loop.py" {2, 3, 4}
+x = 2
+for i in range(3):
+    x *= 2
+print(x)
+```
+
+```python filename="output.txt"
+16
+```
+
+### Example 3: String Repetition
+
+```python filename="assignment_multiply_string.py" {2, 3}
+stars = "*"
+stars *= 5
+print(stars)
+```
+
+```python filename="output.txt"
+*****
+```
+
+---
+
+## 5. Divide and Assign (`/=`)
+
+Divides the variable by a value and updates it (result is float).
+
+```python filename="assignment_divide.py" {2, 3}
+price = 100
+price /= 4
+print("price =", price)
+```
+
+```python filename="output.txt"
+price = 25.0
+```
+
+### Example 2: Division Resulting in Float
+
+```python filename="assignment_divide_float.py" {2, 3}
+num = 9
+num /= 2
+print(num)
+```
+
+```python filename="output.txt"
+4.5
+```
+
+### Example 3: Multiple Divisions
+
+```python filename="assignment_divide_loop.py" {2, 3, 4}
+value = 64
+for _ in range(3):
+    value /= 2
+print(value)
+```
+
+```python filename="output.txt"
+8.0
+```
+
+---
+
+## 6. Modulus and Assign (`%=`)
+
+Performs modulus (remainder) operation and updates variable.
+
+```python filename="assignment_modulus.py" {2, 3}
+number = 10
+number %= 3
+print(number)
+```
+
+```python filename="output.txt"
+1
+```
+
+### Example 2: Even or Odd
+
+```python filename="assignment_modulus_even_odd.py" {2, 3}
+n = 7
+n %= 2
+print(n)
+```
+
+```python filename="output.txt"
+1
+```
+
+### Example 3: Loop with Modulus
+
+```python filename="assignment_modulus_loop.py" {2, 3, 4}
+total = 20
+while total > 0:
+    total %= 7
+    break
+print(total)
+```
+
+```python filename="output.txt"
+6
+```
+
+---
+
+## 7. Floor Divide and Assign (`//=`)
+
+Performs floor division and updates variable (integer result).
+
+```python filename="assignment_floor_divide.py" {2, 3}
+value = 25
+value //= 4
+print(value)
+```
+
+```python filename="output.txt"
+6
+```
+
+### Example 2: Reducing Value
+
+```python filename="assignment_floor_loop.py" {2, 3, 4}
+x = 100
+x //= 3
+print(x)
+```
+
+```python filename="output.txt"
+33
+```
+
+### Example 3: Countdown to Zero
+
+```python filename="assignment_floor_zero.py" {2, 3, 4}
+num = 10
+num //= 5
+print(num)
+```
+
+```python filename="output.txt"
+2
+```
+
+---
+
+## 8. Exponent and Assign (`**=`)
+
+Raises variable to a power and updates it.
+
+```python filename="assignment_exponent.py" {2, 3}
+base = 2
+base **= 3
+print(base)
+```
+
+```python filename="output.txt"
+8
+```
+
+### Example 2: Squaring a Number
+
+```python filename="assignment_exponent_square.py" {2, 3}
+num = 5
+num **= 2
+print(num)
+```
+
+```python filename="output.txt"
+25
+```
+
+### Example 3: Power Series
+
+```python filename="assignment_exponent_loop.py" {2, 3, 4}
+value = 3
+for _ in range(2):
+    value **= 2
+print(value)
+```
+
+```python filename="output.txt"
+81
+```
+
+---
+
+## Summary
+
+- Assignment operators **assign values** to variables.
+- Compound operators like `+=`, `-=`, `*=`, and others make code shorter and more expressive.
+- They are commonly used in **loops**, **counters**, and **aggregations**.
+- Mastering these operators improves both **performance** and **clarity** of your Python code.

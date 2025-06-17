@@ -1,0 +1,267 @@
+# Comparison Operators in Python
+
+**Comparison operators** (also called relational operators) are used to compare two values. The result is always a **boolean value**: `True` or `False`.
+
+These operators are essential for **decision-making**, such as in `if` statements and loops.
+
+---
+
+## List of Comparison Operators
+
+| Operator              | Symbol | Description                              |
+| --------------------- | ------ | ---------------------------------------- |
+| Equal                 | `==`   | Returns True if both operands are equal  |
+| Not Equal             | `!=`   | Returns True if operands are not equal   |
+| Greater Than          | `>`    | Returns True if left operand is greater  |
+| Less Than             | `<`    | Returns True if left operand is lesser   |
+| Greater Than or Equal | `>=`   | True if left operand is greater or equal |
+| Less Than or Equal    | `<=`   | True if left operand is less or equal    |
+
+---
+
+## 1. Equal To (`==`)
+
+Checks if two values are equal.
+
+```python filename="equal.py" {2, 3}
+a = 10
+b = 10
+print(a == b)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Comparing Strings
+
+```python filename="equal_strings.py" {2, 3}
+name1 = "Alice"
+name2 = "alice"
+print(name1 == name2)
+```
+
+```python filename="output.txt"
+False
+```
+
+### Example 3: Comparing Different Types
+
+```python filename="equal_types.py" {2, 3}
+num = 10
+text = "10"
+print(num == text)
+```
+
+```python filename="output.txt"
+False
+```
+
+---
+
+## 2. Not Equal (`!=`)
+
+Checks if two values are not equal.
+
+```python filename="not_equal.py" {2, 3}
+x = 7
+y = 5
+print(x != y)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Strings Comparison
+
+```python filename="not_equal_strings.py" {2, 3}
+first = "Python"
+second = "Java"
+print(first != second)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 3: Comparing Different Types
+
+```python filename="not_equal_types.py" {2, 3}
+a = 5
+b = "5"
+print(a != b)
+```
+
+```python filename="output.txt"
+True
+```
+
+---
+
+## 3. Greater Than (`>`)
+
+Checks if the left operand is greater than the right.
+
+```python filename="greater_than.py" {2, 3}
+a = 15
+b = 10
+print(a > b)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Floats Comparison
+
+```python filename="greater_than_floats.py" {2, 3}
+x = 7.8
+y = 9.2
+print(x > y)
+```
+
+```python filename="output.txt"
+False
+```
+
+### Example 3: Negative Numbers
+
+```python filename="greater_than_negative.py" {2, 3}
+a = -2
+b = -5
+print(a > b)
+```
+
+```python filename="output.txt"
+True
+```
+
+---
+
+## 4. Less Than (`<`)
+
+Checks if the left operand is less than the right.
+
+```python filename="less_than.py" {2, 3}
+x = 8
+y = 12
+print(x < y)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Floats Comparison
+
+```python filename="less_than_floats.py" {2, 3}
+x = 2.5
+y = 1.5
+print(x < y)
+```
+
+```python filename="output.txt"
+False
+```
+
+### Example 3: Negative Numbers
+
+```python filename="less_than_negative.py" {2, 3}
+a = -10
+b = -1
+print(a < b)
+```
+
+```python filename="output.txt"
+True
+```
+
+---
+
+## 5. Greater Than or Equal (`>=`)
+
+Checks if the left operand is greater than or equal to the right.
+
+```python filename="greater_equal.py" {2, 3}
+a = 10
+b = 10
+print(a >= b)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Floats
+
+```python filename="greater_equal_floats.py" {2, 3}
+x = 5.0
+y = 4.9
+print(x >= y)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 3: Negative Comparison
+
+```python filename="greater_equal_negative.py" {2, 3}
+a = -2
+b = -3
+print(a >= b)
+```
+
+```python filename="output.txt"
+True
+```
+
+---
+
+## 6. Less Than or Equal (`<=`)
+
+Checks if the left operand is less than or equal to the right.
+
+```python filename="less_equal.py" {2, 3}
+a = 8
+b = 12
+print(a <= b)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Floats
+
+```python filename="less_equal_floats.py" {2, 3}
+x = 4.4
+y = 4.4
+print(x <= y)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 3: Negative Values
+
+```python filename="less_equal_negative.py" {2, 3}
+a = -5
+b = -1
+print(a <= b)
+```
+
+```python filename="output.txt"
+True
+```
+
+---
+
+## Summary
+
+- **Comparison operators** evaluate relationships between two values.
+- They return a boolean result (`True` or `False`).
+- Used commonly in **conditional statements** (`if`, `while`) and loops.
+- Work with numbers, floats, strings, and other comparable types.

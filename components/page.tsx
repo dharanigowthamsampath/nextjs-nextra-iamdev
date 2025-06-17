@@ -145,13 +145,16 @@ export function BlockPage() {
               label: "New",
               new: true,
             },
-
-            { name: "C#", url: "/csharp", disabled: true },
             {
               name: "Python",
               url: "/python",
-              disabled: true,
+              disabled: false,
+              label: "New",
+              new: true,
             },
+
+            { name: "C#", url: "/csharp", disabled: true },
+
             { name: "JavaScript", url: "/javascript", disabled: true },
             { name: "Java", url: "/java", disabled: true },
             { name: "Ruby", url: "/ruby", disabled: true },

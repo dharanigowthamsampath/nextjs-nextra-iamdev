@@ -1,0 +1,165 @@
+# Tuples in Python
+
+A **tuple** in Python is a **collection of ordered and immutable elements**. Tuples are similar to lists but cannot be changed after creation. Because of their immutability, tuples are faster and used when the data should remain constant throughout the program.
+
+---
+
+## Key Characteristics of Tuples
+
+- **Ordered**: The elements have a defined order.
+- **Immutable**: Once created, you cannot change, add, or remove elements.
+- **Heterogeneous**: Can store elements of different data types.
+- **Indexable**: Supports indexing and slicing like lists.
+- **Hashable**: Tuples can be used as dictionary keys (if all elements are hashable).
+
+---
+
+## Creating Tuples
+
+```python filename="tuple_create.py" {1, 2, 3}
+empty_tuple = ()
+single_element = (10,)   # Must include a comma
+mixed_tuple = (1, "hello", 3.5)
+```
+
+### Explanation:
+
+- Parentheses `()` define a tuple.
+- A single-element tuple must have a trailing comma (e.g., `(10,)`), otherwise Python treats it as just a value in parentheses.
+
+---
+
+## Example 1: Indexing and Accessing Elements
+
+```python filename="tuple_index.py" {2, 3, 4}
+colors = ("red", "green", "blue")
+print(colors[0])
+print(colors[-1])
+```
+
+```python filename="output.txt"
+red
+blue
+```
+
+### Explanation:
+
+- Indexing starts at `0`.
+- Negative indices access elements from the end.
+
+---
+
+## Example 2: Tuple Unpacking
+
+```python filename="tuple_unpacking.py" {2, 3}
+coordinates = (4, 5)
+x, y = coordinates
+print("X:", x, "Y:", y)
+```
+
+```python filename="output.txt"
+X: 4 Y: 5
+```
+
+### Explanation:
+
+- Tuple unpacking allows assigning elements of a tuple to multiple variables in one line.
+- The number of variables must match the number of elements in the tuple.
+
+---
+
+## Example 3: Immutability of Tuples
+
+```python filename="tuple_immutable.py" {2}
+t = (1, 2, 3)
+t[0] = 10  # This will raise an error
+```
+
+```python filename="output.txt"
+TypeError: 'tuple' object does not support item assignment
+```
+
+### Explanation:
+
+- Tuples cannot be modified after creation.
+- This property makes them suitable for read-only or fixed data.
+
+---
+
+## Example 4: Iterating Through Tuples
+
+```python filename="tuple_loop.py" {2, 3}
+languages = ("Python", "Java", "C++")
+for lang in languages:
+    print(lang)
+```
+
+```python filename="output.txt"
+Python
+Java
+C++
+```
+
+### Explanation:
+
+- Like lists, tuples support iteration using `for` loops.
+
+---
+
+## Example 5: Tuple Methods – `count()` and `index()`
+
+```python filename="tuple_methods.py" {2, 3}
+nums = (1, 2, 2, 3, 4, 2)
+print(nums.count(2))   # Count occurrences
+print(nums.index(3))   # Index of value
+```
+
+```python filename="output.txt"
+3
+3
+```
+
+### Explanation:
+
+- `count(value)` returns the number of times the value appears.
+- `index(value)` returns the first index where the value occurs.
+
+---
+
+## Example 6: Nested Tuples
+
+```python filename="tuple_nested.py" {2, 3}
+info = ("John", (25, "Developer"))
+print(info[1][0])  # Accessing inner tuple
+```
+
+```python filename="output.txt"
+25
+```
+
+### Explanation:
+
+- Tuples can contain other tuples (or other collections).
+- Indexing works recursively for nested structures.
+
+---
+
+## When to Use Tuples Over Lists
+
+| Criteria              | Use Tuple                    | Use List           |
+| --------------------- | ---------------------------- | ------------------ |
+| Mutability            | Data should not change       | Data may change    |
+| Performance           | Faster (memory efficient)    | Slightly slower    |
+| Use as Dictionary Key | Yes (if hashable)            | No                 |
+| Semantic Meaning      | Fixed group of related items | Dynamic collection |
+
+---
+
+## Summary
+
+- Tuples are ordered, immutable sequences.
+- They are defined with parentheses and support indexing, slicing, and unpacking.
+- They are useful when the data should not be modified, improving code safety and performance.
+- Tuples can be nested and used as keys in dictionaries.
+
+In the next topic, we’ll explore **Sets** — another core collection type, useful for storing **unique elements** and performing **set operations**.

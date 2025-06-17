@@ -1,7 +1,4 @@
 const meta = {
-  // index: {
-  //   display: "hidden",
-  // },
   "-- Getting Started": {
     title: "Getting Started",
     type: "separator",

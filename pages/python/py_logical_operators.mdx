@@ -1,0 +1,172 @@
+# Logical Operators in Python
+
+**Logical operators** are used to combine multiple conditions (expressions) and produce a boolean result: `True` or `False`.
+
+Logical operators play a key role in **decision-making** and are commonly used in `if` statements and loops.
+
+---
+
+## List of Logical Operators
+
+| Operator | Keyword | Description                                                 |
+| -------- | ------- | ----------------------------------------------------------- |
+| and      | `and`   | True if **both** conditions are True                        |
+| or       | `or`    | True if **at least one** condition is True                  |
+| not      | `not`   | Reverses the result: True becomes False, False becomes True |
+
+---
+
+## 1. `and` Operator
+
+Returns `True` only if **both conditions** are `True`.
+
+```python filename="logical_and.py" {2, 3}
+a = 5
+b = 10
+print(a < 10 and b > 5)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: One Condition False
+
+```python filename="logical_and_false.py" {2, 3}
+x = 3
+y = 7
+print(x > 5 and y < 10)
+```
+
+```python filename="output.txt"
+False
+```
+
+### Example 3: Combining String and Number
+
+```python filename="logical_and_mixed.py" {2, 3}
+name = "Alice"
+age = 20
+print(name == "Alice" and age >= 18)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- If either side of the `and` operator is `False`, the whole expression evaluates to `False`.
+
+---
+
+## 2. `or` Operator
+
+Returns `True` if **at least one** condition is `True`.
+
+```python filename="logical_or.py" {2, 3}
+a = 5
+b = 10
+print(a > 10 or b > 5)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Example 2: Both Conditions False
+
+```python filename="logical_or_false.py" {2, 3}
+x = 1
+y = 2
+print(x > 5 or y > 10)
+```
+
+```python filename="output.txt"
+False
+```
+
+### Example 3: Multiple Conditions
+
+```python filename="logical_or_strings.py" {2, 3}
+status = "inactive"
+score = 80
+print(status == "active" or score >= 75)
+```
+
+```python filename="output.txt"
+True
+```
+
+### Explanation:
+
+- If any one condition is `True`, the entire expression evaluates to `True`.
+
+---
+
+## 3. `not` Operator
+
+Reverses the boolean result: `True` becomes `False`, and vice versa.
+
+```python filename="logical_not.py" {2, 3}
+is_logged_in = True
+print(not is_logged_in)
+```
+
+```python filename="output.txt"
+False
+```
+
+### Example 2: Used with `and`
+
+```python filename="logical_not_and.py" {2, 3}
+x = 10
+y = 5
+print(not (x < 20 and y > 2))
+```
+
+```python filename="output.txt"
+False
+```
+
+### Example 3: Used with `or`
+
+```python filename="logical_not_or.py" {2, 3}
+is_admin = False
+is_user = True
+print(not (is_admin or is_user))
+```
+
+```python filename="output.txt"
+False
+```
+
+### Explanation:
+
+- The `not` operator **inverts** the result of an expression.
+- Very useful for conditions where you want to check for the opposite.
+
+---
+
+## Combining Logical Operators
+
+You can combine `and`, `or`, and `not` in a single expression:
+
+```python filename="logical_combined.py" {2, 3}
+age = 25
+is_student = False
+print((age >= 18 and age <= 30) or is_student)
+```
+
+```python filename="output.txt"
+True
+```
+
+---
+
+## Summary
+
+- **`and`** returns `True` only if both conditions are `True`.
+- **`or`** returns `True` if any one condition is `True`.
+- **`not`** inverts the result of an expression.
+- Logical operators are widely used in **conditional logic** to build complex decision-making rules.

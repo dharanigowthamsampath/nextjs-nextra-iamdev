@@ -1,0 +1,173 @@
+# Dictionaries in Python
+
+A **dictionary** in Python is a collection of **key-value pairs**. It allows you to store and retrieve data based on a unique key. Dictionaries are **mutable**, meaning they can be changed after creation, and they offer **fast lookup** for retrieving values.
+
+Dictionaries are one of the most versatile and widely used data structures in Python, especially useful when you want to associate one piece of data (the key) with another (the value).
+
+---
+
+## Key Characteristics of Dictionaries
+
+- **Key-value mapping**: Each item is stored as a key and a corresponding value.
+- **Mutable**: You can add, update, or remove key-value pairs.
+- **Unordered (prior to Python 3.7)**: From Python 3.7+, insertion order is preserved.
+- **Keys must be immutable**: e.g., strings, numbers, tuples.
+- **Values can be any data type**.
+
+---
+
+## Creating Dictionaries
+
+```python filename="dict_create.py" {4, 2, 3}
+# Creating a dictionary
+empty_dict = {}
+person = {"name": "Alice", "age": 30, "city": "New York"}
+scores = dict(math=95, science=88)
+```
+
+### Explanation:
+
+- Dictionaries can be created using `{}` with key-value pairs, or with the `dict()` constructor.
+- Keys are unique within a dictionary.
+- Values can be of any type.
+
+---
+
+## Example 1: Accessing Values
+
+```python filename="dict_access.py" {2, 3}
+person = {"name": "Alice", "age": 30, "city": "New York"}
+print(person["name"])
+print(person.get("city"))
+```
+
+```python filename="output.txt"
+Alice
+New York
+```
+
+### Explanation:
+
+- You can access values by referencing the key inside square brackets `[]`.
+- Alternatively, `get()` can be used which returns `None` if the key is not found (instead of raising an error).
+
+---
+
+## Example 2: Adding and Updating Entries
+
+```python filename="dict_update.py" {1, 4, 7}
+person = {"name": "Alice", "age": 30}
+
+# Adding a new key-value pair
+person["city"] = "New York"
+
+# Updating an existing key
+person["age"] = 31
+
+print(person)
+```
+
+```python filename="output.txt"
+{'name': 'Alice', 'age': 31, 'city': 'New York'}
+```
+
+### Explanation:
+
+- You can add or update dictionary entries by assigning a value to a key.
+- If the key already exists, its value is updated.
+
+---
+
+## Example 3: Removing Items
+
+```python filename="dict_remove.py" {3, 4, 5}
+person = {"name": "Alice", "age": 30, "city": "New York"}
+
+# Remove key and return its value
+age = person.pop("age")
+
+# Remove an arbitrary item
+person.popitem()
+
+# Clear the dictionary
+person.clear()
+
+print(person)
+```
+
+```python filename="output.txt"
+{}
+```
+
+### Explanation:
+
+- `pop(key)` removes a specified key and returns its value.
+- `popitem()` removes the last inserted key-value pair.
+- `clear()` removes all items.
+
+---
+
+## Example 4: Iterating Over a Dictionary
+
+```python filename="dict_loop.py" {3, 4, 5}
+person = {"name": "Alice", "age": 30, "city": "New York"}
+
+for key, value in person.items():
+    print(f"{key}: {value}")
+```
+
+```python filename="output.txt"
+name: Alice
+age: 30
+city: New York
+```
+
+### Explanation:
+
+- `items()` returns a view of key-value pairs, which can be unpacked in a `for` loop.
+
+---
+
+## Example 5: Dictionary Comprehension
+
+```python filename="dict_comprehension.py" {2}
+squares = {x: x**2 for x in range(5)}
+print(squares)
+```
+
+```python filename="output.txt"
+{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+```
+
+### Explanation:
+
+- Dictionary comprehensions provide a concise way to create dictionaries using loops.
+
+---
+
+## Common Dictionary Methods
+
+| Method          | Description                                |
+| --------------- | ------------------------------------------ |
+| `get(key)`      | Returns the value for a key                |
+| `keys()`        | Returns a view of dictionary keys          |
+| `values()`      | Returns a view of dictionary values        |
+| `items()`       | Returns a view of key-value pairs          |
+| `update(other)` | Updates dictionary with key-value pairs    |
+| `pop(key)`      | Removes key and returns its value          |
+| `popitem()`     | Removes and returns the last inserted pair |
+| `clear()`       | Removes all items from the dictionary      |
+| `copy()`        | Returns a shallow copy of the dictionary   |
+
+---
+
+## Summary
+
+- **Dictionaries** store data as **key-value pairs** and provide fast lookups.
+- Keys must be **unique** and **immutable**.
+- Values can be of any type and can even be other dictionaries or lists.
+- Dictionaries support flexible operations for insertion, updating, deletion, and iteration.
+
+---
+
+In the next topic, we’ll explore **Functions in Python**, covering how to define and use reusable blocks of code.
