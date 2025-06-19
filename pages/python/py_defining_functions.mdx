@@ -1,0 +1,178 @@
+# Defining Functions in Python
+
+A **function** is a reusable block of code that performs a specific task.
+Functions help you:
+
+- **Organize** code
+- **Avoid repetition**
+- Improve **readability** and **maintainability**
+
+In Python, you define a function using the `def` keyword.
+
+---
+
+## Basic Syntax of a Function
+
+```python filename="function_syntax.py" {2, 3, 4}
+def function_name():
+    # block of code
+```
+
+### Explanation:
+
+- `def` – keyword used to define a function.
+- `function_name` – name of your function.
+- Parentheses `()` may include **parameters**.
+- The indented block is the **function body** — it contains the code to execute.
+
+---
+
+## Example 1: Defining and Calling a Function
+
+```python filename="function_simple.py" {2, 3, 4, 5}
+def greet():
+    print("Hello, welcome to Python!")
+
+greet()
+```
+
+```python filename="output.txt"
+Hello, welcome to Python!
+```
+
+### Explanation:
+
+- The function `greet()` is **defined** first.
+- Calling `greet()` executes the function.
+
+---
+
+## Example 2: Function With One Parameter
+
+```python filename="function_parameter.py" {2, 3, 4, 5, 6}
+def greet(name):
+    print("Hello,", name)
+
+greet("Alice")
+```
+
+```python filename="output.txt"
+Hello, Alice
+```
+
+### Explanation:
+
+- The function **accepts a parameter** called `name`.
+- When called, the argument `"Alice"` is passed in.
+
+---
+
+## Example 3: Function With Multiple Parameters
+
+```python filename="function_multi_params.py" {2, 3, 4, 5, 6}
+def add(a, b):
+    print("Sum is:", a + b)
+
+add(5, 7)
+```
+
+```python filename="output.txt"
+Sum is: 12
+```
+
+### Explanation:
+
+- Functions can take **multiple parameters**.
+- You can pass any number of arguments (that match the parameter list).
+
+---
+
+## Example 4: Function With Default Parameter
+
+```python filename="function_default.py" {2, 3, 4, 5, 6}
+def greet(name="Guest"):
+    print("Hello,", name)
+
+greet()
+greet("Bob")
+```
+
+```python filename="output.txt"
+Hello, Guest
+Hello, Bob
+```
+
+### Explanation:
+
+- Default parameters provide a **default value** if no argument is passed.
+- Useful for optional arguments.
+
+---
+
+## Example 5: Function Returning a Value
+
+```python filename="function_return.py" {2, 3, 4, 5, 6}
+def square(n):
+    return n * n
+
+result = square(4)
+print("Square is:", result)
+```
+
+```python filename="output.txt"
+Square is: 16
+```
+
+### Explanation:
+
+- The `return` statement sends a value **back to the caller**.
+- You can assign the returned value to a variable.
+
+---
+
+## Example 6: Function Documentation (Docstring)
+
+```python filename="function_docstring.py" {2, 3, 4, 5, 6}
+def greet():
+    """This function prints a greeting message."""
+    print("Hello!")
+
+print(greet.__doc__)
+greet()
+```
+
+```python filename="output.txt"
+This function prints a greeting message.
+Hello!
+```
+
+### Explanation:
+
+- The first string inside a function is a **docstring**.
+- It documents what the function does.
+- You can access it with `function_name.__doc__`.
+
+---
+
+## Why Use Functions?
+
+| Benefit          | Description                               |
+| ---------------- | ----------------------------------------- |
+| Code Reuse       | Write once, use many times                |
+| Modularity       | Break complex problems into simpler parts |
+| Clarity          | Improve code readability                  |
+| Maintainability  | Easier to update, test, and debug         |
+| Avoid Repetition | No need to duplicate code                 |
+
+---
+
+## Summary
+
+- Functions in Python are defined with `def`.
+- Functions may have **parameters** and may **return values**.
+- They improve **code structure** and **reusability**.
+- Use **docstrings** to document what your function does.
+
+---
+
+Next, we will explore **Arguments and Parameters** — how to pass data to functions in flexible and powerful ways.

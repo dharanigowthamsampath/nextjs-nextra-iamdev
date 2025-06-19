@@ -1,0 +1,164 @@
+# Lambda Functions in Python
+
+In Python, a **lambda function** is a small, anonymous function defined using the `lambda` keyword.
+Unlike regular functions created with `def`, lambda functions are typically used for **simple, one-line operations**.
+
+Lambda functions are useful when you need a quick function — especially when passing functions as arguments.
+
+---
+
+## Syntax of Lambda Function
+
+```python filename="lambda_syntax.py" {2, 3}
+lambda arguments: expression
+```
+
+- `lambda` — keyword to define the anonymous function.
+- `arguments` — one or more parameters.
+- `expression` — a single expression whose result is returned.
+
+Lambda functions do not contain multiple statements or complex logic — they must be written in one line.
+
+---
+
+## Example 1: Basic Lambda Function
+
+```python filename="lambda_basic.py" {2, 3, 4}
+square = lambda x: x * x
+print(square(5))
+```
+
+```python filename="output.txt"
+25
+```
+
+Explanation:
+
+- `lambda x: x * x` defines an anonymous function that returns the square of `x`.
+- The function is assigned to `square` and called like a normal function.
+
+---
+
+## Example 2: Lambda with Two Parameters
+
+```python filename="lambda_two_params.py" {2, 3, 4}
+add = lambda a, b: a + b
+print(add(3, 7))
+```
+
+```python filename="output.txt"
+10
+```
+
+Explanation:
+
+- Lambda function with two arguments: `a` and `b`.
+- Returns their sum.
+
+---
+
+## Example 3: Using Lambda with `map()`
+
+```python filename="lambda_map.py" {2, 3, 4}
+nums = [1, 2, 3, 4]
+squares = list(map(lambda x: x * x, nums))
+print(squares)
+```
+
+```python filename="output.txt"
+[1, 4, 9, 16]
+```
+
+Explanation:
+
+- `map()` applies the lambda function to every element in the list.
+- The result is a list of squared numbers.
+
+---
+
+## Example 4: Using Lambda with `filter()`
+
+```python filename="lambda_filter.py" {2, 3, 4}
+nums = [1, 2, 3, 4, 5, 6]
+even = list(filter(lambda x: x % 2 == 0, nums))
+print(even)
+```
+
+```python filename="output.txt"
+[2, 4, 6]
+```
+
+Explanation:
+
+- `filter()` applies the lambda function to each element.
+- It returns only those elements that satisfy the condition.
+
+---
+
+## Example 5: Lambda Inside Sorted
+
+```python filename="lambda_sorted.py" {2, 3, 4, 5}
+names = ["Alice", "Bob", "Charlie", "David"]
+sorted_names = sorted(names, key=lambda name: len(name))
+print(sorted_names)
+```
+
+```python filename="output.txt"
+['Bob', 'Alice', 'David', 'Charlie']
+```
+
+Explanation:
+
+- Lambda function used as `key` in `sorted()`.
+- Sorts names based on their length.
+
+---
+
+## Example 6: Lambda with Default Parameter
+
+```python filename="lambda_default.py" {2, 3, 4}
+greet = lambda name="Guest": f"Hello, {name}"
+print(greet())
+print(greet("Alice"))
+```
+
+```python filename="output.txt"
+Hello, Guest
+Hello, Alice
+```
+
+Explanation:
+
+- You can use **default parameters** in a lambda function.
+
+---
+
+## When to Use Lambda Functions
+
+| Use Case                          | Example                                 |
+| --------------------------------- | --------------------------------------- |
+| Simple, one-line transformations  | `map()`, `filter()`, `sorted()`         |
+| Passing function as argument      | Higher-order functions                  |
+| Quick, throwaway functions        | Short anonymous operations              |
+| Avoiding full function definition | Save lines of code when logic is simple |
+
+---
+
+## Limitations of Lambda Functions
+
+- Can only contain **one expression** (no statements, no multiple lines).
+- Cannot include assignments or complex logic.
+- Readability may suffer if overused for complex operations.
+
+---
+
+## Summary
+
+- Lambda functions are **anonymous, one-line functions** created with `lambda`.
+- They are ideal for short, simple tasks.
+- Commonly used with `map()`, `filter()`, and `sorted()`.
+- For complex logic, prefer regular functions using `def`.
+
+---
+
+In the next section, we will explore **Recursion** — a powerful technique where functions call themselves to solve problems.

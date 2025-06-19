@@ -1,0 +1,170 @@
+# Classes and Objects in Python
+
+In **Object-Oriented Programming (OOP)**, a **class** is a **blueprint** for creating **objects**.
+An **object** is an instance of a class — it contains **data** (attributes) and **behavior** (methods).
+
+---
+
+## Class vs Object
+
+| Term   | Meaning               |
+| ------ | --------------------- |
+| Class  | Template or blueprint |
+| Object | Instance of the class |
+
+---
+
+## How to Define a Class
+
+```python filename="class_syntax.py" {2, 3, 4, 5, 6}
+class ClassName:
+    def __init__(self, parameters):
+        # attributes
+        self.attribute = value
+
+    def method(self):
+        # method body
+        pass
+```
+
+---
+
+## How to Create an Object
+
+```python filename="create_object.py" {2, 3, 4}
+obj = ClassName(parameters)
+```
+
+---
+
+## Example 1: Simple Class with Method
+
+```python filename="example1_simple_class.py" {2, 3, 4, 5, 6, 7}
+class Animal:
+    def sound(self):
+        print("This animal makes a sound.")
+
+a = Animal()
+a.sound()
+```
+
+```python filename="output.txt"
+This animal makes a sound.
+```
+
+---
+
+## Example 2: Class with Attributes
+
+```python filename="example2_attributes.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+
+    def info(self):
+        print(f"My dog {self.name} is a {self.breed}.")
+
+dog1 = Dog("Buddy", "Golden Retriever")
+dog1.info()
+```
+
+```python filename="output.txt"
+My dog Buddy is a Golden Retriever.
+```
+
+---
+
+## Example 3: Class with Multiple Methods
+
+```python filename="example3_multiple_methods.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.1416 * self.radius * self.radius
+
+    def perimeter(self):
+        return 2 * 3.1416 * self.radius
+
+c1 = Circle(5)
+print("Area:", c1.area())
+print("Perimeter:", c1.perimeter())
+```
+
+```python filename="output.txt"
+Area: 78.54
+Perimeter: 31.416
+```
+
+---
+
+## Example 4: Class with Default Attribute Values
+
+```python filename="example4_default_values.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Student:
+    def __init__(self, name, grade="A"):
+        self.name = name
+        self.grade = grade
+
+    def show(self):
+        print(f"Student: {self.name}, Grade: {self.grade}")
+
+s1 = Student("Alice")
+s2 = Student("Bob", "B")
+
+s1.show()
+s2.show()
+```
+
+```python filename="output.txt"
+Student: Alice, Grade: A
+Student: Bob, Grade: B
+```
+
+---
+
+## Example 5: Class Representing Real-World Entity
+
+```python filename="example5_realworld.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class BankAccount:
+    def __init__(self, holder, balance):
+        self.holder = holder
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+        else:
+            print("Insufficient balance!")
+
+    def show_balance(self):
+        print(f"{self.holder}'s balance: ₹{self.balance}")
+
+acc = BankAccount("John", 10000)
+acc.deposit(2000)
+acc.withdraw(1500)
+acc.show_balance()
+```
+
+```python filename="output.txt"
+John's balance: ₹10500
+```
+
+---
+
+## Summary
+
+- **Class** is a template — defines what attributes and methods an object will have.
+- **Object** is an instance — stores actual data.
+- You can define **attributes** using `__init__()`.
+- You can define **methods** to operate on the object.
+- Objects allow you to model real-world entities in your programs.
+
+---
+
+In the next section, we will explore **Constructors and `__init__`** — the special method used to initialize object state.

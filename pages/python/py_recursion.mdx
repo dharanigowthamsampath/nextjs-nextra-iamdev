@@ -1,0 +1,181 @@
+# Recursion in Python
+
+**Recursion** is a programming technique where a function **calls itself** to solve a problem.
+
+A recursive function breaks down a large problem into **smaller sub-problems** — often resulting in simple and elegant solutions.
+
+However, recursion must be designed carefully to avoid **infinite loops** and excessive memory usage.
+
+---
+
+## Key Concepts
+
+1. **Base Case** — The simplest scenario that ends the recursion.
+2. **Recursive Case** — The part where the function calls itself with modified input.
+
+---
+
+## Syntax of a Recursive Function
+
+```python filename="recursion_syntax.py" {2, 3, 4}
+def recursive_function(parameters):
+    if base_case_condition:
+        return result
+    else:
+        return recursive_function(modified_parameters)
+```
+
+---
+
+## Example 1: Factorial (n!)
+
+Factorial of `n` → `n! = n * (n - 1) * (n - 2) * ... * 1`
+
+```python filename="recursion_factorial.py" {2, 3, 4, 5, 6, 7}
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(5))
+```
+
+```python filename="output.txt"
+120
+```
+
+Explanation:
+
+- Base case: `factorial(1) = 1`
+- Recursive case: `n * factorial(n-1)`
+
+---
+
+## Example 2: Fibonacci Sequence
+
+Fibonacci: `0, 1, 1, 2, 3, 5, 8, ...`
+
+```python filename="recursion_fibonacci.py" {2, 3, 4, 5, 6, 7}
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(6))
+```
+
+```python filename="output.txt"
+8
+```
+
+Explanation:
+
+- Base cases: `fibonacci(0) = 0`, `fibonacci(1) = 1`
+- Recursive case: `fibonacci(n-1) + fibonacci(n-2)`
+
+---
+
+## Example 3: Sum of Natural Numbers
+
+Sum of first `n` numbers → `n + (n-1) + (n-2) + ... + 1`
+
+```python filename="recursion_sum.py" {2, 3, 4, 5, 6, 7}
+def sum_natural(n):
+    if n == 1:
+        return 1
+    else:
+        return n + sum_natural(n - 1)
+
+print(sum_natural(5))
+```
+
+```python filename="output.txt"
+15
+```
+
+Explanation:
+
+- Base case: `sum_natural(1) = 1`
+- Recursive case: `n + sum_natural(n-1)`
+
+---
+
+## Example 4: Reverse a String
+
+```python filename="recursion_reverse.py" {2, 3, 4, 5, 6, 7}
+def reverse_string(s):
+    if len(s) == 0:
+        return ""
+    else:
+        return s[-1] + reverse_string(s[:-1])
+
+print(reverse_string("python"))
+```
+
+```python filename="output.txt"
+nohtyp
+```
+
+Explanation:
+
+- Base case: Empty string returns `""`.
+- Recursive case: Last character + reverse of remaining string.
+
+---
+
+## How Recursion Works Internally
+
+Every recursive call creates a **new frame** in the call stack.
+
+Steps:
+
+1. Function calls itself → Stack grows.
+2. Reaches base case → Stops recursion.
+3. Stack **unwinds** → Each frame returns its value.
+
+---
+
+## Advantages of Recursion
+
+| Benefit                                       | Description                                                                     |
+| --------------------------------------------- | ------------------------------------------------------------------------------- |
+| Simplifies complex problems                   | Some problems (tree traversal, combinatorics) are easier to express recursively |
+| Code can be shorter and elegant               | Less boilerplate code                                                           |
+| Natural fit for divide-and-conquer algorithms | e.g., Merge Sort, Quick Sort                                                    |
+
+---
+
+## Disadvantages of Recursion
+
+| Limitation                | Description                                       |
+| ------------------------- | ------------------------------------------------- |
+| More memory usage (stack) | Each call uses stack space                        |
+| Risk of stack overflow    | Infinite or too deep recursion                    |
+| May be slower than loops  | Function calls are more expensive than iterations |
+
+---
+
+## When to Use Recursion
+
+| Use Case                                  | Example                            |
+| ----------------------------------------- | ---------------------------------- |
+| Divide a problem into sub-problems        | Sorting, Searching                 |
+| Traversing tree structures                | XML, JSON, file systems            |
+| Problems with clear base & recursive case | Factorial, Fibonacci, Combinations |
+
+---
+
+## Summary
+
+- **Recursion** is a function calling itself to solve smaller sub-problems.
+- Requires a **base case** and a **recursive case**.
+- Suitable for problems with a naturally recursive structure.
+- Must be used carefully to avoid excessive stack usage.
+
+---
+
+Next, we will explore **Importing Modules** — how to organize and reuse code across different files and projects.

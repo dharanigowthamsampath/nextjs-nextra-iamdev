@@ -1,0 +1,188 @@
+# Variable Scope in Python
+
+**Scope** refers to the region of a program where a variable is **visible** and **accessible**.
+
+In Python, variable scope is critical to writing **clear**, **bug-free**, and **maintainable** code.
+You need to understand **where** your variables exist — and when they are created or destroyed.
+
+---
+
+## Types of Variable Scope
+
+| Scope Type    | Where Defined                                    | Lifetime                                |
+| ------------- | ------------------------------------------------ | --------------------------------------- |
+| **Local**     | Inside a function                                | Exists only during function execution   |
+| **Global**    | Outside any function                             | Exists as long as program runs          |
+| **Enclosing** | Inside enclosing function (for nested functions) | As long as enclosing function exists    |
+| **Built-in**  | Defined by Python                                | Always available (e.g., `len`, `range`) |
+
+---
+
+## Local Scope Example
+
+```python filename="scope_local.py" {2, 3, 4, 5, 6}
+def my_func():
+    x = 10  # Local variable
+    print("Inside function, x =", x)
+
+my_func()
+# print(x)  # This would cause an error
+```
+
+```python filename="output.txt"
+Inside function, x = 10
+```
+
+### Explanation:
+
+- `x` is **local** to `my_func`.
+- It cannot be accessed **outside** the function.
+
+---
+
+## Global Scope Example
+
+```python filename="scope_global.py" {1, 3, 4, 5, 6}
+x = 50  # Global variable
+
+def my_func():
+    print("Inside function, x =", x)
+
+my_func()
+print("Outside function, x =", x)
+```
+
+```python filename="output.txt"
+Inside function, x = 50
+Outside function, x = 50
+```
+
+### Explanation:
+
+- `x` is declared **outside** the function — so it is **global**.
+- It is accessible **inside** and **outside** the function.
+
+---
+
+## Modifying Global Variable Inside a Function
+
+```python filename="scope_modify_global.py" {2, 3, 4, 5, 6, 7}
+x = 5
+
+def change_global():
+    global x
+    x = 100
+
+change_global()
+print("x =", x)
+```
+
+```python filename="output.txt"
+x = 100
+```
+
+### Explanation:
+
+- `global` keyword tells Python that `x` inside the function refers to the **global** variable.
+
+---
+
+## Enclosing Scope (Nested Functions)
+
+```python filename="scope_enclosing.py" {2, 3, 4, 5, 6, 7, 8}
+def outer():
+    x = "outer value"
+
+    def inner():
+        print("Inner:", x)
+
+    inner()
+
+outer()
+```
+
+```python filename="output.txt"
+Inner: outer value
+```
+
+### Explanation:
+
+- Inner function `inner()` can access variables from its **enclosing function** `outer()`.
+
+---
+
+## LEGB Rule
+
+Python follows this order to resolve variable names:
+
+**L → Local**
+**E → Enclosing**
+**G → Global**
+**B → Built-in**
+
+It checks each scope **in order** until it finds the variable.
+
+---
+
+## Built-in Scope Example
+
+```python filename="scope_builtin.py" {2, 3, 4}
+print(len("Hello"))  # Built-in len() function
+```
+
+```python filename="output.txt"
+5
+```
+
+### Explanation:
+
+- Functions like `len()`, `range()`, `print()` are defined in **built-in scope** — always available.
+
+---
+
+## Shadowing Variables
+
+```python filename="scope_shadow.py" {1, 3, 4, 5, 6}
+x = 10
+
+def my_func():
+    x = 20  # Shadows global x
+    print("x inside:", x)
+
+my_func()
+print("x outside:", x)
+```
+
+```python filename="output.txt"
+x inside: 20
+x outside: 10
+```
+
+### Explanation:
+
+- Local variable `x` **shadows** the global variable inside the function.
+
+---
+
+## Best Practices for Scope
+
+| Guideline                          | Why                            |
+| ---------------------------------- | ------------------------------ |
+| Use local variables when possible  | Avoid unintended side effects  |
+| Limit use of global variables      | Keeps functions self-contained |
+| Use clear variable names per scope | Improves readability           |
+| Understand LEGB rule               | Prevents scope-related bugs    |
+
+---
+
+## Summary
+
+- **Scope** defines where a variable exists in your program.
+- Use `local` scope inside functions; limit global variables.
+- Python resolves names using the **LEGB** rule.
+- Nested functions can access enclosing variables.
+- Built-in functions are always accessible.
+
+---
+
+In the next section, we will explore **Lambda Functions** — powerful one-line anonymous functions for simplifying your code.

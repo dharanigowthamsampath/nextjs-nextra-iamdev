@@ -1,0 +1,174 @@
+# Importing Modules in Python
+
+A **module** is a file containing Python definitions and code — typically `.py` files.
+Modules allow you to:
+
+Organize your code
+Reuse code across projects
+Access Python’s **built-in modules**
+Use **external libraries**
+
+To access a module, you use the `import` statement.
+
+---
+
+## Syntax of Import
+
+```python filename="import_syntax.py" {2, 3}
+import module_name
+```
+
+Or:
+
+```python filename="import_as_syntax.py" {2, 3}
+import module_name as alias
+```
+
+Or:
+
+```python filename="import_specific.py" {2, 3}
+from module_name import specific_function_or_class
+```
+
+---
+
+## Example 1: Importing a Built-in Module
+
+```python filename="import_math.py" {2, 3, 4}
+import math
+
+print("Square root of 16 is", math.sqrt(16))
+```
+
+```python filename="output.txt"
+Square root of 16 is 4.0
+```
+
+**Explanation:**
+
+- `math` is a built-in module.
+- After import, use `module_name.function()` to call functions.
+
+---
+
+## Example 2: Using Alias with `as`
+
+```python filename="import_as.py" {2, 3, 4}
+import math as m
+
+print("Cosine of 0 is", m.cos(0))
+```
+
+```python filename="output.txt"
+Cosine of 0 is 1.0
+```
+
+**Explanation:**
+
+- `as` keyword creates an **alias** to shorten long module names.
+
+---
+
+## Example 3: Importing Specific Functions
+
+```python filename="import_specific_func.py" {2, 3, 4}
+from math import pow, sqrt
+
+print("2 to the power 3 is", pow(2, 3))
+print("Square root of 25 is", sqrt(25))
+```
+
+```python filename="output.txt"
+2 to the power 3 is 8.0
+Square root of 25 is 5.0
+```
+
+**Explanation:**
+
+- You can import **only the needed functions** from a module.
+- No need to prefix with module name.
+
+---
+
+## Example 4: Importing All Functions (Not Recommended)
+
+```python filename="import_star.py" {2, 3}
+from math import *
+
+print(sin(0))
+print(cos(0))
+```
+
+```python filename="output.txt"
+0.0
+1.0
+```
+
+**Explanation:**
+
+- `from module import *` imports everything.
+- Risk: Can **pollute namespace** and cause name conflicts.
+
+---
+
+## Example 5: Importing Custom Modules
+
+You can create your own module — just a `.py` file — and import it.
+
+```python filename="mymodule.py" {2, 3}
+def greet(name):
+    return f"Hello, {name}!"
+```
+
+Now import and use it:
+
+```python filename="import_custom_module.py" {2, 3, 4}
+import mymodule
+
+print(mymodule.greet("Alice"))
+```
+
+```python filename="output.txt"
+Hello, Alice!
+```
+
+**Explanation:**
+
+- Any `.py` file in the project folder can be imported.
+- Helps to organize large programs into smaller files.
+
+---
+
+## How Python Finds Modules
+
+Python looks for modules in:
+
+1. **Current directory** (your project)
+2. **PYTHONPATH** (optional environment variable)
+3. **Standard library**
+4. **Installed packages (site-packages)**
+
+To check module search paths:
+
+```python filename="import_sys_path.py" {2, 3}
+import sys
+print(sys.path)
+```
+
+---
+
+## Summary
+
+- Use `import` to reuse code from other modules.
+- You can import **entire modules** or **specific functions**.
+- Organizing your project with modules makes code **cleaner** and **easier to maintain**.
+- You can import both **built-in modules** and **custom modules**.
+
+---
+
+In the next section, we will explore the **Python Standard Library** — a powerful collection of modules included with Python.
+
+---
+
+If you’d like, I’ll proceed with the next section — **Standard Library Overview** — with the same style and level of detail.
+Just confirm! 🚀

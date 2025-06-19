@@ -1,0 +1,125 @@
+# Introduction to Object-Oriented Programming (OOP) in Python
+
+**Object-Oriented Programming (OOP)** is a programming paradigm based on the concept of "objects" — data structures that contain **data** (attributes) and **functions** (methods) to operate on that data.
+
+Python supports OOP and allows you to design code that is **modular**, **reusable**, and **easier to maintain**.
+
+---
+
+## Key Concepts of OOP
+
+| Concept       | Meaning                                                                       |
+| ------------- | ----------------------------------------------------------------------------- |
+| Class         | A blueprint for creating objects                                              |
+| Object        | An instance of a class                                                        |
+| Attribute     | Data stored in an object                                                      |
+| Method        | Function defined inside a class                                               |
+| Encapsulation | Hiding internal state and requiring all interaction through methods           |
+| Inheritance   | One class can inherit attributes and behavior from another class              |
+| Polymorphism  | Objects of different classes can be treated as objects of a common superclass |
+
+---
+
+## Why Use OOP?
+
+| Benefit            | Description                                           |
+| ------------------ | ----------------------------------------------------- |
+| Modular Code       | Divide code into logical parts                        |
+| Reusability        | Define classes once, reuse multiple times             |
+| Easier Maintenance | Change in one place affects all objects of that class |
+| Scalability        | More natural for complex software design              |
+
+---
+
+## How OOP Works in Python
+
+- You define a **class** using the `class` keyword.
+- You create **objects** (instances) from the class.
+- You can add **attributes** and **methods** to represent object state and behavior.
+
+---
+
+## Example 1: Basic Class Definition
+
+```python filename="oop_intro_class.py" {2, 3, 4, 5, 6, 7, 8}
+class Person:
+    def greet(self):
+        print("Hello!")
+
+p = Person()
+p.greet()
+```
+
+```python filename="output.txt"
+Hello!
+```
+
+---
+
+## Example 2: Class with Attributes and Methods
+
+```python filename="oop_intro_attributes.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        print(f"My name is {self.name} and I am {self.age} years old.")
+
+p1 = Person("Alice", 30)
+p1.introduce()
+```
+
+```python filename="output.txt"
+My name is Alice and I am 30 years old.
+```
+
+---
+
+## Example 3: Multiple Objects from the Same Class
+
+```python filename="oop_intro_multiple_objects.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class Car:
+    def __init__(self, model, year):
+        self.model = model
+        self.year = year
+
+    def display_info(self):
+        print(f"Model: {self.model}, Year: {self.year}")
+
+car1 = Car("Tesla Model S", 2022)
+car2 = Car("Ford Mustang", 2020)
+
+car1.display_info()
+car2.display_info()
+```
+
+```python filename="output.txt"
+Model: Tesla Model S, Year: 2022
+Model: Ford Mustang, Year: 2020
+```
+
+---
+
+## How Does OOP Improve Code Quality?
+
+| Advantage                            | Example                                           |
+| ------------------------------------ | ------------------------------------------------- |
+| Logical grouping of data + behavior  | Class `Car` has both `model` and `display_info()` |
+| No need for global variables         | Each object stores its own state                  |
+| Reduced code duplication             | Methods shared across all objects of a class      |
+| Easier to understand large codebases | Each class serves one responsibility              |
+
+---
+
+## Summary
+
+- OOP allows you to build software using **objects**.
+- An object is an instance of a **class**.
+- Objects contain **attributes** (data) and **methods** (behavior).
+- OOP makes Python programs **modular**, **reusable**, and **scalable**.
+
+---
+
+Next, we will dive deeper into **Classes and Objects** — how to define them, how they work, and how you can use them to structure your Python programs.

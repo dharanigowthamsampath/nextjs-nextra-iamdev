@@ -1,0 +1,250 @@
+# Arguments and Parameters in Python
+
+Functions often need **input values** to perform a task. These inputs are called:
+
+- **Parameters** → the names listed in the function definition.
+- **Arguments** → the actual values passed when calling the function.
+
+Understanding how arguments work is key to writing **flexible** and **reusable** functions.
+
+---
+
+## Defining Parameters
+
+```python filename="params_basic.py" {2, 3, 4, 5, 6}
+def greet(name):
+    print("Hello,", name)
+
+greet("Alice")   # Argument "Alice" passed
+```
+
+```python filename="output.txt"
+Hello, Alice
+```
+
+### Explanation:
+
+- `name` → parameter.
+- `"Alice"` → argument.
+- When called, the argument is passed to the parameter.
+
+---
+
+## Multiple Parameters
+
+```python filename="params_multiple.py" {2, 3, 4, 5, 6}
+def add(a, b):
+    print("Sum:", a + b)
+
+add(3, 5)
+```
+
+```python filename="output.txt"
+Sum: 8
+```
+
+### Explanation:
+
+- You can define **any number** of parameters.
+- Arguments must match the parameter order.
+
+---
+
+## Parameters of Different Data Types
+
+```python filename="params_types.py" {2, 3, 4, 5, 6, 7, 8}
+def display(name, age, is_member):
+    print("Name:", name)
+    print("Age:", age)
+    print("Member:", is_member)
+
+display("John", 30, True)
+```
+
+```python filename="output.txt"
+Name: John
+Age: 30
+Member: True
+```
+
+### Explanation:
+
+- Parameters can be of **any type**: string, integer, boolean, float, list, etc.
+
+---
+
+## List as Argument
+
+```python filename="params_list.py" {2, 3, 4, 5, 6}
+def show_items(items):
+    for item in items:
+        print("Item:", item)
+
+show_items(["apple", "banana", "cherry"])
+```
+
+```python filename="output.txt"
+Item: apple
+Item: banana
+Item: cherry
+```
+
+### Explanation:
+
+- You can pass **lists** and other collections as arguments.
+
+---
+
+## Tuple as Argument
+
+```python filename="params_tuple.py" {2, 3, 4, 5, 6}
+def print_coords(coords):
+    x, y = coords
+    print("X:", x)
+    print("Y:", y)
+
+print_coords((10, 20))
+```
+
+```python filename="output.txt"
+X: 10
+Y: 20
+```
+
+### Explanation:
+
+- Tuples can be passed to functions and **unpacked**.
+
+---
+
+## Dictionary as Argument
+
+```python filename="params_dict.py" {2, 3, 4, 5, 6, 7}
+def print_user(info):
+    for key, value in info.items():
+        print(f"{key}: {value}")
+
+print_user({"name": "Emma", "age": 25, "city": "Paris"})
+```
+
+```python filename="output.txt"
+name: Emma
+age: 25
+city: Paris
+```
+
+### Explanation:
+
+- **Dictionaries** allow passing structured data to functions.
+
+---
+
+## Default Parameter Values
+
+```python filename="params_default.py" {2, 3, 4, 5, 6}
+def greet(name="Guest"):
+    print("Hello,", name)
+
+greet()
+greet("Bob")
+```
+
+```python filename="output.txt"
+Hello, Guest
+Hello, Bob
+```
+
+### Explanation:
+
+- If no argument is provided, the function uses the **default value**.
+
+---
+
+## Keyword Arguments
+
+```python filename="params_keyword.py" {2, 3, 4, 5, 6}
+def intro(name, age):
+    print(f"{name} is {age} years old.")
+
+intro(age=22, name="Alice")
+```
+
+```python filename="output.txt"
+Alice is 22 years old.
+```
+
+### Explanation:
+
+- Keyword arguments **specify which value goes to which parameter**.
+- Order no longer matters.
+
+---
+
+## Variable-Length Arguments `*args`
+
+```python filename="params_args.py" {2, 3, 4, 5, 6, 7}
+def print_numbers(*args):
+    for num in args:
+        print(num)
+
+print_numbers(1, 2, 3, 4, 5)
+```
+
+```python filename="output.txt"
+1
+2
+3
+4
+5
+```
+
+### Explanation:
+
+- `*args` collects **any number of arguments** into a tuple.
+- Allows flexible function calls.
+
+---
+
+## Variable-Length Keyword Arguments `**kwargs`
+
+```python filename="params_kwargs.py" {2, 3, 4, 5, 6, 7}
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+print_info(name="John", age=30, city="London")
+```
+
+```python filename="output.txt"
+name: John
+age: 30
+city: London
+```
+
+### Explanation:
+
+- `**kwargs` collects **keyword arguments** into a dictionary.
+
+---
+
+## When to Use
+
+| Scenario                               | Technique          |
+| -------------------------------------- | ------------------ |
+| Fixed number of inputs                 | Regular parameters |
+| Optional arguments                     | Default parameters |
+| Order doesn’t matter                   | Keyword arguments  |
+| Unknown number of positional arguments | `*args`            |
+| Unknown number of keyword arguments    | `**kwargs`         |
+
+---
+
+## Summary
+
+- Functions can accept **different kinds of arguments**: positional, keyword, default, `*args`, and `**kwargs`.
+- You can pass **any type of data**: string, int, float, list, tuple, dictionary, etc.
+- These techniques give you **flexibility** and **power** when designing functions.
+
+---
+
+In the next section, we will explore **Return Values** — how functions can send data back to the caller.

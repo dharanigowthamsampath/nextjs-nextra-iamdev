@@ -1,0 +1,150 @@
+# Writing Your Own Module in Python
+
+A **module** in Python is simply a **`.py` file** that contains Python code — variables, functions, classes, or any executable statements.
+
+By writing your own modules, you can:
+
+Organize your code
+Avoid repetition
+Improve readability
+Reuse code across multiple programs or projects
+
+---
+
+## Why Write Your Own Modules?
+
+| Benefit                | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| Code Reuse             | Share common code across projects            |
+| Code Organization      | Split large programs into logical components |
+| Better Maintenance     | Easier to debug and update                   |
+| Promotes DRY principle | Don’t Repeat Yourself                        |
+
+---
+
+## How to Create a Module
+
+1️⃣ Create a `.py` file — this is your module.
+2️⃣ Define variables, functions, or classes inside the file.
+3️⃣ Import the module into other Python files.
+
+---
+
+## Example 1: Create a Simple Module
+
+File: `mymath.py`
+
+```python filename="mymath.py" {2, 3, 4, 5}
+# This is my custom module
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+```
+
+---
+
+## Example 2: Import and Use Your Module
+
+File: `main.py`
+
+```python filename="main.py" {2, 3, 4, 5, 6}
+import mymath
+
+print("Sum:", mymath.add(10, 5))
+print("Difference:", mymath.subtract(10, 5))
+```
+
+```python filename="output.txt"
+Sum: 15
+Difference: 5
+```
+
+---
+
+## Example 3: Using `from module import`
+
+```python filename="main_import_specific.py" {2, 3, 4}
+from mymath import add
+
+print("Sum:", add(20, 10))
+```
+
+```python filename="output.txt"
+Sum: 30
+```
+
+---
+
+## Where to Place Your Module
+
+| Scenario                           | Module Location                              |
+| ---------------------------------- | -------------------------------------------- |
+| Same directory as your main script | No change needed                             |
+| Different directory                | Add directory to `sys.path`                  |
+| Shared project-wide                | Install or link module using packaging tools |
+
+---
+
+## Example 4: Organizing with Packages
+
+If you want to organize multiple modules:
+
+```
+myproject/
+│
+├── mypackage/
+│   ├── __init__.py
+│   ├── module1.py
+│   ├── module2.py
+│
+└── main.py
+```
+
+In `main.py`:
+
+```python filename="main_package.py" {2, 3, 4}
+from mypackage import module1
+
+module1.some_function()
+```
+
+---
+
+## Example 5: Checking `__name__`
+
+```python filename="mymodule_with_name.py" {2, 3, 4, 5}
+def greet():
+    print("Hello from my module!")
+
+if __name__ == "__main__":
+    greet()
+```
+
+```python filename="output.txt"
+Hello from my module!
+```
+
+Explanation:
+
+- The `__name__` variable allows a module to detect **if it’s run as a script** or **imported as a module**.
+
+---
+
+## Summary
+
+- A **module** is simply a `.py` file.
+- Helps you split code into reusable parts.
+- Import your module using `import module_name`.
+- Use `__init__.py` to create **packages** of modules.
+- Organizing code into modules improves readability, testing, and maintainability.
+
+---
+
+In the next section, we will explore **Installing Packages** — how to bring in external modules from the wider Python ecosystem.
+
+---
+
+Would you like me to proceed with the next topic — **Installing Packages** — in the same style? Just confirm! 🚀

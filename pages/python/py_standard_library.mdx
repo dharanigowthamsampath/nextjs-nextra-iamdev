@@ -1,0 +1,153 @@
+# Python Standard Library Overview
+
+The **Python Standard Library** is a collection of **ready-to-use modules** that come installed with Python.
+You can use these modules to perform **common tasks** — without installing any third-party packages.
+
+The Standard Library includes tools for:
+
+File I/O
+String handling
+Math and statistics
+Dates and times
+Data structures
+Regular expressions
+Networking
+Concurrency
+and much more.
+
+---
+
+## Why Use the Standard Library?
+
+| Advantage                  | Benefit                                        |
+| -------------------------- | ---------------------------------------------- |
+| Comes built-in             | No need to install anything                    |
+| Well-tested and documented | Reliable and stable                            |
+| Portable                   | Works across platforms (Windows, macOS, Linux) |
+| Saves time                 | Avoid reinventing common solutions             |
+
+---
+
+## How to Access Standard Library Modules
+
+```python filename="stdlib_import.py" {2, 3}
+import module_name
+```
+
+---
+
+## Example 1: `math` — Mathematical Functions
+
+```python filename="stdlib_math.py" {2, 3, 4, 5}
+import math
+
+print("Pi:", math.pi)
+print("Square root of 16:", math.sqrt(16))
+```
+
+```python filename="output.txt"
+Pi: 3.141592653589793
+Square root of 16: 4.0
+```
+
+---
+
+## Example 2: `datetime` — Dates and Times
+
+```python filename="stdlib_datetime.py" {2, 3, 4, 5}
+import datetime
+
+today = datetime.date.today()
+print("Today's date:", today)
+```
+
+```python filename="output.txt"
+Today's date: 2025-06-16  # Example date
+```
+
+---
+
+## Example 3: `random` — Random Numbers
+
+```python filename="stdlib_random.py" {2, 3, 4, 5}
+import random
+
+print("Random number between 1 and 10:", random.randint(1, 10))
+```
+
+```python filename="output.txt"
+Random number between 1 and 10: 7  # Example output
+```
+
+---
+
+## Example 4: `os` — Operating System Interface
+
+```python filename="stdlib_os.py" {2, 3, 4, 5}
+import os
+
+print("Current working directory:", os.getcwd())
+```
+
+```python filename="output.txt"
+Current working directory: /Users/username/projects  # Example output
+```
+
+---
+
+## Example 5: `sys` — System-specific Parameters
+
+```python filename="stdlib_sys.py" {2, 3, 4}
+import sys
+
+print("Python version:", sys.version)
+```
+
+```python filename="output.txt"
+Python version: 3.12.2 (example)
+```
+
+---
+
+## Example 6: `statistics` — Basic Stats
+
+```python filename="stdlib_statistics.py" {2, 3, 4, 5}
+import statistics
+
+data = [10, 20, 30, 40, 50]
+print("Mean:", statistics.mean(data))
+print("Median:", statistics.median(data))
+```
+
+```python filename="output.txt"
+Mean: 30
+Median: 30
+```
+
+---
+
+## Other Useful Modules (Partial List)
+
+| Module        | Purpose                                       |
+| ------------- | --------------------------------------------- |
+| `json`        | Work with JSON data                           |
+| `re`          | Regular expressions                           |
+| `collections` | Advanced data structures (deque, defaultdict) |
+| `pathlib`     | Modern file system paths                      |
+| `csv`         | Read/write CSV files                          |
+| `urllib`      | URL handling                                  |
+| `itertools`   | Advanced iteration tools                      |
+| `argparse`    | Command-line argument parsing                 |
+| `logging`     | Flexible logging system                       |
+
+---
+
+## Summary
+
+- The **Standard Library** is a powerful collection of pre-installed modules.
+- No installation required — just `import` and use.
+- Helps you write **better, faster, more portable** Python code.
+
+---
+
+In the next section, we will explore **Writing Your Own Modules** — how to structure your code into reusable modules.

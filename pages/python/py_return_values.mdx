@@ -1,0 +1,170 @@
+# Return Values in Python Functions
+
+In Python, a function can **send back a value** to the part of the program that called it.
+This is done using the `return` statement.
+
+Functions that return values are **more flexible** because the caller can use the result in further calculations or logic.
+
+---
+
+## Basic Syntax of `return`
+
+```python filename="return_syntax.py" {2, 3, 4}
+def function_name():
+    return value
+```
+
+- `return` ends the function and **sends a value** back to the caller.
+- If no `return` is used, the function returns `None` by default.
+
+---
+
+## Example 1: Returning a Single Value
+
+```python filename="return_single.py" {2, 3, 4, 5, 6}
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print("Sum is:", result)
+```
+
+```python filename="output.txt"
+Sum is: 8
+```
+
+### Explanation:
+
+- The function **returns the result** of `a + b`.
+- The caller stores this value in `result`.
+
+---
+
+## Example 2: Returning a String
+
+```python filename="return_string.py" {2, 3, 4, 5, 6}
+def greet(name):
+    return f"Hello, {name}"
+
+message = greet("Alice")
+print(message)
+```
+
+```python filename="output.txt"
+Hello, Alice
+```
+
+### Explanation:
+
+- The function builds a string and returns it.
+- The caller receives and prints the string.
+
+---
+
+## Example 3: Returning Multiple Values (Tuple)
+
+```python filename="return_multiple.py" {2, 3, 4, 5, 6}
+def get_stats(numbers):
+    return min(numbers), max(numbers), sum(numbers)
+
+low, high, total = get_stats([4, 7, 1, 9])
+print("Min:", low)
+print("Max:", high)
+print("Sum:", total)
+```
+
+```python filename="output.txt"
+Min: 1
+Max: 9
+Sum: 21
+```
+
+### Explanation:
+
+- A function can return **multiple values** as a tuple.
+- The caller can **unpack** the values.
+
+---
+
+## Example 4: Returning a List
+
+```python filename="return_list.py" {2, 3, 4, 5, 6}
+def squares(n):
+    return [i * i for i in range(1, n + 1)]
+
+print("Squares:", squares(5))
+```
+
+```python filename="output.txt"
+Squares: [1, 4, 9, 16, 25]
+```
+
+### Explanation:
+
+- The function returns a **list** of computed values.
+
+---
+
+## Example 5: Returning a Dictionary
+
+```python filename="return_dict.py" {2, 3, 4, 5, 6}
+def person_info(name, age):
+    return {"name": name, "age": age}
+
+info = person_info("John", 30)
+print(info)
+```
+
+```python filename="output.txt"
+{'name': 'John', 'age': 30}
+```
+
+### Explanation:
+
+- The function returns a **dictionary** of key-value pairs.
+
+---
+
+## Example 6: Returning `None`
+
+```python filename="return_none.py" {2, 3, 4, 5, 6}
+def log_message(message):
+    print("LOG:", message)
+
+result = log_message("Processing started")
+print(result)
+```
+
+```python filename="output.txt"
+LOG: Processing started
+None
+```
+
+### Explanation:
+
+- If a function **does not return anything**, Python returns `None`.
+- Useful for **side-effect functions** (logging, writing to file, etc.).
+
+---
+
+## Why Use Return Values?
+
+| Reason                            | Benefit                                               |
+| --------------------------------- | ----------------------------------------------------- |
+| Reuse results                     | Value can be passed around your program               |
+| Flexible function behavior        | Different callers can use the result differently      |
+| Separate calculation from display | Functions focus on computing, not printing            |
+| Compose multiple functions        | Functions can **call each other** and build pipelines |
+
+---
+
+## Summary
+
+- The `return` statement **sends back values** from a function.
+- You can return **any type**: string, int, float, list, tuple, dict, None.
+- Functions can return **multiple values**.
+- Returning values allows your code to be **modular, flexible, and reusable**.
+
+---
+
+In the next section, we will explore **Variable Scope** — understanding where variables live and how long they last inside your functions and programs.

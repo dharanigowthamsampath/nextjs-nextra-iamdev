@@ -1,0 +1,158 @@
+# Installing Packages in Python
+
+Beyond the **Standard Library** and your own modules, Python supports **external packages** — reusable code written by the community or third-party developers.
+
+To manage external packages, Python uses:
+
+`pip` — Python’s built-in **package installer**
+[PyPI](https://pypi.org) — The **Python Package Index**, a large repository of open-source Python packages
+
+---
+
+## What Is `pip`?
+
+- `pip` is the official package manager for Python.
+- It allows you to **download, install, upgrade, and remove packages** from PyPI.
+- You can use `pip` directly from the command line.
+
+---
+
+## Installing a Package
+
+### Basic Syntax:
+
+```bash
+pip install package_name
+```
+
+---
+
+## Example 1: Install `requests` Package
+
+```bash
+pip install requests
+```
+
+**Explanation:**
+
+- Installs the popular `requests` library for working with HTTP.
+
+---
+
+## Example 2: Using Installed Package
+
+```python filename="requests_example.py" {2, 3, 4, 5, 6}
+import requests
+
+response = requests.get('https://api.github.com')
+print("Status Code:", response.status_code)
+```
+
+```python filename="output.txt"
+Status Code: 200
+```
+
+---
+
+## Checking Installed Packages
+
+```bash
+pip list
+```
+
+**Explanation:**
+
+- Lists all installed packages and their versions.
+
+---
+
+## Upgrading a Package
+
+```bash
+pip install --upgrade package_name
+```
+
+Example:
+
+```bash
+pip install --upgrade requests
+```
+
+---
+
+## Uninstalling a Package
+
+```bash
+pip uninstall package_name
+```
+
+Example:
+
+```bash
+pip uninstall requests
+```
+
+---
+
+## Installing a Specific Version
+
+```bash
+pip install package_name==version_number
+```
+
+Example:
+
+```bash
+pip install Django==4.2.0
+```
+
+---
+
+## Using a `requirements.txt` File
+
+In larger projects, you often maintain a list of required packages:
+
+File: `requirements.txt`
+
+```
+requests==2.31.0
+Django>=4.2
+pandas
+```
+
+### Install all at once:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Virtual Environments
+
+For managing project-specific dependencies, it’s best to use a **virtual environment**:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Linux/macOS
+venv\Scripts\activate     # On Windows
+```
+
+Then:
+
+```bash
+pip install package_name
+```
+
+---
+
+## Summary
+
+- Use `pip` to install external packages from PyPI.
+- Installed packages can be used via `import`.
+- You can install, upgrade, or uninstall packages easily.
+- Manage dependencies cleanly with **virtual environments** and `requirements.txt`.
+
+---
+
+Next, we will explore **Object-Oriented Programming (OOP)** — a core part of writing organized, scalable Python code.
