@@ -48,10 +48,10 @@ const meta = {
   py_loops: "Loops (for & while)",
   //   loop_control: "Loop Control Statements",
 
-  "--data-structures": {
-    title: "Data Structures",
-    type: "separator",
-  },
+  // "--data-structures": {
+  //   title: "Data Structures",
+  //   type: "separator",
+  // },
   //   strings: "Strings",
   //   lists: "Lists",
   //   tuples: "Tuples",
