@@ -1,0 +1,216 @@
+# Inheritance in Python
+
+with **detailed explanations** and **5+ example programs** — same format and style as before:
+
+---
+
+# Inheritance in Python
+
+**Inheritance** is a powerful feature of **Object-Oriented Programming (OOP)** that allows a class to **reuse** or **extend** functionality from another class.
+
+With inheritance:
+
+You can define a **base class** (also called parent or super class).
+Other classes (child or derived classes) can **inherit** attributes and methods from the base class.
+You can **add new features** or **override** existing behavior in the child class.
+
+---
+
+## Why Use Inheritance?
+
+| Benefit             | Example                                               |
+| ------------------- | ----------------------------------------------------- |
+| Code Reuse          | Common functionality shared across classes            |
+| Avoid Duplication   | Write once, use everywhere                            |
+| Logical Hierarchies | Natural relationship between base and derived classes |
+| Extensibility       | Easily add new behavior without modifying base class  |
+
+---
+
+## Basic Syntax of Inheritance
+
+```python filename="inheritance_syntax.py" {2, 3, 4, 5}
+class BaseClass:
+    # base class code
+
+class DerivedClass(BaseClass):
+    # derived class code
+```
+
+---
+
+## Example 1: Simple Inheritance
+
+```python filename="example1_simple_inheritance.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Animal:
+    def sound(self):
+        print("This animal makes a sound.")
+
+class Dog(Animal):
+    pass
+
+d = Dog()
+d.sound()
+```
+
+```python filename="output.txt"
+This animal makes a sound.
+```
+
+**Explanation:**
+`Dog` class inherits the `sound()` method from the `Animal` class — no need to redefine it.
+
+---
+
+## Example 2: Adding New Methods in Derived Class
+
+```python filename="example2_add_method.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class Animal:
+    def sound(self):
+        print("This animal makes a sound.")
+
+class Dog(Animal):
+    def bark(self):
+        print("Woof! Woof!")
+
+dog1 = Dog()
+dog1.sound()
+dog1.bark()
+```
+
+```python filename="output.txt"
+This animal makes a sound.
+Woof! Woof!
+```
+
+---
+
+## Example 3: Overriding Methods
+
+```python filename="example3_override.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class Animal:
+    def sound(self):
+        print("Generic animal sound.")
+
+class Cat(Animal):
+    def sound(self):
+        print("Meow!")
+
+c = Cat()
+c.sound()
+```
+
+```python filename="output.txt"
+Meow!
+```
+
+**Explanation:**
+The `Cat` class overrides the `sound()` method of the base `Animal` class.
+
+---
+
+## Example 4: Using `super()` to Call Parent Method
+
+```python filename="example4_super.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class Animal:
+    def sound(self):
+        print("Generic animal sound.")
+
+class Bird(Animal):
+    def sound(self):
+        super().sound()
+        print("Chirp! Chirp!")
+
+b = Bird()
+b.sound()
+```
+
+```python filename="output.txt"
+Generic animal sound.
+Chirp! Chirp!
+```
+
+**Explanation:**
+The `super()` function allows the derived class to call the parent class’s method.
+
+---
+
+## Example 5: Inheriting Constructor
+
+```python filename="example5_inherit_constructor.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        print(f"My name is {self.name} and I am {self.age} years old.")
+
+class Student(Person):
+    def study(self):
+        print(f"{self.name} is studying.")
+
+s = Student("Alice", 21)
+s.introduce()
+s.study()
+```
+
+```python filename="output.txt"
+My name is Alice and I am 21 years old.
+Alice is studying.
+```
+
+---
+
+## Example 6: Multi-level Inheritance
+
+```python filename="example6_multilevel.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
+class Animal:
+    def breathe(self):
+        print("Breathing...")
+
+class Mammal(Animal):
+    def feed_milk(self):
+        print("Feeding milk...")
+
+class Human(Mammal):
+    def speak(self):
+        print("Speaking...")
+
+h = Human()
+h.breathe()
+h.feed_milk()
+h.speak()
+```
+
+```python filename="output.txt"
+Breathing...
+Feeding milk...
+Speaking...
+```
+
+---
+
+## Key Points
+
+Inheritance allows one class to use **attributes and methods** of another class.
+`super()` can call parent methods.
+Child classes can:
+
+- Inherit as-is
+- Extend with new methods
+- Override parent methods
+  You can create **multi-level inheritance** — child of a child of a parent.
+
+---
+
+## Summary
+
+- **Inheritance** promotes **code reuse** and **modularity**.
+- A child class can inherit attributes and methods from a parent.
+- Inheritance allows building **hierarchies** and **extending functionality**.
+- You can **override** methods and call parent methods using `super()`.
+
+---
+
+Next, we will explore **Encapsulation** — a key principle for controlling access to object data and improving software design.

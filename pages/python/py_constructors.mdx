@@ -1,0 +1,169 @@
+# Constructors and `__init__` in Python
+
+In Python, a **constructor** is a special method that is **automatically called when an object is created**.
+It allows you to initialize the object’s attributes (state).
+
+In Python, the constructor method is named:
+
+```python
+__init__()
+```
+
+---
+
+## What is `__init__`?
+
+- `__init__` is the **initializer** or **constructor**.
+- It is called when you **create a new object** from a class.
+- You can use it to:
+
+  - Define object attributes
+  - Set default values
+  - Run startup code when an object is created
+
+---
+
+## Syntax of `__init__`
+
+```python filename="constructor_syntax.py" {2, 3, 4, 5}
+class ClassName:
+    def __init__(self, parameters):
+        self.attribute = value
+```
+
+---
+
+## Example 1: Basic Constructor
+
+```python filename="example1_basic_constructor.py" {2, 3, 4, 5, 6, 7}
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print(f"Hello, my name is {self.name}.")
+
+p1 = Person("Alice")
+p1.greet()
+```
+
+```python filename="output.txt"
+Hello, my name is Alice.
+```
+
+---
+
+## Example 2: Multiple Parameters in Constructor
+
+```python filename="example2_multiple_params.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def display(self):
+        print(f"Car: {self.brand} {self.model}")
+
+car1 = Car("Tesla", "Model S")
+car1.display()
+```
+
+```python filename="output.txt"
+Car: Tesla Model S
+```
+
+---
+
+## Example 3: Constructor with Default Values
+
+```python filename="example3_default_values.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Student:
+    def __init__(self, name, grade="A"):
+        self.name = name
+        self.grade = grade
+
+    def show(self):
+        print(f"Student: {self.name}, Grade: {self.grade}")
+
+s1 = Student("John")
+s2 = Student("Sara", "B")
+
+s1.show()
+s2.show()
+```
+
+```python filename="output.txt"
+Student: John, Grade: A
+Student: Sara, Grade: B
+```
+
+---
+
+## Example 4: Constructor Logic with Calculations
+
+```python filename="example4_constructor_logic.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.area = self.width * self.height
+
+    def show_area(self):
+        print(f"Area of rectangle: {self.area}")
+
+r1 = Rectangle(10, 5)
+r1.show_area()
+```
+
+```python filename="output.txt"
+Area of rectangle: 50
+```
+
+---
+
+## Example 5: Constructor for Bank Account Object
+
+```python filename="example5_bank_account.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class BankAccount:
+    def __init__(self, holder_name, initial_balance=0):
+        self.holder_name = holder_name
+        self.balance = initial_balance
+
+    def show_balance(self):
+        print(f"{self.holder_name}'s balance is ₹{self.balance}")
+
+acc = BankAccount("Emma", 5000)
+acc.show_balance()
+```
+
+```python filename="output.txt"
+Emma's balance is ₹5000
+```
+
+---
+
+## Key Points about `__init__`
+
+It is **automatically called** when an object is created.
+The first parameter is always `self` — refers to the current object.
+You can pass **parameters** to initialize attributes.
+You can set **default values**.
+You can perform **logic** or **validations** inside `__init__`.
+
+---
+
+## Summary
+
+- `__init__` is Python’s constructor.
+- It allows you to **initialize attributes** when creating objects.
+- You can define:
+
+  - Multiple attributes
+  - Default values
+  - Logic on object creation
+
+- Constructors help ensure objects are **properly initialized** with valid data.
+
+---
+
+Next, we will cover **Inheritance** — a powerful feature that allows classes to reuse and extend functionality from other classes.

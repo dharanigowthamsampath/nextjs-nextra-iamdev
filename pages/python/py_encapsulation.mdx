@@ -1,0 +1,196 @@
+# Encapsulation in Python
+
+with **clear explanations** and **5+ example programs** — same format and style:
+
+---
+
+# Encapsulation in Python
+
+**Encapsulation** is a key principle of **Object-Oriented Programming (OOP)** that focuses on:
+
+**Hiding internal data** of an object
+Controlling how data is **accessed** or **modified**
+Providing a **public interface** while protecting internal state
+
+In simple terms — Encapsulation helps in **protecting object integrity** by preventing outside code from directly accessing or changing internal attributes.
+
+---
+
+## Why Use Encapsulation?
+
+| Benefit                      | Description                                     |
+| ---------------------------- | ----------------------------------------------- |
+| Protect internal state       | Avoid accidental changes to object data         |
+| Control how data is accessed | Allow only specific ways to view or modify data |
+| Improve code maintainability | Reduce bugs by enforcing rules for object state |
+
+---
+
+## Levels of Access in Python
+
+| Type      | Prefix  | Example        |
+| --------- | ------- | -------------- |
+| Public    | No \_   | `self.name`    |
+| Protected | \_var   | `self._salary` |
+| Private   | \_\_var | `self.__age`   |
+
+**Note:**
+In Python, **encapsulation is by convention**, not strict enforcement — but widely followed.
+
+---
+
+## Example 1: Public Attribute
+
+```python filename="example1_public.py" {2, 3, 4, 5, 6, 7, 8}
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+p = Person("Alice")
+print(p.name)
+```
+
+```python filename="output.txt"
+Alice
+```
+
+---
+
+## Example 2: Protected Attribute
+
+```python filename="example2_protected.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self._salary = salary  # protected
+
+e = Employee("John", 50000)
+print(e.name)
+print(e._salary)  # discouraged: direct access to protected attribute
+```
+
+```python filename="output.txt"
+John
+50000
+```
+
+**Explanation:**
+By convention, attributes starting with `_` are considered **protected** — internal use only.
+
+---
+
+## Example 3: Private Attribute
+
+```python filename="example3_private.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # private
+
+    def show_balance(self):
+        print(f"Balance: ₹{self.__balance}")
+
+account = BankAccount(10000)
+account.show_balance()
+
+# print(account.__balance)  # This will cause an error
+```
+
+```python filename="output.txt"
+Balance: ₹10000
+```
+
+---
+
+## Example 4: Access Private Attribute via Method
+
+```python filename="example4_getter.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+class Car:
+    def __init__(self, model, price):
+        self.model = model
+        self.__price = price
+
+    def get_price(self):
+        return self.__price
+
+c = Car("Tesla", 5000000)
+print(c.model)
+print("Price:", c.get_price())
+```
+
+```python filename="output.txt"
+Tesla
+Price: 5000000
+```
+
+---
+
+## Example 5: Using Setters and Getters
+
+```python filename="example5_getter_setter.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
+class Student:
+    def __init__(self, name):
+        self.__name = name
+
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, new_name):
+        if isinstance(new_name, str) and new_name.strip() != "":
+            self.__name = new_name
+        else:
+            print("Invalid name.")
+
+s = Student("Tom")
+print(s.get_name())
+
+s.set_name("Jerry")
+print(s.get_name())
+```
+
+```python filename="output.txt"
+Tom
+Jerry
+```
+
+---
+
+## Example 6: Name Mangling
+
+```python filename="example6_name_mangling.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Demo:
+    def __init__(self):
+        self.__hidden = "secret"
+
+d = Demo()
+# Access private attribute with name mangling (not recommended)
+print(d._Demo__hidden)
+```
+
+```python filename="output.txt"
+secret
+```
+
+**Explanation:**
+Private attributes are internally renamed using \_ClassName prefix — called **name mangling**.
+
+---
+
+## Key Points
+
+Use `_var` to indicate **protected** attributes.
+Use `__var` to indicate **private** attributes.
+Always access private data via **getters** and **setters**.
+Encapsulation improves **security**, **readability**, and **maintainability**.
+
+---
+
+## Summary
+
+- **Encapsulation** is about hiding internal object data.
+- Control object data with **public**, **protected**, and **private** attributes.
+- Use **getter** and **setter** methods to manage access.
+- Helps protect object integrity and prevent bugs.
+
+---
+
+Next, we will explore **Polymorphism** — how different classes can share behavior while maintaining their own identity.

@@ -1,0 +1,211 @@
+# Polymorphism in Python
+
+with **clear explanations** and **5+ example programs** — same format and style:
+
+---
+
+# Polymorphism in Python
+
+**Polymorphism** is an important concept in **Object-Oriented Programming (OOP)** that allows **one interface** to be used for **different data types** or **objects**.
+
+In simple terms:
+**Polymorphism allows different classes to implement the same method name differently**.
+
+---
+
+## Why Use Polymorphism?
+
+| Benefit                   | Description                                      |
+| ------------------------- | ------------------------------------------------ |
+| Code Flexibility          | Same code works with different objects           |
+| Easy Maintenance          | Easy to extend or modify behavior                |
+| Reduces Redundant Code    | No need to write separate code for similar tasks |
+| Supports Interface Design | Helps in designing abstract behaviors            |
+
+---
+
+## Basic Example of Polymorphism
+
+```python filename="polymorphism_simple.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class Dog:
+    def speak(self):
+        print("Woof!")
+
+class Cat:
+    def speak(self):
+        print("Meow!")
+
+def animal_sound(animal):
+    animal.speak()
+
+dog1 = Dog()
+cat1 = Cat()
+
+animal_sound(dog1)
+animal_sound(cat1)
+```
+
+```python filename="output.txt"
+Woof!
+Meow!
+```
+
+**Explanation:**
+Both `Dog` and `Cat` implement `speak()` method — **same interface, different behavior**.
+
+---
+
+## Types of Polymorphism in Python
+
+| Type                  | Description                                      |
+| --------------------- | ------------------------------------------------ |
+| Compile-time (Static) | Not supported in Python                          |
+| Runtime (Dynamic)     | Supported — method overriding, duck typing, etc. |
+
+---
+
+## Example 1: Method Overriding
+
+```python filename="example1_override.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+class Vehicle:
+    def move(self):
+        print("Vehicle is moving.")
+
+class Car(Vehicle):
+    def move(self):
+        print("Car is driving on road.")
+
+class Boat(Vehicle):
+    def move(self):
+        print("Boat is sailing on water.")
+
+v1 = Vehicle()
+c1 = Car()
+b1 = Boat()
+
+v1.move()
+c1.move()
+b1.move()
+```
+
+```python filename="output.txt"
+Vehicle is moving.
+Car is driving on road.
+Boat is sailing on water.
+```
+
+---
+
+## Example 2: Built-in Polymorphism (len function)
+
+```python filename="example2_len.py" {2, 3, 4, 5, 6}
+print(len("Hello"))          # String
+print(len([1, 2, 3, 4]))     # List
+print(len((10, 20, 30)))     # Tuple
+```
+
+```python filename="output.txt"
+5
+4
+3
+```
+
+**Explanation:**
+`len()` behaves differently based on the data type — built-in polymorphism.
+
+---
+
+## Example 3: Polymorphism with Functions
+
+```python filename="example3_function_poly.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class Circle:
+    def area(self):
+        print("Calculating area of circle...")
+
+class Square:
+    def area(self):
+        print("Calculating area of square...")
+
+def print_area(shape):
+    shape.area()
+
+c = Circle()
+s = Square()
+
+print_area(c)
+print_area(s)
+```
+
+```python filename="output.txt"
+Calculating area of circle...
+Calculating area of square...
+```
+
+---
+
+## Example 4: Polymorphism with Class Inheritance
+
+```python filename="example4_poly_inheritance.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class Bird:
+    def fly(self):
+        print("Bird is flying.")
+
+class Sparrow(Bird):
+    def fly(self):
+        print("Sparrow flies at low altitude.")
+
+class Eagle(Bird):
+    def fly(self):
+        print("Eagle flies high in the sky.")
+
+birds = [Bird(), Sparrow(), Eagle()]
+for b in birds:
+    b.fly()
+```
+
+```python filename="output.txt"
+Bird is flying.
+Sparrow flies at low altitude.
+Eagle flies high in the sky.
+```
+
+---
+
+## Example 5: Polymorphism in Operator Overloading
+
+```python filename="example5_operator_overload.py" {2, 3, 4, 5, 6, 7, 8, 9}
+print(3 + 5)          # integers
+print("Hello " + "World")  # strings
+print([1, 2] + [3, 4])    # lists
+```
+
+```python filename="output.txt"
+8
+Hello World
+[1, 2, 3, 4]
+```
+
+**Explanation:**
+The `+` operator behaves differently based on operand types — **operator overloading**.
+
+---
+
+## Key Points
+
+**Polymorphism** enables flexibility — same method name, different behavior
+Achieved via **method overriding** and **duck typing**
+Built-in functions (`len`, `+`, `print`) are examples of polymorphism
+Helps write **clean**, **extensible**, and **maintainable** code
+
+---
+
+## Summary
+
+- **Polymorphism** allows different objects to **respond to the same method call** in different ways.
+- Supports **dynamic behavior** — actual method called depends on the object.
+- Leads to **cleaner**, **more flexible** designs.
+- Combined with inheritance, it is a key pillar of **OOP**.
+
+---
+
+Next, we will explore **Dunder Methods** (`__str__`, `__repr__`) — powerful special methods that allow classes to behave like built-in types.

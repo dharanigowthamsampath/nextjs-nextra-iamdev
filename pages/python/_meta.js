@@ -85,9 +85,9 @@ const meta = {
   py_oop_intro: "Introduction to OOP",
   py_classes_objects: "Classes and Objects",
   py_constructors: "Constructors and `__init__`",
-  //   py_inheritance: "Inheritance",
-  //   py_encapsulation: "Encapsulation",
-  //   py_polymorphism: "Polymorphism",
+  py_inheritance: "Inheritance",
+  py_encapsulation: "Encapsulation",
+  py_polymorphism: "Polymorphism",
   //   py_dunder_methods: "Dunder Methods (`__str__`, `__repr__`)",
 
   "--exceptions": {
