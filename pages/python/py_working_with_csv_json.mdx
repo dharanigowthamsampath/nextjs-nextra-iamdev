@@ -1,0 +1,190 @@
+# Working with CSV & JSON in Python
+
+In real-world applications, you often work with **structured data**:
+CSV (Comma-Separated Values) files
+JSON (JavaScript Object Notation)
+
+Python makes it very easy to read and write these formats using built-in modules:
+
+| Format | Module |
+| ------ | ------ |
+| CSV    | `csv`  |
+| JSON   | `json` |
+
+---
+
+# Working with CSV Files
+
+A **CSV file** stores data in a table-like structure:
+
+```text filename="students.csv"
+Name,Age,City
+Alice,21,New York
+Bob,22,London
+Charlie,23,Berlin
+```
+
+---
+
+## Example 1: Writing a CSV File
+
+```python filename="csv_write.py" {2, 3, 4, 5, 6, 7, 8}
+import csv
+
+with open("students.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Name", "Age", "City"])
+    writer.writerow(["Alice", 21, "New York"])
+    writer.writerow(["Bob", 22, "London"])
+    writer.writerow(["Charlie", 23, "Berlin"])
+```
+
+**Explanation:**
+
+- The `csv.writer` writes **rows of data**
+- `newline=""` prevents blank lines in Windows
+
+---
+
+## Example 2: Reading a CSV File
+
+```python filename="csv_read.py" {2, 3, 4, 5, 6, 7}
+import csv
+
+with open("students.csv", "r") as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+```
+
+```python filename="output.txt"
+['Name', 'Age', 'City']
+['Alice', '21', 'New York']
+['Bob', '22', 'London']
+['Charlie', '23', 'Berlin']
+```
+
+**Explanation:**
+`csv.reader` gives each row as a **list of values**.
+
+---
+
+## Example 3: Reading CSV as Dictionary
+
+```python filename="csv_dict_reader.py" {2, 3, 4, 5, 6, 7}
+import csv
+
+with open("students.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row)
+```
+
+```python filename="output.txt"
+{'Name': 'Alice', 'Age': '21', 'City': 'New York'}
+{'Name': 'Bob', 'Age': '22', 'City': 'London'}
+{'Name': 'Charlie', 'Age': '23', 'City': 'Berlin'}
+```
+
+**Explanation:**
+`csv.DictReader` reads CSV rows as **dictionaries** — useful when column names are important.
+
+---
+
+# Working with JSON Files
+
+A **JSON file** stores data in a nested, human-readable structure:
+
+```json filename="user.json"
+{
+  "name": "Alice",
+  "age": 30,
+  "skills": ["Python", "Data Science"],
+  "location": {
+    "city": "New York",
+    "country": "USA"
+  }
+}
+```
+
+---
+
+## Example 1: Writing JSON to a File
+
+```python filename="json_write.py" {2, 3, 4, 5, 6, 7, 8}
+import json
+
+data = {
+    "name": "Alice",
+    "age": 30,
+    "skills": ["Python", "Data Science"],
+    "location": {
+        "city": "New York",
+        "country": "USA"
+    }
+}
+
+with open("user.json", "w") as file:
+    json.dump(data, file, indent=4)
+```
+
+**Explanation:**
+
+- `json.dump()` writes **Python dictionary** → **JSON file**
+- `indent=4` makes it pretty and readable
+
+---
+
+## Example 2: Reading JSON from a File
+
+```python filename="json_read.py" {2, 3, 4, 5, 6}
+import json
+
+with open("user.json", "r") as file:
+    data = json.load(file)
+    print(data)
+```
+
+```python filename="output.txt"
+{'name': 'Alice', 'age': 30, 'skills': ['Python', 'Data Science'], 'location': {'city': 'New York', 'country': 'USA'}}
+```
+
+**Explanation:**
+
+- `json.load()` reads the JSON file into a **Python dictionary**.
+
+---
+
+## Example 3: Convert Python Object → JSON String
+
+```python filename="json_dumps.py" {2, 3, 4, 5, 6}
+import json
+
+user = {"name": "Bob", "age": 25}
+json_str = json.dumps(user, indent=2)
+print(json_str)
+```
+
+```python filename="output.txt"
+{
+  "name": "Bob",
+  "age": 25
+}
+```
+
+**Explanation:**
+`json.dumps()` converts a **Python object → JSON string** (no file).
+
+---
+
+## Summary
+
+Python’s `csv` and `json` modules make it simple to:
+
+- Write and read **CSV files**
+- Write and read **JSON files**
+- Convert **between Python objects and JSON**
+  CSV — great for **tables**
+  JSON — great for **structured nested data** (used in web APIs!)
+
+---

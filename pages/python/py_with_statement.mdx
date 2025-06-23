@@ -1,0 +1,158 @@
+# Using `with` Statement in File Handling
+
+In Python, the `with` statement is the **recommended way** to work with files. It ensures that:
+
+Files are **automatically closed** after use
+You don’t forget to call `file.close()`
+Your code is **cleaner and safer**
+
+This is also known as a **context manager**.
+
+---
+
+## Why Use `with`?
+
+Without `with`, you must manually close the file:
+
+```python filename="manual_close.py" {2, 3, 4, 5, 6}
+file = open("data.txt", "r")
+content = file.read()
+print(content)
+file.close()
+```
+
+❌ Problem: If an error occurs before `file.close()`, the file may stay open.
+
+---
+
+### Better: Using `with`
+
+```python filename="with_basic.py" {2, 3, 4}
+with open("data.txt", "r") as file:
+    content = file.read()
+    print(content)
+```
+
+**Benefits:**
+
+- File is **automatically closed** even if an error occurs
+- Code is **cleaner and shorter**
+- Safer for **large-scale applications**
+
+---
+
+## Anatomy of `with` Statement
+
+```python filename="with_structure.py" {1}
+with open("filename", "mode") as file_object:
+    # do something with file_object
+```
+
+---
+
+## Example 1: Reading a File Safely
+
+```python filename="with_read.py" {2, 3, 4, 5}
+with open("readme.txt", "r") as f:
+    for line in f:
+        print(line.strip())
+```
+
+**Explanation:**
+You don’t need to call `f.close()` — it’s handled automatically.
+
+---
+
+## Example 2: Writing to a File
+
+```python filename="with_write.py" {2, 3, 4, 5}
+with open("notes.txt", "w") as file:
+    file.write("First line.\n")
+    file.write("Second line.\n")
+```
+
+**Explanation:**
+Content is written, and the file is properly closed.
+
+---
+
+## Example 3: Appending to a File
+
+```python filename="with_append.py" {2, 3, 4}
+with open("notes.txt", "a") as file:
+    file.write("Appended line.\n")
+```
+
+**Explanation:**
+Appends without affecting previous content.
+
+---
+
+## Example 4: Reading and Writing (`r+` mode)
+
+```python filename="with_rplus.py" {2, 3, 4, 5, 6}
+with open("notes.txt", "r+") as file:
+    content = file.read()
+    print("Before:", content)
+    file.seek(0)
+    file.write("Updated content.\n")
+```
+
+**Explanation:**
+
+- Reads the content
+- Then **overwrites** the beginning
+- Still safely closed
+
+---
+
+## Example 5: Reading a Binary File
+
+```python filename="with_binary_read.py" {2, 3, 4}
+with open("photo.jpg", "rb") as image:
+    data = image.read(10)
+    print(data)
+```
+
+**Explanation:**
+`rb` mode reads **raw bytes**, ideal for non-text files.
+
+---
+
+## Example 6: Writing a Binary File
+
+```python filename="with_binary_write.py" {2, 3, 4, 5}
+with open("photo_copy.jpg", "wb") as new_img:
+    with open("photo.jpg", "rb") as original:
+        new_img.write(original.read())
+```
+
+**Explanation:**
+Nested `with` handles **multiple files** safely.
+
+---
+
+## Using `with` for Multiple Files
+
+```python filename="with_multiple_files.py" {2, 3, 4, 5}
+with open("file1.txt", "r") as f1, open("file2.txt", "w") as f2:
+    content = f1.read()
+    f2.write(content)
+```
+
+**Explanation:**
+You can open **multiple files** in one line using commas.
+
+---
+
+## Summary
+
+`with` is the **safest and cleanest** way to handle files in Python
+No need to call `close()` manually
+Works with **text and binary** files
+Supports **multiple files** in one block
+Highly recommended in **all professional Python projects**
+
+---
+
+Next, we’ll dive into **Working with CSV & JSON** — real-world file formats you’ll use frequently in data and web applications.

@@ -1,0 +1,143 @@
+# Reading and Writing Files in Python
+
+One of the most essential features in Python is **file handling**. It allows you to:
+
+Read data from files
+Write data to files
+Process external data (logs, configs, CSV, JSON, etc.)
+Store output for later use
+
+Python provides a simple and intuitive way to handle files using built-in functions.
+
+---
+
+## Basic Workflow
+
+1. Open the file using `open()`
+2. Perform read or write operation
+3. Close the file (automatically using `with`)
+
+---
+
+## Opening Files
+
+```python filename="file_open_basic.py" {2, 3}
+file = open("example.txt", "r")  # Open for reading
+file.close()
+```
+
+---
+
+## Reading from a File
+
+### `read()` — Read Entire File
+
+```python filename="file_read_entire.py" {2, 3, 4}
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+```
+
+**Explanation:**
+`read()` reads the entire file as a string.
+
+---
+
+### `readline()` — Read One Line at a Time
+
+```python filename="file_readline.py" {2, 3, 4, 5}
+with open("example.txt", "r") as file:
+    line1 = file.readline()
+    line2 = file.readline()
+    print(line1.strip())
+    print(line2.strip())
+```
+
+**Explanation:**
+`readline()` reads **one line** each time it is called.
+
+---
+
+### Iterating Line by Line
+
+```python filename="file_iterate.py" {2, 3, 4, 5}
+with open("example.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+```
+
+**Explanation:**
+Looping over the file gives you each line.
+
+---
+
+## Writing to a File
+
+### `write()` — Write Strings to File
+
+```python filename="file_write.py" {2, 3, 4, 5}
+with open("output.txt", "w") as file:
+    file.write("Hello, world!\n")
+    file.write("This is written to the file.\n")
+```
+
+**Explanation:**
+`'w'` mode overwrites the file or creates it if it doesn’t exist.
+
+---
+
+## Appending to a File
+
+### `a` Mode — Append New Content
+
+```python filename="file_append.py" {2, 3, 4}
+with open("output.txt", "a") as file:
+    file.write("Appending this line.\n")
+```
+
+**Explanation:**
+`'a'` mode **preserves existing content** and adds new data at the end.
+
+---
+
+## Closing Files
+
+When using:
+
+```python filename="file_close.py" {2, 3}
+file = open("example.txt", "r")
+content = file.read()
+file.close()
+```
+
+👉 You must call `file.close()` yourself — otherwise, resources might stay open.
+
+---
+
+## Using `with` Statement
+
+```python filename="file_with.py" {2, 3, 4}
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+```
+
+**Benefits:**
+File is **automatically closed**
+Prevents resource leaks
+Recommended practice!
+
+---
+
+## Summary
+
+Python supports powerful, simple **file I/O**:
+
+- `read()`, `readline()`, iteration — for reading
+- `write()`, `append()` — for writing
+  Always use `with open()` — best practice
+  Handling files is key for most **real-world applications**
+
+---
+
+Next, we will cover **File Modes** — understanding the different ways to open files (`'r'`, `'w'`, `'a'`, `'b'`, `'x'`, etc.).

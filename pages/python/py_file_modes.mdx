@@ -1,0 +1,190 @@
+# File Modes in Python
+
+**File mode** determines **how** a file is opened in Python:
+For **reading**
+For **writing**
+For **appending**
+For **binary** access
+And more...
+
+Choosing the correct mode is critical for safe and correct file handling.
+
+---
+
+## File Modes Overview
+
+| Mode   | Description                                              |
+| ------ | -------------------------------------------------------- |
+| `'r'`  | Read-only (default). File must exist.                    |
+| `'w'`  | Write-only. Creates new file or **overwrites** existing. |
+| `'a'`  | Append-only. Creates new file or appends to existing.    |
+| `'r+'` | Read + write. File must exist.                           |
+| `'w+'` | Write + read. Overwrites existing or creates new file.   |
+| `'a+'` | Append + read. Creates new or appends.                   |
+| `'b'`  | Binary mode (e.g., `'rb'`, `'wb'`)                       |
+| `'x'`  | Exclusive creation — fails if file exists.               |
+
+---
+
+## Example 1: `'r'` — Read Mode
+
+```python filename="file_mode_r.py" {2, 3, 4, 5}
+with open("example.txt", "r") as file:
+    print(file.read())
+```
+
+**Notes:**
+
+- Opens file for **reading**
+- File must exist, otherwise error:
+  `FileNotFoundError`
+
+---
+
+## Example 2: `'w'` — Write Mode
+
+```python filename="file_mode_w.py" {2, 3, 4, 5}
+with open("newfile.txt", "w") as file:
+    file.write("This will create a new file or overwrite existing.")
+```
+
+**Notes:**
+
+- Creates `newfile.txt` if not present
+- **Overwrites** content if file exists
+
+---
+
+## Example 3: `'a'` — Append Mode
+
+```python filename="file_mode_a.py" {2, 3, 4}
+with open("newfile.txt", "a") as file:
+    file.write("\nAppending another line.")
+```
+
+**Notes:**
+
+- Adds content to end of file
+- Does **not overwrite**
+
+---
+
+## Example 4: `'r+'` — Read and Write (existing file)
+
+```python filename="file_mode_rplus.py" {2, 3, 4, 5, 6, 7}
+with open("example.txt", "r+") as file:
+    content = file.read()
+    print("Before:", content)
+    file.seek(0)
+    file.write("Updated first line.\n")
+```
+
+**Notes:**
+
+- File must exist
+- Allows **both reading and writing**
+
+---
+
+## Example 5: `'w+'` — Write and Read (overwrite)
+
+```python filename="file_mode_wplus.py" {2, 3, 4, 5}
+with open("newfile2.txt", "w+") as file:
+    file.write("New content here.\n")
+    file.seek(0)
+    print("After write:", file.read())
+```
+
+**Notes:**
+
+- **Overwrites** or creates file
+- Can **read** and **write**
+
+---
+
+## Example 6: `'a+'` — Append and Read
+
+```python filename="file_mode_aplus.py" {2, 3, 4, 5, 6}
+with open("newfile2.txt", "a+") as file:
+    file.write("Appending again!\n")
+    file.seek(0)
+    print("File content:\n", file.read())
+```
+
+**Notes:**
+
+- Appends content
+- Can also read
+
+---
+
+## Example 7: `'x'` — Exclusive Creation
+
+```python filename="file_mode_x.py" {2, 3, 4, 5}
+with open("unique.txt", "x") as file:
+    file.write("File created uniquely.")
+```
+
+**Notes:**
+
+- Fails if file already exists:
+  `FileExistsError`
+
+---
+
+## Binary Modes: `'rb'`, `'wb'`
+
+Used for **non-text** files:
+Images
+Audio/video
+Executables
+
+---
+
+### Example 8: Reading Binary File
+
+```python filename="file_mode_rb.py" {2, 3, 4, 5}
+with open("image.png", "rb") as file:
+    data = file.read(10)
+    print(data)
+```
+
+**Notes:**
+
+- `'rb'` — read **binary**
+- Returns bytes, not strings
+
+---
+
+### Example 9: Writing Binary File
+
+```python filename="file_mode_wb.py" {2, 3, 4, 5}
+with open("copy_image.png", "wb") as file:
+    with open("image.png", "rb") as original:
+        file.write(original.read())
+```
+
+**Notes:**
+
+- `'wb'` — write **binary**
+- Can copy image/audio files
+
+---
+
+## Summary
+
+File **mode** controls how files are opened:
+
+- Read (`'r'`)
+- Write (`'w'`)
+- Append (`'a'`)
+- Combined read/write (`'r+'`, `'w+'`, `'a+'`)
+- Exclusive create (`'x'`)
+- Binary (`'rb'`, `'wb'`)
+
+Always choose the mode appropriate for your use case
+Using `with open()` ensures safe file handling
+
+---
+
+Next, we will learn about **Using `with` Statement** — how it makes file handling safer and more readable.

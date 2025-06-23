@@ -104,10 +104,10 @@ const meta = {
     title: "File Handling",
     type: "separator",
   },
-  //   file_read_write: "Reading and Writing Files",
-  //   file_modes: "File Modes",
-  //   with_statement: "Using `with` Statement",
-  //   working_with_csv_json: "Working with CSV & JSON",
+  py_file_read_write: "Reading and Writing Files",
+  py_file_modes: "File Modes",
+  py_with_statement: "Using `with` Statement",
+  py_working_with_csv_json: "Working with CSV & JSON",
 
   "--advanced": {
     title: "Advanced Python",
