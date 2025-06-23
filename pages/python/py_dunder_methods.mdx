@@ -1,0 +1,188 @@
+# Dunder Methods (`__str__`, `__repr__`, and more) in Python
+
+In Python, **Dunder Methods** (short for **Double Underscore Methods**) are **special methods** that allow you to customize the behavior of your objects.
+
+Dunder methods are also called **Magic Methods**
+They start and end with double underscores, like `__init__`, `__str__`, `__repr__`, `__len__`, etc.
+They make your classes more **Pythonic** and **integrated** with the language
+
+---
+
+## Why Use Dunder Methods?
+
+| Reason                                | Benefit                       |
+| ------------------------------------- | ----------------------------- |
+| Customize object representation       | `__str__`, `__repr__`         |
+| Define object behavior with operators | `__add__`, `__eq__`, `__lt__` |
+| Make objects iterable                 | `__iter__`, `__next__`        |
+| Control object creation & destruction | `__new__`, `__del__`          |
+
+---
+
+## Common Dunder Methods
+
+| Method        | Purpose                                  |
+| ------------- | ---------------------------------------- |
+| `__init__`    | Object initializer (constructor)         |
+| `__str__`     | String representation (user-facing)      |
+| `__repr__`    | String representation (developer-facing) |
+| `__len__`     | Return length                            |
+| `__eq__`      | Equality comparison `==`                 |
+| `__add__`     | Addition operator `+`                    |
+| `__getitem__` | Access item `obj[key]`                   |
+
+---
+
+## Example 1: `__str__` and `__repr__`
+
+```python filename="example1_str_repr.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        return f"Person(Name: {self.name}, Age: {self.age})"
+
+    def __repr__(self):
+        return f"Person('{self.name}', {self.age})"
+
+p = Person("Alice", 30)
+print(str(p))
+print(repr(p))
+```
+
+```python filename="output.txt"
+Person(Name: Alice, Age: 30)
+Person('Alice', 30)
+```
+
+**Explanation:**
+`__str__()` returns a **readable string** — used by `print()`
+`__repr__()` returns an **unambiguous representation** — used in console or debugging
+
+---
+
+## Example 2: `__add__` — Operator Overloading
+
+```python filename="example2_add.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+    def __str__(self):
+        return f"Point({self.x}, {self.y})"
+
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+result = p1 + p2
+print(result)
+```
+
+```python filename="output.txt"
+Point(4, 6)
+```
+
+**Explanation:**
+`__add__()` lets you use `+` to add two objects.
+This is called **operator overloading**.
+
+---
+
+## Example 3: `__len__`
+
+```python filename="example3_len.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class BookCollection:
+    def __init__(self, books):
+        self.books = books
+
+    def __len__(self):
+        return len(self.books)
+
+collection = BookCollection(["Python 101", "Flask Web Dev", "Deep Learning"])
+print("Number of books:", len(collection))
+```
+
+```python filename="output.txt"
+Number of books: 3
+```
+
+---
+
+## Example 4: `__eq__` — Custom Equality
+
+```python filename="example4_eq.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def __eq__(self, other):
+        return self.name == other.name and self.price == other.price
+
+p1 = Product("Laptop", 1200)
+p2 = Product("Laptop", 1200)
+p3 = Product("Phone", 800)
+
+print(p1 == p2)
+print(p1 == p3)
+```
+
+```python filename="output.txt"
+True
+False
+```
+
+**Explanation:**
+`__eq__()` lets you define how objects are compared with `==`.
+
+---
+
+## Example 5: `__getitem__` — Making Objects Subscriptable
+
+```python filename="example5_getitem.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+class DaysOfWeek:
+    def __init__(self):
+        self.days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+    def __getitem__(self, index):
+        return self.days[index]
+
+week = DaysOfWeek()
+print(week[0])
+print(week[3])
+```
+
+```python filename="output.txt"
+Mon
+Thu
+```
+
+**Explanation:**
+`__getitem__()` lets you use `obj[index]` notation.
+
+---
+
+## When to Use Dunder Methods
+
+For better **debugging** and **logging**
+For **custom object behavior**
+For **operator overloading**
+For **iterability** and **container-like classes**
+
+---
+
+## Summary
+
+- Dunder methods let you make objects **behave like built-in types**
+- Examples:
+
+  - `__str__`, `__repr__` for representation
+  - `__add__`, `__eq__` for operators
+  - `__getitem__`, `__len__` for container-like behavior
+
+- Use dunder methods to make your classes more **Pythonic**, readable, and user-friendly

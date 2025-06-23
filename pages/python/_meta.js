@@ -88,7 +88,7 @@ const meta = {
   py_inheritance: "Inheritance",
   py_encapsulation: "Encapsulation",
   py_polymorphism: "Polymorphism",
-  //   py_dunder_methods: "Dunder Methods (`__str__`, `__repr__`)",
+  py_dunder_methods: "Dunder Methods (`__str__`, `__repr__`)",
 
   "--exceptions": {
     title: "Error Handling",
