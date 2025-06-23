@@ -1,0 +1,140 @@
+# Introduction to Exceptions in Python
+
+with **clear explanations** and **example programs** — same format and style:
+
+---
+
+# Introduction to Exceptions in Python
+
+An **exception** is an event that occurs during the execution of a program that **disrupts the normal flow** of instructions.
+
+In Python:
+Errors are represented as **exception objects**
+If an exception occurs and is not handled, the program **terminates** with an error message
+Python provides a powerful way to **handle exceptions** using `try`, `except` blocks
+
+---
+
+## Why Handle Exceptions?
+
+| Reason                     | Benefit                                    |
+| -------------------------- | ------------------------------------------ |
+| Graceful Error Handling    | Prevent crashes and unexpected termination |
+| User-friendly Messages     | Display meaningful error messages          |
+| Maintain Program Stability | Keep application running smoothly          |
+| Handle Unexpected Inputs   | Manage edge cases without failure          |
+
+---
+
+## Common Exceptions in Python
+
+| Exception Type      | Meaning                   |
+| ------------------- | ------------------------- |
+| `ZeroDivisionError` | Division by zero          |
+| `TypeError`         | Invalid type operation    |
+| `ValueError`        | Invalid value             |
+| `IndexError`        | Index out of range        |
+| `KeyError`          | Missing key in dictionary |
+| `FileNotFoundError` | File not found            |
+
+---
+
+## Example 1: Unhandled Exception
+
+```python filename="example1_unhandled.py" {2, 3}
+a = 5 / 0
+```
+
+```python filename="output.txt"
+ZeroDivisionError: division by zero
+```
+
+**Explanation:**
+Division by zero causes an exception and the program stops execution.
+
+---
+
+## Example 2: Basic Exception Handling
+
+```python filename="example2_basic_handling.py" {2, 3, 4, 5, 6}
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("You cannot divide by zero!")
+```
+
+```python filename="output.txt"
+You cannot divide by zero!
+```
+
+**Explanation:**
+The program does not crash — the exception is **handled**.
+
+---
+
+## Example 3: Handling Multiple Exceptions
+
+```python filename="example3_multiple.py" {2, 3, 4, 5, 6, 7, 8}
+try:
+    num = int("abc")
+except ValueError:
+    print("Invalid conversion!")
+except ZeroDivisionError:
+    print("Division by zero!")
+```
+
+```python filename="output.txt"
+Invalid conversion!
+```
+
+---
+
+## Example 4: Catching All Exceptions (Not Recommended)
+
+```python filename="example4_generic.py" {2, 3, 4, 5}
+try:
+    x = undefined_variable
+except Exception as e:
+    print("Error occurred:", e)
+```
+
+```python filename="output.txt"
+Error occurred: name 'undefined_variable' is not defined
+```
+
+---
+
+## How Exception Handling Works
+
+```text
+try:
+    # Code that may raise an exception
+except ExceptionType:
+    # Code that runs if exception occurs
+else:
+    # Code that runs if no exception occurs
+finally:
+    # Code that always runs (cleanup)
+```
+
+---
+
+## Key Points
+
+Exceptions are runtime errors that can disrupt the program
+`try`...`except` block is used to handle exceptions
+Multiple exceptions can be handled
+`finally` block always runs — used for cleanup (e.g., closing files)
+
+---
+
+## Summary
+
+- Exceptions help manage **error-prone situations** gracefully
+- Without handling, exceptions **terminate** the program
+- Use `try`...`except`...`finally` for robust error handling
+- Common exceptions: `ZeroDivisionError`, `ValueError`, `IndexError`, etc.
+
+---
+
+Next, we will cover **Try, Except, Else, Finally** in more detail — and see how you can structure robust error-handling logic in Python.

@@ -1,0 +1,180 @@
+# Try, Except, Else, Finally in Python
+
+with **3 examples per block** and **detailed explanation** — same format and style:
+
+---
+
+# Try, Except, Else, Finally in Python
+
+Python provides a **structured way** to handle exceptions using four keywords:
+
+`try` — Code block where exceptions can occur
+`except` — Code block to handle exceptions
+`else` — Runs if no exception occurs
+`finally` — Runs always (used for cleanup)
+
+This helps you write **robust**, **error-tolerant** programs.
+
+---
+
+## Basic Syntax
+
+```python filename="try_except_syntax.py" {2, 3, 4, 5, 6, 7, 8}
+try:
+    # Code that may raise an exception
+except ExceptionType:
+    # Code that runs if exception occurs
+else:
+    # Runs if no exception occurs
+finally:
+    # Always runs (cleanup)
+```
+
+---
+
+## Example 1: Try-Except Block
+
+```python filename="example1_try_except.py" {2, 3, 4, 5, 6, 7}
+try:
+    num = int(input("Enter a number: "))
+    print("Result:", 10 / num)
+except ZeroDivisionError:
+    print("Error: Division by zero!")
+except ValueError:
+    print("Error: Invalid input!")
+```
+
+```python filename="output.txt"
+# If input = 0
+Error: Division by zero!
+
+# If input = abc
+Error: Invalid input!
+```
+
+**Explanation:**
+`try` block attempts to execute code.
+If an exception occurs — corresponding `except` block handles it.
+
+---
+
+## Example 2: Try-Except with Generic Exception
+
+```python filename="example2_try_except_generic.py" {2, 3, 4, 5, 6}
+try:
+    file = open("nonexistent.txt")
+except Exception as e:
+    print("An error occurred:", e)
+```
+
+```python filename="output.txt"
+An error occurred: [Errno 2] No such file or directory: 'nonexistent.txt'
+```
+
+---
+
+## Example 3: Multiple Except Blocks
+
+```python filename="example3_multiple_except.py" {2, 3, 4, 5, 6, 7, 8, 9}
+try:
+    lst = [1, 2, 3]
+    print(lst[5])
+except IndexError:
+    print("Index out of range!")
+except Exception as e:
+    print("Some other error:", e)
+```
+
+```python filename="output.txt"
+Index out of range!
+```
+
+---
+
+## Example 4: Using Else Block
+
+```python filename="example4_else.py" {2, 3, 4, 5, 6, 7, 8}
+try:
+    x = 5
+    y = 2
+    result = x / y
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+else:
+    print("Result is:", result)
+```
+
+```python filename="output.txt"
+Result is: 2.5
+```
+
+**Explanation:**
+`else` runs **only if no exception occurs**.
+
+---
+
+## Example 5: Try-Except-Else-Finally
+
+```python filename="example5_full_structure.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+try:
+    value = int("100")
+except ValueError:
+    print("Invalid value.")
+else:
+    print("Conversion successful. Value =", value)
+finally:
+    print("Execution completed.")
+```
+
+```python filename="output.txt"
+Conversion successful. Value = 100
+Execution completed.
+```
+
+**Explanation:**
+`finally` block **always runs** — even if an exception is raised.
+Useful for **cleanup** — closing files, releasing resources, etc.
+
+---
+
+## Example 6: Using Finally for Cleanup
+
+```python filename="example6_cleanup.py" {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+try:
+    file = open("sample.txt", "w")
+    file.write("Hello, Python!")
+except IOError:
+    print("I/O error occurred.")
+else:
+    print("File written successfully.")
+finally:
+    file.close()
+    print("File closed.")
+```
+
+```python filename="output.txt"
+File written successfully.
+File closed.
+```
+
+---
+
+## Key Points
+
+`try`: Code that may raise an exception
+`except`: Catches and handles exceptions
+`else`: Runs if no exception occurred
+`finally`: Always runs (useful for resource cleanup)
+
+---
+
+## Summary
+
+- Python provides structured exception handling with `try`, `except`, `else`, `finally`.
+- Helps manage **runtime errors gracefully**.
+- Allows performing **safe cleanup** of resources.
+- Always close files or release resources inside `finally`.
+
+---
+
+Next, we will cover **Raising Exceptions** — how you can manually trigger exceptions in your code for better error handling.

@@ -1,0 +1,126 @@
+# Common Python Errors and Example Programs
+
+In Python, there are several common **built-in exceptions** that every developer should understand.
+Here we will demonstrate **1 example for each kind of error**, with **detailed explanation**.
+
+---
+
+## 1. `ZeroDivisionError`
+
+```python filename="error_zero_division.py" {2, 3, 4, 5, 6, 7}
+try:
+    a = 10
+    b = 0
+    result = a / b
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+```
+
+```python filename="output.txt"
+Cannot divide by zero!
+```
+
+---
+
+## 2. `ValueError`
+
+```python filename="error_value.py" {2, 3, 4, 5, 6, 7}
+try:
+    num = int("abc")
+except ValueError:
+    print("Invalid value: cannot convert string to integer.")
+```
+
+```python filename="output.txt"
+Invalid value: cannot convert string to integer.
+```
+
+---
+
+## 3. `IndexError`
+
+```python filename="error_index.py" {2, 3, 4, 5, 6, 7}
+try:
+    lst = [10, 20, 30]
+    print(lst[5])
+except IndexError:
+    print("List index out of range!")
+```
+
+```python filename="output.txt"
+List index out of range!
+```
+
+---
+
+## 4. `KeyError`
+
+```python filename="error_key.py" {2, 3, 4, 5, 6, 7}
+try:
+    d = {"name": "Alice"}
+    print(d["age"])
+except KeyError:
+    print("Key not found in dictionary!")
+```
+
+```python filename="output.txt"
+Key not found in dictionary!
+```
+
+---
+
+## 5. `TypeError`
+
+```python filename="error_type.py" {2, 3, 4, 5, 6, 7}
+try:
+    result = "abc" + 5
+except TypeError:
+    print("Cannot add string and integer!")
+```
+
+```python filename="output.txt"
+Cannot add string and integer!
+```
+
+---
+
+## 6. `FileNotFoundError`
+
+```python filename="error_file_not_found.py" {2, 3, 4, 5, 6, 7}
+try:
+    file = open("nonexistent_file.txt", "r")
+except FileNotFoundError:
+    print("File not found!")
+```
+
+```python filename="output.txt"
+File not found!
+```
+
+---
+
+## 7. `AttributeError`
+
+```python filename="error_attribute.py" {2, 3, 4, 5, 6, 7}
+try:
+    x = 10
+    x.append(5)
+except AttributeError:
+    print("AttributeError: 'int' object has no attribute 'append'")
+```
+
+```python filename="output.txt"
+AttributeError: 'int' object has no attribute 'append'
+```
+
+---
+
+## Summary
+
+- Python raises different types of **built-in exceptions** for different error conditions.
+- Always handle these exceptions using structured `try`/`except` blocks.
+- Understanding common exceptions helps in writing **robust, error-free applications**.
+
+---
+
+Next, we will explore **how to raise exceptions manually** using `raise` keyword — an important part of **custom error handling** in Python.

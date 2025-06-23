@@ -1,0 +1,181 @@
+# Raising Exceptions in Python
+
+with **lengthy explanations** and **multiple examples** — same format and style:
+
+---
+
+# Raising Exceptions in Python
+
+In Python, you can **manually trigger exceptions** using the `raise` keyword.
+
+Why raise exceptions?
+
+Enforce rules in your code
+Prevent invalid operations
+Provide meaningful error messages
+Control program flow in specific conditions
+
+Raising exceptions helps in writing **safe**, **maintainable**, and **robust** applications.
+
+---
+
+## Syntax of Raising Exceptions
+
+```python filename="raise_syntax.py" {2, 3}
+raise ExceptionType("Error message")
+```
+
+- `ExceptionType` is any valid built-in or user-defined exception.
+- You can provide a custom error message.
+
+---
+
+## Example 1: Raising `ValueError`
+
+```python filename="example1_raise_valueerror.py" {2, 3, 4, 5, 6, 7, 8, 9}
+def set_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative!")
+    print("Age set to:", age)
+
+set_age(25)
+set_age(-5)
+```
+
+```python filename="output.txt"
+Age set to: 25
+ValueError: Age cannot be negative!
+```
+
+---
+
+## Example 2: Raising `TypeError`
+
+```python filename="example2_raise_typeerror.py" {2, 3, 4, 5, 6, 7, 8}
+def multiply(a, b):
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        raise TypeError("Both arguments must be numbers!")
+    return a * b
+
+print(multiply(3, 4))
+print(multiply("a", 5))
+```
+
+```python filename="output.txt"
+12
+TypeError: Both arguments must be numbers!
+```
+
+---
+
+## Example 3: Raising Inside Class Methods
+
+```python filename="example3_raise_class.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+class BankAccount:
+    def __init__(self, balance):
+        if balance < 0:
+            raise ValueError("Initial balance cannot be negative.")
+        self.balance = balance
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            raise ValueError("Insufficient funds.")
+        self.balance -= amount
+        print("Withdrawn:", amount)
+
+account = BankAccount(1000)
+account.withdraw(200)
+account.withdraw(1000)
+```
+
+```python filename="output.txt"
+Withdrawn: 200
+ValueError: Insufficient funds.
+```
+
+---
+
+## Raising vs Handling Exceptions
+
+| Operation | Keyword         |
+| --------- | --------------- |
+| Raise     | `raise`         |
+| Handle    | `try`, `except` |
+
+Use `raise` to **signal errors**.
+Use `try-except` to **handle errors gracefully**.
+
+---
+
+## Example 4: Raise and Handle Together
+
+```python filename="example4_raise_handle.py" {2, 3, 4, 5, 6, 7, 8, 9, 10}
+def divide(a, b):
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    return a / b
+
+try:
+    print(divide(10, 0))
+except ZeroDivisionError as e:
+    print("Handled Exception:", e)
+```
+
+```python filename="output.txt"
+Handled Exception: Cannot divide by zero.
+```
+
+---
+
+## Example 5: Raising Custom Exception
+
+You can define your own **custom exception classes** (more about this in the next topic).
+
+```python filename="example5_custom_raise.py" {2, 3, 4, 5, 6, 7, 8, 9}
+class InvalidScoreError(Exception):
+    pass
+
+def set_score(score):
+    if score > 100:
+        raise InvalidScoreError("Score cannot exceed 100.")
+    print("Score set to:", score)
+
+set_score(95)
+set_score(150)
+```
+
+```python filename="output.txt"
+Score set to: 95
+InvalidScoreError: Score cannot exceed 100.
+```
+
+---
+
+## Why Raise Exceptions?
+
+Validate input data
+Prevent illegal operations
+Create **fail-fast** programs — detect errors early
+Provide **descriptive error messages** for debugging
+Enforce **business logic rules**
+
+---
+
+## Key Points
+
+`raise` is used to **trigger exceptions manually**
+You can raise **built-in** or **custom exceptions**
+Helps you **validate data** and enforce **correct behavior**
+Combine with `try-except` for **safe handling**
+
+---
+
+## Summary
+
+- Raising exceptions is an important part of writing **robust and defensive code**.
+- You can use `raise` to **signal errors** based on custom conditions.
+- Helps you enforce application logic and ensure that **invalid data is never silently accepted**.
+
+---
+
+Next, we will cover **Creating Custom Exceptions** — how to define your own exception classes to model specific error conditions in your applications.

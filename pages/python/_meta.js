@@ -94,10 +94,11 @@ const meta = {
     title: "Error Handling",
     type: "separator",
   },
-  //   exceptions_intro: "Introduction to Exceptions",
-  //   try_except: "Try, Except, Else, Finally",
-  //   raising_exceptions: "Raising Exceptions",
-  //   custom_exceptions: "Creating Custom Exceptions",
+  py_exceptions_intro: "Introduction to Exceptions",
+  py_try_except: "Try, Except, Else, Finally",
+  py_Common_Python_Errors: "Common Python Errors",
+  py_raising_exceptions: "Raising Exceptions",
+  py_custom_exceptions: "Creating Custom Exceptions",
 
   "--file-handling": {
     title: "File Handling",
