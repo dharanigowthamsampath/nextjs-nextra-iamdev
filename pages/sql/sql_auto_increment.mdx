@@ -1,0 +1,100 @@
+# Auto Increment
+
+In many tables, it is useful to have an **automatically generated unique number** for each row — especially for the primary key.
+
+The `AUTO_INCREMENT` attribute in MySQL is used to:
+
+- Automatically generate a unique number for each row.
+- Make it easier to manage primary keys.
+- Ensure that you don’t have to manually assign unique IDs.
+
+---
+
+### Why Use AUTO_INCREMENT?
+
+Without `AUTO_INCREMENT`, you would need to manually provide a unique `id` for each row:
+
+```sql
+INSERT INTO students (id, name, age, email, enrollment_date)
+VALUES (1, 'Alice Smith', 20, 'alice@example.com', '2025-06-23');
+```
+
+With `AUTO_INCREMENT`, the database handles this for you:
+
+```sql
+INSERT INTO students (name, age, email, enrollment_date)
+VALUES ('Alice Smith', 20, 'alice@example.com', '2025-06-23');
+```
+
+The `id` will be generated automatically.
+
+---
+
+### Basic Syntax
+
+```sql
+CREATE TABLE table_name (
+  column_name INT AUTO_INCREMENT PRIMARY KEY,
+  other_columns ...
+);
+```
+
+---
+
+### Example: Students Table with AUTO_INCREMENT
+
+```sql
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT,
+  email VARCHAR(150),
+  enrollment_date DATE
+);
+```
+
+---
+
+### Inserting Rows
+
+You do not need to specify the `id`.
+The database will automatically insert the next available number:
+
+```sql
+INSERT INTO students (name, age, email, enrollment_date)
+VALUES ('Bob Johnson', 22, 'bob@example.com', '2025-06-20');
+
+INSERT INTO students (name, age, email, enrollment_date)
+VALUES ('Carol Thomas', 19, 'carol@example.com', '2025-06-21');
+```
+
+Resulting data:
+
+| id  | name         | age | email                                         | enrollment_date |
+| --- | ------------ | --- | --------------------------------------------- | --------------- |
+| 1   | Bob Johnson  | 22  | [bob@example.com](mailto:bob@example.com)     | 2025-06-20      |
+| 2   | Carol Thomas | 19  | [carol@example.com](mailto:carol@example.com) | 2025-06-21      |
+
+---
+
+### How AUTO_INCREMENT Works
+
+- Starts at `1` by default.
+- Increments by `1` for each new row.
+- If you delete rows, the auto-increment number does **not** reset automatically.
+- You can set the starting value if needed:
+
+```sql
+ALTER TABLE students AUTO_INCREMENT = 100;
+```
+
+Next inserted row will get `id = 100`.
+
+---
+
+### Summary
+
+- `AUTO_INCREMENT` generates unique numbers automatically.
+- Useful for primary key columns (example: `id`).
+- You do not need to specify the value when inserting rows.
+- Ensures each row gets a unique identifier.

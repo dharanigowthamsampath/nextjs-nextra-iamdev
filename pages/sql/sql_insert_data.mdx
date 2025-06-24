@@ -1,0 +1,113 @@
+# Inserting Data
+
+Once you have created a database and defined tables, you can add actual **data** into those tables.
+
+In MySQL, this is done using the `INSERT INTO` statement.
+
+---
+
+### Basic Syntax
+
+```sql
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+```
+
+- `table_name`: the name of the table you are adding data to
+- `(column1, column2, ...)`: the list of columns to insert data into
+- `VALUES`: the actual values to be stored
+
+Each set of values represents **one row** of data in the table.
+
+---
+
+### Example Table: `students`
+
+Assume we have this table:
+
+```sql
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT,
+  email VARCHAR(150),
+  enrollment_date DATE
+);
+```
+
+---
+
+### Example: Inserting One Row
+
+```sql
+INSERT INTO students (id, name, age, email, enrollment_date)
+VALUES (1, 'Alice Smith', 20, 'alice@example.com', '2025-06-23');
+```
+
+This adds a new student record to the table.
+
+---
+
+### Inserting Multiple Rows
+
+You can insert multiple rows in one command:
+
+```sql
+INSERT INTO students (id, name, age, email, enrollment_date)
+VALUES
+  (2, 'Bob Johnson', 22, 'bob@example.com', '2025-06-20'),
+  (3, 'Carol Thomas', 19, 'carol@example.com', '2025-06-21');
+```
+
+---
+
+### Viewing Inserted Data
+
+After inserting data, you can check the contents of the table using:
+
+```sql
+SELECT * FROM students;
+```
+
+This displays all rows and columns from the `students` table.
+
+---
+
+### Important Notes
+
+- The **order of columns** in the `INSERT INTO` clause must match the order of values provided.
+- All **required columns** (non-nullable columns, such as PRIMARY KEY) must be included.
+- The data must match the correct **data type** for each column:
+
+  - Numbers (INT, DECIMAL)
+  - Strings (VARCHAR, TEXT) must be in quotes `'...'`
+  - Dates must be in the format `'YYYY-MM-DD'`
+
+---
+
+### Example: Common Mistake
+
+Incorrect: mixing up column order:
+
+```sql
+-- Wrong order, will cause error
+INSERT INTO students (name, id, age, email, enrollment_date)
+VALUES ('Dan Green', 4, 21, 'dan@example.com', '2025-06-22');
+```
+
+Correct: match columns to values properly:
+
+```sql
+INSERT INTO students (id, name, age, email, enrollment_date)
+VALUES (4, 'Dan Green', 21, 'dan@example.com', '2025-06-22');
+```
+
+---
+
+### Summary
+
+- `INSERT INTO` adds new rows of data to a table.
+- You must specify which columns and which values to insert.
+- Values must match the column data types.
+- You can insert one row or multiple rows at a time.
+- After inserting, use `SELECT` to view the data.

@@ -1,0 +1,128 @@
+# Basic SELECT Query
+
+The `SELECT` statement is the most commonly used SQL command. It is used to **retrieve data** from one or more tables in a database.
+
+Once you have inserted data into a table, you use `SELECT` queries to view, analyze, and report that data.
+
+---
+
+### Basic Syntax
+
+```sql
+SELECT column1, column2, ...
+FROM table_name;
+```
+
+- `SELECT`: specifies which columns you want to retrieve
+- `FROM`: specifies the table from which to retrieve the data
+
+---
+
+### Example Table: `students`
+
+```sql
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT,
+  email VARCHAR(150),
+  enrollment_date DATE
+);
+```
+
+Assume we have inserted some data into the `students` table:
+
+```sql
+INSERT INTO students (id, name, age, email, enrollment_date)
+VALUES
+  (1, 'Alice Smith', 20, 'alice@example.com', '2025-06-23'),
+  (2, 'Bob Johnson', 22, 'bob@example.com', '2025-06-20'),
+  (3, 'Carol Thomas', 19, 'carol@example.com', '2025-06-21');
+```
+
+---
+
+### Example 1: Select All Columns
+
+```sql
+SELECT * FROM students;
+```
+
+- The `*` symbol means "all columns".
+- This query retrieves all columns and all rows from the `students` table.
+
+Result:
+
+| id  | name         | age | email                                         | enrollment_date |
+| --- | ------------ | --- | --------------------------------------------- | --------------- |
+| 1   | Alice Smith  | 20  | [alice@example.com](mailto:alice@example.com) | 2025-06-23      |
+| 2   | Bob Johnson  | 22  | [bob@example.com](mailto:bob@example.com)     | 2025-06-20      |
+| 3   | Carol Thomas | 19  | [carol@example.com](mailto:carol@example.com) | 2025-06-21      |
+
+---
+
+### Example 2: Select Specific Columns
+
+You can retrieve only the columns you need:
+
+```sql
+SELECT name, age FROM students;
+```
+
+Result:
+
+| name         | age |
+| ------------ | --- |
+| Alice Smith  | 20  |
+| Bob Johnson  | 22  |
+| Carol Thomas | 19  |
+
+---
+
+### Example 3: Rename Columns (Alias)
+
+You can rename columns in your result using `AS`:
+
+```sql
+SELECT name AS student_name, age AS student_age
+FROM students;
+```
+
+Result:
+
+| student_name | student_age |
+| ------------ | ----------- |
+| Alice Smith  | 20          |
+| Bob Johnson  | 22          |
+| Carol Thomas | 19          |
+
+---
+
+### Example 4: Simple Calculations
+
+You can perform basic calculations:
+
+```sql
+SELECT name, age + 1 AS next_year_age
+FROM students;
+```
+
+This shows each student's age next year.
+
+---
+
+### Important Notes
+
+- Every SQL query must end with a **semicolon (;)**.
+- Column names in `SELECT` can appear in any order.
+- You can mix columns and expressions in the same query.
+
+---
+
+### Summary
+
+- `SELECT` is used to retrieve data from a table.
+- `SELECT *` retrieves all columns.
+- You can select only specific columns.
+- You can rename columns and perform basic calculations in your queries.
+- `SELECT` is the foundation of all data retrieval in SQL.

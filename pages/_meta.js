@@ -23,6 +23,11 @@ const meta = {
     type: "page",
     display: "page",
   },
+  sql: {
+    title: "SQL",
+    type: "page",
+    display: "page",
+  },
 };
 
 export default meta;

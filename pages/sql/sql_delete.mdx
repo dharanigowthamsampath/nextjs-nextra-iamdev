@@ -1,0 +1,85 @@
+# DELETE Query
+
+The `DELETE` statement in SQL is used to **remove rows** from a table.
+
+You can delete:
+
+- A single row
+- Multiple rows
+- All rows (if used without `WHERE` — with caution)
+
+---
+
+### Basic Syntax
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+- `DELETE FROM`: specifies the table you want to delete rows from
+- `WHERE`: filters which rows will be deleted
+
+  - If you omit `WHERE`, **all rows in the table will be deleted**
+
+---
+
+### Example Table: `students`
+
+| id  | name         | age | email                                         | enrollment_date |
+| --- | ------------ | --- | --------------------------------------------- | --------------- |
+| 1   | Alice Smith  | 20  | [alice@example.com](mailto:alice@example.com) | 2025-06-23      |
+| 2   | Bob Johnson  | 22  | [bob@example.com](mailto:bob@example.com)     | 2025-06-20      |
+| 3   | Carol Thomas | 19  | [carol@example.com](mailto:carol@example.com) | 2025-06-21      |
+| 4   | Dan Green    | 23  | [dan@example.com](mailto:dan@example.com)     | 2025-06-19      |
+
+---
+
+### Example 1: Delete One Row
+
+Delete the student with `id = 3`:
+
+```sql
+DELETE FROM students
+WHERE id = 3;
+```
+
+---
+
+### Example 2: Delete Rows Matching a Condition
+
+Delete all students older than 22:
+
+```sql
+DELETE FROM students
+WHERE age > 22;
+```
+
+---
+
+### Example 3: Delete All Rows (No WHERE)
+
+**Caution:** This will remove all rows from the table:
+
+```sql
+DELETE FROM students;
+```
+
+The table will still exist, but it will be empty.
+
+---
+
+### Important Notes
+
+- Always use `WHERE` unless you are absolutely sure you want to delete all rows.
+- Once rows are deleted, the data **cannot be recovered** unless a backup exists.
+- If you only want to temporarily "hide" data instead of deleting it, consider using an `is_active` column instead of physically deleting rows.
+
+---
+
+### Summary
+
+- `DELETE` removes rows from a table.
+- `WHERE` filters which rows to delete — **be careful** when using `DELETE`.
+- If `WHERE` is omitted, all rows will be deleted.
+- Deleting data is permanent — use backups and test carefully.

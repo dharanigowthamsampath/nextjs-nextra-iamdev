@@ -1,0 +1,100 @@
+# Primary Key
+
+In relational databases like MySQL, every table should have a way to uniquely identify each row.
+The **primary key** provides this unique identifier.
+
+---
+
+### What is a Primary Key?
+
+- A **primary key** is one or more columns in a table that uniquely identifies each row in that table.
+- No two rows can have the same primary key value.
+- A primary key **cannot be NULL** (it must always have a value).
+- Each table should have exactly **one** primary key.
+
+---
+
+### Why Use a Primary Key?
+
+- Ensures **uniqueness**: No duplicate rows.
+- Provides a reliable way to **reference** rows (for example, when using foreign keys).
+- Improves **data integrity**.
+- Often used for indexing, which helps improve query performance.
+
+---
+
+### Example Table with Primary Key
+
+```sql
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT,
+  email VARCHAR(150),
+  enrollment_date DATE
+);
+```
+
+In this example:
+
+- `id` is the primary key.
+- Each student must have a unique `id` value.
+- No two students can have the same `id`.
+- The `id` cannot be NULL.
+
+---
+
+### Example: Inserting Unique Rows
+
+```sql
+INSERT INTO students (id, name, age, email, enrollment_date)
+VALUES (1, 'Alice Smith', 20, 'alice@example.com', '2025-06-23');
+```
+
+If you try to insert another row with `id = 1`, it will cause an error:
+
+```sql
+INSERT INTO students (id, name, age, email, enrollment_date)
+VALUES (1, 'Bob Johnson', 22, 'bob@example.com', '2025-06-20');
+```
+
+Error: Duplicate entry '1' for primary key.
+
+---
+
+### Composite Primary Key
+
+A primary key can also consist of **multiple columns** — this is called a composite primary key.
+
+Example:
+
+```sql
+CREATE TABLE enrollments (
+  student_id INT,
+  course_id INT,
+  enrollment_date DATE,
+  PRIMARY KEY (student_id, course_id)
+);
+```
+
+In this example:
+
+- The combination of `student_id` and `course_id` uniquely identifies each row.
+- A student can enroll in multiple courses, but not in the same course more than once.
+
+---
+
+### Common Practices
+
+- Often the primary key is a single column named `id` or `tablename_id`.
+- Many developers use **auto-incrementing IDs** so that the database automatically generates a new ID for each row (you will learn this in the next section).
+
+---
+
+### Summary
+
+- A **primary key** uniquely identifies each row in a table.
+- It ensures that no two rows can have the same key.
+- A primary key cannot be NULL.
+- Every table should have exactly one primary key.
+- It can be one column or a combination of multiple columns.

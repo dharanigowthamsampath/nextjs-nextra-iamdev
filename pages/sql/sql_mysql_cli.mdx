@@ -1,0 +1,109 @@
+# MySQL Command-Line Interface (CLI)
+
+The MySQL Command-Line Interface (CLI) is a powerful tool that allows users to interact with the MySQL server directly through text commands. It is one of the most efficient and flexible ways to manage databases, perform administrative tasks, and run SQL queries.
+
+Understanding and becoming comfortable with the MySQL CLI is an essential skill for anyone working with MySQL.
+
+---
+
+#### What is the MySQL CLI?
+
+- The MySQL CLI is an interactive terminal-based program that connects to a MySQL server.
+- Through the CLI, users can:
+
+  - Execute SQL queries and scripts
+  - Create, modify, and delete databases and tables
+  - Manage users and permissions
+  - Perform administrative tasks such as backups and restores
+  - Monitor and troubleshoot server performance
+
+---
+
+#### Why Use the CLI?
+
+1. **Direct Access**
+   The CLI provides full access to the MySQL server without the need for graphical tools. This allows for fine-grained control and quick execution of commands.
+
+2. **Speed and Efficiency**
+   Tasks that might require multiple clicks in a graphical interface can often be performed with a single command in the CLI.
+
+3. **Automation and Scripting**
+   The CLI can run SQL scripts, making it ideal for automating repetitive tasks or setting up databases programmatically.
+
+4. **Universal Availability**
+   The MySQL CLI is available on all operating systems where MySQL is supported. No additional software is required beyond the MySQL server itself.
+
+---
+
+#### How to Access the MySQL CLI
+
+After installing MySQL, the CLI tool `mysql` is available in your system’s command line (Terminal on macOS/Linux, Command Prompt or PowerShell on Windows).
+
+To start the CLI and connect to the MySQL server:
+
+```bash
+mysql -u root -p
+```
+
+- `-u root`: Specifies the username (commonly `root` for administrative access).
+- `-p`: Prompts for the user’s password.
+
+After entering the correct password, you will be connected to the MySQL server and see the MySQL prompt:
+
+```text
+mysql>
+```
+
+At this point, you can begin entering SQL commands.
+
+---
+
+#### Basic Commands in the CLI
+
+Here are some useful commands to get started:
+
+- Display the list of databases:
+
+  ```sql
+  SHOW DATABASES;
+  ```
+
+- Select a database to use:
+
+  ```sql
+  USE database_name;
+  ```
+
+- Display the list of tables in the selected database:
+
+  ```sql
+  SHOW TABLES;
+  ```
+
+- Display the structure of a table:
+
+  ```sql
+  DESCRIBE table_name;
+  ```
+
+- Exit the CLI:
+
+  ```sql
+  EXIT;
+  ```
+
+---
+
+#### CLI Usage Tips
+
+- Every SQL statement should end with a semicolon (`;`) to indicate the end of the command.
+- Commands are case-insensitive (`SELECT` is the same as `select`), but by convention, keywords are written in uppercase for readability.
+- The CLI provides helpful feedback after each command, such as query results or confirmation messages.
+
+---
+
+#### Summary
+
+The MySQL CLI is a fundamental tool for interacting with MySQL databases. Mastering its usage not only improves efficiency but also provides a deeper understanding of database operations.
+
+For students and professionals alike, becoming comfortable with the CLI is an important step toward proficiency in MySQL.

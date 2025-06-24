@@ -153,6 +153,13 @@ export function BlockPage() {
               new: true,
             },
 
+            {
+              name: "SQL",
+              url: "/sql",
+              disabled: false,
+              label: "New",
+              new: true,
+            },
             { name: "C#", url: "/csharp", disabled: true },
 
             { name: "JavaScript", url: "/javascript", disabled: true },

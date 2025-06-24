@@ -1,0 +1,127 @@
+# Creating Databases and Tables
+
+#### What is a Database?
+
+A **database** is a container that holds related data.
+In MySQL, a database contains one or more **tables**.
+
+Each **table** organizes data in **rows** and **columns**, similar to an Excel spreadsheet.
+
+- A **row** represents a single record (example: one student, one employee).
+- A **column** represents a field (example: name, age, email).
+
+Before you can store any data in MySQL, you must first create a database, then create tables inside it.
+
+---
+
+### Creating a Database
+
+To create a new database, use the `CREATE DATABASE` command:
+
+```sql
+CREATE DATABASE school;
+```
+
+This creates a new empty database named `school`.
+
+To select that database and start working inside it:
+
+```sql
+USE school;
+```
+
+Now all tables you create will be part of the `school` database.
+
+---
+
+### Creating a Table
+
+To store data, you must create **tables** inside your database.
+Each table has:
+
+- A **name**
+- A list of **columns**, each with a name and data type
+
+**Example**: Creating a `students` table:
+
+```sql
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT,
+  email VARCHAR(150),
+  enrollment_date DATE
+);
+```
+
+Explanation:
+
+- `id`: an integer value that uniquely identifies each student
+- `name`: student’s name (text up to 100 characters)
+- `age`: student’s age (integer)
+- `email`: student’s email address (text up to 150 characters)
+- `enrollment_date`: the date the student enrolled
+
+---
+
+### Key Points
+
+- Every table **must** have a unique name.
+- Each column must have:
+
+  - A unique name within the table
+  - A data type that defines the kind of data it can store
+
+- It is a good practice to include a **PRIMARY KEY** column, which uniquely identifies each row. Often this is an `id` column.
+
+---
+
+### Example: Full Workflow
+
+```sql
+-- Step 1: Create database
+CREATE DATABASE school;
+
+-- Step 2: Use the database
+USE school;
+
+-- Step 3: Create table
+CREATE TABLE teachers (
+  teacher_id INT PRIMARY KEY,
+  name VARCHAR(100),
+  subject VARCHAR(100),
+  hire_date DATE
+);
+```
+
+---
+
+### Viewing Databases and Tables
+
+To see a list of all databases:
+
+```sql
+SHOW DATABASES;
+```
+
+To see all tables in the current database:
+
+```sql
+SHOW TABLES;
+```
+
+To view the structure (columns) of a table:
+
+```sql
+DESCRIBE students;
+```
+
+---
+
+### Summary
+
+- `CREATE DATABASE`: creates a new database
+- `CREATE TABLE`: defines the structure of a table
+- Each column must have a name and data type
+- Good practice: always include a **PRIMARY KEY** to uniquely identify rows
+- Use `SHOW DATABASES`, `SHOW TABLES`, `DESCRIBE` to explore the database structure

@@ -1,0 +1,99 @@
+# ORDER BY Clause
+
+The `ORDER BY` clause in SQL is used to **sort the result set** of a `SELECT` query.
+
+By default, when you run a `SELECT` query, MySQL returns the results in no particular order — it depends on how the database stores the data internally. If you want to display the results in a specific order (for example, by name or by date), you use the `ORDER BY` clause.
+
+---
+
+### Basic Syntax
+
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition
+ORDER BY column_name [ASC | DESC];
+```
+
+- `ASC` means ascending order (smallest to largest, A to Z). This is the default.
+- `DESC` means descending order (largest to smallest, Z to A).
+
+---
+
+### Example Table: `students`
+
+| id  | name         | age | email                                         | enrollment_date |
+| --- | ------------ | --- | --------------------------------------------- | --------------- |
+| 1   | Alice Smith  | 20  | [alice@example.com](mailto:alice@example.com) | 2025-06-23      |
+| 2   | Bob Johnson  | 22  | [bob@example.com](mailto:bob@example.com)     | 2025-06-20      |
+| 3   | Carol Thomas | 19  | [carol@example.com](mailto:carol@example.com) | 2025-06-21      |
+| 4   | Dan Green    | 23  | [dan@example.com](mailto:dan@example.com)     | 2025-06-19      |
+
+---
+
+### Example 1: Order by Age (Ascending)
+
+```sql
+SELECT * FROM students
+ORDER BY age ASC;
+```
+
+Result:
+
+| id  | name         | age | email                                         | enrollment_date |
+| --- | ------------ | --- | --------------------------------------------- | --------------- |
+| 3   | Carol Thomas | 19  | [carol@example.com](mailto:carol@example.com) | 2025-06-21      |
+| 1   | Alice Smith  | 20  | [alice@example.com](mailto:alice@example.com) | 2025-06-23      |
+| 2   | Bob Johnson  | 22  | [bob@example.com](mailto:bob@example.com)     | 2025-06-20      |
+| 4   | Dan Green    | 23  | [dan@example.com](mailto:dan@example.com)     | 2025-06-19      |
+
+---
+
+### Example 2: Order by Name (Alphabetical)
+
+```sql
+SELECT * FROM students
+ORDER BY name ASC;
+```
+
+---
+
+### Example 3: Order by Enrollment Date (Newest First)
+
+```sql
+SELECT * FROM students
+ORDER BY enrollment_date DESC;
+```
+
+This will display the students who enrolled most recently at the top.
+
+---
+
+### Example 4: Order by Multiple Columns
+
+You can order by more than one column.
+For example, order first by age (ascending), then by name (ascending):
+
+```sql
+SELECT * FROM students
+ORDER BY age ASC, name ASC;
+```
+
+This helps when two or more rows have the same value in the first column — it uses the second column to break ties.
+
+---
+
+### Important Notes
+
+- The `ORDER BY` clause always goes **after** the `WHERE` clause (if there is one).
+- You can order by any column — it does not need to be one you are selecting.
+- By default, sorting is in ascending order.
+
+---
+
+### Summary
+
+- `ORDER BY` is used to **sort query results**.
+- You can sort in ascending (`ASC`) or descending (`DESC`) order.
+- You can order by one or multiple columns.
+- Sorting helps make query results easier to read and analyze.

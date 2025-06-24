@@ -1,0 +1,102 @@
+# UPDATE Query
+
+The `UPDATE` statement in SQL is used to **modify existing data** in a table.
+
+You can use `UPDATE` to:
+
+- Correct mistakes in data
+- Change values when new information is available
+- Update multiple rows at once based on a condition
+
+---
+
+### Basic Syntax
+
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+- `SET`: specifies which columns you want to update and the new values
+- `WHERE`: filters which rows will be updated
+
+  - If you omit `WHERE`, **all rows in the table will be updated**
+
+---
+
+### Example Table: `students`
+
+| id  | name         | age | email                                         | enrollment_date |
+| --- | ------------ | --- | --------------------------------------------- | --------------- |
+| 1   | Alice Smith  | 20  | [alice@example.com](mailto:alice@example.com) | 2025-06-23      |
+| 2   | Bob Johnson  | 22  | [bob@example.com](mailto:bob@example.com)     | 2025-06-20      |
+| 3   | Carol Thomas | 19  | [carol@example.com](mailto:carol@example.com) | 2025-06-21      |
+| 4   | Dan Green    | 23  | [dan@example.com](mailto:dan@example.com)     | 2025-06-19      |
+
+---
+
+### Example 1: Update One Row
+
+Change the age of Bob Johnson to 23:
+
+```sql
+UPDATE students
+SET age = 23
+WHERE name = 'Bob Johnson';
+```
+
+---
+
+### Example 2: Update Multiple Columns
+
+Change both the age and email for Alice Smith:
+
+```sql
+UPDATE students
+SET age = 21,
+    email = 'alice.smith@example.com'
+WHERE id = 1;
+```
+
+---
+
+### Example 3: Update Multiple Rows
+
+Increase the age of all students who are younger than 21:
+
+```sql
+UPDATE students
+SET age = age + 1
+WHERE age < 21;
+```
+
+---
+
+### Example 4: Update All Rows (No WHERE)
+
+**Caution:** If you leave out `WHERE`, all rows in the table will be updated:
+
+```sql
+UPDATE students
+SET enrollment_date = '2025-06-30';
+```
+
+This will set the same enrollment date for every student in the table.
+
+---
+
+### Important Notes
+
+- Always use a `WHERE` clause unless you intentionally want to update every row.
+- You can update one column or multiple columns in the same query.
+- You can use expressions in `SET`, such as `age = age + 1`.
+
+---
+
+### Summary
+
+- `UPDATE` modifies existing data in a table.
+- `SET` defines the new values for one or more columns.
+- `WHERE` filters which rows are updated — **do not forget this**.
+- You can update one row or many rows at once.

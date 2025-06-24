@@ -1,0 +1,102 @@
+# FOREIGN KEY
+
+A **foreign key** is a column (or a set of columns) that creates a **relationship between two tables**.
+
+- The foreign key in one table points to the **primary key** in another table.
+- This enforces **referential integrity**: it ensures that the data in the related columns stays consistent.
+
+---
+
+### Why Use FOREIGN KEY?
+
+- To **link related data** across multiple tables.
+- To avoid **duplicate** or **inconsistent** data.
+- To help model **real-world relationships** between entities.
+
+---
+
+### Example: Real-World Scenario
+
+Suppose you have:
+
+1. A table of **students**
+2. A table of **courses**
+3. A table of **enrollments** (which records which students are enrolled in which courses)
+
+The `enrollments` table will have **foreign keys** pointing to the `students` table and the `courses` table.
+
+---
+
+### Basic Syntax
+
+When creating a table:
+
+```sql
+FOREIGN KEY (column_name) REFERENCES parent_table(parent_column)
+```
+
+---
+
+### Example: Students and Enrollments
+
+**Table 1: students**
+
+```sql
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(150)
+);
+```
+
+**Table 2: courses**
+
+```sql
+CREATE TABLE courses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  course_name VARCHAR(100)
+);
+```
+
+**Table 3: enrollments**
+
+```sql
+CREATE TABLE enrollments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT,
+  course_id INT,
+  enrollment_date DATE,
+  FOREIGN KEY (student_id) REFERENCES students(id),
+  FOREIGN KEY (course_id) REFERENCES courses(id)
+);
+```
+
+In this example:
+
+- `student_id` in `enrollments` is a foreign key that refers to `id` in `students`.
+- `course_id` in `enrollments` is a foreign key that refers to `id` in `courses`.
+
+---
+
+### How It Works
+
+- You **cannot insert** an enrollment for a student unless that student exists in the `students` table.
+- You **cannot insert** an enrollment for a course unless that course exists in the `courses` table.
+- If you try to delete a student or course that is referenced in `enrollments`, you will get an error unless special rules (such as `ON DELETE CASCADE`) are defined.
+
+---
+
+### Benefits of FOREIGN KEY
+
+- Maintains **data consistency** across tables.
+- Helps ensure that relationships between tables are valid.
+- Prevents accidental deletion of related data.
+
+---
+
+### Summary
+
+- A **foreign key** links one table to another.
+- It references a **primary key** in the parent table.
+- It enforces **referential integrity** — relationships stay consistent.
+- It is essential for modeling complex data and building reliable databases.

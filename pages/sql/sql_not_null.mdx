@@ -1,0 +1,114 @@
+# NOT NULL Constraint
+
+By default, columns in a table can accept **NULL** values — meaning that the value is unknown or missing.
+
+When you apply the **NOT NULL** constraint to a column:
+
+- It ensures that the column **must always have a value**.
+- You cannot insert a row without providing a value for that column.
+- It helps enforce that required data is always present.
+
+---
+
+### Why Use NOT NULL?
+
+- To ensure important fields (such as `name`, `email`, `created_at`) are **never empty**.
+- To improve **data quality** — no missing critical data.
+- It is often used for required fields in business applications.
+
+---
+
+### Basic Syntax
+
+```sql
+column_name data_type NOT NULL
+```
+
+---
+
+### Example 1: Students Table with NOT NULL Columns
+
+```sql
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  enrollment_date DATE
+);
+```
+
+In this example:
+
+- `name` and `email` must always have values.
+- `enrollment_date` is optional (it can be NULL if not provided).
+
+---
+
+### Example 2: Inserting Data (Valid)
+
+```sql
+INSERT INTO students (name, email, enrollment_date)
+VALUES ('Alice Smith', 'alice@example.com', '2025-06-23');
+```
+
+This works because `name` and `email` are provided.
+
+---
+
+### Example 3: Inserting Data (Invalid)
+
+```sql
+INSERT INTO students (email, enrollment_date)
+VALUES ('alice@example.com', '2025-06-23');
+```
+
+Error: Column `name` cannot be null.
+
+You **must provide a value** for every `NOT NULL` column.
+
+---
+
+### Example 4: Modifying a Table to Add NOT NULL
+
+You can also modify an existing column to be NOT NULL:
+
+```sql
+ALTER TABLE students
+MODIFY COLUMN email VARCHAR(150) NOT NULL;
+```
+
+---
+
+### Example 5: Multiple NOT NULL Columns
+
+```sql
+CREATE TABLE courses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  course_name VARCHAR(100) NOT NULL,
+  instructor VARCHAR(100) NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE
+);
+```
+
+In this example:
+
+- `course_name`, `instructor`, and `start_date` must always be present.
+- `end_date` is optional.
+
+---
+
+### Important Notes
+
+- If a column is defined as **NOT NULL**, you must provide a value for it in every `INSERT`.
+- If you try to leave it empty or insert `NULL`, you will get an error.
+- Many columns that are used as **primary keys** or **foreign keys** are also defined as NOT NULL.
+
+---
+
+### Summary
+
+- **NOT NULL** prevents columns from having empty (NULL) values.
+- It enforces that required fields always have data.
+- You can apply NOT NULL to any column.
+- It improves **data quality** and **reliability** of your database.

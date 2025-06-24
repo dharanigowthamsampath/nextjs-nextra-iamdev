@@ -1,0 +1,127 @@
+# WHERE Clause
+
+The `WHERE` clause in SQL is used to **filter the rows** returned by a query.
+
+By default, when you run a `SELECT` query, MySQL returns **all rows** in the table.
+If you want to retrieve **only the rows that meet certain conditions**, you use a `WHERE` clause.
+
+---
+
+### Why Use WHERE?
+
+- To find **specific records** in a table.
+- To limit results to only those that match a condition.
+- To avoid retrieving unnecessary data.
+- It can be used with `SELECT`, `UPDATE`, and `DELETE` queries.
+
+---
+
+### Basic Syntax
+
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+---
+
+### Example Table: `students`
+
+| id  | name         | age | email                                         | enrollment_date |
+| --- | ------------ | --- | --------------------------------------------- | --------------- |
+| 1   | Alice Smith  | 20  | [alice@example.com](mailto:alice@example.com) | 2025-06-23      |
+| 2   | Bob Johnson  | 22  | [bob@example.com](mailto:bob@example.com)     | 2025-06-20      |
+| 3   | Carol Thomas | 19  | [carol@example.com](mailto:carol@example.com) | 2025-06-21      |
+| 4   | Dan Green    | 23  | [dan@example.com](mailto:dan@example.com)     | 2025-06-19      |
+
+---
+
+### Example 1: Simple Numeric Condition
+
+Select students who are older than 20:
+
+```sql
+SELECT * FROM students
+WHERE age > 20;
+```
+
+---
+
+### Example 2: Exact Match (String Condition)
+
+Select student named 'Alice Smith':
+
+```sql
+SELECT * FROM students
+WHERE name = 'Alice Smith';
+```
+
+---
+
+### Example 3: Date Comparison
+
+Select students who enrolled after June 20, 2025:
+
+```sql
+SELECT * FROM students
+WHERE enrollment_date > '2025-06-20';
+```
+
+---
+
+### Example 4: Multiple Conditions with AND
+
+Select students who are older than 20 **AND** enrolled before June 22, 2025:
+
+```sql
+SELECT * FROM students
+WHERE age > 20 AND enrollment_date < '2025-06-22';
+```
+
+---
+
+### Example 5: Multiple Conditions with OR
+
+Select students who are 19 years old **OR** named 'Dan Green':
+
+```sql
+SELECT * FROM students
+WHERE age = 19 OR name = 'Dan Green';
+```
+
+---
+
+### Operators You Can Use in WHERE
+
+| Operator   | Meaning                             |
+| ---------- | ----------------------------------- |
+| `=`        | Equal to                            |
+| `<> or !=` | Not equal to                        |
+| `>`        | Greater than                        |
+| `<`        | Less than                           |
+| `>=`       | Greater than or equal to            |
+| `<=`       | Less than or equal to               |
+| `AND`      | Both conditions must be true        |
+| `OR`       | At least one condition must be true |
+
+---
+
+### Important Notes
+
+- Text and dates should be written inside **single quotes** `'...'`.
+- You can combine multiple conditions using `AND` and `OR`.
+- Parentheses `()` can be used to control the order of evaluation when combining conditions.
+
+---
+
+### Summary
+
+- `WHERE` helps filter the data returned by a `SELECT` query.
+- It can also be used with `UPDATE` and `DELETE` queries.
+- You can use various operators and combine multiple conditions.
+- Learning to use `WHERE` effectively is an important skill when working with SQL.
+
+---
+
+If you’d like, I can continue with the next section: **ORDER BY Clause** (`sql_order_by`), or any other section you prefer! Just let me know.

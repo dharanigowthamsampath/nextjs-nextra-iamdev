@@ -1,0 +1,148 @@
+# Data Types
+
+When creating tables in MySQL, each column must be assigned a **data type**. A data type defines:
+
+- The kind of data that column can store (for example, numbers, text, dates).
+- The amount of storage space required.
+- The operations that can be performed on that column.
+
+Choosing the correct data type is very important for:
+
+- Accuracy of data
+- Efficient storage
+- Better performance of queries
+
+---
+
+#### Why Do We Need Data Types?
+
+Every field in a table should store a specific kind of data. For example:
+
+- A student’s **age** should be stored as a number, not as text.
+- A student’s **name** should be stored as text.
+- A **date of birth** should be stored in a date format.
+
+If the wrong data type is used, it can cause:
+
+- Errors when inserting or updating data
+- Incorrect query results
+- Wasted storage space
+
+---
+
+#### Categories of Data Types
+
+MySQL provides many data types. The most commonly used ones fall into these categories:
+
+1. Numeric Data Types
+2. String (Character) Data Types
+3. Date and Time Data Types
+4. Other types (less common, used in special cases)
+
+---
+
+#### 1. Numeric Data Types
+
+Numeric types store numbers, either integers or floating-point values.
+
+| Data Type     | Description                                    | Example             |
+| ------------- | ---------------------------------------------- | ------------------- |
+| INT           | Whole numbers                                  | 10, 100, -50        |
+| TINYINT       | Very small integers (-128 to 127)              | 1, 2, 3             |
+| SMALLINT      | Small integers                                 | 32767               |
+| BIGINT        | Very large integers                            | 9223372036854775807 |
+| DECIMAL(x, y) | Exact numeric values with fixed decimal places | 99.99               |
+| FLOAT         | Approximate floating-point values              | 3.1415              |
+| DOUBLE        | Larger floating-point values                   | 3.1415926535        |
+
+Example usage:
+
+```sql
+age INT;
+price DECIMAL(10, 2);
+```
+
+---
+
+#### 2. String (Character) Data Types
+
+String types store text data, like names or descriptions.
+
+| Data Type  | Description                                | Example                |
+| ---------- | ------------------------------------------ | ---------------------- |
+| CHAR(n)    | Fixed-length string (n characters)         | 'YES', 'NO'            |
+| VARCHAR(n) | Variable-length string, up to n characters | 'Alice', 'Hello World' |
+| TEXT       | Long text data (articles, comments)        | 'This is a long note.' |
+
+Example usage:
+
+```sql
+name VARCHAR(100);
+email VARCHAR(150);
+```
+
+---
+
+#### 3. Date and Time Data Types
+
+Date and time types store temporal (time-related) data.
+
+| Data Type | Description                                  | Example               |
+| --------- | -------------------------------------------- | --------------------- |
+| DATE      | Stores dates (year, month, day)              | '2025-06-23'          |
+| TIME      | Stores time (hours, minutes, sec)            | '14:30:00'            |
+| DATETIME  | Stores date and time                         | '2025-06-23 14:30:00' |
+| TIMESTAMP | Stores date and time with timezone awareness | '2025-06-23 14:30:00' |
+
+Example usage:
+
+```sql
+created_at DATETIME;
+birth_date DATE;
+```
+
+---
+
+#### Choosing the Right Data Type
+
+Here are some simple guidelines:
+
+| Type of Data               | Recommended Data Type |
+| -------------------------- | --------------------- |
+| Whole numbers              | INT or BIGINT         |
+| Decimal numbers (currency) | DECIMAL               |
+| Short text (names)         | VARCHAR               |
+| Long text                  | TEXT                  |
+| Date                       | DATE                  |
+| Date and time              | DATETIME or TIMESTAMP |
+
+---
+
+#### Example Table With Different Data Types
+
+```sql
+CREATE TABLE employees (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(150),
+  salary DECIMAL(10, 2),
+  hire_date DATE
+);
+```
+
+In this example:
+
+- `id`: stores whole number IDs
+- `name`: stores text names
+- `email`: stores email addresses as text
+- `salary`: stores decimal currency amounts
+- `hire_date`: stores the date the employee was hired
+
+---
+
+#### Summary
+
+- Data types define what kind of data each column can store.
+- Using the correct data type improves performance and data accuracy.
+- Common categories: numeric, string, date/time.
+- Always think about what type of data you need to store and choose the type accordingly.
